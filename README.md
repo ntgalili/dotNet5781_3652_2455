@@ -3,3 +3,5 @@ hello this is a new project
 Mini project for our course
 Hello project
 Nechama Galili
+Hello project
+kimchit cohen
