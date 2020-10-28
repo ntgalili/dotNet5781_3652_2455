@@ -23,6 +23,16 @@ namespace dotNet5781_01_3652_2455
         public float TravelOfTest;
         public float TotalTravel;
         public float Fuel;
+        public bool AddKM(int numKM)
+        {
+            if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now))
+            {
+                return false;
+            }
+            Fuel = Fuel - numKM;
+            TotalTravel = TotalTravel + numKM;
+            return true;
+        }
     }
     class Program
     {
@@ -45,6 +55,9 @@ namespace dotNet5781_01_3652_2455
             Action choice;
             DateTime date;
             Bus bus1;
+            int numKM = 0;
+            Random r = new Random(DateTime.Now.Millisecond);
+
             do
             {
                 Console.WriteLine("enter your choice:");
@@ -73,11 +86,29 @@ namespace dotNet5781_01_3652_2455
                         }
                     case Action.chooseBus:
                         {
+                            Console.WriteLine("enter the bus License Plate:");
+                            strNum = Console.ReadLine();
+                            numKM = r.Next(0, 1200);
+                            flag = false;
+                            foreach (Bus b in ListOfBuses)
+                            {
+                                if (b.LicensePlate == strNum)
+                                {
+                                    flag = true;
+                                    if (!(b.AddKM(numKM)))
+                                        Console.WriteLine("the bus can not travel!");
+                                }
 
+                            }
+                            if (flag == false)
+                                Console.WriteLine("the bus is not on the list!");
                             break;
                         }
 
                     case Action.Services:
+                        {
+
+                        }
                         break;
                     case Action.SeeTravel:
                         break;
@@ -88,6 +119,5 @@ namespace dotNet5781_01_3652_2455
                 }
             } while (true);
         }
-
     }
 }
