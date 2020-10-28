@@ -20,7 +20,7 @@ namespace dotNet5781_01_3652_2455
     {
         static void Main(string[] args)
         {
-            
+            List<Bus> ListOfBuses;
         }
     }
 }
