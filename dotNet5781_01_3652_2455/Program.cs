@@ -8,6 +8,15 @@ namespace dotNet5781_01_3652_2455
 {
     class Bus
     {
+        public Bus(string Num, DateTime Date)
+        {
+            LicensePlate = Num;
+            StartTime = Date;
+            DateOfTest = Date;
+            TravelOfTest = 0;
+            TotalTravel = 0;
+            Fuel = 1200;
+        }
         public string LicensePlate;
         public DateTime StartTime;
         public DateTime DateOfTest;
@@ -19,7 +28,7 @@ namespace dotNet5781_01_3652_2455
     {
         enum Action { Exit, NewBus, chooseBus, Services, SeeTravel };
 
-         static bool check(string str,DateTime date)
+        static bool check(string str, DateTime date)
         {
             if (date.Year < 2018 && str.Length == 9)
                 return true;
@@ -30,11 +39,12 @@ namespace dotNet5781_01_3652_2455
 
         static void Main(string[] args)
         {
-            List<Bus> ListOfBuses;
+            List<Bus> ListOfBuses = null;
             bool flag;
-            string strChoice,strNum,strDate;
+            string strChoice, strNum, strDate;
             Action choice;
             DateTime date;
+            Bus bus1;
             do
             {
                 Console.WriteLine("enter your choice:");
@@ -43,16 +53,30 @@ namespace dotNet5781_01_3652_2455
                 switch (choice)
                 {
                     case Action.NewBus:
-                        Console.WriteLine("enter the bus License Plate:");
-                        strNum = Console.ReadLine();
-                        Console.WriteLine("enter the date the bus entered the roads:");
-                        strDate = Console.ReadLine();
-                        flag = DateTime.TryParse(strDate, out date);
-                        flag = check(strNum, date);
-
-                        break;
+                        {
+                            Console.WriteLine("enter the bus License Plate:");
+                            strNum = Console.ReadLine();
+                            Console.WriteLine("enter the date the bus entered the roads:");
+                            strDate = Console.ReadLine();
+                            flag = DateTime.TryParse(strDate, out date);
+                            flag = check(strNum, date);
+                            if (flag == false)
+                            {
+                                Console.WriteLine("ERROR");
+                            }
+                            else
+                            {
+                                bus1 = new Bus(strNum, date);
+                                ListOfBuses.Add(bus1);
+                            }
+                            break;
+                        }
                     case Action.chooseBus:
-                        break;
+                        {
+
+                            break;
+                        }
+
                     case Action.Services:
                         break;
                     case Action.SeeTravel:
@@ -64,5 +88,6 @@ namespace dotNet5781_01_3652_2455
                 }
             } while (true);
         }
+
     }
 }
