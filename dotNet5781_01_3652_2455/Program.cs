@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 namespace dotNet5781_01_3652_2455
@@ -23,6 +24,10 @@ namespace dotNet5781_01_3652_2455
         public float TravelOfTest;
         public float TotalTravel;
         public float Fuel;
+        public void print()
+        { 
+            Console.WriteLine("License Plate of bus: {0}, the travel: {1}", LicensePlate, TotalTravel - TravelOfTest);
+        }
         public bool AddKM(int numKM)
         {
             if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now))
@@ -75,6 +80,7 @@ namespace dotNet5781_01_3652_2455
             return null;
         }
 
+        
         static void Main(string[] args)
         {
             List<Bus> ListOfBuses = null;
@@ -141,8 +147,13 @@ namespace dotNet5781_01_3652_2455
                         }
                         break;
                     case Action.SeeTravel:
+                        {
+                            foreach (Bus b in ListOfBuses)
+                                b.print();
+                        }
                         break;
                     case Action.Exit:
+                        Console.WriteLine("bye bye!");
                         return;
                     default:
                         break;
