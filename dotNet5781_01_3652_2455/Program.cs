@@ -154,8 +154,10 @@ namespace dotNet5781_01_3652_2455
                         break;
                     case Action.Exit:
                         Console.WriteLine("bye bye!");
+                        Console.ReadKey();
                         return;
                     default:
+                        Console.WriteLine("ERROR choice");
                         break;
                 }
             } while (true);
