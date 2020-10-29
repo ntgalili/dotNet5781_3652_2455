@@ -83,7 +83,8 @@ namespace dotNet5781_01_3652_2455
         
         static void Main(string[] args)
         {
-            List<Bus> ListOfBuses = null;
+            Console.WriteLine("0: Exit \n1: enter new bus \n2:choosing a bus for travel \n3:services \n4:print total travel");
+            List<Bus> ListOfBuses=new List<Bus> ();
             bool flag;
             string strChoice, strNum, strDate,strToDo;
             Action choice;
@@ -157,10 +158,57 @@ namespace dotNet5781_01_3652_2455
                         Console.ReadKey();
                         return;
                     default:
-                        Console.WriteLine("ERROR choice");
+                        Console.WriteLine("ERROR choice, please try again!");
                         break;
                 }
             } while (true);
         }
     }
 }
+
+//0: Exit
+//1: enter new bus
+//2:choosing a bus for travel
+//3:servic
+//4:print total travel
+//enter your choice:
+//1
+//enter the bus License Plate:
+//12 - 345 - 67
+//enter the date the bus entered the roads:
+//15 / 02 / 2016
+//enter your choice:
+//1
+//enter the bus License Plate:
+//234 - 56 - 789
+//enter the date the bus entered the roads:
+//10 / 05 / 2020
+//enter your choice:
+//3
+//enter the bus License Plate:
+//12 - 345 - 67
+//What do you want to do? enter 'f' to fuel or 't' to test:
+//t
+//enter your choice:
+//2
+//enter the bus License Plate:
+//12 - 345 - 67
+//enter your choice:
+//2
+//enter the bus License Plate:
+//234 - 56 - 789
+//enter your choice:
+//2
+//enter the bus License Plate:
+//123 - 56 - 78
+//the bus is not on the list!
+//enter your choice:
+//4
+//License Plate of bus: 12 - 345 - 67, the travel: 730
+//License Plate of bus: 234 - 56 - 789, the travel: 804
+//enter your choice:
+//9
+//ERROR choice, please try again!
+//enter your choice:
+//0
+//bye bye!
