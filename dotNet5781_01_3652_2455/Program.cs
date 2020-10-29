@@ -33,7 +33,27 @@ namespace dotNet5781_01_3652_2455
             TotalTravel = TotalTravel + numKM;
             return true;
         }
+        public void BusService(string ToDo)
+        {
+            switch (ToDo)
+            {
+                case "f":
+                    Fuel = 1200;
+                    break;
+                case "t":
+                    DateOfTest = DateTime.Now;
+                    TravelOfTest = TotalTravel;
+                    break;
+                default:
+                    Console.WriteLine("ERROR! Service not found");
+                    break;
+            }
+        }
     }
+
+
+
+
     class Program
     {
         enum Action { Exit, NewBus, chooseBus, Services, SeeTravel };
@@ -47,11 +67,19 @@ namespace dotNet5781_01_3652_2455
             return false;
         }
 
+        static Bus find(List<Bus> ListOfBuses, string Num)
+        {
+             foreach ( Bus b in ListOfBuses)
+                if (b.LicensePlate == Num)
+                   return b;
+            return null;
+        }
+
         static void Main(string[] args)
         {
             List<Bus> ListOfBuses = null;
             bool flag;
-            string strChoice, strNum, strDate;
+            string strChoice, strNum, strDate,strToDo;
             Action choice;
             DateTime date;
             Bus bus1;
@@ -89,25 +117,27 @@ namespace dotNet5781_01_3652_2455
                             Console.WriteLine("enter the bus License Plate:");
                             strNum = Console.ReadLine();
                             numKM = r.Next(0, 1200);
-                            flag = false;
-                            foreach (Bus b in ListOfBuses)
-                            {
-                                if (b.LicensePlate == strNum)
-                                {
-                                    flag = true;
-                                    if (!(b.AddKM(numKM)))
-                                        Console.WriteLine("the bus can not travel!");
-                                }
-
-                            }
-                            if (flag == false)
+                            bus1 = find(ListOfBuses, strNum);
+                            if (bus1 == null)
                                 Console.WriteLine("the bus is not on the list!");
+                            else
+                            {
+                                if (!(bus1.AddKM(numKM)))
+                                    Console.WriteLine("the bus can not travel!");
+                            }
                             break;
                         }
-
                     case Action.Services:
                         {
-
+                            Console.WriteLine("enter the bus License Plate:");
+                            strNum = Console.ReadLine();
+                            Console.WriteLine("What do you want to do?     enter 'f' to fuel or 't' to test: ");
+                            strToDo = Console.ReadLine();
+                            bus1 = find(ListOfBuses, strNum);
+                            if (bus1 == null)
+                                Console.WriteLine("the bus is not on the list!");
+                            else
+                                bus1.BusService(strToDo);
                         }
                         break;
                     case Action.SeeTravel:
