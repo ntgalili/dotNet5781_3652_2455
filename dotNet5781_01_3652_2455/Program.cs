@@ -6,10 +6,23 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 namespace dotNet5781_01_3652_2455
-{
+{/// <summary>
+/// Bus definition class
+/// </summary>
     class Bus
     {
-        public Bus(long Num, DateTime Date)
+        public string LicensePlate;
+        public DateTime StartTime;
+        public DateTime DateOfTest;
+        public float TravelOfTest;
+        public float TotalTravel;
+        public float Fuel;
+        /// <summary>
+        /// c-tor
+        /// </summary>
+        /// <param name="Num">The bus's License Plate</param>
+        /// <param name="Date">The bus's first day on the road</param>
+        public Bus(string Num, DateTime Date)
         {
             LicensePlate = Num;
             StartTime = Date;
@@ -18,144 +31,166 @@ namespace dotNet5781_01_3652_2455
             TotalTravel = 0;
             Fuel = 1200;
         }
-        public long LicensePlate;
-        public DateTime StartTime;
-        public DateTime DateOfTest;
-        public float TravelOfTest;
-        public float TotalTravel;
-        public float Fuel;
-        public void print()
-        {
-            Console.WriteLine("License Plate of bus: {0}, the travel: {1}",
-                LicensePlate.ToString(StartTime < new DateTime(2018, 1, 1) ? "00-000-00" : "000-00-000"),
-                TotalTravel - TravelOfTest);
+        /// <summary>
+        /// The method print the bus's License Plate and the travel since the last test
+        /// </summary>
+        public void Print()
+        { 
+            Console.WriteLine("License Plate of bus: {0}, the travel: {1}", LicensePlate, TotalTravel - TravelOfTest);
         }
+        /// <summary>
+        /// the method checks whether the bus can travel and update its details if so
+        /// </summary>
+        /// <param name="numKM">The Km of the new travel</param>
+        /// <returns>true-if the travel can made and false if not</returns>
         public bool AddKM(int numKM)
         {
-            if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now))
+            if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now))//if  the bus is dangerous or it does not have enough fuel
             {
                 return false;
             }
-            Fuel = Fuel - numKM;
+            Fuel = Fuel - numKM;//update the details
             TotalTravel = TotalTravel + numKM;
             return true;
         }
+        /// <summary>
+        /// The method performs services for the bus
+        /// </summary>
+        /// <param name="ToDo">the service</param>
         public void BusService(string ToDo)
         {
             switch (ToDo)
             {
-                case "f":
+                case "f":        //to fuel the bus
                     Fuel = 1200;
                     break;
-                case "t":
+                case "t":       //to do test
                     DateOfTest = DateTime.Now;
                     TravelOfTest = TotalTravel;
                     break;
-                default:
+                default:       //error string
                     Console.WriteLine("ERROR! Service not found");
                     break;
             }
         }
     }
+
+
     class Program
     {
+        /// <summary>
+        /// the possible action
+        /// </summary>
         enum Action { Exit, NewBus, chooseBus, Services, SeeTravel };
 
-        static bool check(long num, DateTime date)
+        /// <summary>
+        /// The method check whether the Bus's License Plate and the date are appropriate
+        /// </summary>
+        /// <param name="str">The License Plate</param>
+        /// <param name="date">The bus's first day on the road</param>
+        /// <returns>true if the License Plate and the date are appropriate and false if not </returns>
+        static bool Check(string str, DateTime Date)
         {
-            if (date < new DateTime(2018, 1, 1) && (num >= 1000000 && num <= 9999999))
+            if (Date.Year < 2018 && str.Length == 9)
                 return true;
-            if (date >= new DateTime(2018, 1, 1) && (num >= 10000000 && num <= 99999999))
+            if (Date.Year >= 2018 && str.Length == 10)
                 return true;
-            return false;
+            return false;  
         }
-        static Bus find(List<Bus> ListOfBuses, long Num)
+
+        /// <summary>
+        /// find a bus in a list of buses
+        /// </summary>
+        /// <param name="ListOfBuses">The list of buses</param>
+        /// <param name="Num">The License Plate of the bus that we are looking for</param>
+        /// <returns>The bus if it is found and null if not</returns>
+        static Bus Find(List<Bus> ListOfBuses, string Num)
         {
-             foreach ( Bus b in ListOfBuses)
-                if (b.LicensePlate == Num)
+             foreach ( Bus b in ListOfBuses)//go over the list and find the bus
+                if (b.LicensePlate == Num)//if the bus is found - return it
                    return b;
             return null;
         }
+
+        /// <summary>
+        /// The main method - the method is used to manage buses details
+        /// </summary>
         static void Main(string[] args)
         {
             Console.WriteLine("0: Exit \n1: enter new bus \n2:choosing a bus for travel \n3:services \n4:print total travel");
             List<Bus> ListOfBuses=new List<Bus> ();
-            bool flag;
-            string strChoice, strNum, strDate,strToDo;
-            Action choice;
-            DateTime date;
-            Bus bus1;
-            int numKM = 0;
-            Random r = new Random(DateTime.Now.Millisecond);
-            long numOfBus = 0;
+            bool Flag;
+            string StrChoice, StrNum, StrDate,StrToDo;
+            Action Choice;
+            DateTime Date;
+            Bus Bus1;
+            int NumKM = 0;
+            Random R = new Random(DateTime.Now.Millisecond);
+            //Perform actions according to the user's choice
             do
             {
                 Console.WriteLine("enter your choice:");
-                strChoice = Console.ReadLine();
-                flag = Action.TryParse(strChoice, out choice);
-                switch (choice)
+                StrChoice = Console.ReadLine();
+                Flag = Action.TryParse(StrChoice, out Choice);
+                switch (Choice)
                 {
-                    case Action.NewBus:
+                    case Action.NewBus:    //add a new bus to the list
                         {
                             Console.WriteLine("enter the bus License Plate:");
-                            strNum = Console.ReadLine();
-                            flag=long.TryParse(strNum,out numOfBus);
+                            StrNum = Console.ReadLine();
                             Console.WriteLine("enter the date the bus entered the roads:");
-                            strDate = Console.ReadLine();
-                            flag = DateTime.TryParse(strDate, out date);
-                            flag = check(numOfBus, date);
-                            if (flag == false)
+                            StrDate = Console.ReadLine();
+                            Flag = DateTime.TryParse(StrDate, out Date);
+                            if (!Check(StrNum, Date))//check if the details is o.k. by calling the check method' and prinf "error" if not
                             {
                                 Console.WriteLine("ERROR");
                             }
                             else
                             {
-                                bus1 = new Bus(numOfBus, date);
-                                ListOfBuses.Add(bus1);
+                                Bus1 = new Bus(StrNum, Date);
+                                ListOfBuses.Add(Bus1);//add the new bus 
                             }
                             break;
                         }
-                    case Action.chooseBus:
+                    case Action.chooseBus:       //choose a bus to a travel
                         {
                             Console.WriteLine("enter the bus License Plate:");
-                            strNum = Console.ReadLine();
-                            flag = long.TryParse(strNum, out numOfBus);
-                            numKM = r.Next(0, 1200);
-                            bus1 = find(ListOfBuses, numOfBus);
-                            if (bus1 == null)
+                            StrNum = Console.ReadLine();
+                            NumKM = R.Next(0, 1200);  //a random travel
+                            Bus1 = Find(ListOfBuses, StrNum);//find the bus by calling "find" method
+                            if (Bus1 == null)//if the bus is not found
                                 Console.WriteLine("the bus is not on the list!");
                             else
                             {
-                                if (!(bus1.AddKM(numKM)))
+                                if (!(Bus1.AddKM(NumKM)))//if the bus can not do the travel
                                     Console.WriteLine("the bus can not travel!");
                             }
                             break;
                         }
-                    case Action.Services:
+                    case Action.Services:   // services to the bus
                         {
                             Console.WriteLine("enter the bus License Plate:");
-                            strNum = Console.ReadLine();
-                            flag = long.TryParse(strNum, out numOfBus);
+                            StrNum = Console.ReadLine();
                             Console.WriteLine("What do you want to do?     enter 'f' to fuel or 't' to test: ");
-                            strToDo = Console.ReadLine();
-                            bus1 = find(ListOfBuses,numOfBus);
-                            if (bus1 == null)
+                            StrToDo = Console.ReadLine();
+                            Bus1 = Find(ListOfBuses, StrNum);//find the bus
+                            if (Bus1 == null)//if the bus is not found
                                 Console.WriteLine("the bus is not on the list!");
                             else
-                                bus1.BusService(strToDo);
+                                Bus1.BusService(StrToDo);//do the service
                         }
                         break;
-                    case Action.SeeTravel:
+                    case Action.SeeTravel://print the travels of all the list
                         {
-                            foreach (Bus b in ListOfBuses)
-                                b.print();
+                            foreach (Bus b in ListOfBuses)//go over the list and print the travels
+                                b.Print();//print the License Plate and the travel of the bus by calling "print" method
                         }
                         break;
-                    case Action.Exit:
+                    case Action.Exit:           //Exit the program
                         Console.WriteLine("bye bye!");
                         Console.ReadKey();
                         return;
-                    default:
+                    default:                //error choice
                         Console.WriteLine("ERROR choice, please try again!");
                         break;
                 }
@@ -210,3 +245,4 @@ namespace dotNet5781_01_3652_2455
 //enter your choice:
 //0
 //bye bye!
+//
