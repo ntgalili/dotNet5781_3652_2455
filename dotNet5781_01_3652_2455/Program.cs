@@ -11,7 +11,7 @@ namespace dotNet5781_01_3652_2455
 /// </summary>
     class Bus
     {
-        public string LicensePlate;
+        public long LicensePlate;
         public DateTime StartTime;
         public DateTime DateOfTest;
         public float TravelOfTest;
@@ -22,7 +22,7 @@ namespace dotNet5781_01_3652_2455
         /// </summary>
         /// <param name="Num">The bus's License Plate</param>
         /// <param name="Date">The bus's first day on the road</param>
-        public Bus(string Num, DateTime Date)
+        public Bus(long Num, DateTime Date)
         {
             LicensePlate = Num;
             StartTime = Date;
@@ -35,8 +35,10 @@ namespace dotNet5781_01_3652_2455
         /// The method print the bus's License Plate and the travel since the last test
         /// </summary>
         public void Print()
-        { 
-            Console.WriteLine("License Plate of bus: {0}, the travel: {1}", LicensePlate, TotalTravel - TravelOfTest);
+        {
+            Console.WriteLine("License Plate of bus: {0}, the travel: {1}",
+                 LicensePlate.ToString(StartTime < new DateTime(2018, 1, 1) ? "00-000-00" : "000-00-000"),
+                 TotalTravel - TravelOfTest);
         }
         /// <summary>
         /// the method checks whether the bus can travel and update its details if so
@@ -74,44 +76,39 @@ namespace dotNet5781_01_3652_2455
             }
         }
     }
-
-
     class Program
     {
         /// <summary>
         /// the possible action
         /// </summary>
         enum Action { Exit, NewBus, chooseBus, Services, SeeTravel };
-
         /// <summary>
         /// The method check whether the Bus's License Plate and the date are appropriate
         /// </summary>
         /// <param name="str">The License Plate</param>
         /// <param name="date">The bus's first day on the road</param>
         /// <returns>true if the License Plate and the date are appropriate and false if not </returns>
-        static bool Check(string str, DateTime Date)
+        static bool Check(long Num, DateTime Date)
         {
-            if (Date.Year < 2018 && str.Length == 9)
+            if (Date.Year < 2018 && (Num >= 1000000 && Num <= 9999999))
                 return true;
-            if (Date.Year >= 2018 && str.Length == 10)
+            if (Date.Year >= 2018 && (Num >= 10000000 && Num <= 99999999))
                 return true;
             return false;  
         }
-
         /// <summary>
         /// find a bus in a list of buses
         /// </summary>
         /// <param name="ListOfBuses">The list of buses</param>
         /// <param name="Num">The License Plate of the bus that we are looking for</param>
         /// <returns>The bus if it is found and null if not</returns>
-        static Bus Find(List<Bus> ListOfBuses, string Num)
+        static Bus Find(List<Bus> ListOfBuses, long Num)
         {
              foreach ( Bus b in ListOfBuses)//go over the list and find the bus
                 if (b.LicensePlate == Num)//if the bus is found - return it
                    return b;
             return null;
         }
-
         /// <summary>
         /// The main method - the method is used to manage buses details
         /// </summary>
@@ -125,6 +122,7 @@ namespace dotNet5781_01_3652_2455
             DateTime Date;
             Bus Bus1;
             int NumKM = 0;
+            long NumOfBus;
             Random R = new Random(DateTime.Now.Millisecond);
             //Perform actions according to the user's choice
             do
@@ -138,16 +136,21 @@ namespace dotNet5781_01_3652_2455
                         {
                             Console.WriteLine("enter the bus License Plate:");
                             StrNum = Console.ReadLine();
-                            Console.WriteLine("enter the date the bus entered the roads:");
+                            Flag = long.TryParse(StrNum, out NumOfBus);
+                            if (Flag == false)
+                                Console.WriteLine("ERROR License Plate");
+                            Console.WriteLine("enter the date the bus entered the roads: (yyyy/mm/dd)");
                             StrDate = Console.ReadLine();
                             Flag = DateTime.TryParse(StrDate, out Date);
-                            if (!Check(StrNum, Date))//check if the details is o.k. by calling the check method' and prinf "error" if not
+                            if (Flag == false)
+                                Console.WriteLine("ERROR Date");
+                            if (!Check(NumOfBus, Date))//check if the details is o.k. by calling the check method' and prinf "error" if not
                             {
                                 Console.WriteLine("ERROR");
                             }
                             else
                             {
-                                Bus1 = new Bus(StrNum, Date);
+                                Bus1 = new Bus(NumOfBus, Date);
                                 ListOfBuses.Add(Bus1);//add the new bus 
                             }
                             break;
@@ -156,8 +159,11 @@ namespace dotNet5781_01_3652_2455
                         {
                             Console.WriteLine("enter the bus License Plate:");
                             StrNum = Console.ReadLine();
+                            Flag = long.TryParse(StrNum, out NumOfBus);
+                            if (Flag == false)
+                                Console.WriteLine("ERROR License Plate");
                             NumKM = R.Next(0, 1200);  //a random travel
-                            Bus1 = Find(ListOfBuses, StrNum);//find the bus by calling "find" method
+                            Bus1 = Find(ListOfBuses,NumOfBus);//find the bus by calling "find" method
                             if (Bus1 == null)//if the bus is not found
                                 Console.WriteLine("the bus is not on the list!");
                             else
@@ -171,9 +177,12 @@ namespace dotNet5781_01_3652_2455
                         {
                             Console.WriteLine("enter the bus License Plate:");
                             StrNum = Console.ReadLine();
+                            Flag = long.TryParse(StrNum, out NumOfBus);
+                            if (Flag == false)
+                                Console.WriteLine("ERROR Date");
                             Console.WriteLine("What do you want to do?     enter 'f' to fuel or 't' to test: ");
                             StrToDo = Console.ReadLine();
-                            Bus1 = Find(ListOfBuses, StrNum);//find the bus
+                            Bus1 = Find(ListOfBuses,NumOfBus);//find the bus
                             if (Bus1 == null)//if the bus is not found
                                 Console.WriteLine("the bus is not on the list!");
                             else
@@ -207,33 +216,33 @@ namespace dotNet5781_01_3652_2455
 //enter your choice:
 //1
 //enter the bus License Plate:
-//12 - 345 - 67
-//enter the date the bus entered the roads:
-//15 / 02 / 2016
+//1234567
+//enter the date the bus entered the roads: (yyyy/mm/dd)
+//2016/02/15
 //enter your choice:
 //1
 //enter the bus License Plate:
-//234 - 56 - 789
-//enter the date the bus entered the roads:
-//10 / 05 / 2020
+//23456789
+//enter the date the bus entered the roads: (yyyy/mm/dd)
+//2020/05/10
 //enter your choice:
 //3
 //enter the bus License Plate:
-//12 - 345 - 67
+//1234567
 //What do you want to do? enter 'f' to fuel or 't' to test:
 //t
 //enter your choice:
 //2
 //enter the bus License Plate:
-//12 - 345 - 67
+//1234567
 //enter your choice:
 //2
 //enter the bus License Plate:
-//234 - 56 - 789
+//23456789
 //enter your choice:
 //2
 //enter the bus License Plate:
-//123 - 56 - 78
+//1235678
 //the bus is not on the list!
 //enter your choice:
 //4
