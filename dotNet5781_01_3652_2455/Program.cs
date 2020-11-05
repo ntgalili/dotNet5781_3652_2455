@@ -9,7 +9,7 @@ namespace dotNet5781_01_3652_2455
 {
     class Bus
     {
-        public Bus(string Num, DateTime Date)
+        public Bus(long Num, DateTime Date)
         {
             LicensePlate = Num;
             StartTime = Date;
@@ -18,15 +18,17 @@ namespace dotNet5781_01_3652_2455
             TotalTravel = 0;
             Fuel = 1200;
         }
-        public string LicensePlate;
+        public long LicensePlate;
         public DateTime StartTime;
         public DateTime DateOfTest;
         public float TravelOfTest;
         public float TotalTravel;
         public float Fuel;
         public void print()
-        { 
-            Console.WriteLine("License Plate of bus: {0}, the travel: {1}", LicensePlate, TotalTravel - TravelOfTest);
+        {
+            Console.WriteLine("License Plate of bus: {0}, the travel: {1}",
+                LicensePlate.ToString(StartTime < new DateTime(2018, 1, 1) ? "00-000-00" : "000-00-000"),
+                TotalTravel - TravelOfTest);
         }
         public bool AddKM(int numKM)
         {
@@ -55,32 +57,25 @@ namespace dotNet5781_01_3652_2455
             }
         }
     }
-
-
-
-
     class Program
     {
         enum Action { Exit, NewBus, chooseBus, Services, SeeTravel };
 
-        static bool check(string str, DateTime date)
+        static bool check(long num, DateTime date)
         {
-            if (date.Year < 2018 && str.Length == 9)
+            if (date < new DateTime(2018, 1, 1) && (num >= 1000000 && num <= 9999999))
                 return true;
-            if (date.Year >= 2018 && str.Length == 10)
+            if (date >= new DateTime(2018, 1, 1) && (num >= 10000000 && num <= 99999999))
                 return true;
             return false;
         }
-
-        static Bus find(List<Bus> ListOfBuses, string Num)
+        static Bus find(List<Bus> ListOfBuses, long Num)
         {
              foreach ( Bus b in ListOfBuses)
                 if (b.LicensePlate == Num)
                    return b;
             return null;
         }
-
-        
         static void Main(string[] args)
         {
             Console.WriteLine("0: Exit \n1: enter new bus \n2:choosing a bus for travel \n3:services \n4:print total travel");
@@ -92,7 +87,7 @@ namespace dotNet5781_01_3652_2455
             Bus bus1;
             int numKM = 0;
             Random r = new Random(DateTime.Now.Millisecond);
-
+            long numOfBus = 0;
             do
             {
                 Console.WriteLine("enter your choice:");
@@ -104,17 +99,18 @@ namespace dotNet5781_01_3652_2455
                         {
                             Console.WriteLine("enter the bus License Plate:");
                             strNum = Console.ReadLine();
+                            flag=long.TryParse(strNum,out numOfBus);
                             Console.WriteLine("enter the date the bus entered the roads:");
                             strDate = Console.ReadLine();
                             flag = DateTime.TryParse(strDate, out date);
-                            flag = check(strNum, date);
+                            flag = check(numOfBus, date);
                             if (flag == false)
                             {
                                 Console.WriteLine("ERROR");
                             }
                             else
                             {
-                                bus1 = new Bus(strNum, date);
+                                bus1 = new Bus(numOfBus, date);
                                 ListOfBuses.Add(bus1);
                             }
                             break;
@@ -123,8 +119,9 @@ namespace dotNet5781_01_3652_2455
                         {
                             Console.WriteLine("enter the bus License Plate:");
                             strNum = Console.ReadLine();
+                            flag = long.TryParse(strNum, out numOfBus);
                             numKM = r.Next(0, 1200);
-                            bus1 = find(ListOfBuses, strNum);
+                            bus1 = find(ListOfBuses, numOfBus);
                             if (bus1 == null)
                                 Console.WriteLine("the bus is not on the list!");
                             else
@@ -138,9 +135,10 @@ namespace dotNet5781_01_3652_2455
                         {
                             Console.WriteLine("enter the bus License Plate:");
                             strNum = Console.ReadLine();
+                            flag = long.TryParse(strNum, out numOfBus);
                             Console.WriteLine("What do you want to do?     enter 'f' to fuel or 't' to test: ");
                             strToDo = Console.ReadLine();
-                            bus1 = find(ListOfBuses, strNum);
+                            bus1 = find(ListOfBuses,numOfBus);
                             if (bus1 == null)
                                 Console.WriteLine("the bus is not on the list!");
                             else
