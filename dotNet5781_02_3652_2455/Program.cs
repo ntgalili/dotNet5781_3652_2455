@@ -8,26 +8,6 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_3652_2455
 {
-    using System.Runtime.Serialization;
- 
-[Serializable]
-    public class ErrorException : Exception
-    {
-        public int capacity { get; private set; }
- 
-        public ErrorException() : base() { }
-        public ErrorException(string message) : base(message) { }
-        public ErrorException(string message, Exception inner) : base(message, inner) { }
-        protected ErrorException(SerializationInfo info, StreamingContext context)
-	 : base(info, context) { }
-        // special constructor for our custom exception
-        public ErrorException(int capacity, string message) : base(message)
-        { this.capacity = capacity; }
- 
-        override public string ToString()
-        { return "ErrorException:" + Message; }
-    }
-
     /// <summary>
     /// the class describes a bus stop 
     /// </summary>
@@ -46,8 +26,8 @@ namespace dotNet5781_02_3652_2455
                     code = value;
                 else //when the value invalid
                 {
+                    Console.WriteLine("ERROR code");
                     code = 0;
-                    throw new ErrorException ("error code!")
                 }
                     
             } 
@@ -78,8 +58,8 @@ namespace dotNet5781_02_3652_2455
                     address = value;
                 else //if the address is invalid
                 {
+                    Console.WriteLine("ERROR address");
                     address = " ";
-                    throw new ErrorException ("error address!")
                 }
             }
         }
@@ -107,6 +87,9 @@ namespace dotNet5781_02_3652_2455
     }
 
 
+    class LineBusStop
+    {
+    }
 
 
 
@@ -119,4 +102,10 @@ namespace dotNet5781_02_3652_2455
 
         }
     }
+
 }
+
+
+
+
+
