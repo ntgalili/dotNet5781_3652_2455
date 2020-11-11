@@ -28,21 +28,19 @@ namespace dotNet5781_02_3652_2455
         { return "ErrorException:" + Message; }
     }
 
-
-
     /// <summary>
     /// the class describes a bus stop 
     /// </summary>
     class BusStop
     {
-        int code; //the bus stop code
+        protected int code; //the bus stop code
         /// <summary>
         /// code's property
         /// </summary>
         public int Code 
         { 
             get => code;
-            private set 
+            protected set 
             {
                 if (value <= 999999 && value >= 1)
                     code = value;
@@ -54,19 +52,19 @@ namespace dotNet5781_02_3652_2455
                     
             } 
         }
-        double latitude;
+        protected double latitude;
 
         /// <summary>
         /// Latitude's property
         /// </summary>
-        public double Latitude {  get => latitude; private set => latitude = value; }
-        double longitude;
+        public double Latitude {  get => latitude; protected set => latitude = value; }
+        protected double longitude;
 
         /// <summary>
         /// Longitude's property
         /// </summary>
-        public double Longitude { get => longitude; private set => longitude = value; }
-        string address;
+        public double Longitude { get => longitude; protected set => longitude = value; }
+        protected string address;
 
         /// <summary>
         /// Address's property
@@ -74,7 +72,7 @@ namespace dotNet5781_02_3652_2455
         public string Address 
         { 
             get => address; 
-            private set
+            protected set
             {
                 if (value != null)
                     address = value;
@@ -108,9 +106,28 @@ namespace dotNet5781_02_3652_2455
         }
     }
 
-
+    
     class LineBusStop
     {
+        BusStop BS;
+        protected double distance;
+        public double Distance { get => distance; protected set => distance = value; }
+        TimeSpan timeFromLastBS;
+        
+
+        LineBusStop(BusStop MyBusStop, BusStop LastBS)
+        {
+            BS.Code=MyBusStop.Code;
+            BS.Address=MyBusStop.Address;
+            BS.Latitude=MyBusStop.Latitude;
+            BS.Longitude=MyBusStop.Longitude;
+
+            Random r=new Random(DateTime.Now.Millisecond);
+            distance= r.NextDouble() * (100000-500) + 500;
+            timeFromLastBS.Hours=(distance/1300)/60
+            timeFromLastBS.Minutes +=(distance/1300)%60;
+        }
+
     }
 
 
