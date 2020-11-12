@@ -216,7 +216,7 @@ namespace dotNet5781_02_3652_2455
             {
                 if (i < 0 || i >= route.Count)
                 {
-                    throw ErrorException("Error index")
+                    throw ErrorException("Error index");
                 }
                 return route[i];
             }
@@ -224,7 +224,7 @@ namespace dotNet5781_02_3652_2455
             {
                 if(i<0||i>=route.Count)
                 {
-                    throw ErrorException("Error index")
+                    throw ErrorException("Error index");
                 }
                 route[i] = value;
             }
