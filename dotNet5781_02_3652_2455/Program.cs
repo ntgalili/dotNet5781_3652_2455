@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_3652_2455
 {
+    using System.CodeDom;
     using System.Runtime.Serialization;
  
 [Serializable]
@@ -104,6 +105,13 @@ namespace dotNet5781_02_3652_2455
         {
             return ("Bus Station Code:" + Code + "," + Latitude + "°N" + Longitude + "°E");
         }
+
+        public override bool Equals(object obj)
+        {
+           if(code.Equals((BusStop)obj).code)&& address.Equals((BusStop)obj).address&& Latitude.Equals((BusStop)obj).Latitude)&& Longitude.Equals((BusStop)obj).Longitude))
+                return true;
+            return false;
+        }
     }
 
     /// <summary>
@@ -133,13 +141,40 @@ namespace dotNet5781_02_3652_2455
             timeFromLastBS.Minutes +=(distance/1300)%60;
         }
 
+        override public Tostring()
+        {
+            return BS.Code.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (distance.Equals(((LineBusStop)obj).distance) && timeFromLastBS.Equals(((LineBusStop)obj).timeFromLastBS) && BS.Equals(((LineBusStop)obj).BS))
+                return true;
+            return false;
+        }
+
+
     }
 
    enum Area {General,North,South,Center,Jerusalem} ;
+   
+
    class LineBus
    {
-        Area TravelArea;
-        List<LineBusStop>Route;
+        Area travelArea;
+        public Area TravelArea { get => TravelArea; private set => TravelArea = value; }
+
+        List<LineBusStop>route;
+        internal List<LineBusStop> Route
+        { 
+            get => Route;
+            set
+            {
+                foreach (LineBusStop lbs in value)
+                    Route.Add(lbs);
+            }
+        }
+
         int LineNum;
         public int LineNum 
         { 
@@ -152,10 +187,66 @@ namespace dotNet5781_02_3652_2455
                  throw new ErrorException ("ERROR LineNum");
             }
         }
+
+       
+       
+
         private LineBusStop firstStop;
+        internal LineBusStop FirstStop { get => firstStop; private set => firstStop =new LineBusStop(value); }
+
         private LineBusStop lastStop;
-        LineBus(int numBus,List <LineBusStop> myStations,Area a)  {LineNum=numBus; }
-   }
+        internal LineBusStop LastStop { get => lastStop; private set => lastStop = new LineBusStop(value); }
+
+        LineBus(int numBus,List <LineBusStop> myStations,Area a)
+        {
+            LineNum=numBus;
+            Route = myStations;
+            firstStop = route[0];
+            lastStop = route.Last();
+        }
+
+        public override string ToString()
+        {
+            return ("Line number:" + LineNum + " Area: " + TravelArea.ToString() + " Route:" + route.ToString());
+        }
+
+        public LineBusStop this [int i]
+        {
+            get 
+            {
+                if (i < 0 || i >= route.Count)
+                {
+                    throw ErrorException("Error index")
+                }
+                return route[i];
+            }
+            set
+            {
+                if(i<0||i>=route.Count)
+                {
+                    throw ErrorException("Error index")
+                }
+                route[i] = value;
+            }
+        }
+
+        public void Add(int i, LineBusStop NewStop)
+        {
+            route.insert(i, new LineBusStop(NewStop));
+        }
+
+        public void delete(int i)
+        {
+            rouet.removeAt(i);
+        }
+
+        public bool search(LineBusStop LBS)
+        {
+            if (route.IndexOf(LBS) != -1)
+                return true;
+            return false;
+        }
+    }
 
     
     class Program
