@@ -135,8 +135,27 @@ namespace dotNet5781_02_3652_2455
 
     }
 
-
-   
+   enum Area {General,North,South,Center,Jerusalem} ;
+   class LineBus
+   {
+        Area TravelArea;
+        List<LineBusStop>Route;
+        int LineNum;
+        public int LineNum 
+        { 
+            get => LineNum; 
+            protected set 
+            {
+               if(value >0)
+                LineNum = value; 
+               else
+                 throw new ErrorException ("ERROR LineNum");
+            }
+        }
+        private LineBusStop firstStop;
+        private LineBusStop lastStop;
+        LineBus(int numBus,List <LineBusStop> myStations,Area a)  {LineNum=numBus; }
+   }
 
     
     class Program
