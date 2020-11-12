@@ -106,7 +106,9 @@ namespace dotNet5781_02_3652_2455
         }
     }
 
-    
+    /// <summary>
+    /// the class describes a line bus stop
+    /// </summary>
     class LineBusStop
     {
         BusStop BS;
@@ -114,8 +116,11 @@ namespace dotNet5781_02_3652_2455
         public double Distance { get => distance; protected set => distance = value; }
         TimeSpan timeFromLastBS;
         
-
-        LineBusStop(BusStop MyBusStop, BusStop LastBS)
+        /// <summary>
+        /// c-tor
+        /// </summary>
+        /// <param name="MyBusStop">the bus stop</param>
+        LineBusStop(BusStop MyBusStop)
         {
             BS.Code=MyBusStop.Code;
             BS.Address=MyBusStop.Address;
