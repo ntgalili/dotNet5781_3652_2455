@@ -8,27 +8,6 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_3652_2455
 {
-    using System.CodeDom;
-    using System.Runtime.Serialization;
- 
-[Serializable]
-    public class BusErrorException : Exception
-    {
-        public int capacity { get; private set; }
- 
-        public BusErrorException() : base() { }
-        public ErrorException(string message) : base(message) { }
-        public ErrorException(string message, Exception inner) : base(message, inner) { }
-        protected ErrorException(SerializationInfo info, StreamingContext context)
-	 : base(info, context) { }
-        // special constructor for our custom exception
-        public ErrorException(int capacity, string message) : base(message)
-        { this.capacity = capacity; }
- 
-        override public string ToString()
-        { return "ErrorException:" + Message; }
-    }
-
     /// <summary>
     /// the class describes a bus stop 
     /// </summary>
@@ -41,46 +20,42 @@ namespace dotNet5781_02_3652_2455
         public int Code 
         { 
             get => code;
-            protected set 
+            internal set 
             {
                 if (value <= 999999 && value >= 1)
                     code = value;
                 else //when the value invalid
                 {
-                    code = 0;
-                    throw new ErrorException ("ERROR code");
-                }
-                    
+                    throw new CodeErrorException ("error code");
+                }  
             } 
         }
         protected double latitude;
-
         /// <summary>
         /// Latitude's property
         /// </summary>
-        public double Latitude {  get => latitude; protected set => latitude = value; }
+        public double Latitude {  get => latitude; internal set => latitude = value; }
         protected double longitude;
 
         /// <summary>
         /// Longitude's property
         /// </summary>
-        public double Longitude { get => longitude; protected set => longitude = value; }
+        public double Longitude { get => longitude; internal set => longitude = value; }
         protected string address;
-
         /// <summary>
         /// Address's property
         /// </summary>
         public string Address 
         { 
-            get => address; 
-            protected set
+            get => address;
+            internal set
             {
                 if (value != null)
                     address = value;
                 else //if the address is invalid
                 {
                     address = " ";
-                     throw new ErrorException ("ERROR address");
+                     throw new AddressErrorException("error address - default value entered");
                 }
             }
         }
@@ -105,15 +80,15 @@ namespace dotNet5781_02_3652_2455
         {
             return ("Bus Station Code:" + Code + "," + Latitude + "°N" + Longitude + "°E");
         }
-
         public override bool Equals(object obj)
         {
-           if(code.Equals((BusStop)obj).code)&& address.Equals((BusStop)obj).address&& Latitude.Equals((BusStop)obj).Latitude)&& Longitude.Equals((BusStop)obj).Longitude))
+           if(((BusStop)obj).code==code && ((BusStop)obj).address== address && ((BusStop)obj).Latitude== Latitude && ((BusStop)obj).Longitude== Longitude)
+           {
                 return true;
+           }
             return false;
         }
     }
-
     /// <summary>
     /// the class describes a line bus stop
     /// </summary>
@@ -121,52 +96,42 @@ namespace dotNet5781_02_3652_2455
     {
         BusStop BS;
         protected double distance;
-        public double Distance { get => distance; protected set => distance = value; }
+        public double Distance { get => distance; internal set => distance = value; }
         TimeSpan timeFromLastBS;
-        
         /// <summary>
         /// c-tor
         /// </summary>
         /// <param name="MyBusStop">the bus stop</param>
         LineBusStop(BusStop MyBusStop)
         {
-            BS.Code=MyBusStop.Code;
-            BS.Address=MyBusStop.Address;
-            BS.Latitude=MyBusStop.Latitude;
-            BS.Longitude=MyBusStop.Longitude;
-
-            Random r=new Random(DateTime.Now.Millisecond);
-            distance= r.NextDouble() * (100000-500) + 500;
-            timeFromLastBS.Hours=(distance/1300)/60
-            timeFromLastBS.Minutes +=(distance/1300)%60;
+            BS.Code = MyBusStop.Code;
+            BS.Address = MyBusStop.Address;
+            BS.Latitude = MyBusStop.Latitude;
+            BS.Longitude = MyBusStop.Longitude;
+            Random r = new Random(DateTime.Now.Millisecond);
+            distance = r.NextDouble() * (100000 - 500) + 500;
+            timeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);
         }
-
         override public Tostring()
         {
             return BS.Code.ToString();
         }
-
         public override bool Equals(object obj)
         {
             if (distance.Equals(((LineBusStop)obj).distance) && timeFromLastBS.Equals(((LineBusStop)obj).timeFromLastBS) && BS.Equals(((LineBusStop)obj).BS))
                 return true;
             return false;
         }
-
-
     }
-
    enum Area {General,North,South,Center,Jerusalem} ;
-   
-
-   class LineBus
-   {
+    class LineBus
+    {
         Area travelArea;
         public Area TravelArea { get => TravelArea; private set => TravelArea = value; }
 
-        List<LineBusStop>route;
+        List<LineBusStop> route;
         internal List<LineBusStop> Route
-        { 
+        {
             get => Route;
             set
             {
@@ -174,45 +139,36 @@ namespace dotNet5781_02_3652_2455
                     Route.Add(lbs);
             }
         }
-
         int LineNum;
-        public int LineNum 
-        { 
-            get => LineNum; 
-            protected set 
+        public int LineNum
+        {
+            get => LineNum;
+            protected set
             {
-               if(value >0)
-                LineNum = value; 
-               else
-                 throw new ErrorException ("ERROR LineNum");
+                if (value > 0)
+                    LineNum = value;
+                else
+                    throw new ErrorException("ERROR LineNum");
             }
         }
-
-       
-       
-
         private LineBusStop firstStop;
-        internal LineBusStop FirstStop { get => firstStop; private set => firstStop =new LineBusStop(value); }
-
+        internal LineBusStop FirstStop { get => firstStop; private set => firstStop = new LineBusStop(value); }
         private LineBusStop lastStop;
         internal LineBusStop LastStop { get => lastStop; private set => lastStop = new LineBusStop(value); }
-
-        LineBus(int numBus,List <LineBusStop> myStations,Area a)
+        LineBus(int numBus, List<LineBusStop> myStations, Area a)
         {
-            LineNum=numBus;
+            LineNum = numBus;
             Route = myStations;
             firstStop = route[0];
             lastStop = route.Last();
         }
-
         public override string ToString()
         {
             return ("Line number:" + LineNum + " Area: " + TravelArea.ToString() + " Route:" + route.ToString());
         }
-
-        public LineBusStop this [int i]
+        public LineBusStop this[int i]
         {
-            get 
+            get
             {
                 if (i < 0 || i >= route.Count)
                 {
@@ -222,24 +178,21 @@ namespace dotNet5781_02_3652_2455
             }
             set
             {
-                if(i<0||i>=route.Count)
+                if (i < 0 || i >= route.Count)
                 {
                     throw ErrorException("Error index");
                 }
                 route[i] = value;
             }
         }
-
         public void Add(int i, LineBusStop NewStop)
         {
             route.insert(i, new LineBusStop(NewStop));
         }
-
         public void delete(int i)
         {
             rouet.removeAt(i);
         }
-
         public bool search(LineBusStop LBS)
         {
             if (route.IndexOf(LBS) != -1)
@@ -247,19 +200,16 @@ namespace dotNet5781_02_3652_2455
             return false;
         }
     }
-
-    
     class Program
     {
         static void Main(string[] args)
         {
-            try
-            {
+            //try
+            //{
 
-            }
+            //}
         }
-    }
-
+    
 }
 
 
