@@ -12,11 +12,11 @@ namespace dotNet5781_02_3652_2455
     using System.Runtime.Serialization;
  
 [Serializable]
-    public class ErrorException : Exception
+    public class BusErrorException : Exception
     {
         public int capacity { get; private set; }
  
-        public ErrorException() : base() { }
+        public BusErrorException() : base() { }
         public ErrorException(string message) : base(message) { }
         public ErrorException(string message, Exception inner) : base(message, inner) { }
         protected ErrorException(SerializationInfo info, StreamingContext context)
