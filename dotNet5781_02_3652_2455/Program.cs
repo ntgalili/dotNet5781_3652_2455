@@ -13,7 +13,6 @@ namespace dotNet5781_02_3652_2455
     /// </summary>
     class BusStop
     {
-        static List<int> codesBusStop;
         protected int code; //the bus stop code
         /// <summary>
         /// code's property
@@ -24,15 +23,8 @@ namespace dotNet5781_02_3652_2455
             internal set
             {
                 if (value <= 999999 && value >= 1)
-                {
-                    foreach (int num in codesBusStop)
-                    {
-                        if (num == value)
-                            throw new CodeErrorException("error code");
-                    }
-                    code = value;
-                    codesBusStop.Add(code);
-                }
+                     code = value;
+        
                 else //when the value invalid
                 {
                     throw new CodeErrorException("error code");
@@ -221,14 +213,14 @@ namespace dotNet5781_02_3652_2455
         {
             foreach (LineBusStop lbs in route)
             {
-                if (myCode==lbs.BS.code)
+                if (myCode==lbs.BS.Code)
                     return true;
             }
             return false;
         }
         public double FindDistance(LineBusStop lbs1, LineBusStop lbs2)
         {
-            if (!(check(lbs1.BS) && check(lbs2.BS)))
+            if (!(check(lbs1.BS.Code) && check(lbs2.BS.Code)))
             {
                 throw new FindErrorException("the bus stops were not found");
             }
@@ -283,7 +275,6 @@ namespace dotNet5781_02_3652_2455
         public LineBus SubRoute(LineBusStop lbs1, LineBusStop lbs2)
         {
             List<LineBusStop> sub=new List<LineBusStop>();
-            LineBusStop first;
             bool flag = true;
             foreach (LineBusStop lbs in route)
             {
@@ -314,17 +305,79 @@ namespace dotNet5781_02_3652_2455
 
         public override bool Equals(object obj)
         {
-            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop))));
+            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop)));
         }
     }
+
+
+
+
+
     class Program
     {
+        
         static void Main(string[] args)
         {
-            //try
-            //{
 
-            //}
+            string Ans;
+            int num1,num2,num3;
+            bool flag = true;
+            List<BusStop> listOfBustops = new List<BusStop>();
+            Console.WriteLine("Enter 40 bus stops:");
+            for(int i=0;i<40;i++)
+            {
+                Console.WriteLine("enter the code: 000000");
+                Ans =Console.ReadLine();
+                flag = int.TryParse(Ans, out num1);
+                if (!flag)
+                {
+                    Console.WriteLine("Error: the code is incorrect");
+                    i--;
+                    flag = true;
+                }
+                else
+                {
+                    Console.WriteLine("enter the address");
+                    Ans = Console.ReadLine();
+                    try
+                    {
+                        foreach(BusStop bs in listOfBustops)
+                        {
+                            if (bs.Code == num1)
+                                throw new AddErrorException("There is alreadya station with the same code");
+                            listOfBustops.Add(new BusStop(num1, Ans));
+                        }
+                    }
+                    catch (Exception Ex)
+                    {
+                        Console.WriteLine(Ex);
+                        i--;
+                    }
+
+
+                }
+
+
+            }
+
+            Console.WriteLine("Enter 10 Line buses");
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine("enter a line number");
+                Ans = Console.ReadLine();
+                flag = int.TryParse(Ans, out num1);
+                if (!flag)
+                {
+                    Console.WriteLine("Error number");
+                    i--;
+                }
+                else
+                {
+                    Console.WriteLine("enter the code of the first bus stop");
+
+                }
+            }
+              
         }
 
     }
