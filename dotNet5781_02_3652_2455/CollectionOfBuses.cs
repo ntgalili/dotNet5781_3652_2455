@@ -53,6 +53,35 @@ namespace dotNet5781_02_3652_2455
             return;
         }
 
+        public List<LineBus> WhoIsTravling (int myCode)
+        {
+            List<LineBus> weTraveling = new List<LineBus>();
+            foreach(LineBus lbs in ListOfBuses)
+            {
+                if (lbs.check(myCode))
+                    weTraveling.Add(lbs);
+            }
+            if (weTraveling.Count == 0)
+                throw new FindErrorException("no bus passes through this bus stop");
+            return weTraveling;
+        }
+        public List<LineBus> sort ()
+        {
+            ListOfBuses.Sort();
+            return ListOfBuses;
+        }
+        public LineBus this[int index]
+        {
+            get
+            {
+                foreach(LineBus lb in ListOfBuses)
+                {
+                    if (lb.LineNum == index)
+                        return lb;
+                }
+                throw new FindErrorException("the line" + index + "was not found"); 
+            }
+        }
 
         public int count(int num)
         {

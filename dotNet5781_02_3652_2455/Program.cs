@@ -217,18 +217,18 @@ namespace dotNet5781_02_3652_2455
                 return true;
             return false;
         }
-        public bool check(BusStop Bs)
+        public bool check(int myCode)
         {
             foreach (LineBusStop lbs in route)
             {
-                if (Bs.Equals(lbs.BS))
+                if (myCode==lbs.BS.Code)
                     return true;
             }
             return false;
         }
         public double FindDistance(LineBusStop lbs1, LineBusStop lbs2)
         {
-            if (!(check(lbs1.BS) && check(lbs2.BS)))
+            if (!(check(lbs1.BS.Code) && check(lbs2.BS.Code)))
             {
                 throw new FindErrorException("the bus stops were not found");
             }
@@ -314,13 +314,9 @@ namespace dotNet5781_02_3652_2455
 
         public override bool Equals(object obj)
         {
-            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop))));
+            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop)));
         }
     }
-
-
-
-    
 
     class Program
     {
