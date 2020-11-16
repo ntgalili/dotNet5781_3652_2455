@@ -283,7 +283,6 @@ namespace dotNet5781_02_3652_2455
         public LineBus SubRoute(LineBusStop lbs1, LineBusStop lbs2)
         {
             List<LineBusStop> sub=new List<LineBusStop>();
-            LineBusStop first;
             bool flag = true;
             foreach (LineBusStop lbs in route)
             {
