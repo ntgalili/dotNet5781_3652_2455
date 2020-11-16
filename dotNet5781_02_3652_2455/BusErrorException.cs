@@ -37,6 +37,34 @@ namespace dotNet5781_02_3652_2455
         public AddressErrorException(string message, Exception inner) : base(message, inner) { }
         protected AddressErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
-        override public string ToString() { return "CodeErrorException:" + Message + "\n"; }
+        override public string ToString() { return "AddressErrorException:" + Message + "\n"; }
+    }
+    public class LineNumErrorException : Exception
+    {
+        public LineNumErrorException() : base() { }
+        public LineNumErrorException(string message) : base(message) { }
+        public LineNumErrorException(string message, Exception inner) : base(message, inner) { }
+        protected LineNumErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        // special constructor for our custom exception
+        override public string ToString() { return "LineNumErrorException:" + Message + "\n"; }
+    }
+    public class IndexErrorException : Exception
+    {
+        public IndexErrorException() : base() { }
+        public IndexErrorException(string message) : base(message) { }
+        public IndexErrorException(string message, Exception inner) : base(message, inner) { }
+        protected IndexErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        // special constructor for our custom exception
+        override public string ToString() { return "Index error exception" +"\n"; }
+    }
+    public class FindErrorException : Exception
+    {
+        string message;
+        public FindErrorException() : base() { }
+        public FindErrorException(string message) : base(message) { }
+        public FindErrorException(string message, Exception inner) : base(message, inner) { }
+        protected FindErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        // special constructor for our custom exception
+        override public string ToString() { return "Error find exception:" + message + "\n"; }
     }
 }
