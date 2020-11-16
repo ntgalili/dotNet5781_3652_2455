@@ -67,4 +67,27 @@ namespace dotNet5781_02_3652_2455
         // special constructor for our custom exception
         override public string ToString() { return "Error find exception:" + message + "\n"; }
     }
+
+
+    public class AddErrorException : Exception
+    {
+        string message;
+        public AddErrorException() : base() { }
+        public AddErrorException(string message) : base(message) { }
+        public AddErrorException(string message, Exception inner) : base(message, inner) { }
+        protected AddErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        // special constructor for our custom exception
+        override public string ToString() { return "Add Error Exception:" + message + "\n"; }
+    }
+
+
+    public class RemoveErrorException:Exception
+    {
+        string message;
+        public RemoveErrorException() : base() { }
+        public RemoveErrorException(string message) : base(message) { }
+        public RemoveErrorException(string message, Exception inner) : base(message, inner) { }
+        protected RemoveErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        override public string ToString() { return "Remove Error Exception:" + message + "\n"; }
+    }
 }
