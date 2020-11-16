@@ -221,14 +221,14 @@ namespace dotNet5781_02_3652_2455
         {
             foreach (LineBusStop lbs in route)
             {
-                if (myCode==lbs.BS.Code)
+                if (myCode==lbs.BS.code)
                     return true;
             }
             return false;
         }
         public double FindDistance(LineBusStop lbs1, LineBusStop lbs2)
         {
-            if (!(check(lbs1.BS.Code) && check(lbs2.BS.Code)))
+            if (!(check(lbs1.BS) && check(lbs2.BS)))
             {
                 throw new FindErrorException("the bus stops were not found");
             }
@@ -283,6 +283,7 @@ namespace dotNet5781_02_3652_2455
         public LineBus SubRoute(LineBusStop lbs1, LineBusStop lbs2)
         {
             List<LineBusStop> sub=new List<LineBusStop>();
+            LineBusStop first;
             bool flag = true;
             foreach (LineBusStop lbs in route)
             {
@@ -313,10 +314,9 @@ namespace dotNet5781_02_3652_2455
 
         public override bool Equals(object obj)
         {
-            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop)));
+            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop))));
         }
     }
-
     class Program
     {
         static void Main(string[] args)

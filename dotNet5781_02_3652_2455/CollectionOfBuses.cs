@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_3652_2455
 {
-    class CollectionOfBuses : IEnumerable
+    internal class CollectionOfBuses : IEnumerable
     {
         private List<LineBus> ListOfBuses;
-
-
         public void AddLine(LineBus ToAdd)
         {
             int countBuses = count(ToAdd.LineNum);
@@ -18,11 +17,11 @@ namespace dotNet5781_02_3652_2455
                 throw new AddErrorException("can not add " + ToAdd.LineNum + " line, there are already two \n");
             if (countBuses == 0)
                 ListOfBuses.Add(ToAdd);
-            if(countBuses==1)
+            if (countBuses == 1)
             {
-                foreach(LineBus lbs in ListOfBuses)
+                foreach (LineBus lbs in ListOfBuses)
                 {
-                    if(lbs.LineNum==ToAdd.LineNum)
+                    if (lbs.LineNum == ToAdd.LineNum)
                     {
                         if (!(lbs.FirstStop.BS.Equals(ToAdd.LastStop.BS)) || !(lbs.LastStop.BS.Equals(ToAdd.FirstStop.BS)))
                             throw new AddErrorException("The line:" + ToAdd.LineNum + " is not opposite to the existing line");
@@ -46,17 +45,17 @@ namespace dotNet5781_02_3652_2455
                     flag = false;
                 }
             }
-            if(flag)
+            if (flag)
             {
                 throw new RemoveErrorException("The line was not found");
             }
             return;
         }
 
-        public List<LineBus> WhoIsTravling (int myCode)
+        public List<LineBus> WhoIsTravling(int myCode)
         {
             List<LineBus> weTraveling = new List<LineBus>();
-            foreach(LineBus lbs in ListOfBuses)
+            foreach (LineBus lbs in ListOfBuses)
             {
                 if (lbs.check(myCode))
                     weTraveling.Add(lbs);
@@ -65,7 +64,7 @@ namespace dotNet5781_02_3652_2455
                 throw new FindErrorException("no bus passes through this bus stop");
             return weTraveling;
         }
-        public List<LineBus> sort ()
+        public List<LineBus> sort()
         {
             ListOfBuses.Sort();
             return ListOfBuses;
@@ -74,24 +73,28 @@ namespace dotNet5781_02_3652_2455
         {
             get
             {
-                foreach(LineBus lb in ListOfBuses)
+                foreach (LineBus lb in ListOfBuses)
                 {
                     if (lb.LineNum == index)
                         return lb;
                 }
-                throw new FindErrorException("the line" + index + "was not found"); 
+                throw new FindErrorException("the line" + index + "was not found");
             }
         }
-
         public int count(int num)
         {
             int countBuses = 0;
-            foreach(LineBus lbs in ListOfBuses)
+            foreach (LineBus lbs in ListOfBuses)
             {
                 if (lbs.LineNum == num)
                     countBuses++;
             }
             return countBuses;
+        }
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < ListOfBuses.Count; i++)
+                yield return ListOfBuses[i];
         }
     }
 }

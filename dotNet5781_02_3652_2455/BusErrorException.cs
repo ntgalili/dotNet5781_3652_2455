@@ -10,7 +10,7 @@ namespace dotNet5781_02_3652_2455
     using System.Runtime.Serialization;
 
     [Serializable]
-    public class BusErrorException : Exception
+    internal class BusErrorException : Exception
     {
         private int lineBus;
         public int LineBus { get => lineBus; private  set => lineBus = value; }
