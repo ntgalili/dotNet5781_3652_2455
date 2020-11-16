@@ -107,9 +107,8 @@ namespace dotNet5781_02_3652_2455
         internal BusStop BS { get => bs;private set => bs = value; }
         protected double distance;
         public double Distance { get => distance; internal set => distance = value; }
-        
-
         TimeSpan timeFromLastBS;
+        public TimeSpan TimeFromLastBS { get => timeFromLastBS;private set => timeFromLastBS = value; }
         /// <summary>
         /// c-tor
         /// </summary>
@@ -122,7 +121,7 @@ namespace dotNet5781_02_3652_2455
             bs.Longitude = MyBusStop.Longitude;
             Random r = new Random(DateTime.Now.Millisecond);
             distance = r.NextDouble() * (100000 - 500) + 500;
-            timeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);
+            TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);
         }
         override public string ToString()
         {
@@ -130,7 +129,7 @@ namespace dotNet5781_02_3652_2455
         }
         public override bool Equals(object obj)
         {
-            if (distance.Equals(((LineBusStop)obj).distance) && timeFromLastBS.Equals(((LineBusStop)obj).timeFromLastBS) && bs.Equals(((LineBusStop)obj).BS1))
+            if (distance.Equals(((LineBusStop)obj).distance) && TimeFromLastBS.Equals(((LineBusStop)obj).TimeFromLastBS) && bs.Equals(((LineBusStop)obj).BS1))
                 return true;
             return false;
         }
@@ -249,6 +248,30 @@ namespace dotNet5781_02_3652_2455
                 }
             }
             return distanceBetween;
+        }
+        public TimeSpan findTime (LineBusStop lbs1, LineBusStop lbs2)
+        {
+            TimeSpan timeBetween=new TimeSpan();
+            LineBusStop first;
+            bool flag = true;
+            foreach (LineBusStop lbs in route)
+            {
+                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)
+                {
+                    first = lbs;
+                    flag = false;
+                }
+                else
+                {
+                    if (!flag)
+                    {
+                        timeBetween = timeBetween+ lbs.TimeFromLastBS;
+                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))
+                            break;
+                    }
+                }
+            }
+            return timeBetween;
         }
 class Program
 {
