@@ -13,15 +13,15 @@ namespace dotNet5781_02_3652_2455
     /// </summary>
     class BusStop
     {
-        static List <int> codesBusStop;
+        static List<int> codesBusStop;
         protected int code; //the bus stop code
         /// <summary>
         /// code's property
         /// </summary>
-        public int Code 
-        { 
+        public int Code
+        {
             get => code;
-            internal set 
+            internal set
             {
                 if (value <= 999999 && value >= 1)
                 {
@@ -35,15 +35,15 @@ namespace dotNet5781_02_3652_2455
                 }
                 else //when the value invalid
                 {
-                    throw new CodeErrorException ("error code");
-                } 
-            } 
+                    throw new CodeErrorException("error code");
+                }
+            }
         }
         protected double latitude;
         /// <summary>
         /// Latitude's property
         /// </summary>
-        public double Latitude {  get => latitude; internal set => latitude = value; }
+        public double Latitude { get => latitude; internal set => latitude = value; }
         protected double longitude;
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace dotNet5781_02_3652_2455
         /// <summary>
         /// Address's property
         /// </summary>
-        public string Address 
-        { 
+        public string Address
+        {
             get => address;
             internal set
             {
@@ -64,7 +64,7 @@ namespace dotNet5781_02_3652_2455
                 else //if the address is invalid
                 {
                     address = " ";
-                     throw new AddressErrorException("error address - default value entered");
+                    throw new AddressErrorException("error address - default value entered");
                 }
             }
         }
@@ -73,13 +73,13 @@ namespace dotNet5781_02_3652_2455
         /// </summary>
         /// <param name="c">the code</param>
         /// <param name="a">the address</param>
-        public BusStop(int c, string a = " ") 
-        { 
-            Code = c; 
+        public BusStop(int c, string a = " ")
+        {
+            Code = c;
             Address = a;
             Random r = new Random(DateTime.Now.Millisecond);
             Latitude = r.NextDouble() * (33.3 - 31) + 31; //random location in Israel
-            Longitude= r.NextDouble() * (35.5 - 34.3) + 34.3; //random location in Israel
+            Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3; //random location in Israel
         }
         /// <summary>
         /// representation of the class by a string
@@ -91,10 +91,10 @@ namespace dotNet5781_02_3652_2455
         }
         public override bool Equals(object obj)
         {
-           if(((BusStop)obj).code==code)
-           {
+            if (((BusStop)obj).code == code)
+            {
                 return true;
-           }
+            }
             return false;
         }
     }
@@ -104,11 +104,11 @@ namespace dotNet5781_02_3652_2455
     class LineBusStop
     {
         BusStop bs;
-        internal BusStop BS { get => bs;private set => bs = value; }
+        internal BusStop BS { get => bs; private set => bs = value; }
         protected double distance;
         public double Distance { get => distance; internal set => distance = value; }
         TimeSpan timeFromLastBS;
-        public TimeSpan TimeFromLastBS { get => timeFromLastBS;private set => timeFromLastBS = value; }
+        public TimeSpan TimeFromLastBS { get => timeFromLastBS; private set => timeFromLastBS = value; }
         /// <summary>
         /// c-tor
         /// </summary>
@@ -134,7 +134,7 @@ namespace dotNet5781_02_3652_2455
             return false;
         }
     }
-   enum Area {General,North,South,Center,Jerusalem} ;
+    enum Area { General, North, South, Center, Jerusalem };
     class LineBus
     {
 
@@ -275,18 +275,19 @@ namespace dotNet5781_02_3652_2455
         }
     }
 
-        class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
-                //try
-                //{
+            //try
+            //{
 
-                //}
-            }
-
+            //}
         }
+
     }
+
+}
 
 
 
