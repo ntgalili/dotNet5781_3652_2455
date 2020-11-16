@@ -129,7 +129,7 @@ namespace dotNet5781_02_3652_2455
         }
         public override bool Equals(object obj)
         {
-            if (distance.Equals(((LineBusStop)obj).distance) && TimeFromLastBS.Equals(((LineBusStop)obj).TimeFromLastBS) && bs.Equals(((LineBusStop)obj).BS1))
+            if (distance.Equals(((LineBusStop)obj).distance) && TimeFromLastBS.Equals(((LineBusStop)obj).TimeFromLastBS) && bs.Equals(((LineBusStop)obj).BS))
                 return true;
             return false;
         }
@@ -137,7 +137,7 @@ namespace dotNet5781_02_3652_2455
    enum Area {General,North,South,Center,Jerusalem} ;
     class LineBus
     {
-        
+
         Area travelArea;
         public Area TravelArea { get => TravelArea; private set => TravelArea = value; }
 
@@ -199,7 +199,7 @@ namespace dotNet5781_02_3652_2455
         }
         public void Add(int i, LineBusStop NewStop)
         {
-            route.Insert(i,NewStop);
+            route.Insert(i, NewStop);
         }
         public void delete(int i)
         {
@@ -211,7 +211,7 @@ namespace dotNet5781_02_3652_2455
                 return true;
             return false;
         }
-        public bool  check (BusStop Bs)
+        public bool check(BusStop Bs)
         {
             foreach (LineBusStop lbs in route)
             {
@@ -249,9 +249,9 @@ namespace dotNet5781_02_3652_2455
             }
             return distanceBetween;
         }
-        public TimeSpan findTime (LineBusStop lbs1, LineBusStop lbs2)
+        public TimeSpan findTime(LineBusStop lbs1, LineBusStop lbs2)
         {
-            TimeSpan timeBetween=new TimeSpan();
+            TimeSpan timeBetween = new TimeSpan();
             LineBusStop first;
             bool flag = true;
             foreach (LineBusStop lbs in route)
@@ -265,7 +265,7 @@ namespace dotNet5781_02_3652_2455
                 {
                     if (!flag)
                     {
-                        timeBetween = timeBetween+ lbs.TimeFromLastBS;
+                        timeBetween = timeBetween + lbs.TimeFromLastBS;
                         if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))
                             break;
                     }
@@ -273,17 +273,20 @@ namespace dotNet5781_02_3652_2455
             }
             return timeBetween;
         }
-class Program
-{
-        static void Main(string[] args)
-        {
-            //try
-            //{
+    }
 
-            //}
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                //try
+                //{
+
+                //}
+            }
+
         }
-    
-}
+    }
 
 
 
