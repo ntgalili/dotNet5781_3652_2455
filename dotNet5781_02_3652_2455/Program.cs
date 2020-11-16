@@ -134,8 +134,13 @@ namespace dotNet5781_02_3652_2455
             return false;
         }
     }
+
+
+
+
+
     enum Area { General, North, South, Center, Jerusalem };
-    class LineBus
+    class LineBus : IComparable
     {
 
         Area travelArea;
@@ -173,6 +178,7 @@ namespace dotNet5781_02_3652_2455
             Route = myStations;
             firstStop = route[0];
             lastStop = route.Last();
+            travelArea = a;
         }
         public override string ToString()
         {
@@ -273,7 +279,48 @@ namespace dotNet5781_02_3652_2455
             }
             return timeBetween;
         }
+
+        public LineBus SubRoute(LineBusStop lbs1, LineBusStop lbs2)
+        {
+            List<LineBusStop> sub=new List<LineBusStop>();
+            LineBusStop first;
+            bool flag = true;
+            foreach (LineBusStop lbs in route)
+            {
+                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)
+                {
+                    flag = false;
+                    sub.Add(lbs);
+                }
+                else
+                {
+                    if (!flag)
+                    {
+                        sub.Add(lbs);
+                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))
+                            break;
+                    }
+                }
+            }
+            return new LineBus(LineNum,sub,travelArea);
+        }
+
+        public int CompareTo(object obj)
+        {
+            TimeSpan ObjTime= ((LineBus)obj).findTime(((LineBus)obj).FirstStop, ((LineBus)obj).LastStop);
+            TimeSpan MyTime= findTime(FirstStop, LastStop);
+            return (MyTime.CompareTo(ObjTime));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop))));
+        }
     }
+
+
+
+    
 
     class Program
     {
