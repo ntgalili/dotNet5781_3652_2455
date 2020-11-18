@@ -322,32 +322,44 @@ namespace dotNet5781_02_3652_2455
             }
         }
 
+        ///// <summary>
+        ///// Checks if a particular bus stop exists on the route
+        ///// </summary>
+        ///// <param name="LBS">the line bus stop to search</param>
+        ///// <returns></returns>
+        //public bool search(LineBusStop LBS)
+        //{
+        //    if (route.IndexOf(LBS) != -1)//if the line bus stop is in the route 
+        //        return true;
+        //    return false;
+        //}
+
+
         /// <summary>
-        /// Checks if a particular station exists on the route
+        /// Checks if a particular bus stop exists on the route
         /// </summary>
-        /// <param name="LBS"></param>
-        /// <returns></returns>
-        public bool search(LineBusStop LBS)
-        {
-            if (route.IndexOf(LBS) != -1)
-                return true;
-            return false;
-        }
-
-
+        /// <param name="myCode">the bus stop's code</param>
+        /// <returns>true if the bus stop is in the route and alse if not</returns>
         public bool check(int myCode)
         {
-            foreach (LineBusStop lbs in route)
+            foreach (LineBusStop lbs in route)//Scanning the bus stops on the route
             {
-                if (myCode==lbs.BS.Code)
+                if (myCode==lbs.BS.Code)//if the bus stop is in the route
                     return true;
             }
             return false;
         }
 
+
+        /// <summary>
+        /// find the distance between 2 line bus stops
+        /// </summary>
+        /// <param name="lbs1">line bus stop 1</param>
+        /// <param name="lbs2">line bus stop 2</param>
+        /// <returns>the distance</returns>
         public double FindDistance(LineBusStop lbs1, LineBusStop lbs2)
         {
-            if (!(check(lbs1.BS.Code) && check(lbs2.BS.Code)))
+            if (!(check(lbs1.BS.Code) && check(lbs2.BS.Code)))//if the bus stop's are not in the route
             {
                 throw new FindErrorException("the bus stops were not found");
             }
@@ -355,19 +367,19 @@ namespace dotNet5781_02_3652_2455
             double distanceBetween = 0;
             LineBusStop first;
             bool flag = true;
-            foreach (LineBusStop lbs in route)
+            foreach (LineBusStop lbs in route)////Scanning the bus stops on the route
             {
-                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)
+                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)//find the first bus stop 
                 {
                     first = lbs;
                     flag = false;
                 }
                 else
                 {
-                    if (!flag)
+                    if (!flag)//When the first bus stop is found start summing up the distance
                     {
                         distanceBetween += lbs.Distance;
-                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))
+                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))//when the last bus stop is found stop summing up the distance
                             break;
                     }
                 }
