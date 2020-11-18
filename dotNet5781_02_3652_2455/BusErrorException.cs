@@ -10,6 +10,8 @@ namespace dotNet5781_02_3652_2455
     using System.Runtime.Serialization;
 
     [Serializable]
+    
+    //
     internal class BusErrorException : Exception
     {
         private int lineBus;
@@ -17,8 +19,6 @@ namespace dotNet5781_02_3652_2455
         public BusErrorException() : base() { }
         public BusErrorException(string message , int num) : base(message) { LineBus = num; }
         public BusErrorException(string message, Exception inner) : base(message, inner) { }
-        protected BusErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
-        // special constructor for our custom exception
         override public string ToString() { return "Bus line number:" + LineBus + "\n"  + "BusErrorException:" + Message + "\n"; }
     }
     public class CodeErrorException : Exception
@@ -26,7 +26,7 @@ namespace dotNet5781_02_3652_2455
         public CodeErrorException() : base() { }
         public CodeErrorException(string message) : base(message) {}
         public CodeErrorException(string message, Exception inner) : base(message, inner) { }
-        protected CodeErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        //protected CodeErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
         override public string ToString() { return "CodeErrorException:" + Message + "\n"; }
     }
@@ -35,7 +35,7 @@ namespace dotNet5781_02_3652_2455
         public AddressErrorException() : base() { }
         public AddressErrorException(string message) : base(message) { }
         public AddressErrorException(string message, Exception inner) : base(message, inner) { }
-        protected AddressErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+       // protected AddressErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
         override public string ToString() { return "AddressErrorException:" + Message + "\n"; }
     }
@@ -44,7 +44,7 @@ namespace dotNet5781_02_3652_2455
         public LineNumErrorException() : base() { }
         public LineNumErrorException(string message) : base(message) { }
         public LineNumErrorException(string message, Exception inner) : base(message, inner) { }
-        protected LineNumErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+       // protected LineNumErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
         override public string ToString() { return "LineNumErrorException:" + Message + "\n"; }
     }
@@ -53,7 +53,7 @@ namespace dotNet5781_02_3652_2455
         public IndexErrorException() : base() { }
         public IndexErrorException(string message) : base(message) { }
         public IndexErrorException(string message, Exception inner) : base(message, inner) { }
-        protected IndexErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+       // protected IndexErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
         override public string ToString() { return "Index error exception" +"\n"; }
     }
@@ -63,7 +63,7 @@ namespace dotNet5781_02_3652_2455
         public FindErrorException() : base() { }
         public FindErrorException(string message) : base(message) { }
         public FindErrorException(string message, Exception inner) : base(message, inner) { }
-        protected FindErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+     //   protected FindErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
         override public string ToString() { return "Error find exception:" + message + "\n"; }
     }
@@ -75,7 +75,7 @@ namespace dotNet5781_02_3652_2455
         public AddErrorException() : base() { }
         public AddErrorException(string message) : base(message) { }
         public AddErrorException(string message, Exception inner) : base(message, inner) { }
-        protected AddErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+       // protected AddErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         // special constructor for our custom exception
         override public string ToString() { return "Add Error Exception:" + message + "\n"; }
     }
@@ -87,7 +87,7 @@ namespace dotNet5781_02_3652_2455
         public RemoveErrorException() : base() { }
         public RemoveErrorException(string message) : base(message) { }
         public RemoveErrorException(string message, Exception inner) : base(message, inner) { }
-        protected RemoveErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+     //   protected RemoveErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
         override public string ToString() { return "Remove Error Exception:" + message + "\n"; }
     }
 }

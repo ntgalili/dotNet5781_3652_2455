@@ -20,15 +20,13 @@ namespace dotNet5781_02_3652_2455
         public int Code
         {
             get => code;
+
             internal set
             {
-                if (value <= 999999 && value >= 1)
-                     code = value;
-        
+                if (value <= 999999 && value >= 1)//When the code is valid
+                    code = value;
                 else //when the value invalid
-                {
                     throw new CodeErrorException("error code");
-                }
             }
         }
         protected double latitude;
@@ -36,12 +34,14 @@ namespace dotNet5781_02_3652_2455
         /// Latitude's property
         /// </summary>
         public double Latitude { get => latitude; internal set => latitude = value; }
-        protected double longitude;
 
+
+        protected double longitude;
         /// <summary>
         /// Longitude's property
         /// </summary>
         public double Longitude { get => longitude; internal set => longitude = value; }
+
         protected string address;
         /// <summary>
         /// Address's property
@@ -51,7 +51,7 @@ namespace dotNet5781_02_3652_2455
             get => address;
             internal set
             {
-                if (value != null)
+                if (value != null)////When the address is valid
                     address = value;
                 else //if the address is invalid
                 {
@@ -60,6 +60,9 @@ namespace dotNet5781_02_3652_2455
                 }
             }
         }
+
+
+
         /// <summary>
         /// c_tor 
         /// </summary>
@@ -73,6 +76,9 @@ namespace dotNet5781_02_3652_2455
             Latitude = r.NextDouble() * (33.3 - 31) + 31; //random location in Israel
             Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3; //random location in Israel
         }
+
+
+
         /// <summary>
         /// representation of the class by a string
         /// </summary>
@@ -81,26 +87,55 @@ namespace dotNet5781_02_3652_2455
         {
             return ("Bus Station Code:" + Code + "," + Latitude + "°N" + Longitude + "°E");
         }
+
+
+        /// <summary>
+        /// A method checks whether the BusStops are equal
+        /// </summary>
+        /// <param name="obj">The BusStop to check</param>
+        /// <returns>if the BusStop are equal return true, if not return false</returns>
         public override bool Equals(object obj)
         {
-            if (((BusStop)obj).code == code)
+            if (((BusStop)obj).code == code)//Bus stations are equal, when their code is the same
             {
                 return true;
             }
             return false;
         }
     }
+
+
+
+
+
     /// <summary>
     /// the class describes a line bus stop
     /// </summary>
     class LineBusStop
     {
         BusStop bs;
+        /// <summary>
+        /// bs property
+        /// </summary>
         internal BusStop BS { get => bs; private set => bs = value; }
+
+
         protected double distance;
+        /// <summary>
+        /// distance property
+        /// </summary>
         public double Distance { get => distance; internal set => distance = value; }
+        
+        
+        
         TimeSpan timeFromLastBS;
+        /// <summary>
+        /// timeFromLastBS property
+        /// </summary>
         public TimeSpan TimeFromLastBS { get => timeFromLastBS; private set => timeFromLastBS = value; }
+
+
+
         /// <summary>
         /// c-tor
         /// </summary>
@@ -111,16 +146,31 @@ namespace dotNet5781_02_3652_2455
             bs.Address = MyBusStop.Address;
             bs.Latitude = MyBusStop.Latitude;
             bs.Longitude = MyBusStop.Longitude;
+
             Random r = new Random(DateTime.Now.Millisecond);
-            distance = r.NextDouble() * (100000 - 500) + 500;
-            TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);
+            distance = r.NextDouble() * (100000 - 500) + 500; //Random distance
+            TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);//Time between stations as a function of distance
         }
+
+
+        /// <summary>
+        /// representation of the class by a string
+        /// </summary>
+        /// <returns>string of the code of the bus stop</returns>
         override public string ToString()
         {
             return bs.Code.ToString();
         }
+
+
+        /// <summary>
+        /// A method checks whether the line BusStops are equal
+        /// </summary>
+        /// <param name="obj">The line BusStop to check</param>
+        /// <returns>if the line BusStop are equal return true, if not return false</returns>
         public override bool Equals(object obj)
         {
+            //line busstops are equal when they are located at the same bus stop and when the distance and travel time from the previous line busstops are the same
             if (distance.Equals(((LineBusStop)obj).distance) && TimeFromLastBS.Equals(((LineBusStop)obj).TimeFromLastBS) && bs.Equals(((LineBusStop)obj).BS))
                 return true;
             return false;
@@ -130,40 +180,78 @@ namespace dotNet5781_02_3652_2455
 
 
 
-
+    /// <summary>
+    /// enum To define a line activity area
+    /// </summary>
     enum Area { General, North, South, Center, Jerusalem };
+
+   
+    /// <summary>
+    /// class for setting up a bus line
+    /// </summary>
     class LineBus : IComparable
     {
 
         Area travelArea;
+        /// <summary>
+        /// travelArea property
+        /// </summary>
         public Area TravelArea { get => TravelArea; private set => TravelArea = value; }
 
+        /// <summary>
+        /// The route of the line
+        /// </summary>
         List<LineBusStop> route;
+        /// <summary>
+        /// route property
+        /// </summary>
         internal List<LineBusStop> Route
         {
             get => route;
             set
             {
-                foreach (LineBusStop lbs in value)
+                foreach (LineBusStop lbs in value)///Gets a collection of stations and adds you to the route
                     route.Add(lbs);
             }
         }
+
+
         int lineNum;
+        /// <summary>
+        /// lineNum property
+        /// </summary>
         public int LineNum
         {
             get => lineNum;
             protected set
             {
-                if (value > 0)
+                if (value > 0)//When the number is valid
                     lineNum = value;
-                else
+                else//When the number is invalid
                     throw new LineNumErrorException("ERROR LineNum");
             }
         }
+
+
         private LineBusStop firstStop;
+        /// <summary>
+        /// firstStop property
+        /// </summary>
         internal LineBusStop FirstStop { get => firstStop; private set => firstStop = value; }
+
+
         private LineBusStop lastStop;
+        /// <summary>
+        /// lastStop property
+        /// </summary>
         internal LineBusStop LastStop { get => lastStop; private set => lastStop = value; }
+
+        /// <summary>
+        /// c-tor
+        /// </summary>
+        /// <param name="numBus">line number</param>
+        /// <param name="myStations">the line route</param>
+        /// <param name="a">//teh line area</param>
         LineBus(int numBus, List<LineBusStop> myStations, Area a)
         {
             LineNum = numBus;
@@ -172,29 +260,43 @@ namespace dotNet5781_02_3652_2455
             lastStop = route.Last();
             travelArea = a;
         }
+
+        /// <summary>
+        /// representation of the class by a string
+        /// </summary>
+        /// <returns>string</returns>
         public override string ToString()
         {
             return ("Line number:" + LineNum + " Area: " + TravelArea.ToString() + " Route:" + route.ToString());
         }
+
+        /// <summary>
+        /// indexer operator
+        /// </summary>
+        /// <param name="i">the bus stop index</param>
+        /// <returns>the bus stop</returns>
         public LineBusStop this[int i]
         {
             get
             {
-                if (i < 0 || i >= route.Count)
+                if (i < 0 || i >= route.Count)//if the index is invalid
                 {
                     throw new IndexErrorException();
                 }
-                return route[i];
+                return route[i];//return the bus stop
             }
             set
             {
-                if (i < 0 || i >= route.Count)
+                if (i < 0 || i >= route.Count)//if the index is invalid
                 {
                     throw new IndexErrorException();
                 }
-                route[i] = value;
+                route[i] = value;//Placement of the bus stop
             }
         }
+
+
+
         public void Add(int i, LineBusStop NewStop)
         {
             route.Insert(i, NewStop);
