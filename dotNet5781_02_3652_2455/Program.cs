@@ -296,21 +296,45 @@ namespace dotNet5781_02_3652_2455
         }
 
 
-
+        /// <summary>
+        /// add bus stop to the route
+        /// </summary>
+        /// <param name="i">the index to add the bus stop</param>
+        /// <param name="NewStop">the line bus stop to add</param>
         public void Add(int i, LineBusStop NewStop)
         {
             route.Insert(i, NewStop);
         }
-        public void delete(int i)
+
+        /// <summary>
+        /// delete a bus stop from the route
+        /// </summary>
+        /// <param name="i">the code of the line bus stop to delete</param>
+        public void delete(int code)
         {
-            route.RemoveAt(i);
+            for (int i=0;i<route.Count;i++)
+            {
+                if (route[i].BS.Code == code)//if the code of the line bus stop and the code to delete is same 
+                {
+                    route.RemoveAt(i);//remove the line bus stop
+                    break;
+                }
+            }
         }
+
+        /// <summary>
+        /// Checks if a particular station exists on the route
+        /// </summary>
+        /// <param name="LBS"></param>
+        /// <returns></returns>
         public bool search(LineBusStop LBS)
         {
             if (route.IndexOf(LBS) != -1)
                 return true;
             return false;
         }
+
+
         public bool check(int myCode)
         {
             foreach (LineBusStop lbs in route)
@@ -320,6 +344,7 @@ namespace dotNet5781_02_3652_2455
             }
             return false;
         }
+
         public double FindDistance(LineBusStop lbs1, LineBusStop lbs2)
         {
             if (!(check(lbs1.BS.Code) && check(lbs2.BS.Code)))
