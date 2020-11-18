@@ -140,12 +140,9 @@ namespace dotNet5781_02_3652_2455
         /// c-tor
         /// </summary>
         /// <param name="MyBusStop">the bus stop</param>
-        LineBusStop(BusStop MyBusStop)
+        public LineBusStop(int mycode,string myaddress=" ")
         {
-            bs.Code = MyBusStop.Code;
-            bs.Address = MyBusStop.Address;
-            bs.Latitude = MyBusStop.Latitude;
-            bs.Longitude = MyBusStop.Longitude;
+            bs = new BusStop(mycode, myaddress);
 
             Random r = new Random(DateTime.Now.Millisecond);
             distance = r.NextDouble() * (100000 - 500) + 500; //Random distance
@@ -252,7 +249,7 @@ namespace dotNet5781_02_3652_2455
         /// <param name="numBus">line number</param>
         /// <param name="myStations">the line route</param>
         /// <param name="a">//teh line area</param>
-        LineBus(int numBus, List<LineBusStop> myStations, Area a)
+        public LineBus(int numBus, List<LineBusStop> myStations, Area a)
         {
             LineNum = numBus;
             Route = myStations;
@@ -455,72 +452,126 @@ namespace dotNet5781_02_3652_2455
     class Program
     {
         
+        public static bool search(List<BusStop> listOfBs,int code)
+        {
+            foreach(BusStop bs in listOfBs)
+            {
+                if (bs.Code == code)
+                    return true;
+            }
+            return false;
+        }
+
+
+
+
+        public static void AddLine(CollectionOfBuses myBuses,List<BusStop> myBusStops)
+        {
+            string Ans;
+            bool flag;
+            int num1, num2;
+            Area a = new Area();
+            List<LineBusStop> myroute = new List<LineBusStop>();
+            Console.WriteLine("enter a line number");
+            Ans = Console.ReadLine();
+            flag = int.TryParse(Ans, out num1);
+            if (!flag)
+            {
+                throw new AddErrorException("Error code");
+            }
+            else
+            {
+                Console.WriteLine("enter the codes and the addresses(Put an Enter between them) of the bus stops," +
+                    " you need to enter at least 2 bus stops,at the end press 0");
+                Ans = Console.ReadLine();
+                num2 = 1;
+                while (num2 != 0 || myroute.Count() < 2)
+                {
+                     num2 = int.Parse(Ans);
+                     if (search(myBusStops, num2))
+                         throw new AddErrorException("The bus stop is not on the list");
+                     Ans = Console.ReadLine();
+                     myroute.Add(new LineBusStop(num2, Ans));
+                     Console.WriteLine("The next bus stop");
+                     Ans = Console.ReadLine();
+                }
+
+                Console.WriteLine("enter the area of the bus: General, North, South, Center, Jerusalem");
+                Ans = Console.ReadLine();
+                flag = Area.TryParse(Ans, out a);
+                if (!flag)
+                    a = 0;
+
+                myBuses.AddLine(new LineBus(num1, myroute, a));
+            }
+        }
+
+
+
+        static public void AddBusStop(List<BusStop> myBusStop)
+        {
+            string Ans;
+            bool flag;
+            int num1;
+            Console.WriteLine("enter the code: 000000");
+            Ans = Console.ReadLine();
+            flag = int.TryParse(Ans, out num1);
+            if (!flag)
+                throw new AddErrorException("Error code");
+            else
+            {
+                Console.WriteLine("enter the address");
+                Ans = Console.ReadLine();
+                if (search(myBusStop, num1))
+                    throw new AddErrorException("There is already a bus stop with the same code");
+                myBusStop.Add(new BusStop(num1, Ans));
+
+
+            }
+        }
+
         static void Main(string[] args)
         {
 
             string Ans;
-            int num1,num2,num3;
-            bool flag = true;
+            int num;
+            CollectionOfBuses myCollection = new CollectionOfBuses();
             List<BusStop> listOfBustops = new List<BusStop>();
+
+
+
             Console.WriteLine("Enter 40 bus stops:");
             for(int i=0;i<40;i++)
             {
-                Console.WriteLine("enter the code: 000000");
-                Ans =Console.ReadLine();
-                flag = int.TryParse(Ans, out num1);
-                if (!flag)
+                try
                 {
-                    Console.WriteLine("Error: the code is incorrect");
+                    AddBusStop(listOfBustops);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
                     i--;
-                    flag = true;
-                }
-                else
-                {
-                    Console.WriteLine("enter the address");
-                    Ans = Console.ReadLine();
-                    try
-                    {
-                        foreach(BusStop bs in listOfBustops)
-                        {
-                            if (bs.Code == num1)
-                                throw new AddErrorException("There is alreadya station with the same code");
-                            listOfBustops.Add(new BusStop(num1, Ans));
-                        }
-                    }
-                    catch (Exception Ex)
-                    {
-                        Console.WriteLine(Ex);
-                        i--;
-                    }
-
-
-                }
-
-
+                } 
             }
 
             Console.WriteLine("Enter 10 Line buses");
             for(int i=0;i<10;i++)
             {
-                Console.WriteLine("enter a line number");
-                Ans = Console.ReadLine();
-                flag = int.TryParse(Ans, out num1);
-                if (!flag)
+                try
                 {
-                    Console.WriteLine("Error number");
+                    AddLine(myCollection, listOfBustops); 
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
                     i--;
                 }
-                else
-                {
-                    Console.WriteLine("enter the code of the first bus stop");
+            } 
 
-                }
-            }
-              
+
+
         }
-
     }
-
 }
 
 
