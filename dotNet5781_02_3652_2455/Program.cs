@@ -149,6 +149,19 @@ namespace dotNet5781_02_3652_2455
             TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);//Time between stations as a function of distance
         }
 
+        /// <summary>
+        /// c-tor
+        /// </summary>
+        /// <param name="MyBusStop">the bus stop</param>
+        public LineBusStop (BusStop mybs)
+        {
+            bs = mybs;
+            Random r = new Random(DateTime.Now.Millisecond);
+            distance = r.NextDouble() * (100000 - 500) + 500; //Random distance
+            TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);//Time between stations as a function of distance
+        }
+
+
 
         /// <summary>
         /// representation of the class by a string
@@ -298,9 +311,9 @@ namespace dotNet5781_02_3652_2455
         /// </summary>
         /// <param name="i">the index to add the bus stop</param>
         /// <param name="NewStop">the line bus stop to add</param>
-        public void Add(int i, LineBusStop NewStop)
+        public void Add(int i,BusStop NewStop)
         {
-            route.Insert(i, NewStop);
+            route.Insert(i,new LineBusStop(NewStop));
         }
 
         /// <summary>
@@ -309,6 +322,8 @@ namespace dotNet5781_02_3652_2455
         /// <param name="i">the code of the line bus stop to delete</param>
         public void delete(int code)
         {
+            if (route.Count == 2)
+                throw new RemoveErrorException("can not delete ,the bus have only two bus stops");
             for (int i=0;i<route.Count;i++)
             {
                 if (route[i].BS.Code == code)//if the code of the line bus stop and the code to delete is same 
@@ -462,8 +477,16 @@ namespace dotNet5781_02_3652_2455
             return false;
         }
 
-
-
+        public static int counter (List<BusStop> myBusStops,CollectionOfBuses myCollection)
+        {
+            int count = 0;
+            foreach(BusStop bs in myBusStops)
+            {
+                if ((myCollection.WhoIsTravling(bs.Code)).Count >= 2)
+                    count++;
+            }
+            return count;
+        }
 
         public static void AddLine(CollectionOfBuses myBuses,List<BusStop> myBusStops)
         {
@@ -506,7 +529,30 @@ namespace dotNet5781_02_3652_2455
             }
         }
 
-
+        static public void AddStopToBus (CollectionOfBuses myCollection, BusStop bs)
+        {
+            string Ans;
+            bool flag;
+            int numofbus,i;
+            Console.WriteLine("choose which line to add it to");
+            Ans = Console.ReadLine();
+            flag = int.TryParse(Ans, out numofbus);
+            if (numofbus != 0 && flag)
+            {
+                foreach (LineBus lb in myCollection)
+                {
+                    if (lb.LineNum == numofbus)
+                    {
+                        Console.WriteLine("enter index to add the bus stop");
+                        Ans = Console.ReadLine();
+                        flag = int.TryParse(Ans, out i);
+                        lb.Add(i, bs);
+                        return;
+                    }
+                }
+            }
+            throw new AddErrorException("Error line number");
+        }
 
         static public void AddBusStop(List<BusStop> myBusStop)
         {
@@ -525,19 +571,18 @@ namespace dotNet5781_02_3652_2455
                 if (search(myBusStop, num1))
                     throw new AddErrorException("There is already a bus stop with the same code");
                 myBusStop.Add(new BusStop(num1, Ans));
-
-
             }
         }
 
+        enum Choice { Exit, AddLine, AddBusStopToLine , DeleteLine, DeleteStopBus, WhoTraveling, BestTraveling , PrintAll, PrintBusStops}
         static void Main(string[] args)
         {
-
+            Choice c;
             string Ans;
-            int num;
+            int num, num2,count = 0; ;
+            bool flag;
             CollectionOfBuses myCollection = new CollectionOfBuses();
             List<BusStop> listOfBustops = new List<BusStop>();
-
 
 
             Console.WriteLine("Enter 40 bus stops:");
@@ -566,10 +611,211 @@ namespace dotNet5781_02_3652_2455
                     Console.WriteLine(ex);
                     i--;
                 }
-            } 
+            }
+            
+            foreach(BusStop bs in listOfBustops)
+            {
+                try
+                {
+                    if ((myCollection.WhoIsTravling(bs.Code)).Count >= 2)
+                        count++;
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    Console.WriteLine("enter 1 to add it to line or enter another number to delete the bus stop");
+                    Ans = Console.ReadLine();
+                    try
+                    {
+                        num = int.Parse(Ans);
+                        if (num == 1)
+                            AddStopToBus(myCollection, bs);
+                        else
+                            throw new AddErrorException();
 
+                    }
+                    catch (Exception)
+                    {
+                        listOfBustops.Remove(bs);
+                        Console.WriteLine("the bus stop has been deleted");
+                    }
+                }
+            }
 
-
+            while ((10-count) != 0)
+            { 
+                Console.WriteLine("you need to enter more"+(10-count)+"different bus stop to the lines routes" );
+                for(int i=0;i<(10-count);i++)
+                {
+                    Console.WriteLine("enter the code bus stop to add ");
+                    Ans = Console.ReadLine();
+                    try
+                    {
+                        num = int.Parse(Ans);
+                        foreach (BusStop bs in listOfBustops)
+                        {
+                            if (bs.Code == num)
+                                AddStopToBus(myCollection, bs);
+                        }
+                    }
+                    catch(Exception)
+                    {
+                        Console.WriteLine("Error, try again");
+                    }
+                }
+                count = counter(listOfBustops, myCollection);
+            }
+            do
+            {
+                Console.WriteLine("enter your choice: \n 0 to Exit \n 1 to AddLine \n  2 to AddBusStopToLine \n"
+                    + "3 to DeleteLine\n 4 to DeleteStopBus\n 5 to  WhoTraveling \n 6 to BestTraveling \n 7 to PrintAll\n 8 to PrintBusStops \n");
+                Ans = Console.ReadLine();
+                flag = Choice.TryParse(Ans, out c);
+                switch (c)
+                {
+                    case Choice.Exit:
+                        {
+                            break;
+                        }
+                    case Choice.AddLine:
+                        {
+                            AddLine(myCollection, listOfBustops);
+                            break;
+                        }
+                    case Choice.AddBusStopToLine:
+                        {
+                            Console.WriteLine("enter the code of the bus stop");
+                            Ans = Console.ReadLine();
+                            flag = int.TryParse(Ans,out num);
+                            if(!flag)
+                            {
+                                Console.WriteLine("Error");
+                                break;
+                            }
+                            try
+                            {
+                                foreach (BusStop bs in listOfBustops)
+                                {
+                                    if (bs.Code == num)
+                                    {
+                                        AddStopToBus(myCollection, bs);
+                                        flag = false;
+                                    }  
+                                }
+                                if (flag)
+                                    throw new AddErrorException("the bus stop is not found");
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                                break;
+                        }
+                    case Choice.DeleteLine:
+                        {
+                            Console.WriteLine("enter line to delete");
+                            Ans = Console.ReadLine();
+                            flag = int.TryParse(Ans, out num);
+                            if (!flag)
+                            {
+                                Console.WriteLine("Error");
+                                break;
+                            }
+                            try
+                            {
+                                foreach (LineBus lb in myCollection)
+                                {
+                                    if (lb.LineNum == num)
+                                        myCollection.RemoveLine(lb);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                                break;
+                        }
+                    case Choice.DeleteStopBus:
+                        {
+                            Console.WriteLine("enter line number");
+                            Ans = Console.ReadLine();
+                            flag = int.TryParse(Ans, out num);
+                            if (!flag)
+                            {
+                                Console.WriteLine("Error");
+                                break;
+                            }
+                            try
+                            {
+                                foreach (LineBus lb in myCollection)
+                                {
+                                    if (lb.LineNum == num)
+                                    {
+                                        Console.WriteLine("enter code of bus stop");
+                                        Ans = Console.ReadLine();
+                                        flag = int.TryParse(Ans, out num2);
+                                        try
+                                        {
+                                            lb.delete(num2);
+                                            if(myCollection.WhoIsTravling(num2).Count==0)
+                                            {
+                                                foreach (BusStop bs in listOfBustops)
+                                                    if (bs.Code == num2)
+                                                        listOfBustops.Remove(bs);
+                                            }
+                                        }
+                                        catch(Exception ex)
+                                        {
+                                            Console.WriteLine(ex);
+                                        }
+                                    } 
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                            break;
+                        }
+                    case Choice.WhoTraveling:
+                        {
+                            Console.WriteLine("enter code number");
+                            Ans = Console.ReadLine();
+                            flag = int.TryParse(Ans, out num);
+                            if (!flag)
+                            {
+                                Console.WriteLine("Error");
+                                break;
+                            }
+                            try
+                            {
+                                List<LineBus> MyLine = myCollection.WhoIsTravling(num);
+                                foreach(LineBus lb in MyLine)
+                                    Console.WriteLine(lb);
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
+                                break;
+                        }
+                    case Choice.BestTraveling:
+                        {
+                            break;
+                        }
+                    case Choice.PrintAll:
+                        {
+                            break;
+                        }
+                    case Choice.PrintBusStops:
+                        {
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
+            while (c != 0);  
         }
     }
 }

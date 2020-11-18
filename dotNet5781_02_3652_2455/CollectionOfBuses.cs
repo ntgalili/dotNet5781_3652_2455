@@ -80,7 +80,7 @@ namespace dotNet5781_02_3652_2455
                     weTraveling.Add(lbs);//Add the line to the list of lines traveling through the station
             }
             if (weTraveling.Count == 0)//When there are no lines passing through the station
-                throw new FindErrorException("no bus passes through this bus stop");
+                throw new FindErrorException("no bus passes through bus stop:" + myCode);
             return weTraveling;
         }
 

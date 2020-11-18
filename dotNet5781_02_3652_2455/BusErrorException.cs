@@ -10,8 +10,6 @@ namespace dotNet5781_02_3652_2455
     using System.Runtime.Serialization;
 
     [Serializable]
-    
-    //
     internal class BusErrorException : Exception
     {
         private int lineBus;
@@ -67,8 +65,6 @@ namespace dotNet5781_02_3652_2455
         // special constructor for our custom exception
         override public string ToString() { return "Error find exception:" + message + "\n"; }
     }
-
-
     public class AddErrorException : Exception
     {
         string message;
@@ -79,8 +75,6 @@ namespace dotNet5781_02_3652_2455
         // special constructor for our custom exception
         override public string ToString() { return "Add Error Exception:" + message + "\n"; }
     }
-
-
     public class RemoveErrorException:Exception
     {
         string message;
