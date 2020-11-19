@@ -206,7 +206,7 @@ namespace dotNet5781_02_3652_2455
         /// <summary>
         /// travelArea property
         /// </summary>
-        public Area TravelArea { get => TravelArea; private set => TravelArea = value; }
+        public Area TravelArea { get => travelArea; private set => travelArea = value; }
 
         /// <summary>
         /// The route of the line
@@ -220,8 +220,9 @@ namespace dotNet5781_02_3652_2455
             get => route;
             set
             {
-                foreach (LineBusStop lbs in value)///Gets a collection of stations and adds you to the route
-                    route.Add(lbs);
+                //             foreach (LineBusStop lbs in value)///Gets a collection of stations and adds you to the route
+                //                  route.Add(lbs);
+                route = value;
             }
         }
 
@@ -248,7 +249,6 @@ namespace dotNet5781_02_3652_2455
         /// firstStop property
         /// </summary>
         internal LineBusStop FirstStop { get => firstStop; private set => firstStop = value; }
-
 
         private LineBusStop lastStop;
         /// <summary>
@@ -304,7 +304,6 @@ namespace dotNet5781_02_3652_2455
                 route[i] = value;//Placement of the bus stop
             }
         }
-
 
         /// <summary>
         /// add bus stop to the route
@@ -423,13 +422,13 @@ namespace dotNet5781_02_3652_2455
             return timeBetween;
         }
 
-        public LineBus SubRoute(LineBusStop lbs1, LineBusStop lbs2)
+        public LineBus SubRoute(int code1, int code2)
         {
             List<LineBusStop> sub=new List<LineBusStop>();
             bool flag = true;
             foreach (LineBusStop lbs in route)
             {
-                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)
+                if ((lbs.BS.Code==code1) || (lbs.BS.Code == code2) && flag)
                 {
                     flag = false;
                     sub.Add(lbs);
@@ -439,7 +438,7 @@ namespace dotNet5781_02_3652_2455
                     if (!flag)
                     {
                         sub.Add(lbs);
-                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))
+                        if ((lbs.BS.Code == code1) || (lbs.BS.Code == code2))
                             break;
                     }
                 }
@@ -461,9 +460,6 @@ namespace dotNet5781_02_3652_2455
     }
 
 
-
-
-
     class Program
     {
         
@@ -482,7 +478,7 @@ namespace dotNet5781_02_3652_2455
             int count = 0;
             foreach(BusStop bs in myBusStops)
             {
-                if ((myCollection.WhoIsTravling(bs.Code)).Count >= 2)
+                if ((myCollection.WhoIsTravling(bs.Code)).countOfCollection() >= 2)
                     count++;
             }
             return count;
@@ -504,19 +500,21 @@ namespace dotNet5781_02_3652_2455
             }
             else
             {
-                Console.WriteLine("enter the codes and the addresses(Put an Enter between them) of the bus stops," +
-                    " you need to enter at least 2 bus stops,at the end press 0");
+                Console.WriteLine("enter the codes of the bus stops, you need to enter at least 2 bus stops,at the end press 0");
                 Ans = Console.ReadLine();
-                num2 = 1;
+                flag = int.TryParse(Ans, out num2);
                 while (num2 != 0 || myroute.Count() < 2)
-                {
-                     num2 = int.Parse(Ans);
-                     if (search(myBusStops, num2))
-                         throw new AddErrorException("The bus stop is not on the list");
-                     Ans = Console.ReadLine();
-                     myroute.Add(new LineBusStop(num2, Ans));
+                { 
+                    if (!search(myBusStops, num2) || !flag)
+                        throw new AddErrorException("The bus stop is not on the list");
+                    foreach(BusStop bs in myBusStops)
+                    {
+                        if(num2==bs.Code)
+                            myroute.Add(new LineBusStop(num2));
+                    }
                      Console.WriteLine("The next bus stop");
                      Ans = Console.ReadLine();
+                    flag = int.TryParse(Ans, out num2);
                 }
 
                 Console.WriteLine("enter the area of the bus: General, North, South, Center, Jerusalem");
@@ -617,7 +615,7 @@ namespace dotNet5781_02_3652_2455
             {
                 try
                 {
-                    if ((myCollection.WhoIsTravling(bs.Code)).Count >= 2)
+                    if ((myCollection.WhoIsTravling(bs.Code)).countOfCollection() >= 2)
                         count++;
                 }
                 catch(Exception ex)
@@ -667,8 +665,8 @@ namespace dotNet5781_02_3652_2455
             }
             do
             {
-                Console.WriteLine("enter your choice: \n 0 to Exit \n 1 to AddLine \n  2 to AddBusStopToLine \n"
-                    + "3 to DeleteLine\n 4 to DeleteStopBus\n 5 to  WhoTraveling \n 6 to BestTraveling \n 7 to PrintAll\n 8 to PrintBusStops \n");
+                Console.WriteLine("enter your choice: \n 0 to Exit \n 1 to AddLine \n 2 to AddBusStopToLine \n"
+                    + " 3 to DeleteLine\n 4 to DeleteStopBus\n 5 to  WhoTraveling \n 6 to BestTraveling \n 7 to PrintAll\n 8 to PrintBusStops \n");
                 Ans = Console.ReadLine();
                 flag = Choice.TryParse(Ans, out c);
                 switch (c)
@@ -729,9 +727,36 @@ namespace dotNet5781_02_3652_2455
                                         myCollection.RemoveLine(lb);
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.WriteLine(ex);
+                                Console.WriteLine();
+                            }
+                            foreach (BusStop bs in listOfBustops)
+                            {
+                                try
+                                {
+                                    (myCollection.WhoIsTravling(bs.Code)).countOfCollection();
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex);
+                                    Console.WriteLine("enter 1 to add it to line or enter another number to delete the bus stop");
+                                    Ans = Console.ReadLine();
+                                    try
+                                    {
+                                        num = int.Parse(Ans);
+                                        if (num == 1)
+                                            AddStopToBus(myCollection, bs);
+                                        else
+                                            throw new AddErrorException();
+
+                                    }
+                                    catch (Exception)
+                                    {
+                                        listOfBustops.Remove(bs);
+                                        Console.WriteLine("the bus stop has been deleted");
+                                    }
+                                }
                             }
                                 break;
                         }
@@ -757,7 +782,7 @@ namespace dotNet5781_02_3652_2455
                                         try
                                         {
                                             lb.delete(num2);
-                                            if(myCollection.WhoIsTravling(num2).Count==0)
+                                            if(myCollection.WhoIsTravling(num2).countOfCollection ()== 0)
                                             {
                                                 foreach (BusStop bs in listOfBustops)
                                                     if (bs.Code == num2)
@@ -789,7 +814,7 @@ namespace dotNet5781_02_3652_2455
                             }
                             try
                             {
-                                List<LineBus> MyLine = myCollection.WhoIsTravling(num);
+                                CollectionOfBuses MyLine = myCollection.WhoIsTravling(num);
                                 foreach(LineBus lb in MyLine)
                                     Console.WriteLine(lb);
                             }
@@ -801,22 +826,71 @@ namespace dotNet5781_02_3652_2455
                         }
                     case Choice.BestTraveling:
                         {
+                            Console.WriteLine("enter two codes of bus stops (Enter between them)");
+                            Ans = Console.ReadLine();
+                            flag = int.TryParse(Ans, out num);
+                            if (!flag)
+                            {
+                                Console.WriteLine("Error");
+                                break;
+                            }
+                            Ans = Console.ReadLine();
+                            flag = int.TryParse(Ans, out num2);
+                            if (!flag)
+                            {
+                                Console.WriteLine("Error");
+                                break;
+                            }
+                            try
+                            {
+                                CollectionOfBuses myc = new CollectionOfBuses();
+                                foreach (LineBus lb in myCollection)
+                                {
+                                    LineBus subbus = lb.SubRoute(num,num2);
+                                    if (subbus.Route.Count != 0)
+                                         myc.AddLine(subbus);
+                                }
+                                myc.sort();
+                                myc.Print();
+                            }
+                            catch(Exception)
+                            {
+                                Console.WriteLine();
+                            }
+                                
                             break;
                         }
                     case Choice.PrintAll:
                         {
+                            myCollection.Print();
                             break;
                         }
                     case Choice.PrintBusStops:
                         {
+                            try
+                            {
+                                foreach (BusStop bs in listOfBustops)
+                                {
+                                    Console.WriteLine(bs + ": ");
+                                    (myCollection.WhoIsTravling(bs.Code)).Print();
+                                    Console.WriteLine();
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                            }
                             break;
                         }
                     default:
+                        Console.WriteLine("bay");
                         break;
                 }
             }
-            while (c != 0);  
+            while (c != 0);
+            Console.ReadKey();
         }
+        
     }
 }
 

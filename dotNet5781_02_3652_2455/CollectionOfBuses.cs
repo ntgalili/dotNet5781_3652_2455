@@ -14,6 +14,10 @@ namespace dotNet5781_02_3652_2455
     internal class CollectionOfBuses : IEnumerable
     {
         private List<LineBus> ListOfBuses;
+        public CollectionOfBuses()
+        {
+            ListOfBuses  = new List<LineBus>();
+        }
 
         /// <summary>
         /// the method adds a line to the collection
@@ -60,7 +64,7 @@ namespace dotNet5781_02_3652_2455
             }
             if (flag)//if the line is not found
             {
-                throw new RemoveErrorException("The line was not found");
+                throw new RemoveErrorException();
             }
             return;
         }
@@ -71,19 +75,18 @@ namespace dotNet5781_02_3652_2455
         /// </summary>
         /// <param name="myCode">the bos stop's code</param>
         /// <returns>list of lines that pass through the bus stop </returns>
-        public List<LineBus> WhoIsTravling(int myCode)
+        public CollectionOfBuses WhoIsTravling(int myCode)
         {
-            List<LineBus> weTraveling = new List<LineBus>();
+            CollectionOfBuses weTraveling = new CollectionOfBuses();
             foreach (LineBus lbs in ListOfBuses)//go over the List Of Buses
             {
                 if (lbs.check(myCode))//if the line passes through the bus stop
-                    weTraveling.Add(lbs);//Add the line to the list of lines traveling through the station
+                    weTraveling.AddLine(lbs);//Add the line to the list of lines traveling through the station
             }
-            if (weTraveling.Count == 0)//When there are no lines passing through the station
+            if (weTraveling.countOfCollection() == 0)//When there are no lines passing through the station
                 throw new FindErrorException("no bus passes through bus stop:" + myCode);
             return weTraveling;
         }
-
 
         /// <summary>
         /// Sort the collection by travel time
@@ -120,12 +123,19 @@ namespace dotNet5781_02_3652_2455
         /// <returns>The number of times the line appears</returns>
         public int count(int num)
         {
+            if (ListOfBuses.Count() == 0)
+                return 0;
             int countBuses = 0;
-            foreach (LineBus lbs in ListOfBuses)//go over the list
+            for(int i=0;i< ListOfBuses.Count();i++)
             {
-                if (lbs.LineNum == num)//if the line is found
+                if (ListOfBuses[i].LineNum == num)//if the line is found
                     countBuses++;
             }
+        //    foreach (LineBus lb in ListOfBuses)//go over the list
+        //    {
+        //        if (lb.LineNum == num)//if the line is found
+         //           countBuses++;
+        //    }
             return countBuses;
         }
 
@@ -137,6 +147,19 @@ namespace dotNet5781_02_3652_2455
         {
             for (int i = 0; i < ListOfBuses.Count; i++)
                 yield return ListOfBuses[i];
+        }
+
+        public void Print ()
+        {
+            foreach(LineBus lb in ListOfBuses)
+            {
+                Console.WriteLine("number of bus:"+lb.LineNum);
+            }
+        }
+
+        public int countOfCollection ()
+        {
+            return ListOfBuses.Count;
         }
     }
 }
