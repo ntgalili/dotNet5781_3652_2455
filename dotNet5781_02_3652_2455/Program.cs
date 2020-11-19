@@ -61,8 +61,6 @@ namespace dotNet5781_02_3652_2455
             }
         }
 
-
-
         /// <summary>
         /// c_tor 
         /// </summary>
@@ -77,8 +75,6 @@ namespace dotNet5781_02_3652_2455
             Longitude = r.NextDouble() * (35.5 - 34.3) + 34.3; //random location in Israel
         }
 
-
-
         /// <summary>
         /// representation of the class by a string
         /// </summary>
@@ -87,7 +83,6 @@ namespace dotNet5781_02_3652_2455
         {
             return ("Bus Station Code:" + Code + "," + Latitude + "°N" + Longitude + "°E");
         }
-
 
         /// <summary>
         /// A method checks whether the BusStops are equal
@@ -105,9 +100,6 @@ namespace dotNet5781_02_3652_2455
     }
 
 
-
-
-
     /// <summary>
     /// the class describes a line bus stop
     /// </summary>
@@ -119,22 +111,17 @@ namespace dotNet5781_02_3652_2455
         /// </summary>
         internal BusStop BS { get => bs; private set => bs = value; }
 
-
         protected double distance;
         /// <summary>
         /// distance property
         /// </summary>
         public double Distance { get => distance; internal set => distance = value; }
         
-        
-        
         TimeSpan timeFromLastBS;
         /// <summary>
         /// timeFromLastBS property
         /// </summary>
         public TimeSpan TimeFromLastBS { get => timeFromLastBS; private set => timeFromLastBS = value; }
-
-
 
         /// <summary>
         /// c-tor
@@ -161,8 +148,6 @@ namespace dotNet5781_02_3652_2455
             TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);//Time between stations as a function of distance
         }
 
-
-
         /// <summary>
         /// representation of the class by a string
         /// </summary>
@@ -186,8 +171,6 @@ namespace dotNet5781_02_3652_2455
             return false;
         }
     }
-
-
 
 
     /// <summary>
