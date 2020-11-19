@@ -260,7 +260,12 @@ namespace dotNet5781_02_3652_2455
         /// <returns>string</returns>
         public override string ToString()
         {
-            return ("Line number:" + LineNum + " Area: " + TravelArea.ToString() + " Route:" + route.ToString());
+            string str = "Line number:" + LineNum + " Area: " + TravelArea.ToString() + " Route: ";
+            foreach(LineBusStop bs in route)
+            {
+                str+= bs.ToString()+" ";
+            }
+            return (str);
         }
 
         /// <summary>
@@ -380,24 +385,32 @@ namespace dotNet5781_02_3652_2455
             }
             return distanceBetween;
         }
+
+
+        /// <summary>
+        /// Find the traveling time between 2 bus stops
+        /// </summary>
+        /// <param name="lbs1">1 bus stop</param>
+        /// <param name="lbs2">2 bus stop</param>
+        /// <returns>traveling time between 2 bus stops</returns>
         public TimeSpan findTime(LineBusStop lbs1, LineBusStop lbs2)
         {
             TimeSpan timeBetween = new TimeSpan();
             LineBusStop first;
             bool flag = true;
-            foreach (LineBusStop lbs in route)
+            foreach (LineBusStop lbs in route)//go over the route
             {
-                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)
+                if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)) && flag)//find the first bus stop
                 {
                     first = lbs;
                     flag = false;
                 }
-                else
+                else//When The first bus stop is found start to sum the time
                 {
                     if (!flag)
                     {
                         timeBetween = timeBetween + lbs.TimeFromLastBS;
-                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))
+                        if ((lbs.BS.Equals(lbs1.BS) || lbs.BS.Equals(lbs2.BS)))//Continue until the last bus stop is found
                             break;
                     }
                 }
@@ -405,68 +418,103 @@ namespace dotNet5781_02_3652_2455
             return timeBetween;
         }
 
+
+        /// <summary>
+        /// find the sub route between 2 bus stops
+        /// </summary>
+        /// <param name="code1">code of bus stop 1</param>
+        /// <param name="code2">code of bus stop 2</param>
+        /// <returns> the sub route</returns>
         public LineBus SubRoute(int code1, int code2)
         {
             List<LineBusStop> sub=new List<LineBusStop>();
             bool flag = true;
-            foreach (LineBusStop lbs in route)
+            foreach (LineBusStop lbs in route)//go over the route
             {
-                if ((lbs.BS.Code==code1) || (lbs.BS.Code == code2) && flag)
+                if ((lbs.BS.Code==code1) || (lbs.BS.Code == code2) && flag)//find the first bus stop
                 {
                     flag = false;
                     sub.Add(lbs);
                 }
-                else
+                else//Once the first bus stop was found, start picking up the bus stops
                 {
                     if (!flag)
                     {
-                        sub.Add(lbs);
-                        if ((lbs.BS.Code == code1) || (lbs.BS.Code == code2))
+                        sub.Add(lbs);//Collect the station
+                        if ((lbs.BS.Code == code1) || (lbs.BS.Code == code2))//Continue until you reach the last bus stop
                             break;
                     }
                 }
             }
-            return new LineBus(LineNum,sub,travelArea);
+            return new LineBus(LineNum,sub,travelArea);//create a line with the sub bus stop
         }
 
+
+        /// <summary>
+        /// Comparing the lines by total travel time
+        /// </summary>
+        /// <param name="obj">The line for comparison</param>
+        /// <returns>If the parameters are equal returns 0, or 1 \ -1 if one is greater than the other</returns>
         public int CompareTo(object obj)
         {
-            TimeSpan ObjTime= ((LineBus)obj).findTime(((LineBus)obj).FirstStop, ((LineBus)obj).LastStop);
-            TimeSpan MyTime= findTime(FirstStop, LastStop);
-            return (MyTime.CompareTo(ObjTime));
+            TimeSpan ObjTime= ((LineBus)obj).findTime(((LineBus)obj).FirstStop, ((LineBus)obj).LastStop);//Travel time of the other line
+            TimeSpan MyTime= findTime(FirstStop, LastStop);//Travel time of the one line
+            return (MyTime.CompareTo(ObjTime));//Returns the comparison between travel times
         }
 
+        /// <summary>
+        /// Check if the lines are the same
+        /// </summary>
+        /// <param name="obj">The line for comparison</param>
+        /// <returns>return if the lines are the same</returns>
         public override bool Equals(object obj)
         {
-            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop)));
+            return ((((LineBus)obj).LineNum.Equals(LineNum))&& (((LineBus)obj).FirstStop.Equals(FirstStop)) && (((LineBus)obj).LastStop.Equals(LastStop)));//Refund if the line number is the same, and the start and end stations
         }
     }
 
 
     class Program
     {
-        
+        /// <summary>
+        /// Check if a bus stop is on the list
+        /// </summary>
+        /// <param name="listOfBs">List of bus stops</param>
+        /// <param name="code">bus stop's code</param>
+        /// <returns>true if the bus stop is in the list and false if not</returns>
         public static bool search(List<BusStop> listOfBs,int code)
         {
-            foreach(BusStop bs in listOfBs)
+            foreach(BusStop bs in listOfBs)//go over the list 
             {
-                if (bs.Code == code)
+                if (bs.Code == code)//if the bus stop is found
                     return true;
             }
-            return false;
+            return false;//if the bus stop is not found
         }
 
+        /// <summary>
+        /// find how many bus stops that have less than 2 lines traveling through them
+        /// </summary>
+        /// <param name="myBusStops">list of bus stops</param>
+        /// <param name="myCollection">collection of buses</param>
+        /// <returns>count of bus stops that have less than 2 lines traveling through them</returns>
         public static int counter (List<BusStop> myBusStops,CollectionOfBuses myCollection)
         {
             int count = 0;
-            foreach(BusStop bs in myBusStops)
+            foreach(BusStop bs in myBusStops)//go over the bus stops
             {
-                if ((myCollection.WhoIsTravling(bs.Code)).countOfCollection() >= 2)
+                if ((myCollection.WhoIsTravling(bs.Code)).countOfCollection() >= 2)//check how many buses traveling through the bus stop
                     count++;
             }
             return count;
         }
 
+
+        /// <summary>
+        /// add a line to a collection of buses
+        /// </summary>
+        /// <param name="myBuses">the collection</param>
+        /// <param name="myBusStops">list of bus stops</param>
         public static void AddLine(CollectionOfBuses myBuses,List<BusStop> myBusStops)
         {
             string Ans;
@@ -477,23 +525,23 @@ namespace dotNet5781_02_3652_2455
             Console.WriteLine("enter a line number");
             Ans = Console.ReadLine();
             flag = int.TryParse(Ans, out num1);
-            if (!flag)
+            if (!flag)//if the number is invalid
             {
-                throw new AddErrorException("Error code");
+                throw new AddErrorException("Error number");
             }
             else
             {
                 Console.WriteLine("enter the codes of the bus stops, you need to enter at least 2 bus stops,at the end press 0");
                 Ans = Console.ReadLine();
                 flag = int.TryParse(Ans, out num2);
-                while (num2 != 0 || myroute.Count() < 2)
+                while (num2 != 0 || myroute.Count() < 2)//Continue until 0 and until 2 stops have been entered
                 { 
-                    if (!search(myBusStops, num2) || !flag)
+                    if (!search(myBusStops, num2) || !flag)//if the bus stop is not on the list
                         throw new AddErrorException("The bus stop is not on the list");
-                    foreach(BusStop bs in myBusStops)
+                    foreach(BusStop bs in myBusStops)//go over the bus stops and find the bus stop
                     {
                         if(num2==bs.Code)
-                            myroute.Add(new LineBusStop(num2));
+                            myroute.Add(new LineBusStop(num2));//add the  bus stop to the line's route
                     }
                      Console.WriteLine("The next bus stop");
                      Ans = Console.ReadLine();
@@ -506,10 +554,14 @@ namespace dotNet5781_02_3652_2455
                 if (!flag)
                     a = 0;
 
-                myBuses.AddLine(new LineBus(num1, myroute, a));
+                myBuses.AddLine(new LineBus(num1, myroute, a));//add the bus stop to the route
             }
         }
-
+        /// <summary>
+        /// add bus stop to a bus
+        /// </summary>
+        /// <param name="myCollection">collection of buses</param>
+        /// <param name="bs">the bus stop</param>
         static public void AddStopToBus (CollectionOfBuses myCollection, BusStop bs)
         {
             string Ans;
@@ -518,23 +570,28 @@ namespace dotNet5781_02_3652_2455
             Console.WriteLine("choose which line to add it to");
             Ans = Console.ReadLine();
             flag = int.TryParse(Ans, out numofbus);
-            if (numofbus != 0 && flag)
+            if (numofbus != 0 && flag)//if the number is invalid
             {
-                foreach (LineBus lb in myCollection)
+                foreach (LineBus lb in myCollection)//find the bus in the collection
                 {
                     if (lb.LineNum == numofbus)
                     {
                         Console.WriteLine("enter index to add the bus stop");
                         Ans = Console.ReadLine();
                         flag = int.TryParse(Ans, out i);
-                        lb.Add(i, bs);
+                        lb.Add(i, bs);//and the bus stop to the line in  i index
                         return;
                     }
                 }
             }
-            throw new AddErrorException("Error line number");
+            throw new AddErrorException("Error line number");//if the line is not in the collection
         }
 
+
+        /// <summary>
+        /// add bus stop to the list
+        /// </summary>
+        /// <param name="myBusStop">list of bus stops</param>
         static public void AddBusStop(List<BusStop> myBusStop)
         {
             string Ans;
@@ -543,19 +600,24 @@ namespace dotNet5781_02_3652_2455
             Console.WriteLine("enter the code: 000000");
             Ans = Console.ReadLine();
             flag = int.TryParse(Ans, out num1);
-            if (!flag)
+            if (!flag)//if the code is invalid
                 throw new AddErrorException("Error code");
             else
             {
                 Console.WriteLine("enter the address");
                 Ans = Console.ReadLine();
-                if (search(myBusStop, num1))
+                if (search(myBusStop, num1))//if the bus stop is already in the list
                     throw new AddErrorException("There is already a bus stop with the same code");
-                myBusStop.Add(new BusStop(num1, Ans));
+                myBusStop.Add(new BusStop(num1, Ans));//add the bus stop to the list
             }
         }
 
+        /// <summary>
+        /// The possible actions
+        /// </summary>
         enum Choice { Exit, AddLine, AddBusStopToLine , DeleteLine, DeleteStopBus, WhoTraveling, BestTraveling , PrintAll, PrintBusStops}
+
+
         static void Main(string[] args)
         {
             Choice c;
@@ -567,13 +629,14 @@ namespace dotNet5781_02_3652_2455
 
 
             Console.WriteLine("Enter 40 bus stops:");
+            //enter 40 bus stops to the list of bus stop
             for(int i=0;i<40;i++)
             {
                 try
                 {
-                    AddBusStop(listOfBustops);
+                    AddBusStop(listOfBustops);//add bus stop by calling the AddBusStop function
                 }
-                catch(Exception ex)
+                catch(Exception ex)//catch  exception and print it
                 {
                     Console.WriteLine(ex);
                     i--;
@@ -581,27 +644,27 @@ namespace dotNet5781_02_3652_2455
             }
 
             Console.WriteLine("Enter 10 Line buses");
-            for(int i=0;i<10;i++)
+            for(int i=0;i<10;i++)//add 10 line to the collectoin
             {
                 try
                 {
-                    AddLine(myCollection, listOfBustops); 
+                    AddLine(myCollection, listOfBustops); //add line by calling to the AddLine function
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex);//catch  exception and print it
                     i--;
                 }
             }
             
-            foreach(BusStop bs in listOfBustops)
+            foreach(BusStop bs in listOfBustops)//go over the list of the buses and Check whether there are lines at all bus stops
             {
                 try
                 {
-                    if ((myCollection.WhoIsTravling(bs.Code)).countOfCollection() >= 2)
+                    if ((myCollection.WhoIsTravling(bs.Code)).countOfCollection() >= 2)//Count at some bus stops traveling 2 lines
                         count++;
                 }
-                catch(Exception ex)
+                catch(Exception ex)//When there is no line traveling at the station catch the exception 
                 {
                     Console.WriteLine(ex);
                     Console.WriteLine("enter 1 to add it to line or enter another number to delete the bus stop");
@@ -610,33 +673,33 @@ namespace dotNet5781_02_3652_2455
                     {
                         num = int.Parse(Ans);
                         if (num == 1)
-                            AddStopToBus(myCollection, bs);
-                        else
+                            AddStopToBus(myCollection, bs);//and the bus stop to a line
+                        else//if the user want to remove the bus stop
                             throw new AddErrorException();
 
                     }
                     catch (Exception)
                     {
-                        listOfBustops.Remove(bs);
+                        listOfBustops.Remove(bs);//remove the bus stop
                         Console.WriteLine("the bus stop has been deleted");
                     }
                 }
             }
 
-            while ((10-count) != 0)
+            while ((10-count) != 0) //Make sure there are at least 10 bus stops that pass through 2 bus lines
             { 
                 Console.WriteLine("you need to enter more"+(10-count)+"different bus stop to the lines routes" );
-                for(int i=0;i<(10-count);i++)
+                for(int i=0;i<(10-count);i++)//Add the stations to the routes
                 {
                     Console.WriteLine("enter the code bus stop to add ");
                     Ans = Console.ReadLine();
                     try
                     {
                         num = int.Parse(Ans);
-                        foreach (BusStop bs in listOfBustops)
+                        foreach (BusStop bs in listOfBustops)//go over the bu stops and find the bus stop to add
                         {
                             if (bs.Code == num)
-                                AddStopToBus(myCollection, bs);
+                                AddStopToBus(myCollection, bs);//add the bus stop to a line
                         }
                     }
                     catch(Exception)
@@ -644,7 +707,7 @@ namespace dotNet5781_02_3652_2455
                         Console.WriteLine("Error, try again");
                     }
                 }
-                count = counter(listOfBustops, myCollection);
+                count = counter(listOfBustops, myCollection);//Check how many bus stops there are that carry at least 2 buses
             }
             do
             {
@@ -654,73 +717,73 @@ namespace dotNet5781_02_3652_2455
                 flag = Choice.TryParse(Ans, out c);
                 switch (c)
                 {
-                    case Choice.Exit:
+                    case Choice.Exit://to exit
                         {
                             break;
                         }
-                    case Choice.AddLine:
+                    case Choice.AddLine://add line to the collection
                         {
                             AddLine(myCollection, listOfBustops);
                             break;
                         }
-                    case Choice.AddBusStopToLine:
+                    case Choice.AddBusStopToLine://add bus stop to a line
                         {
                             Console.WriteLine("enter the code of the bus stop");
                             Ans = Console.ReadLine();
                             flag = int.TryParse(Ans,out num);
-                            if(!flag)
+                            if(!flag)//error code
                             {
                                 Console.WriteLine("Error");
                                 break;
                             }
                             try
                             {
-                                foreach (BusStop bs in listOfBustops)
+                                foreach (BusStop bs in listOfBustops)//find the bus stop
                                 {
                                     if (bs.Code == num)
                                     {
-                                        AddStopToBus(myCollection, bs);
+                                        AddStopToBus(myCollection, bs);//add the bus stop to a line
                                         flag = false;
                                     }  
                                 }
                                 if (flag)
                                     throw new AddErrorException("the bus stop is not found");
                             }
-                            catch(Exception ex)
+                            catch(Exception ex)//catch Exception and print it
                             {
                                 Console.WriteLine(ex);
                             }
                                 break;
                         }
-                    case Choice.DeleteLine:
+                    case Choice.DeleteLine://delete line
                         {
                             Console.WriteLine("enter line to delete");
                             Ans = Console.ReadLine();
                             flag = int.TryParse(Ans, out num);
-                            if (!flag)
+                            if (!flag)//error number
                             {
                                 Console.WriteLine("Error");
                                 break;
                             }
                             try
                             {
-                                foreach (LineBus lb in myCollection)
+                                foreach (LineBus lb in myCollection)//find the bus
                                 {
                                     if (lb.LineNum == num)
-                                        myCollection.RemoveLine(lb);
+                                        myCollection.RemoveLine(lb);//remove the bus
                                 }
                             }
-                            catch (Exception)
+                            catch (Exception)//catch Exception
                             {
                                 Console.WriteLine();
                             }
-                            foreach (BusStop bs in listOfBustops)
+                            foreach (BusStop bs in listOfBustops)//go over the bus stop and Check if there is a bus stop where there are no buses 
                             {
                                 try
                                 {
                                     (myCollection.WhoIsTravling(bs.Code)).countOfCollection();
                                 }
-                                catch (Exception ex)
+                                catch (Exception ex)//When there are no buses passing through the station an exception is thrown
                                 {
                                     Console.WriteLine(ex);
                                     Console.WriteLine("enter 1 to add it to line or enter another number to delete the bus stop");
@@ -729,21 +792,21 @@ namespace dotNet5781_02_3652_2455
                                     {
                                         num = int.Parse(Ans);
                                         if (num == 1)
-                                            AddStopToBus(myCollection, bs);
+                                            AddStopToBus(myCollection, bs);//add the bus stop to a line
                                         else
                                             throw new AddErrorException();
 
                                     }
                                     catch (Exception)
                                     {
-                                        listOfBustops.Remove(bs);
+                                        listOfBustops.Remove(bs);//delete the bus stop
                                         Console.WriteLine("the bus stop has been deleted");
                                     }
                                 }
                             }
                                 break;
                         }
-                    case Choice.DeleteStopBus:
+                    case Choice.DeleteStopBus://delete bus stop 
                         {
                             Console.WriteLine("enter line number");
                             Ans = Console.ReadLine();
@@ -755,25 +818,24 @@ namespace dotNet5781_02_3652_2455
                             }
                             try
                             {
-                                foreach (LineBus lb in myCollection)
+                                foreach (LineBus lb in myCollection)//go over the collection
                                 {
-                                    if (lb.LineNum == num)
+                                    if (lb.LineNum == num)//when the line is found
                                     {
                                         Console.WriteLine("enter code of bus stop");
                                         Ans = Console.ReadLine();
                                         flag = int.TryParse(Ans, out num2);
                                         try
                                         {
-                                            lb.delete(num2);
-                                            if(myCollection.WhoIsTravling(num2).countOfCollection ()== 0)
-                                            {
-                                                foreach (BusStop bs in listOfBustops)
-                                                    if (bs.Code == num2)
-                                                        listOfBustops.Remove(bs);
-                                            }
+                                            lb.delete(num2);//delte the bus stop
+                                            myCollection.WhoIsTravling(num2).countOfCollection();//Check if there are any buses left at the bus stop
+
                                         }
-                                        catch(Exception ex)
+                                        catch(Exception ex)//When there were no buses left at the bus stop delete it
                                         {
+                                            foreach (BusStop bs in listOfBustops)
+                                                if (bs.Code == num2)
+                                                    listOfBustops.Remove(bs);
                                             Console.WriteLine(ex);
                                         }
                                     } 
@@ -785,7 +847,7 @@ namespace dotNet5781_02_3652_2455
                             }
                             break;
                         }
-                    case Choice.WhoTraveling:
+                    case Choice.WhoTraveling://Find the buses that travel at the bus stop
                         {
                             Console.WriteLine("enter code number");
                             Ans = Console.ReadLine();
@@ -797,8 +859,8 @@ namespace dotNet5781_02_3652_2455
                             }
                             try
                             {
-                                CollectionOfBuses MyLine = myCollection.WhoIsTravling(num);
-                                foreach(LineBus lb in MyLine)
+                                CollectionOfBuses MyLine = myCollection.WhoIsTravling(num);//Find the buses that travel at the bus stop
+                                foreach (LineBus lb in MyLine)//print the lines that traveling on the bus stop
                                     Console.WriteLine(lb);
                             }
                             catch(Exception ex)
@@ -807,7 +869,7 @@ namespace dotNet5781_02_3652_2455
                             }
                                 break;
                         }
-                    case Choice.BestTraveling:
+                    case Choice.BestTraveling://Find travel between 2 bus stops, by travel time
                         {
                             Console.WriteLine("enter two codes of bus stops (Enter between them)");
                             Ans = Console.ReadLine();
@@ -827,14 +889,14 @@ namespace dotNet5781_02_3652_2455
                             try
                             {
                                 CollectionOfBuses myc = new CollectionOfBuses();
-                                foreach (LineBus lb in myCollection)
+                                foreach (LineBus lb in myCollection)//Go over the collection
                                 {
-                                    LineBus subbus = lb.SubRoute(num,num2);
+                                    LineBus subbus = lb.SubRoute(num,num2);//Find the subway between the 2 stations
                                     if (subbus.Route.Count != 0)
-                                         myc.AddLine(subbus);
+                                         myc.AddLine(subbus);//When the bus is not traveling at these bus stops
                                 }
-                                myc.sort();
-                                myc.Print();
+                                myc.sort();//Sort the buses by travel times between stations
+                                myc.Print();//print the buses
                             }
                             catch(Exception)
                             {
@@ -843,19 +905,19 @@ namespace dotNet5781_02_3652_2455
                                 
                             break;
                         }
-                    case Choice.PrintAll:
+                    case Choice.PrintAll://print all of the buses
                         {
                             myCollection.Print();
                             break;
                         }
-                    case Choice.PrintBusStops:
+                    case Choice.PrintBusStops://print all the bus stops and the line that traveling  through them
                         {
                             try
                             {
-                                foreach (BusStop bs in listOfBustops)
+                                foreach (BusStop bs in listOfBustops)//go over the bus stops
                                 {
                                     Console.WriteLine(bs + ": ");
-                                    (myCollection.WhoIsTravling(bs.Code)).Print();
+                                    (myCollection.WhoIsTravling(bs.Code)).Print();//find the lines that traveling on this bus stops
                                     Console.WriteLine();
                                 }
                             }
@@ -866,7 +928,7 @@ namespace dotNet5781_02_3652_2455
                             break;
                         }
                     default:
-                        Console.WriteLine("bay");
+                        Console.WriteLine("error choice");
                         break;
                 }
             }
@@ -880,4 +942,340 @@ namespace dotNet5781_02_3652_2455
 
 
 
+
+/*
+ * 
+ * Enter 40 bus stops:
+enter the code: 000000
+1
+enter the address
+1
+enter the code: 000000
+2
+enter the address
+2
+enter the code: 000000
+3
+enter the address
+3
+enter the code: 000000
+4
+enter the address
+4
+enter the code: 000000
+5
+enter the address
+5
+enter the code: 000000
+6
+enter the address
+6
+enter the code: 000000
+7
+enter the address
+7
+enter the code: 000000
+8
+enter the address
+8
+enter the code: 000000
+9
+enter the address
+9
+enter the code: 000000
+10
+enter the address
+10
+Enter 10 Line buses
+enter a line number
+111
+enter the codes of the bus stops, you need to enter at least 2 bus stops,at the end press 0
+1
+The next bus stop
+2
+The next bus stop
+3
+The next bus stop
+4
+The next bus stop
+5
+The next bus stop
+6
+The next bus stop
+7
+The next bus stop
+8
+The next bus stop
+9
+The next bus stop
+10
+The next bus stop
+0
+enter the area of the bus: General, North, South, Center, Jerusalem
+1
+enter a line number
+222
+enter the codes of the bus stops, you need to enter at least 2 bus stops,at the end press 0
+2
+The next bus stop
+4
+The next bus stop
+6
+The next bus stop
+8
+The next bus stop
+10
+The next bus stop
+0
+enter the area of the bus: General, North, South, Center, Jerusalem
+2
+enter a line number
+333
+enter the codes of the bus stops, you need to enter at least 2 bus stops,at the end press 0
+3
+The next bus stop
+6
+The next bus stop
+9
+The next bus stop
+2
+The next bus stop
+5
+The next bus stop
+8
+The next bus stop
+1
+The next bus stop
+4
+The next bus stop
+7
+The next bus stop
+10
+The next bus stop
+0
+enter the area of the bus: General, North, South, Center, Jerusalem
+3
+enter a line number
+444
+enter the codes of the bus stops, you need to enter at least 2 bus stops,at the end press 0
+10
+The next bus stop
+9
+The next bus stop
+8
+The next bus stop
+7
+The next bus stop
+6
+The next bus stop
+5
+The next bus stop
+4
+The next bus stop
+3
+The next bus stop
+2
+The next bus stop
+1
+The next bus stop
+0
+enter the area of the bus: General, North, South, Center, Jerusalem
+4
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+7
+number of bus:111
+number of bus:222
+number of bus:333
+number of bus:444
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+8
+Bus Station Code:1,31.3943294357482°N34.578767679389°E:
+number of bus:111
+number of bus:333
+number of bus:444
+
+Bus Station Code:2,32.4201529719029°N34.8299576473096°E:
+number of bus:111
+number of bus:222
+number of bus:333
+number of bus:444
+
+Bus Station Code:3,32.9207461224965°N34.8628419098271°E:
+number of bus:111
+number of bus:333
+number of bus:444
+
+Bus Station Code:4,33.1479890053384°N34.5502472770634°E:
+number of bus:111
+number of bus:222
+number of bus:333
+number of bus:444
+
+Bus Station Code:5,31.9464107827034°N35.3981449359554°E:
+number of bus:111
+number of bus:333
+number of bus:444
+
+Bus Station Code:6,31.3580303151431°N34.8804138339033°E:
+number of bus:111
+number of bus:222
+number of bus:333
+number of bus:444
+
+Bus Station Code:7,32.3666311016617°N35.1590332391015°E:
+number of bus:111
+number of bus:333
+number of bus:444
+
+Bus Station Code:8,31.6523105751967°N34.7048887319886°E:
+number of bus:111
+number of bus:222
+number of bus:333
+number of bus:444
+
+Bus Station Code:9,31.1937574617536°N35.1612151691975°E:
+number of bus:111
+number of bus:333
+number of bus:444
+
+Bus Station Code:10,32.3323656549362°N34.3451108077751°E:
+number of bus:111
+number of bus:222
+number of bus:333
+number of bus:444
+
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+6
+enter two codes of bus stops (Enter between them)
+3
+666
+
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+6
+enter two codes of bus stops (Enter between them)
+3
+6
+number of bus:333
+number of bus:222
+number of bus:111
+number of bus:444
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+5
+enter code number
+3
+Line number:111 Area: North Route: 1 2 3 4 5 6 7 8 9 10
+Line number:333 Area: Center Route: 3 6 9 2 5 8 1 4 7 10
+Line number:444 Area: Jerusalem Route: 10 9 8 7 6 5 4 3 2 1
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+3
+enter line to delete
+333
+
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+7
+number of bus:111
+number of bus:222
+number of bus:444
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+6
+enter two codes of bus stops (Enter between them)
+3
+8
+number of bus:222
+number of bus:111
+number of bus:444
+enter your choice:
+ 0 to Exit
+ 1 to AddLine
+ 2 to AddBusStopToLine
+ 3 to DeleteLine
+ 4 to DeleteStopBus
+ 5 to  WhoTraveling
+ 6 to BestTraveling
+ 7 to PrintAll
+ 8 to PrintBusStops
+
+0
+
+*/
 

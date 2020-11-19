@@ -131,11 +131,6 @@ namespace dotNet5781_02_3652_2455
                 if (ListOfBuses[i].LineNum == num)//if the line is found
                     countBuses++;
             }
-        //    foreach (LineBus lb in ListOfBuses)//go over the list
-        //    {
-        //        if (lb.LineNum == num)//if the line is found
-         //           countBuses++;
-        //    }
             return countBuses;
         }
 
@@ -149,6 +144,10 @@ namespace dotNet5781_02_3652_2455
                 yield return ListOfBuses[i];
         }
 
+
+        /// <summary>
+        /// pritn all the buses
+        /// </summary>
         public void Print ()
         {
             foreach(LineBus lb in ListOfBuses)
@@ -157,6 +156,10 @@ namespace dotNet5781_02_3652_2455
             }
         }
 
+        /// <summary>
+        /// the count of the collection
+        /// </summary>
+        /// <returns>the count pf the collection</returns>
         public int countOfCollection ()
         {
             return ListOfBuses.Count;
