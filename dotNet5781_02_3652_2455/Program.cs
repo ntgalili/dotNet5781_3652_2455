@@ -11,7 +11,7 @@ namespace dotNet5781_02_3652_2455
     /// <summary>
     /// the class describes a bus stop 
     /// </summary>
-    class BusStop
+    public class BusStop
     {
         protected int code; //the bus stop code
         /// <summary>
@@ -81,7 +81,7 @@ namespace dotNet5781_02_3652_2455
         /// <returns>string</returns>
         override public string ToString()
         {
-            return ("Bus Station Code:" + Code + "," + Latitude + "°N" + Longitude + "°E");
+            return ("Bus Station Code: " + Code + "    " + Latitude + "°N   " + Longitude + "°E   ");
         }
 
         /// <summary>
@@ -103,8 +103,9 @@ namespace dotNet5781_02_3652_2455
     /// <summary>
     /// the class describes a line bus stop
     /// </summary>
-    class LineBusStop
+    public class LineBusStop
     {
+        
         BusStop bs;
         /// <summary>
         /// bs property
@@ -123,6 +124,9 @@ namespace dotNet5781_02_3652_2455
         /// </summary>
         public TimeSpan TimeFromLastBS { get => timeFromLastBS; private set => timeFromLastBS = value; }
 
+        private static Random r = new Random();
+
+
         /// <summary>
         /// c-tor
         /// </summary>
@@ -131,7 +135,7 @@ namespace dotNet5781_02_3652_2455
         {
             bs = new BusStop(mycode, myaddress);
 
-            Random r = new Random(DateTime.Now.Millisecond);
+        
             distance = r.NextDouble() * (100000 - 500) + 500; //Random distance
             TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);//Time between stations as a function of distance
         }
@@ -143,7 +147,7 @@ namespace dotNet5781_02_3652_2455
         public LineBusStop (BusStop mybs)
         {
             bs = mybs;
-            Random r = new Random(DateTime.Now.Millisecond);
+            
             distance = r.NextDouble() * (100000 - 500) + 500; //Random distance
             TimeFromLastBS = new TimeSpan(((int)(distance / 1300) / 60), ((int)(distance / 1300) % 60), 0);//Time between stations as a function of distance
         }
@@ -154,7 +158,7 @@ namespace dotNet5781_02_3652_2455
         /// <returns>string of the code of the bus stop</returns>
         override public string ToString()
         {
-            return bs.Code.ToString();
+            return (bs.ToString()+ TimeFromLastBS.ToString());
         }
 
 
@@ -176,13 +180,13 @@ namespace dotNet5781_02_3652_2455
     /// <summary>
     /// enum To define a line activity area
     /// </summary>
-    enum Area { General, North, South, Center, Jerusalem };
+    public enum Area { General, North, South, Center, Jerusalem };
 
    
     /// <summary>
     /// class for setting up a bus line
     /// </summary>
-    class LineBus : IComparable
+    public class LineBus : IComparable
     {
 
         Area travelArea;
@@ -198,7 +202,7 @@ namespace dotNet5781_02_3652_2455
         /// <summary>
         /// route property
         /// </summary>
-        internal List<LineBusStop> Route
+        public List<LineBusStop> Route
         {
             get => route;
             set

@@ -11,7 +11,7 @@ namespace dotNet5781_02_3652_2455
     /// <summary>
     /// A class that defines a collection of bus lines
     /// </summary>
-    internal class CollectionOfBuses : IEnumerable
+    public class CollectionOfBuses : IEnumerable
     {
         private List<LineBus> ListOfBuses;
         public CollectionOfBuses()

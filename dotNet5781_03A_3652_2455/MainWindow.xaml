@@ -12,18 +12,19 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
-        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" VerticalAlignment="Stretch" Width="auto">
+        <Grid Name="UpGrid" HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" VerticalAlignment="Stretch" Width="auto" DataContext="currentDisplayBusLine">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="43.6,10,34.8,0" VerticalAlignment="Stretch" Width="120" RenderTransformOrigin="0.471,0.163"/>
-            <TextBox Name ="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Margin="9.8,0,9.6,0" TextWrapping="Wrap" Text="{Binding Path=Area, Mode=OneWay}" VerticalAlignment="Stretch"/>
-            <Label Content="Bus Line Number:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="68" Width="188" FontFamily="Snap ITC" FontSize="18"/>
+            <ComboBox Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="9.6,8,133.8,12" VerticalAlignment="Stretch" RenderTransformOrigin="0.471,0.163" SelectionChanged="cbBusLines_SelectionChanged"/>
+            <TextBox Name ="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Margin="9.8,0,9.6,0" TextWrapping="Wrap" Text="{Binding Path=TravelArea, Mode=OneWay}" VerticalAlignment="Stretch"/>
+            <Label Content="Bus Line Number:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Snap ITC" FontSize="18" Cursor="" Margin="7,13,8.4,10"/>
             <Label Content="Area" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0.2,0,0,0" VerticalAlignment="Stretch" Width="198" Height="68" FontFamily="Snap ITC" FontSize="48"/>
         </Grid>
+        <ListBox Name="lbBusLineStations" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="0,0,-0.4,0.4" Grid.Row="1" VerticalAlignment="Stretch" DataContext="currentDisplayBusLine.Route"/>
 
     </Grid>
 
