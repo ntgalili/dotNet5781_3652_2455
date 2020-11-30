@@ -8,6 +8,12 @@
         Title="My Bus Application" Height="640" Width="800" Icon="bus.png">
 
     <Grid Name="MainGrid">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFF3700" Offset="0"/>
+                <GradientStop Color="#FFF4FF00" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="400*"/>
@@ -20,7 +26,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
             <ComboBox Name="cbBusLines" Grid.Column="1" HorizontalAlignment="Stretch" Margin="9.6,8,133.8,12" VerticalAlignment="Stretch" RenderTransformOrigin="0.471,0.163" SelectionChanged="cbBusLines_SelectionChanged"/>
-            <TextBox Name ="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Margin="9.8,0,9.6,0" TextWrapping="Wrap" Text="{Binding Path=TravelArea, Mode=OneWay}" VerticalAlignment="Stretch"/>
+            <TextBox Name ="tbArea" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4.8,0,9.6,0" TextWrapping="Wrap" Text="{Binding Path=TravelArea, Mode=OneWay}" VerticalAlignment="Stretch"/>
             <Label Content="Bus Line Number:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Snap ITC" FontSize="18" Cursor="" Margin="7,13,8.4,10"/>
             <Label Content="Area" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0.2,0,0,0" VerticalAlignment="Stretch" Width="198" Height="68" FontFamily="Snap ITC" FontSize="48"/>
         </Grid>

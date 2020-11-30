@@ -100,7 +100,7 @@ namespace dotNet5781_03A_3652_2455
         /// <param name="e">Details</param>
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowLineBus((cbBusLines.SelectedValue as LineBus).LineNum); //
+            ShowLineBus((cbBusLines.SelectedValue as LineBus).LineNum); 
         }
         /// <summary>
         /// method that show the bus

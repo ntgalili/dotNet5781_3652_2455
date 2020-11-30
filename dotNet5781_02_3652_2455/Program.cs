@@ -81,7 +81,7 @@ namespace dotNet5781_02_3652_2455
         /// <returns>string</returns>
         override public string ToString()
         {
-            return ("Bus Station Code: " + Code + "    " + Latitude + "°N   " + Longitude + "°E   ");
+            return ("Bus Station Code: " + Code + "    " + Latitude + "°N:   " + Longitude + "°E:   ");
         }
 
         /// <summary>
