@@ -94,7 +94,7 @@ namespace dotNet5781_03A_3652_2455
             cbBusLines.SelectedIndex = 0;
         }
         /// <summary>
-        /// Event for choosing a bus line from the collection of buses
+        /// Event for choosing a bus line from the collection of buses.
         /// </summary>
         /// <param name="sender">line of bus</param>
         /// <param name="e">Details</param>
