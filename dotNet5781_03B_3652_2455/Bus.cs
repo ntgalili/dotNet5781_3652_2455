@@ -11,7 +11,7 @@ namespace dotNet5781_03B_3652_2455
     /// <summary>
     /// Bus definition class
     /// </summary>
-    class Bus
+    public class Bus
     {
 
         private DateTime startTime;

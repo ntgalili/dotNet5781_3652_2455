@@ -82,13 +82,14 @@ namespace dotNet5781_03B_3652_2455
                 BusesCollection.myBuses[r.Next(0, 10)].BusService((ToDo)1);
                 BusesCollection.myBuses[r.Next(0, 10)].TotalTravel+=20000;
             }
-            busDataGrid.DataContext = BusesCollection.myBuses;
-            busDataGrid.IsReadOnly = true;
+            ListOfBuses.DataContext = BusesCollection.myBuses;
+           // ListOfBuses.IsReadOnly = true;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddBus AddBusWindow = new AddBus();
             AddBusWindow.ShowDialog();
         }
+
     }
 }

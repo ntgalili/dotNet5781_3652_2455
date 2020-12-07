@@ -1,0 +1,44 @@
+﻿<Window x:Class="dotNet5781_03B_3652_2455.viewBusDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_3652_2455"
+        mc:Ignorable="d"
+        Title="viewBusDetails" Height="392.4" Width="426.8">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="737*"/>
+            <ColumnDefinition Width="57*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="grid1" Margin="108,39,45.4,0" VerticalAlignment="Top" Height="214" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Date Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <DatePicker x:Name="dateOfTestDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" SelectedDate="{Binding DateOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <Label Content="Fuel:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="fuelTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Fuel, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="License Plate:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="licensePlateTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding LicensePlate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Start Time:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <DatePicker x:Name="startTimeDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <Label Content="Total Travel:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <TextBox x:Name="totalTravelTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding TotalTravel, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Travel Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <TextBox x:Name="travelOfTestTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding TravelOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Button Content="Test" HorizontalAlignment="Left" Margin="97,302,0,0" VerticalAlignment="Top" Width="93" Click="Button_Click" Height="29"/>
+        <Button Content="Refueling" HorizontalAlignment="Left" Margin="251,302,0,0" VerticalAlignment="Top" Width="94" Height="29"/>
+
+    </Grid>
+</Window>
