@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_3652_2455"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="800" >
+
+    <Grid >
+        <DataGrid x:Name="busDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="103,24,85.6,148" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="licensePlateColumn" Binding="{Binding LicensePlate}" Header="License Plate" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="startTimeColumn" Header="Start Time" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="totalTravelColumn" Binding="{Binding TotalTravel}" Header="Total Travel" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="fuelColumn" Binding="{Binding Fuel}" Header="Fuel" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="dateOfTestColumn" Header="Date Of Test" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="travelOfTestColumn" Binding="{Binding TravelOfTest}" Header="Travel Of Test" Width="SizeToHeader"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Add Bus" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="152" Height="44" Click="Button_Click"/>
+
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,25 @@ using System.Windows.Shapes;
 
 namespace dotNet5781_03B_3652_2455
 {
+    public static class BusesCollection
+    {
+        internal static ObservableCollection<Bus> myBuses = new ObservableCollection<Bus>();
+        internal static void addBus(Bus myBus)
+        {
+
+            foreach (Bus b in BusesCollection.myBuses)
+            {
+                if (b.LicensePlate == myBus.LicensePlate)
+                    throw new AddErrorException("There is a Bus With same License Plate");
+            }
+            BusesCollection.myBuses.Add(myBus);
+        }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Bus> myBuses = new List<Bus>();
         static Random r = new Random();
 
         /// <summary>
@@ -42,25 +56,13 @@ namespace dotNet5781_03B_3652_2455
             return new Bus(num, date);
         }
 
-
-        void addBus(Bus myBus)
-        {
-            
-            foreach(Bus b in myBuses)
-            {
-                if (b.LicensePlate == myBus.LicensePlate)
-                    throw new AddErrorException("There is a Bus With same License Plate");
-            }
-            myBuses.Add(myBus);
-        }
-
         void creatMyBuses()
         {
             for (int i = 0; i < 10; i++)
             {
                 try
                 {
-                    addBus(newBus());
+                    BusesCollection.addBus(newBus());
 
                 }
                 catch (Exception)
@@ -70,14 +72,23 @@ namespace dotNet5781_03B_3652_2455
             }
         }
 
-
         public MainWindow()
         {
             InitializeComponent();
-      
-
-
-
+            creatMyBuses();
+            for(int i=0;i<3;i++)
+            {
+                BusesCollection.myBuses[r.Next(0, 10)].BusService((ToDo)0);
+                BusesCollection.myBuses[r.Next(0, 10)].BusService((ToDo)1);
+                BusesCollection.myBuses[r.Next(0, 10)].TotalTravel+=20000;
+            }
+            busDataGrid.DataContext = BusesCollection.myBuses;
+            busDataGrid.IsReadOnly = true;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddBus AddBusWindow = new AddBus();
+            AddBusWindow.ShowDialog();
         }
     }
 }
