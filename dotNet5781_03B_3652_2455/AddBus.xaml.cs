@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace dotNet5781_03B_3652_2455
 {
     /// <summary>
-    /// Interaction logic for AddBus.xaml.
+    /// Interaction logic for AddBus.xaml
     /// </summary>
     public partial class AddBus : Window
     {
