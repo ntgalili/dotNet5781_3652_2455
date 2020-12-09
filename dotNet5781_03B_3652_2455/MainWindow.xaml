@@ -21,15 +21,15 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="License Plate: "/>
                 <TextBlock Grid.Column="1" Text="{Binding Path=LicensePlate}"/>
-                <Button Grid.Column="2" Content="Traveling" Margin="10,10,10,10"/>
-                <Button Grid.Column="3" Content="Refueling" Margin="10,10,10,10"/>
+                <Button x:Name="Traveling" Grid.Column="2" Content="Traveling" Margin="10,10,10,10" Click="Traveling_Click"/>
+                <Button x:Name="Refueling" Grid.Column="3" Content="Refueling" Margin="10,10,10,10"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
     <Grid >
 
         <Button Content="Add Bus" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="152" Height="44" Click="Button_Click"/>
-        <ListBox x:Name="ListOfBuses"  ItemsSource="{Binding}" ItemTemplate="{StaticResource OneBusTemplate}" HorizontalAlignment="Left" Height="152" Margin="96,63,0,0" VerticalAlignment="Top" Width="663"/>
+        <ListBox x:Name="ListOfBuses"  ItemsSource="{Binding}" ItemTemplate="{StaticResource OneBusTemplate}" HorizontalAlignment="Left" Height="250" Margin="70,33,0,0" VerticalAlignment="Top" Width="663"/>
 
     </Grid>
 </Window>

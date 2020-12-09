@@ -91,5 +91,11 @@ namespace dotNet5781_03B_3652_2455
             AddBusWindow.ShowDialog();
         }
 
+        private void Traveling_Click(object sender, RoutedEventArgs e)
+        {
+            Bus s = (sender as Button).DataContext as Bus;
+            MakeingTravel making = new MakeingTravel(s);
+            making.ShowDialog();
+        }
     }
 }
