@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +24,6 @@ namespace dotNet5781_03B_3652_2455
         Bus myBus;
         BackgroundWorker TestWorker;
         BackgroundWorker RefuelingWorker;
-        //MessageBox message=new MessageBox(");
         public viewBusDetails(Bus B)
         {
             InitializeComponent();
@@ -39,25 +39,52 @@ namespace dotNet5781_03B_3652_2455
             TestWorker.WorkerSupportsCancellation = true;
 
 
+            RefuelingWorker = new BackgroundWorker();
+            RefuelingWorker.DoWork += myBus.BusRefueling;
+            RefuelingWorker.ProgressChanged += RefuelingWorker_ProgressChanged;
+            RefuelingWorker.RunWorkerCompleted += RefuelingWorker_RunWorkerCompleted;
+            RefuelingWorker.WorkerReportsProgress = true;
+            RefuelingWorker.WorkerSupportsCancellation = true;
+        }
 
-            // RefuelingWorker.DoWork += myBus.BusRefueling;
+        private void RefuelingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LabelProgress.DataContext = "succseded";
+            Thread.Sleep(2000);
+            this.Close();
+        }
 
+        private void RefuelingWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int progress = e.ProgressPercentage;
+            LabelProgress.Content = (progress) + " Liters";
         }
 
         private void TestWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            LabelProgress.DataContext = "succseded";
+            Thread.Sleep(2000);
             this.Close();
         }
 
         private void TestWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int progress = e.ProgressPercentage;
-             .Show(progress + "% completed");
+            LabelProgress.Content = "Tere are " +( 24-progress) + " hours left";
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             TestWorker.RunWorkerAsync();
+            TestButton.IsEnabled = false;
+            RefuelingButton.IsEnabled = false;
+        }
+
+        private void RefuelingButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefuelingWorker.RunWorkerAsync();
+            TestButton.IsEnabled = false;
+            RefuelingButton.IsEnabled = false;
         }
     }
 }

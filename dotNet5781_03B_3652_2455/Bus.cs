@@ -109,10 +109,11 @@ namespace dotNet5781_03B_3652_2455
         {
 
             this.BusStatus = status.serviced;
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i < 25; i++)
             {
-                Thread.Sleep(14400);
-                (sender as BackgroundWorker).ReportProgress(i * 10);
+                (sender as BackgroundWorker).ReportProgress(i);
+                Thread.Sleep(6000);
+                
             }
             DateOfTest = DateTime.Now;
             TravelOfTest = TotalTravel;
@@ -124,12 +125,13 @@ namespace dotNet5781_03B_3652_2455
 
         public void BusRefueling(object sender, DoWorkEventArgs e)
         {
-            this.busStatus = status.refueling;
-            for (int i = 0; i < 1200; i++)
+            this.BusStatus = status.refueling;
+            for (int i = 1; i <= 1200; i++)
             {
                 Fuel = i;
-                Thread.Sleep(10);
                 (sender as BackgroundWorker).ReportProgress(i);
+                Thread.Sleep(10);
+                
             }
 
             this.busStatus = 0;

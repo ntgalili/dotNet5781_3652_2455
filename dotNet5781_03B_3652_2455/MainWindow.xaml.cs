@@ -104,6 +104,7 @@ namespace dotNet5781_03B_3652_2455
 
             viewBusDetails myDetails = new viewBusDetails(((sender as ListBox).SelectedItem as Bus));
             myDetails.ShowDialog();
+            
         }
     }
 }
