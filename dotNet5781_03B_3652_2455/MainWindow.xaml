@@ -29,7 +29,7 @@
     <Grid >
 
         <Button Content="Add Bus" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="152" Height="44" Click="Button_Click"/>
-        <ListBox x:Name="ListOfBuses"  ItemsSource="{Binding}" ItemTemplate="{StaticResource OneBusTemplate}" HorizontalAlignment="Left" Height="250" Margin="70,33,0,0" VerticalAlignment="Top" Width="663"/>
+        <ListBox x:Name="ListOfBuses"  ItemsSource="{Binding}" ItemTemplate="{StaticResource OneBusTemplate}" HorizontalAlignment="Left" Height="250" Margin="70,33,0,0" VerticalAlignment="Top" Width="663" MouseDoubleClick="ListOfBuses_MouseDoubleClick"/>
 
     </Grid>
 </Window>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace dotNet5781_03B_3652_2455
@@ -18,18 +20,18 @@ namespace dotNet5781_03B_3652_2455
         public DateTime StartTime { get => startTime; set => startTime = value; }
 
         private long licensePlate;
-        public long LicensePlate 
-        { 
-            get => licensePlate; 
+        public long LicensePlate
+        {
+            get => licensePlate;
             set
             {
-                if(StartTime.Year>=2018)
+                if (StartTime.Year >= 2018)
                 {
-                    while(value < 10000000)
+                    while (value < 10000000)
                     {
                         value = value * 10;
                     }
-                    licensePlate = value % 100000000; 
+                    licensePlate = value % 100000000;
 
                 }
                 if (StartTime.Year < 2018)
@@ -56,9 +58,9 @@ namespace dotNet5781_03B_3652_2455
         public float Fuel { get => fuel; set => fuel = value; }
 
         private status busStatus;
-        private status BusStatus { get => busStatus; set => busStatus = value; }
+        public status BusStatus { get => busStatus; set => busStatus = value; }
 
-        
+
         /// <summary>
         /// c-tor
         /// </summary>
@@ -72,7 +74,7 @@ namespace dotNet5781_03B_3652_2455
             TravelOfTest = 0;
             TotalTravel = 0;
             Fuel = 0;
-            
+
         }
         public Bus() { }
         /// <summary>
@@ -103,14 +105,33 @@ namespace dotNet5781_03B_3652_2455
         /// The method performs services for the bus
         /// </summary>
         /// <param name="ToDoSomething">the service</param>
-        public void BusService(ToDo ToDoSomething)
+        public void BusTest(object sender, DoWorkEventArgs e)
         {
-            if (ToDoSomething == 0)
+
+            this.BusStatus = status.serviced;
+            for (int i = 0; i < 10; i++)
             {
-                DateOfTest = DateTime.Now;
-                TravelOfTest = TotalTravel;
+                Thread.Sleep(14400);
+                (sender as BackgroundWorker).ReportProgress(i * 10);
             }
+            DateOfTest = DateTime.Now;
+            TravelOfTest = TotalTravel;
             Fuel = 1200;
+            this.busStatus = 0;
+
+
+        }
+
+        public void BusRefueling(object sender, DoWorkEventArgs e)
+        {
+            this.busStatus = status.refueling;
+            for (int i = 0; i < 1200; i++)
+            {
+                Fuel = i;
+                Thread.Sleep(10);
+                (sender as BackgroundWorker).ReportProgress(i);
+            }
+
             this.busStatus = 0;
         }
     }

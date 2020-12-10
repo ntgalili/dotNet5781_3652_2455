@@ -78,8 +78,8 @@ namespace dotNet5781_03B_3652_2455
             creatMyBuses();
             for(int i=0;i<3;i++)
             {
-                BusesCollection.myBuses[r.Next(0, 10)].BusService((ToDo)0);
-                BusesCollection.myBuses[r.Next(0, 10)].BusService((ToDo)1);
+                BusesCollection.myBuses[r.Next(0, 10)].DateOfTest=DateTime.Now;
+                BusesCollection.myBuses[r.Next(0, 10)].Fuel=1200;
                 BusesCollection.myBuses[r.Next(0, 10)].TotalTravel+=20000;
             }
             ListOfBuses.DataContext = BusesCollection.myBuses;
@@ -96,6 +96,14 @@ namespace dotNet5781_03B_3652_2455
             Bus s = (sender as Button).DataContext as Bus;
             MakeingTravel making = new MakeingTravel(s);
             making.ShowDialog();
+        }
+
+        private void ListOfBuses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+
+            viewBusDetails myDetails = new viewBusDetails(((sender as ListBox).SelectedItem as Bus));
+            myDetails.ShowDialog();
         }
     }
 }

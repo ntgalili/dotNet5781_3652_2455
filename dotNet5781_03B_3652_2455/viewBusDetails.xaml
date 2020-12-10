@@ -37,8 +37,8 @@
             <Label Content="Travel Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
             <TextBox x:Name="travelOfTestTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding TravelOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Button Content="Test" HorizontalAlignment="Left" Margin="97,302,0,0" VerticalAlignment="Top" Width="93" Click="Button_Click" Height="29"/>
-        <Button Content="Refueling" HorizontalAlignment="Left" Margin="251,302,0,0" VerticalAlignment="Top" Width="94" Height="29"/>
+        <Button Name="TestButton"  Content="Test" HorizontalAlignment="Left" Margin="97,302,0,0" VerticalAlignment="Top" Width="93" Height="29" Click="TestButton_Click"/>
+        <Button Name="RefuelingButton" Content="Refueling" HorizontalAlignment="Left" Margin="251,302,0,0" VerticalAlignment="Top" Width="94" Height="29"/>
 
     </Grid>
 </Window>
