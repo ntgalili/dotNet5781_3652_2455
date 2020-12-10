@@ -34,8 +34,8 @@
             <TextBox x:Name="travelOfTestTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding TravelOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Label Content="enter the travel distance (KM):" HorizontalAlignment="Left" Margin="360,77,0,0" VerticalAlignment="Top" Height="60" Width="340" FontFamily="Bodoni MT Black"/>
-        <TextBox x:Name="km" HorizontalAlignment="Left" Height="80" Margin="360,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326"/>
-        <Button x:Name="ButtonDrive" Content="drive" HorizontalAlignment="Left" Margin="376,318,0,0" VerticalAlignment="Top" Width="89" Height="49" Click="ButtonDrive_Click"/>
+        <TextBox x:Name="km" HorizontalAlignment="Left" Height="80" Margin="360,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" PreviewKeyDown="km_PreviewKeyDown"/>
+        <Label x:Name="resultLabel" Content="0 km" HorizontalAlignment="Left" Margin="360,299,0,0" VerticalAlignment="Top" Height="52" Width="151"/>
 
     </Grid>
 </Window>

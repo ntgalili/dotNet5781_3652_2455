@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.Threading;
 
 namespace dotNet5781_03B_3652_2455
 {
@@ -21,6 +22,7 @@ namespace dotNet5781_03B_3652_2455
 
     public partial class MakeingTravel : Window
     {
+        int kilometer;
         Bus myBus;
         BackgroundWorker travelWorker;
         public MakeingTravel(Bus B)
@@ -28,44 +30,64 @@ namespace dotNet5781_03B_3652_2455
             InitializeComponent();
             myBus = B;
             grid1.DataContext = B;
+            grid1.IsEnabled = false;
             travelWorker = new BackgroundWorker();
             travelWorker.DoWork += travelWorker_DoWork;
             travelWorker.ProgressChanged += travelWorker_ProgressChanged;
             travelWorker.RunWorkerCompleted += travelWorker_RunWorkerCompleted;
-        }
-        private void travelWorker_DoWork (object sender,DoWorkEventArgs e)
-        {
-            //object obj = e.Argument;
-            //travelWorker.ReportProgress
-            e.Result = "finished ok";
-        }
-        private void travelWorker_ProgressChanged (object sender, ProgressChangedEventArgs e)
-        {
 
         }
-        private void travelWorker_RunWorkerCompleted (object sender, RunWorkerCompletedEventArgs e)
+        private void travelWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            object result = e.Result;
-        }
-        private void ButtonDrive_Click(object sender, RoutedEventArgs e)
-        {
-            string str = (km.Text);
-            float temp;
-            bool flag = float.TryParse(str, out temp);
-            if (flag == true)
+            Random r = new Random();
+            int fast= r.Next(20, 51);
+            for(int i = 1; i < 7; i ++)
             {
-                if (myBus.AddKM(temp))
-                { 
-                    travelWorker.WorkerReportsProgress = true;
-                    travelWorker.RunWorkerAsync();
-                    this.Close();
-                }
-                else
-                    MessageBox.Show("the bus can not make this travel");
+                Thread.Sleep((kilometer / fast) * 1000);
+                travelWorker.ReportProgress(i);
             }
+            e.Result = "the traveling passed successfully!";
+        }
+        private void travelWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int progress = e.ProgressPercentage;
+            resultLabel.Content = (((kilometer/6.0)*progress) + " km /"+ kilometer + "km");
+        }
+        private void travelWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.ToString());
+            this.Close();
+        }
 
-            else
-                MessageBox.Show("wrong value");
+        private void km_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox tx = sender as TextBox;
+            if (tx == null)return;
+            if (e == null)return;
+
+            if (e.Key == Key.Enter || e.Key == Key.Return)
+            {
+                if (tx.Text.Length > 0)
+                {
+                    kilometer = int.Parse(tx.Text);
+                    tx.Text = "";
+                    bool flag = myBus.AddKM(kilometer);
+                    if (flag == true)
+                    {
+                        travelWorker.WorkerReportsProgress = true;
+                        travelWorker.RunWorkerAsync();
+                    }
+                    else
+                        MessageBox.Show("the bus can not make this travel");
+                }
+                e.Handled = true;
+                return;
+            }
+            char c = (char)KeyInterop.VirtualKeyFromKey(e.Key);
+            if (char.IsControl(c)) return;
+            if (char.IsDigit(c)) return;
+            e.Handled = true;
+            MessageBox.Show("only numbers are allowed", "Account", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

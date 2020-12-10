@@ -89,7 +89,7 @@ namespace dotNet5781_03B_3652_2455
         /// </summary>
         /// <param name="numKM">The Km of the new travel</param>
         /// <returns>true-if the travel can made and false if not</returns>
-        public bool AddKM(float numKM)
+        public bool AddKM(int numKM)
         {
             if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now))//if  the bus is dangerous or it does not have enough fuel
             {
