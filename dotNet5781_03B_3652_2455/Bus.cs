@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace dotNet5781_03B_3652_2455
 {
@@ -13,9 +14,9 @@ namespace dotNet5781_03B_3652_2455
     /// <summary>
     /// Bus definition class
     /// </summary>
-    public class Bus
+    public class Bus:INotifyPropertyChanged
     {
-
+        
         private DateTime startTime;
         public DateTime StartTime { get => startTime; set => startTime = value; }
 
@@ -46,21 +47,72 @@ namespace dotNet5781_03B_3652_2455
         }
 
         private DateTime dateOfTest;
-        public DateTime DateOfTest { get => dateOfTest; set => dateOfTest = value; }
+        public DateTime DateOfTest 
+        {
+            get => dateOfTest;
+            set
+            {
+                dateOfTest = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DateOfTest"));
+                }
+            }
+        }
 
         private float travelOfTest;
         public float TravelOfTest { get => travelOfTest; set => travelOfTest = value; }
 
         private float totalTravel;
-        public float TotalTravel { get => totalTravel; set => totalTravel = value; }
+        public float TotalTravel
+        {
+            get => totalTravel;
+            set
+            {
+                totalTravel = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("TotalTravel"));
+                }
+            }
+        }
 
         private float fuel;
-        public float Fuel { get => fuel; set => fuel = value; }
+        public float Fuel
+        { 
+            get => fuel;
+            set
+            {
+                fuel = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Fuel"));
+                }
+            }
+        }
 
-        private status busStatus;
-        public status BusStatus { get => busStatus; set => busStatus = value; }
+        status busStatus;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public status BusStatus
+        {
+            get => busStatus;
+            set
+            {
+                busStatus = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this,new PropertyChangedEventArgs("BusStatus"));
+                }
+            }
+
+        }
 
 
+     
+
+        public Bus() { }
         /// <summary>
         /// c-tor
         /// </summary>
@@ -76,7 +128,9 @@ namespace dotNet5781_03B_3652_2455
             Fuel = 0;
 
         }
-        public Bus() { }
+
+
+
         /// <summary>
         /// The method print the bus's License Plate and the travel since the last test
         /// </summary>
@@ -93,7 +147,7 @@ namespace dotNet5781_03B_3652_2455
         /// <returns>true-if the travel can made and false if not</returns>
         public bool AddKM(int numKM)
         {
-            if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now))//if  the bus is dangerous or it does not have enough fuel
+            if ((TotalTravel - TravelOfTest + numKM) > 20000 || (Fuel < numKM) || (DateOfTest.AddYears(1) < DateTime.Now)||BusStatus!=status.ready)//if  the bus is dangerous or it does not have enough fuel
             {
                 return false;
             }
@@ -118,7 +172,7 @@ namespace dotNet5781_03B_3652_2455
             DateOfTest = DateTime.Now;
             TravelOfTest = TotalTravel;
             Fuel = 1200;
-            this.busStatus = 0;
+            this.BusStatus = 0;
 
 
         }
@@ -134,7 +188,10 @@ namespace dotNet5781_03B_3652_2455
                 
             }
 
-            this.busStatus = 0;
+            this.BusStatus = 0;
         }
+
     }
+
+
 }

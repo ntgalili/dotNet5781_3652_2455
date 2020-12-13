@@ -24,12 +24,13 @@ namespace dotNet5781_03B_3652_2455
         Bus myBus;
         BackgroundWorker TestWorker;
         BackgroundWorker RefuelingWorker;
-        public viewBusDetails(Bus B)
+        public viewBusDetails(Bus B,bool  flag)
         {
             InitializeComponent();
             grid1.DataContext = B;
             myBus = B;
             grid1.IsEnabled = false;
+          
 
             TestWorker = new BackgroundWorker();
             TestWorker.DoWork += myBus.BusTest;
@@ -45,6 +46,18 @@ namespace dotNet5781_03B_3652_2455
             RefuelingWorker.RunWorkerCompleted += RefuelingWorker_RunWorkerCompleted;
             RefuelingWorker.WorkerReportsProgress = true;
             RefuelingWorker.WorkerSupportsCancellation = true;
+            if(myBus.BusStatus!=status.ready)
+            {
+                TestButton.IsEnabled = false;
+                RefuelingButton.IsEnabled = false;
+            }
+            if (flag)
+            {
+                RefuelingWorker.RunWorkerAsync();
+                TestButton.IsEnabled = false;
+                RefuelingButton.IsEnabled = false;
+            }
+
         }
 
         private void RefuelingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

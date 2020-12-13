@@ -55,6 +55,7 @@ namespace dotNet5781_03B_3652_2455
         }
         private void travelWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            myBus.BusStatus = (status)0;
             MessageBox.Show(e.Result.ToString());
             this.Close();
         }
@@ -74,6 +75,8 @@ namespace dotNet5781_03B_3652_2455
                     bool flag = myBus.AddKM(kilometer);
                     if (flag == true)
                     {
+                        km.IsEnabled = false;
+                        myBus.BusStatus = (status)1;
                         travelWorker.WorkerReportsProgress = true;
                         travelWorker.RunWorkerAsync();
                     }
@@ -90,17 +93,6 @@ namespace dotNet5781_03B_3652_2455
             MessageBox.Show("only numbers are allowed", "Account", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource busViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busViewSource.Source = [generic data source]
-        }
     }
 }
