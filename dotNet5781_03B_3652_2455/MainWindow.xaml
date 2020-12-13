@@ -22,7 +22,7 @@
                 <TextBlock Grid.Column="0" Text="License Plate: "/>
                 <TextBlock Grid.Column="1" Text="{Binding Path=LicensePlate}"/>
                 <Button x:Name="Traveling" Grid.Column="2" Content="Traveling" Margin="10,10,10,10" Click="Traveling_Click"/>
-                <Button x:Name="Refueling" Grid.Column="3" Content="Refueling" Margin="10,10,10,10"/>
+                <Button x:Name="Refueling" Grid.Column="3" Content="Refueling" Margin="10,10,10,10" Click="Refueling_Click"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>

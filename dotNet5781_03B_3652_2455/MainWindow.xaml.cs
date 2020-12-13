@@ -102,8 +102,16 @@ namespace dotNet5781_03B_3652_2455
         {
 
 
-            viewBusDetails myDetails = new viewBusDetails(((sender as ListBox).SelectedItem as Bus));
-            myDetails.ShowDialog();
+            viewBusDetails myDetails = new viewBusDetails(((sender as ListBox).SelectedItem as Bus),false);
+            myDetails.Show();
+            
+        }
+
+        private void Refueling_Click(object sender, RoutedEventArgs e)
+        {
+            Bus s = (sender as Button).DataContext as Bus;
+            viewBusDetails myDetails = new viewBusDetails(s,true);
+            myDetails.Show();
         }
     }
 }
