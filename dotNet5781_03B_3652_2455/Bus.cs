@@ -12,7 +12,7 @@ namespace dotNet5781_03B_3652_2455
     public enum ToDo { TestService, FuelService };
     public enum status { ready, traveling, refueling, serviced };//enum for the bus status
     /// <summary>
-    /// Bus definition class
+    /// Bus definition class.
     /// </summary>
     public class Bus:INotifyPropertyChanged
     {
