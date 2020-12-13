@@ -25,7 +25,6 @@ namespace dotNet5781_03B_3652_2455
             InitializeComponent();
             grid1.DataContext = newBus;
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try

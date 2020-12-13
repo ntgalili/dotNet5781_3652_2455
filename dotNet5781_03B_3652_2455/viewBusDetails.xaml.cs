@@ -30,7 +30,6 @@ namespace dotNet5781_03B_3652_2455
             grid1.DataContext = B;
             myBus = B;
             grid1.IsEnabled = false;
-
             TestWorker = new BackgroundWorker();
             TestWorker.DoWork += myBus.BusTest;
             TestWorker.ProgressChanged += TestWorker_ProgressChanged; ;
@@ -40,7 +39,7 @@ namespace dotNet5781_03B_3652_2455
 
 
 
-            // RefuelingWorker.DoWork += myBus.BusRefueling;
+            //RefuelingWorker.DoWork += myBus.BusRefueling;
 
         }
 
@@ -48,11 +47,10 @@ namespace dotNet5781_03B_3652_2455
         {
             this.Close();
         }
-
         private void TestWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            int progress = e.ProgressPercentage;
-             .Show(progress + "% completed");
+            //int progress = e.ProgressPercentage;
+            // .Show(progress + "% completed");
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)

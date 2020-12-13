@@ -35,7 +35,6 @@ namespace dotNet5781_03B_3652_2455
             travelWorker.DoWork += travelWorker_DoWork;
             travelWorker.ProgressChanged += travelWorker_ProgressChanged;
             travelWorker.RunWorkerCompleted += travelWorker_RunWorkerCompleted;
-
         }
         private void travelWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -55,10 +54,10 @@ namespace dotNet5781_03B_3652_2455
         }
         private void travelWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            myBus.BusStatus = (status)0;
             MessageBox.Show(e.Result.ToString());
             this.Close();
         }
-
         private void km_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             TextBox tx = sender as TextBox;
@@ -74,6 +73,7 @@ namespace dotNet5781_03B_3652_2455
                     bool flag = myBus.AddKM(kilometer);
                     if (flag == true)
                     {
+                        myBus.BusStatus = (status)1;
                         travelWorker.WorkerReportsProgress = true;
                         travelWorker.RunWorkerAsync();
                     }
@@ -88,19 +88,6 @@ namespace dotNet5781_03B_3652_2455
             if (char.IsDigit(c)) return;
             e.Handled = true;
             MessageBox.Show("only numbers are allowed", "Account", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource busViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("busViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // busViewSource.Source = [generic data source]
         }
     }
 }
