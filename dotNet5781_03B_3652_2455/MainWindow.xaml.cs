@@ -107,8 +107,11 @@ namespace dotNet5781_03B_3652_2455
         private void Traveling_Click(object sender, RoutedEventArgs e)
         {
             Bus s = (sender as Button).DataContext as Bus;
-            MakeingTravel making = new MakeingTravel(s); //Call to the process of making a trip
-            making.ShowDialog();
+            if (s.BusStatus == status.ready)
+            {
+                MakeingTravel making = new MakeingTravel(s); //Call to the process of making a trip
+                making.ShowDialog();
+            }
         }
         /// <summary>
         /// Double-clicking on a bus from the list opens a window for displaying the bus details
@@ -126,8 +129,11 @@ namespace dotNet5781_03B_3652_2455
         private void Refueling_Click(object sender, RoutedEventArgs e)
         {
             Bus s = (sender as Button).DataContext as Bus;
-            viewBusDetails myDetails = new viewBusDetails(s, true); //Call to the process of refueling
-            myDetails.Show();
+            if (s.BusStatus == status.ready)
+            {
+                viewBusDetails myDetails = new viewBusDetails(s, true); //Call to the process of refueling
+                myDetails.Show();
+            }
         }
     }
 }

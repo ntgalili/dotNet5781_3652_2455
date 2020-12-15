@@ -179,25 +179,25 @@ namespace dotNet5781_03B_3652_2455
         {
             if (BusStatus == status.ready && Fuel > 0 && (TotalTravel - TravelOfTest) < 20000 && (DateOfTest.AddYears(1) >= DateTime.Now))//if the bus can travel
             {
-                Color = "green";
+                Color = "#FF90FF74";//GREEN
                 return;
             }
             if (BusStatus == status.refueling)//if the bus is refueling
             {
-                Color = "yellow";
+                Color = "#FFF9FF64";//yellow
                 return;
             }
             if (BusStatus == status.serviced)//when the bus is in a test
             {
-                Color = "blue";
+                Color = "#FF70A0FF";//blue
                 return;
             }
             if (BusStatus == status.traveling)//when the bus is in a traveling
             {
-                Color = "orange";
+                Color = "#FFFFB870";//orange
                 return;
             }
-            Color = "red";
+            Color = "#FFFF6464";//red
             return;
         }
         /// <summary>

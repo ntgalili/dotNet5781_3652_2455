@@ -14,22 +14,22 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="165"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="165"/>
+                    <ColumnDefinition Width="165"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="License Plate: "/>
-                <TextBlock Grid.Column="1" Text="{Binding Path=LicensePlate}"/>
-                <Button x:Name="Traveling" Grid.Column="2" Content="Traveling" Margin="10,10,10,10" Click="Traveling_Click"/>
-                <Button x:Name="Refueling" Grid.Column="3" Content="Refueling" Margin="10,10,10,10" Click="Refueling_Click"/>
+                <TextBlock Grid.Column="0" Text="License Plate: " Foreground="White" FontSize="20"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=LicensePlate}" Foreground="White" FontSize="20"/>
+                <Button x:Name="Traveling" Grid.Column="2" Content="Traveling" Margin="10,10,10,10" Click="Traveling_Click" Background="#FFB1B1B1" Foreground="White" FontSize="20"/>
+                <Button x:Name="Refueling" Grid.Column="3" Content="Refueling" Margin="10,10,10,10" Click="Refueling_Click" Background="#FFB1B1B1" Foreground="White" FontSize="20"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
-    <Grid >
+    <Grid Background="#FFCBC4C4" >
 
-        <Button Content="Add Bus" HorizontalAlignment="Left" Margin="43,320,0,0" VerticalAlignment="Top" Width="152" Height="44" Click="Button_Click"/>
-        <ListBox x:Name="ListOfBuses"  ItemsSource="{Binding}" ItemTemplate="{StaticResource OneBusTemplate}" HorizontalAlignment="Left" Height="250" Margin="70,33,0,0" VerticalAlignment="Top" Width="663" MouseDoubleClick="ListOfBuses_MouseDoubleClick"/>
+        <Button Content="Add Bus" HorizontalAlignment="Left" Margin="252,319,0,0" VerticalAlignment="Top" Width="252" Height="54" Click="Button_Click" FontFamily="Brush Script MT" FontSize="36" Background="#FFFD8FC6" Foreground="White" BorderBrush="White"/>
+        <ListBox x:Name="ListOfBuses"  ItemsSource="{Binding}" ItemTemplate="{StaticResource OneBusTemplate}" HorizontalAlignment="Left" Height="250" Margin="70,33,0,0" VerticalAlignment="Top" Width="660" MouseDoubleClick="ListOfBuses_MouseDoubleClick" FontFamily="Brush Script MT"/>
 
     </Grid>
 </Window>
