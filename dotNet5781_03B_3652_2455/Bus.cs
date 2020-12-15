@@ -9,31 +9,31 @@ using System.Windows;
 
 namespace dotNet5781_03B_3652_2455
 {
-    public enum ToDo { TestService, FuelService };
+
     public enum status { ready, traveling, refueling, serviced };//enum for the bus status
+
+
+
     /// <summary>
     /// Bus definition class.
     /// </summary>
     public class Bus : INotifyPropertyChanged
     {
-        private string color;
-        public string Color
-        {
-            get => color;
-            set
-            {
-                color = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Color"));
-                }
-            }
-        }
+
+        public event PropertyChangedEventHandler PropertyChanged;//A property change event
+        public event EventHandler StatusChanged;//Bus status change event
+
 
         private DateTime startTime;
+        /// <summary>
+        ///startTime  property
+        /// </summary>
         public DateTime StartTime { get => startTime; set => startTime = value; }
 
         private long licensePlate;
+        /// <summary>
+        /// licensePlate property
+        /// </summary>
         public long LicensePlate
         {
             get => licensePlate;
@@ -41,7 +41,7 @@ namespace dotNet5781_03B_3652_2455
             {
                 if (StartTime.Year >= 2018)
                 {
-                    while (value < 10000000)
+                    while (value < 10000000)// Adjusting the license plate
                     {
                         value = value * 10;
                     }
@@ -50,7 +50,7 @@ namespace dotNet5781_03B_3652_2455
                 }
                 if (StartTime.Year < 2018)
                 {
-                    while (value < 1000000)
+                    while (value < 1000000) //Adjusting the license plate
                     {
                         value = value * 10;
                     }
@@ -60,6 +60,9 @@ namespace dotNet5781_03B_3652_2455
         }
 
         private DateTime dateOfTest;
+        /// <summary>
+        /// dateOfTest property
+        /// </summary>
         public DateTime DateOfTest
         {
             get => dateOfTest;
@@ -68,19 +71,25 @@ namespace dotNet5781_03B_3652_2455
                 dateOfTest = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("DateOfTest"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("DateOfTest"));//report a change
                 }
                 if (StatusChanged != null)
                 {
-                    StatusChanged(this, new EventArgs());
+                    StatusChanged(this, new EventArgs());//report a change
                 }
             }
         }
 
         private float travelOfTest;
+        /// <summary>
+        /// travelOfTest property
+        /// </summary>
         public float TravelOfTest { get => travelOfTest; set => travelOfTest = value; }
 
         private float totalTravel;
+        /// <summary>
+        /// TotalTravel property
+        /// </summary>
         public float TotalTravel
         {
             get => totalTravel;
@@ -89,15 +98,18 @@ namespace dotNet5781_03B_3652_2455
                 totalTravel = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("TotalTravel"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("TotalTravel"));//report a change
                 }
                 if (StatusChanged != null)
                 {
-                    StatusChanged(this, new EventArgs());
+                    StatusChanged(this, new EventArgs());//report a change
                 }
             }
         }
         private float fuel;
+        /// <summary>
+        /// fuel property
+        /// </summary>
         public float Fuel
         {
             get => fuel;
@@ -106,17 +118,20 @@ namespace dotNet5781_03B_3652_2455
                 fuel = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Fuel"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("Fuel"));//report a change
                 }
                 if (StatusChanged != null)
                 {
-                    StatusChanged(this, new EventArgs());
+                    StatusChanged(this, new EventArgs());//report a change
                 }
             }
         }
+
+
         status busStatus;
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event EventHandler StatusChanged;
+        /// <summary>
+        /// busStatus property
+        /// </summary>
         public status BusStatus
         {
             get => busStatus;
@@ -125,14 +140,33 @@ namespace dotNet5781_03B_3652_2455
                 busStatus = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("BusStatus"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("BusStatus"));//report a change
                 }
                 if(StatusChanged != null)
                 {
-                    StatusChanged(this, new EventArgs());
+                    StatusChanged(this, new EventArgs());//report a change
                 }
             }
         }
+
+
+        private string color;
+        /// <summary>
+        /// color property
+        /// </summary>
+        public string Color
+        {
+            get => color;
+            set
+            {
+                color = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Color"));//report a change
+                }
+            }
+        }
+
         /// <summary>
         /// c-tor
         /// </summary>
@@ -140,7 +174,7 @@ namespace dotNet5781_03B_3652_2455
         /// <param name="Date">The bus's first day on the road</param>
         public Bus(long Num=1000000, DateTime Date=new DateTime())
         {
-            StatusChanged += colors;
+            StatusChanged += colors;  //Registration of the method for the event StatusChanged
             StartTime = Date;
             LicensePlate = Num;
             DateOfTest = Date;
@@ -149,24 +183,31 @@ namespace dotNet5781_03B_3652_2455
             Fuel = 0;
             BusStatus = status.ready;
         }
+
+
+        /// <summary>
+        /// the method matches  the bus's color according to its status
+        /// </summary>
+        /// <param name="sender">the bus</param>
+        /// <param name="e">more detials </param>
         private void colors(object sender, EventArgs e)
         {
-            if (BusStatus == status.ready && Fuel > 0 && (TotalTravel - TravelOfTest) < 20000 && (DateOfTest.AddYears(1) >= DateTime.Now))
+            if (BusStatus == status.ready && Fuel > 0 && (TotalTravel - TravelOfTest) < 20000 && (DateOfTest.AddYears(1) >= DateTime.Now))//if the bus can travel
             {
                 Color = "green";
                 return;
             }
-            if (BusStatus == status.refueling)
+            if (BusStatus == status.refueling)//if the bus is refueling
             {
                 Color = "yellow";
                 return;
             }
-            if (BusStatus == status.serviced)
+            if (BusStatus == status.serviced)//when the bus is in a test
             {
                 Color = "blue";
                 return;
             }
-            if (BusStatus == status.traveling)
+            if (BusStatus == status.traveling)//when the bus is in a traveling
             {
                 Color = "orange";
                 return;
@@ -174,15 +215,9 @@ namespace dotNet5781_03B_3652_2455
             Color = "red";
             return;
         }
-        /// <summary>
-        /// The method print the bus's License Plate and the travel since the last test
-        /// </summary>
-        public void Print()
-        {
-            Console.WriteLine("License Plate of bus: {0}, the travel: {1}",
-                 LicensePlate.ToString(StartTime < new DateTime(2018, 1, 1) ? "00-000-00" : "000-00-000"),
-                 TotalTravel - TravelOfTest);
-        }
+
+
+
         /// <summary>
         /// the method checks whether the bus can travel and update its details if so
         /// </summary>
@@ -198,14 +233,17 @@ namespace dotNet5781_03B_3652_2455
             TotalTravel = TotalTravel + numKM;
             return true;
         }
+
+
         /// <summary>
-        /// The method performs services for the bus
+        /// mothod for performing a test
         /// </summary>
-        /// <param name="ToDoSomething">the service</param>
+        /// <param name="sender">the bus</param>
+        /// <param name="e">more details</param>
         public void BusTest(object sender, DoWorkEventArgs e)
         {
             this.BusStatus = status.serviced;
-            for (int i = 1; i < 25; i++)
+            for (int i = 1; i < 25; i++)//hourly progress report
             {
                 (sender as BackgroundWorker).ReportProgress(i);
                 Thread.Sleep(6000);
@@ -216,16 +254,21 @@ namespace dotNet5781_03B_3652_2455
             this.BusStatus = 0;
         }
 
+        /// <summary>
+        /// Refueling method
+        /// </summary>
+        /// <param name="sender">the bus</param>
+        /// <param name="e">more details</param>
         public void BusRefueling(object sender, DoWorkEventArgs e)
         {
             this.BusStatus = status.refueling;
             for (int i = 1; i <= 1200; i++)
             {
                 Fuel = i;
-                (sender as BackgroundWorker).ReportProgress(i);
+                (sender as BackgroundWorker).ReportProgress(i);//progress report
                 Thread.Sleep(10);
             }
-            this.BusStatus = 0;
+            this.BusStatus = status.ready;
         }
     }
 }
