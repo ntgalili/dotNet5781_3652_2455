@@ -60,7 +60,6 @@ namespace dotNet5781_03B_3652_2455
             }
 
         }
-
         /// <summary>
         /// End of Refueling process
         /// </summary>
@@ -72,7 +71,6 @@ namespace dotNet5781_03B_3652_2455
             Thread.Sleep(2000);
             this.Close();
         }
-
         /// <summary>
         /// Progress of the Refueling
         /// </summary>
@@ -83,9 +81,6 @@ namespace dotNet5781_03B_3652_2455
             int progress = e.ProgressPercentage;
             LabelProgress.Content = (progress) + " Liters";
         }
-
-
-
         /// <summary>
         /// End of Test process
         /// </summary>
@@ -97,7 +92,6 @@ namespace dotNet5781_03B_3652_2455
             Thread.Sleep(2000);
             this.Close();
         }
-
         /// <summary>
         /// Progress of the Refueling
         /// </summary>
@@ -108,8 +102,6 @@ namespace dotNet5781_03B_3652_2455
             int progress = e.ProgressPercentage;
             LabelProgress.Content = "Tere are " + (24 - progress) + " hours left";
         }
-
-
         /// <summary>
         /// Test selection event
         /// </summary>
@@ -121,9 +113,6 @@ namespace dotNet5781_03B_3652_2455
             TestButton.IsEnabled = false;
             RefuelingButton.IsEnabled = false;
         }
-
-
-
         /// <summary>
         /// Test selection Refueling
         /// </summary>

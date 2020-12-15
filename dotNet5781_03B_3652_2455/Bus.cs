@@ -9,21 +9,14 @@ using System.Windows;
 
 namespace dotNet5781_03B_3652_2455
 {
-
     public enum status { ready, traveling, refueling, serviced };//enum for the bus status
-
-
-
     /// <summary>
     /// Bus definition class.
     /// </summary>
     public class Bus : INotifyPropertyChanged
     {
-
         public event PropertyChangedEventHandler PropertyChanged;//A property change event
         public event EventHandler StatusChanged;//Bus status change event
-
-
         private DateTime startTime;
         /// <summary>
         ///startTime  property
@@ -79,7 +72,6 @@ namespace dotNet5781_03B_3652_2455
                 }
             }
         }
-
         private float travelOfTest;
         /// <summary>
         /// travelOfTest property
@@ -126,8 +118,6 @@ namespace dotNet5781_03B_3652_2455
                 }
             }
         }
-
-
         status busStatus;
         /// <summary>
         /// busStatus property
@@ -148,8 +138,6 @@ namespace dotNet5781_03B_3652_2455
                 }
             }
         }
-
-
         private string color;
         /// <summary>
         /// color property
@@ -166,7 +154,6 @@ namespace dotNet5781_03B_3652_2455
                 }
             }
         }
-
         /// <summary>
         /// c-tor
         /// </summary>
@@ -183,8 +170,6 @@ namespace dotNet5781_03B_3652_2455
             Fuel = 0;
             BusStatus = status.ready;
         }
-
-
         /// <summary>
         /// the method matches  the bus's color according to its status
         /// </summary>
@@ -215,9 +200,6 @@ namespace dotNet5781_03B_3652_2455
             Color = "red";
             return;
         }
-
-
-
         /// <summary>
         /// the method checks whether the bus can travel and update its details if so
         /// </summary>
@@ -233,8 +215,6 @@ namespace dotNet5781_03B_3652_2455
             TotalTravel = TotalTravel + numKM;
             return true;
         }
-
-
         /// <summary>
         /// mothod for performing a test
         /// </summary>
@@ -253,7 +233,6 @@ namespace dotNet5781_03B_3652_2455
             Fuel = 1200;
             this.BusStatus = 0;
         }
-
         /// <summary>
         /// Refueling method
         /// </summary>
