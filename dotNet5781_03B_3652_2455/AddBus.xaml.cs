@@ -19,10 +19,11 @@ namespace dotNet5781_03B_3652_2455
     /// </summary>
     public partial class AddBus : Window
     {
-        Bus newBus = new Bus();
+        Bus newBus;
         public AddBus()
         {
             InitializeComponent();
+            newBus = new Bus();
             grid1.DataContext = newBus;
         }
         private void Button_Click(object sender, RoutedEventArgs e)

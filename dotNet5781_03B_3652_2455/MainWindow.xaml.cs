@@ -55,7 +55,6 @@ namespace dotNet5781_03B_3652_2455
             }
             return new Bus(num, date);
         }
-
         void creatMyBuses()
         {
             for (int i = 0; i < 10; i++)
@@ -100,11 +99,8 @@ namespace dotNet5781_03B_3652_2455
 
         private void ListOfBuses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-
             viewBusDetails myDetails = new viewBusDetails(((sender as ListBox).SelectedItem as Bus), false);
             myDetails.Show();
-
         }
 
         private void Refueling_Click(object sender, RoutedEventArgs e)

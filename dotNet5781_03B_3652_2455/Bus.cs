@@ -16,6 +16,19 @@ namespace dotNet5781_03B_3652_2455
     /// </summary>
     public class Bus : INotifyPropertyChanged
     {
+        private string color;
+        public string Color
+        {
+            get => color;
+            set
+            {
+                color = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Color"));
+                }
+            }
+        }
 
         private DateTime startTime;
         public DateTime StartTime { get => startTime; set => startTime = value; }
@@ -57,6 +70,10 @@ namespace dotNet5781_03B_3652_2455
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("DateOfTest"));
                 }
+                if (StatusChanged != null)
+                {
+                    StatusChanged(this, new EventArgs());
+                }
             }
         }
 
@@ -74,9 +91,12 @@ namespace dotNet5781_03B_3652_2455
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("TotalTravel"));
                 }
+                if (StatusChanged != null)
+                {
+                    StatusChanged(this, new EventArgs());
+                }
             }
         }
-
         private float fuel;
         public float Fuel
         {
@@ -88,13 +108,15 @@ namespace dotNet5781_03B_3652_2455
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("Fuel"));
                 }
+                if (StatusChanged != null)
+                {
+                    StatusChanged(this, new EventArgs());
+                }
             }
         }
-
         status busStatus;
-
         public event PropertyChangedEventHandler PropertyChanged;
-
+        public event EventHandler StatusChanged;
         public status BusStatus
         {
             get => busStatus;
@@ -105,32 +127,53 @@ namespace dotNet5781_03B_3652_2455
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("BusStatus"));
                 }
+                if(StatusChanged != null)
+                {
+                    StatusChanged(this, new EventArgs());
+                }
             }
-
         }
-
-
-
-
-        public Bus() { }
         /// <summary>
         /// c-tor
         /// </summary>
         /// <param name="Num">The bus's License Plate</param>
         /// <param name="Date">The bus's first day on the road</param>
-        public Bus(long Num, DateTime Date)
+        public Bus(long Num=1000000, DateTime Date=new DateTime())
         {
+            StatusChanged += colors;
             StartTime = Date;
             LicensePlate = Num;
             DateOfTest = Date;
             TravelOfTest = 0;
             TotalTravel = 0;
             Fuel = 0;
-
+            BusStatus = status.ready;
         }
-
-
-
+        private void colors(object sender, EventArgs e)
+        {
+            if (BusStatus == status.ready && Fuel > 0 && (TotalTravel - TravelOfTest) < 20000 && (DateOfTest.AddYears(1) >= DateTime.Now))
+            {
+                Color = "green";
+                return;
+            }
+            if (BusStatus == status.refueling)
+            {
+                Color = "yellow";
+                return;
+            }
+            if (BusStatus == status.serviced)
+            {
+                Color = "blue";
+                return;
+            }
+            if (BusStatus == status.traveling)
+            {
+                Color = "orange";
+                return;
+            }
+            Color = "red";
+            return;
+        }
         /// <summary>
         /// The method print the bus's License Plate and the travel since the last test
         /// </summary>
@@ -161,20 +204,16 @@ namespace dotNet5781_03B_3652_2455
         /// <param name="ToDoSomething">the service</param>
         public void BusTest(object sender, DoWorkEventArgs e)
         {
-
             this.BusStatus = status.serviced;
             for (int i = 1; i < 25; i++)
             {
                 (sender as BackgroundWorker).ReportProgress(i);
                 Thread.Sleep(6000);
-
             }
             DateOfTest = DateTime.Now;
             TravelOfTest = TotalTravel;
             Fuel = 1200;
             this.BusStatus = 0;
-
-
         }
 
         public void BusRefueling(object sender, DoWorkEventArgs e)
@@ -185,13 +224,8 @@ namespace dotNet5781_03B_3652_2455
                 Fuel = i;
                 (sender as BackgroundWorker).ReportProgress(i);
                 Thread.Sleep(10);
-
             }
-
             this.BusStatus = 0;
         }
-
     }
-
-
 }
