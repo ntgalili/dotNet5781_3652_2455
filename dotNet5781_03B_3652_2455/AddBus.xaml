@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:dotNet5781_03B_3652_2455"
         mc:Ignorable="d"
         Title="AddBus" Height="391.6" Width="336">
-    <Grid Margin="0,0,-0.4,-1.4" Background="#FFA51544">
+    <Grid Margin="0,0,-0.4,-1.4">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFB92424" Offset="1"/>
+                <GradientStop Color="#FFFFF5F5" Offset="0.079"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="35,28,0,0" VerticalAlignment="Top" Height="269" Width="268">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
