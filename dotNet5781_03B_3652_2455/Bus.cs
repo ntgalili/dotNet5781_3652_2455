@@ -216,7 +216,7 @@ namespace dotNet5781_03B_3652_2455
             return true;
         }
         /// <summary>
-        /// mothod for performing a test
+        /// mothod for performing a test.
         /// </summary>
         /// <param name="sender">the bus</param>
         /// <param name="e">more details</param>
