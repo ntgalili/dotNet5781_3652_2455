@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_3652_2455"
         mc:Ignorable="d"
-        Title="MakeingTravel" Height="450" Width="800" >
+        Title="MakeingTravel" Height="392.4" Width="771.2" >
     <Window.Resources>
         <CollectionViewSource x:Key="busViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Bus}, CreateList=True}"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="#FF51DEE0">
 
-        <Label Content="enter the travel distance (KM):" HorizontalAlignment="Left" Margin="360,77,0,0" VerticalAlignment="Top" Height="60" Width="340" FontFamily="Bodoni MT Black"/>
-        <TextBox x:Name="km" HorizontalAlignment="Left" Height="80" Margin="360,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" PreviewKeyDown="km_PreviewKeyDown"/>
-        <Label x:Name="resultLabel" Content="0 km" HorizontalAlignment="Left" Margin="360,299,0,0" VerticalAlignment="Top" Height="52" Width="151"/>
-        <Grid x:Name="grid1" DataContext="{StaticResource busViewSource}" HorizontalAlignment="Left" Margin="71,59,0,0" VerticalAlignment="Top">
+        <Label Content="enter the travel distance (KM):" HorizontalAlignment="Left" Margin="360,77,0,0" VerticalAlignment="Top" Height="62" Width="395" FontFamily="Brush Script MT" FontSize="36"/>
+        <TextBox x:Name="km" HorizontalAlignment="Left" Height="61" Margin="360,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" PreviewKeyDown="km_PreviewKeyDown"/>
+        <Label x:Name="resultLabel" Content="0 km" HorizontalAlignment="Left" Margin="360,228,0,0" VerticalAlignment="Top" Height="54" Width="326" FontSize="36" FontFamily="Brush Script MT"/>
+        <Grid x:Name="grid1" DataContext="{StaticResource busViewSource}" HorizontalAlignment="Left" Margin="53,34,0,0" VerticalAlignment="Top" Height="318" Width="247">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -28,19 +28,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Bus Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Bus Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" FontFamily="Brush Script MT" FontSize="20"/>
             <TextBox x:Name="busStatusTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BusStatus, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Date Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <DatePicker x:Name="dateOfTestDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" SelectedDate="{Binding DateOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <Label Content="Fuel:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Date Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontFamily="Brush Script MT" FontSize="20"/>
+            <DatePicker x:Name="dateOfTestDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3.4,9.6,0,9.8" Grid.Row="1" SelectedDate="{Binding DateOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Fuel:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontFamily="Brush Script MT" FontSize="20"/>
             <TextBox x:Name="fuelTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Fuel, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="License Plate:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="License Plate:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontFamily="Brush Script MT" FontSize="20"/>
             <TextBox x:Name="licensePlateTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding LicensePlate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Start Time:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <DatePicker x:Name="startTimeDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="4" SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-            <Label Content="Total Travel:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="Start Time:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,3" Grid.Row="4" VerticalAlignment="Bottom" FontFamily="Brush Script MT" FontSize="20"/>
+            <DatePicker x:Name="startTimeDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3.4,7.6,0,7.6" Grid.Row="4" SelectedDate="{Binding StartTime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="122"/>
+            <Label Content="Total Travel:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" FontFamily="Brush Script MT" FontSize="20"/>
             <TextBox x:Name="totalTravelTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding TotalTravel, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Travel Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="Travel Of Test:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center" FontFamily="Brush Script MT" FontSize="20"/>
             <TextBox x:Name="travelOfTestTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding TravelOfTest, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
 
