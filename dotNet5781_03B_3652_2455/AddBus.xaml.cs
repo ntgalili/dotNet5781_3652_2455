@@ -20,24 +20,30 @@ namespace dotNet5781_03B_3652_2455
     public partial class AddBus : Window
     {
         Bus newBus;
+        /// <summary>
+        /// c-tor AddBus
+        /// </summary>
         public AddBus()
         {
             InitializeComponent();
             newBus = new Bus();
             grid1.DataContext = newBus;
         }
+        /// <summary>
+        /// A push button that adds a bus to the list of buses
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            try //If the bus can be added to the list
             {
-                BusesCollection.addBus(newBus);
-                MessageBox.Show("succeeded", "perfect", MessageBoxButton.OK);
+                BusesCollection.addBus(newBus); //adds a bus to the list of buses
+                MessageBox.Show("succeeded", "perfect", MessageBoxButton.OK); //Print a message about the success of the income
             }
-            catch (Exception)
-            {
-                MessageBox.Show("dont succeeded, there is a bus with the same license plate", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
+            catch (Exception) //If an exception is thrown following the addition of a bus to the list with a license plate that already exists for one of the buses
+            { 
+                MessageBox.Show("dont succeeded, there is a bus with the same license plate", "please try again", MessageBoxButton.OK, MessageBoxImage.Error); //Print a message about the failure of the income
             }
-            this.Close();
+            this.Close(); //Close the add window
         }
     }
 }
