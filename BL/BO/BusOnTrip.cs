@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLAPI
+namespace BL.BO
 {
-    public class Class1
+    class BusOnTrip
     {
     }
 }
