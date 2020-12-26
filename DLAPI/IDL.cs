@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+//using DO;
 
 namespace DLAPI
 {
@@ -11,34 +10,34 @@ namespace DLAPI
     // Request - ask for an instance or for a collection
     // Update - update properties of an instance
     // Delete - delete an instance
-    public interface IDL                                                     //************העתקתי מהמורה לבדוק אם זה טוב ***************
+    public interface IDL
     {
         #region Person
-        IEnumerable<Person> GetAllPersons();
-        IEnumerable<Person> GetAllPersonsBy(Predicate<Person> predicate);
-        Person GetPerson(int id);
-        void AddPerson(Person person);
-        void UpdatePerson(Person person);
-        void UpdatePerson(int id, Action<Person> update); //method that knows to updt specific fields in Person
+        IEnumerable<DO.Person> GetAllPersons();
+        IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate);
+        DO.Person GetPerson(int id);
+        void AddPerson(DO.Person person);
+        void UpdatePerson(DO.Person person);
+        void UpdatePerson(int id, Action<DO.Person> update); //method that knows to updt specific fields in Person
         void DeletePerson(int id);
         #endregion
 
         #region Student
-        Student GetStudent(int id);
-        IEnumerable<object> GetStudentIDs(Func<int, string, object> generate);
-        IEnumerable<object> GetStudentIDs(Func<int, object> generate);
-        void AddStudent(Student student);
-        void UpdateStudent(Student student);
-        void UpdateStudent(int id, Action<Student> update); //method that knows to updt specific fields in Student
+        DO.Student GetStudent(int id);
+        IEnumerable<DO.Student> GetAllStudents();
+        IEnumerable<object> GetStudentListWithSelectedFields(Func<DO.Student, object> generate);
+        void AddStudent(DO.Student student);
+        void UpdateStudent(DO.Student student);
+        void UpdateStudent(int id, Action<DO.Student> update); //method that knows to updt specific fields in Student
         void DeleteStudent(int id); // removes only Student, does not remove the appropriate Person...
         #endregion
 
         #region StudentInCourse
-        IEnumerable<StudentInCourse> GetStudentInCourseList(Predicate<StudentInCourse> predicate);
+        IEnumerable<DO.StudentInCourse> GetStudentInCourseList(Predicate<DO.StudentInCourse> predicate);
         #endregion
 
         #region Course
-        Course GetCourse(int id);
+        DO.Course GetCourse(int id);
         #endregion
     }
 }

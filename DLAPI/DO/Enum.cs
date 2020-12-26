@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    public enum StatusOfBus { Ready, Traveling , InService , Refueling }
+    public enum StatusOfBus { Ready, Traveling , InService , Refueling };
+    public enum Areas { General, North, South, Center, Jerusalem };
 }

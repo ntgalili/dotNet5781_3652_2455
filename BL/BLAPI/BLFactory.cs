@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 using BL;
 
-
 namespace BLAPI
 {
-    public static class BLFactory                                      //************העתקתי מהמורה לבדוק אם זה טוב ***************
+    public static class BLFactory
     {
         public static IBL GetBL(string type)
         {
@@ -18,7 +17,7 @@ namespace BLAPI
                 case "1":
                     return new BLImp();
                 case "2":
-                //return new BLImp2();
+                    //return new BLImp2();
                 default:
                     return new BLImp();
             }

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB9C8DD8-6D1F-4374-9B44-B0EA90F04292}</ProjectGuid>
+    <ProjectGuid>{17D9C931-7BEA-455E-8FB1-646C6D62348C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DS</RootNamespace>
     <AssemblyName>DS</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DLAPI\DLAPI.csproj">
-      <Project>{c494f726-e559-4587-8bee-9caba402e4ea}</Project>
+      <Project>{e8505a1c-4323-4085-8a7d-96c2e5c5d8cd}</Project>
       <Name>DLAPI</Name>
     </ProjectReference>
   </ItemGroup>

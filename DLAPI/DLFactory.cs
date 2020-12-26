@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace DLAPI
 {
@@ -10,7 +8,7 @@ namespace DLAPI
     /// Static Factory class for creating Dal tier implementation object according to
     /// configuration in file config.xml
     /// </summary>
-    public static class DLFactory                                                     //************העתקתי מהמורה לבדוק אם זה טוב ***************
+    public static class DLFactory
     {
         /// <summary>
         /// The function creates Dal tier implementation object according to Dal type

@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
-
+//using DO;
 
 namespace DL
 {
-    static class Cloning                                                     //************העתקתי מהמורה לבדוק אם זה טוב ***************
+    static class Cloning
     {
         //first way - No Bonus
         //do it for each DO entity
@@ -40,7 +36,7 @@ namespace DL
         {
             T copyToObject = new T();
             //T copyToObject = (T)Activator.CreateInstance(typeof(T));
-
+ 
             foreach (PropertyInfo propertyInfo in typeof(T).GetProperties())
                 propertyInfo.SetValue(copyToObject, propertyInfo.GetValue(original, null), null);
 

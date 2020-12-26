@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C494F726-E559-4587-8BEE-9CABA402E4EA}</ProjectGuid>
+    <ProjectGuid>{E8505A1C-4323-4085-8A7D-96C2E5C5D8CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DLAPI</RootNamespace>
     <AssemblyName>DLAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLConfigcs.cs" />
+    <Compile Include="DLConfig.cs" />
     <Compile Include="DLFactory.cs" />
     <Compile Include="DO\AdjacentStetions.cs" />
     <Compile Include="DO\Bus.cs" />
@@ -51,11 +51,11 @@
     <Compile Include="DO\LineStation.cs" />
     <Compile Include="DO\LineTrip.cs" />
     <Compile Include="DO\Station.cs" />
-    <Compile Include="DO\Tools.cs" />
     <Compile Include="DO\Trip.cs" />
     <Compile Include="DO\User.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DO\Tools.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
