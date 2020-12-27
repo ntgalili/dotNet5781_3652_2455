@@ -8,7 +8,7 @@ namespace DO
 {
     public class Line
     {
-        public int Id { get; set; }
+        public int LineNum { get; set; }
         public int Code { get; set; }
         public Areas Area { get; set; }
         public int FirstStation { get; set; }

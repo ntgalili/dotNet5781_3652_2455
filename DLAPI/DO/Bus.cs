@@ -9,7 +9,7 @@ namespace DO
     public class Bus
     {
         public int LicensePlate { get; set; }
-        public DateTime LicensingDate { get; set; }
+        public DateTime FromDate { get; set; }
         public float TotalTrip { get; set; }
         public float FuelRemain { get; set; }
         public StatusOfBus Status { get; set; }

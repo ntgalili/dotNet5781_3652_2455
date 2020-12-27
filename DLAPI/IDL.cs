@@ -12,14 +12,14 @@ namespace DLAPI
     // Delete - delete an instance
     public interface IDL
     {
-        #region Person
-        IEnumerable<DO.Person> GetAllPersons();
-        IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate);
-        DO.Person GetPerson(int id);
-        void AddPerson(DO.Person person);
-        void UpdatePerson(DO.Person person);
-        void UpdatePerson(int id, Action<DO.Person> update); //method that knows to updt specific fields in Person
-        void DeletePerson(int id);
+        #region Line
+        IEnumerable<DO.Line> GetAllLines();
+        IEnumerable<DO.Line> GetAllLinesBy(Predicate<DO.Line> predicate);
+        DO.Line GetLine(int num);
+        void AddLine(DO.Line line);
+        void UpdateLine(DO.Line line);
+        void UpdateLine(int num, Action<DO.Line> update); //method that knows to updt specific fields in Line
+        void DeleteLine(int num);
         #endregion
 
         #region Student

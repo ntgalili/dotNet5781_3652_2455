@@ -18,4 +18,4 @@ namespace DO                         //************העתקתי מהמורה ל�
         public override string ToString() => base.ToString() + $", bad person id: {ID}";
     }
 }
-}
+
