@@ -13,6 +13,10 @@ namespace DO
         public TimeSpan StartAtTime { get; set; }
         public TimeSpan FinishAtTime { get; set; }
         public TimeSpan Frequency { get; set; }
+        public override string ToString()
+        {
+            return this.ToStringProperty();
+        }
 
     }
 }

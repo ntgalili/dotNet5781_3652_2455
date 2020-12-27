@@ -15,6 +15,10 @@ namespace DO
         public int LCodeLine { get; set; }
         public TimeSpan TimeIn { get; set; }
         public TimeSpan TimeOut { get; set; }
+        public override string ToString()
+        {
+            return this.ToStringProperty();
+        }
 
     }
 }

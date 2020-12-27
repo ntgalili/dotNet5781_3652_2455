@@ -8,5 +8,12 @@ namespace BO
 {
     class LineTrip
     {
+        public int CodeLineTrip { get; set; }
+        public int CodeLine { get; set; }
+        public TimeSpan StartAtTime { get; set; }
+        public TimeSpan FinishAtTime { get; set; }
+        public TimeSpan Frequency { get; set; }
+        public override string ToString() => this.ToStringProperty();
+
     }
 }

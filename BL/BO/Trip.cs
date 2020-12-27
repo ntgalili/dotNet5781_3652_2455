@@ -4,9 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL.BO
+namespace BO
 {
-    class Trip
+    class Trip : User,Station
     {
+        public int Id { get; set; }
+        //public string UserName { get; set; }  -----------name of user
+        public int CodeLine { get; set; }
+        //public int FCodeLine { get; set; }  ------------first station of the trip
+        //public int LCodeLine { get; set; }  ------------last station of the trip
+        public TimeSpan TimeIn { get; set; }
+        public TimeSpan TimeOut { get; set; }
+        public override string ToString() => this.ToStringProperty();
+
     }
 }
