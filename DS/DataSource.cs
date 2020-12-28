@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,24 @@ using DO;
 namespace DS
 {
     public static class DataSource
-   {
-       // public static List<Bus> ListBuses;
+    {
+        // public static List<Bus> ListBuses;
         public static List<Line> ListLines;
         public static List<LineStation> ListLineStations;
-       // public static List<LineTrip> ListLineTrips;
+        // public static List<LineTrip> ListLineTrips;
         public static List<Station> ListStations;
         // public static List<Trip> ListTrips;
         // public static List<User> ListUsers;
         public static List<AdjacentStetions> ListAdjStations;
+        private static Random r = new Random();
+        private static double  distance(double X1, double Y1, double X2, double Y2)
+        {
+            var sCoord = new GeoCoordinate(X1, Y1);
+            var eCoord = new GeoCoordinate(X1, Y1);
+            
+            return sCoord.GetDistanceTo(eCoord);
+        }
+        private static double help;
 
         static DataSource()
         {
@@ -484,7 +494,7 @@ namespace DS
                    Code=1,
                    Area=Areas.Center,
                    FirstStation=33553,
-                   LastStation=36481,
+                   LastStation=37780,
                 },
 
                 new Line
@@ -594,13 +604,13 @@ namespace DS
                     StationCode=575,
                     LineStationIndex=8,
                     PrevStation=564,
-                    NextStation=408
+                    NextStation=480
                 },
                 new LineStation
                 {
                     LineNum=7,
 
-                    StationCode=408,
+                    StationCode=480,
                     LineStationIndex=9,
                     PrevStation=575,
                     NextStation=407
@@ -611,7 +621,7 @@ namespace DS
 
                     StationCode=407,
                     LineStationIndex=10,
-                    PrevStation=408,
+                    PrevStation=480,
                     NextStation=0
                 },
 
@@ -772,17 +782,175 @@ namespace DS
                     LineNum=420,
                     StationCode=21161,
                     LineStationIndex=10,
-                    PrevStation=408,
+                    PrevStation=480,
                     NextStation=0
                 },
 
 
-                ///
+                ///line 497
 
 
+                new LineStation
+                {
+                    LineNum=497,
+                    StationCode=21161,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=21165
+                },
+                 new LineStation
+                {
+                    LineNum=497,
+                    StationCode=21165,
+                    LineStationIndex=2,
+                    PrevStation=21161,
+                    NextStation=21230
+                },
+                 new LineStation
+                {
+                    LineNum=497,
+                    StationCode=21230,
+                    LineStationIndex=3,
+                    PrevStation=21165,
+                    NextStation=21232
+                },
+                 new LineStation
+                {
+                    LineNum=497,
+                    StationCode=21232,
+                    LineStationIndex=4,
+                    PrevStation=21230,
+                    NextStation=21365
+                },
+                 new LineStation
+                {
+                    LineNum=497,
+                    StationCode=21365,
+                    LineStationIndex=5,
+                    PrevStation=21232,
+                    NextStation=562
+                },
+                    new LineStation
+                {
+                    LineNum=497,
+                    StationCode=562,
+                    LineStationIndex=6,
+                    PrevStation=21365,
+                    NextStation=563
+                },
+                new LineStation
+                {
+                    LineNum=497,
+                    StationCode=563,
+                    LineStationIndex=7,
+                    PrevStation=562,
+                    NextStation=564
+                },
+                new LineStation
+                {
+                    LineNum=497,
+                    StationCode=564,
+                    LineStationIndex=8,
+                    PrevStation=563,
+                    NextStation=407
+                },
+                new LineStation
+                {
+                    LineNum=497,
+
+                    StationCode=407,
+                    LineStationIndex=9,
+                    PrevStation=564,
+                    NextStation=480
+                },
+                new LineStation
+                {
+                    LineNum=497,
+                    StationCode=480,
+                    LineStationIndex=10,
+                    PrevStation=407,
+                    NextStation=0
+                },
 
 
+                //line 8
+                new LineStation
+                {
+                    LineNum=8,
+                    StationCode=33553,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=34063
+                },
+                 new LineStation
+                {
+                    LineNum=8,
+                    StationCode=34063,
+                    LineStationIndex=2,
+                    PrevStation=33553,
+                    NextStation=34934
+                },
+                 new LineStation
+                {
+                    LineNum=8,
+                    StationCode=34934,
+                    LineStationIndex=3,
+                    PrevStation=34063,
+                    NextStation=35311
+                },
+                 new LineStation
+                {
+                    LineNum=8,
+                    StationCode=35311,
+                    LineStationIndex=4,
+                    PrevStation=34934,
+                    NextStation=36446
+                },
+                 new LineStation
+                {
+                    LineNum=8,
+                    StationCode=36446,
+                    LineStationIndex=5,
+                    PrevStation=35311,
+                    NextStation=36480
+                },
+                    new LineStation
+                {
+                    LineNum=8,
+                    StationCode=36480,
+                    LineStationIndex=6,
+                    PrevStation=36446,
+                    NextStation=36481
+                },
+                new LineStation
+                {
+                    LineNum=8,
+                    StationCode=36481,
+                    LineStationIndex=7,
+                    PrevStation=36480,
+                    NextStation=37136
+                },
+                new LineStation
+                {
+                    LineNum=8,
+                    StationCode=37136,
+                    LineStationIndex=8,
+                    PrevStation=36481,
+                    NextStation=37780
+                },
+                new LineStation
+                {
+                    LineNum=497,
 
+                    StationCode=37780,
+                    LineStationIndex=9,
+                    PrevStation=37136,
+                    NextStation=0
+                },
+     
+
+
+                
 
                 //line 417
                 new LineStation
@@ -1475,11 +1643,101 @@ namespace DS
                 },
                           ///////////////////////////////////////////////////////////////////////////
                           
+                new AdjacentStetions
+                {
+                    Station1=1,
+                    Station2=565,
 
+                    Distance=distance(35.000493,31.744547,34.995005,31.742295),
+                    Time=new TimeSpan(0,(int)(distance(35.000493,31.744547,34.995005,31.742295)*r.NextDouble()),0),
 
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=565,
+                    Station2=566,
+
+                    Distance=distance(34.995005,31.742295,34.995859,31.740288),
+                    Time=new TimeSpan(0,(int)(distance(34.995005,31.742295,34.995859,31.740288)*r.NextDouble()),0),
+
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=566,
+                    Station2=567,
+
+                    Distance=distance(34.995859,31.740288,34.995833,31.738094),
+                    Time=new TimeSpan(0,(int)(distance(34.995859,31.740288,34.995833,31.738094)*r.NextDouble()),0),
+
+                },
+
+                 new AdjacentStetions
+                {
+                    Station1=567,
+                    Station2=568,
+
+                    Distance=distance(34.995833,31.738094,34.995107,31.73755),
+                    Time=new TimeSpan(0,(int)(distance(34.995833,31.738094,34.995107,31.73755)*r.NextDouble()),0),
+
+                },
+
+                 new AdjacentStetions
+                {
+                    Station1=568,
+                    Station2=569,
+
+                    Distance=distance(34.995107,31.73755,34.993086,31.738594),
+                    Time=new TimeSpan(0,(int)(distance(34.995107,31.73755,34.993086,31.738594)*r.NextDouble()),0),
+
+                },
+
+                 new AdjacentStetions
+                {
+                    Station1=569,
+                    Station2=574,
+
+                    Distance=distance(34.993086,31.738594,34.991927,31.733992),
+                    Time=new TimeSpan(0,(int)(distance(34.993086,31.738594,34.991927,31.733992)*r.NextDouble()),0),
+
+                },
+
+                 new AdjacentStetions
+                {
+                    Station1=574,
+                    Station2=575,
+
+                    Distance=distance(34.991927,31.733992,34.993077,31.731931),
+                    Time=new TimeSpan(0,(int)(distance(34.991927,31.733992,34.993077,31.731931)*r.NextDouble()),0),
+
+                },
+
+                 new AdjacentStetions
+                {
+                    Station1=575,
+                    Station2=480,
+
+                    Distance=distance(34.993077,31.731931,35.001165,31.706773),
+                    Time=new TimeSpan(0,(int)(distance(34.993077,31.731931,35.001165,31.706773)*r.NextDouble()),0),
+
+                },
+
+                 new AdjacentStetions
+                {
+                    Station1=480,
+                    Station2=407,
+
+                    Distance=distance(35.001165,31.706773,34.989861,31.715411),
+                    Time=new TimeSpan(0,(int)(distance(35.001165,31.706773,34.989861,31.715411)*r.NextDouble()),0),
+
+                },
 
             };
+         
+          
         }
+        
     }
 }
 
