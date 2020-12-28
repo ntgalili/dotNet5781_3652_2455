@@ -80,7 +80,6 @@ namespace DS
                     Longitude=35.0002,
                     Lattitude= 31.70735,
                 },
-
                 new Station
                 {
                     Code=407,
@@ -165,8 +164,6 @@ namespace DS
                     Longitude=34.991023,
                     Lattitude= 31.74045,
                 },
-
-
                 new Station
                 {
                     Code=573,
@@ -174,7 +171,6 @@ namespace DS
                     Longitude=34.992279,
                     Lattitude= 31.736319,
                 },
-
                 new Station
                 {
                     Code=574,
@@ -182,8 +178,6 @@ namespace DS
                     Longitude=34.991927,
                     Lattitude= 31.733992,
                 },
-
-
                 new Station
                 {
                     Code=575,
@@ -191,9 +185,7 @@ namespace DS
                     Longitude=34.993077,
                     Lattitude= 31.731931,
                 },
-
-
-                 new Station
+                new Station
                 {
                     Code=172,
                     Name="גבעת שאול/כתב סופר, ירושלים",
@@ -214,8 +206,6 @@ namespace DS
                     Longitude=35.192721,
                     Lattitude= 31.792105,
                 },
-
-
                 new Station
                 {
                     Code=179,
@@ -223,10 +213,6 @@ namespace DS
                     Longitude=35.191168,
                     Lattitude= 31.789376,
                 },
-
-
-           
-
                 new Station
                 {
                     Code=180,
@@ -234,7 +220,6 @@ namespace DS
                     Longitude=35.179234,
                     Lattitude= 31.786054,
                 },
-
                 new Station
                 {
                     Code=57023,
@@ -242,23 +227,20 @@ namespace DS
                     Longitude=35.489648,
                     Lattitude= 32.963282,
                 },
-
-                  new Station
+                new Station
                 {
                     Code=57025,
                     Name="חיים וייצמן/הרצל, צפת",
                     Longitude=35.496737,
                     Lattitude= 32.957234,
                 },
-
-                  new Station
+                new Station
                 {
                     Code=57026,
                     Name="חיים וייצמן/מ''ג יורדי הסירה, צפת",
                     Longitude=35.498349,
                     Lattitude= 32.957294,
                 },
-
                 new Station
                 {
                     Code=57027,
@@ -266,7 +248,6 @@ namespace DS
                     Longitude=35.498143,
                     Lattitude= 32.960467,
                 },
-
                 new Station
                 {
                     Code=57028,
@@ -274,7 +255,6 @@ namespace DS
                     Longitude=35.498795,
                     Lattitude= 32.961903,
                 },
-
                 new Station
                 {
                     Code = 20902,
@@ -282,36 +262,35 @@ namespace DS
                     Longitude = 34.780691,
                     Lattitude = 32.046386,
                  },
-                 new Station
+                new Station
                  {
                      Code = 21000,
                      Name = "ביה''ח איכילוב/שד' דוד המלך, תל אביב",
                      Longitude = 34.787792,
                      Lattitude = 32.079787,
                  },
-                 new Station
+                new Station
                  {
                      Code = 21022,
                      Name = "ת. רכבת השלום, תל אביב",
                      Longitude = 34.792974,
                      Lattitude = 32.073112,
                  },
-                 new Station
+                new Station
                  {
                      Code = 21024,
                      Name = "ליאונרדו דה וינצ'י/קפלן, תל אביב",
                      Longitude = 34.784808,
                      Lattitude = 32.073875,
                  },
-                 new Station
+                new Station
                  {
                      Code = 21005,
                      Name = "ארלוזורוב/דיזנגוף, תל אביב",
                      Longitude = 34.774385,
                      Lattitude = 32.087073,
                  },
-
-                 new Station
+                new Station
                  {
                      Code = 21161,
                      Name = "דרך ז'בוטינסקי/אהרונוביץ, בני ברק",
@@ -471,7 +450,7 @@ namespace DS
                    FirstStation=172,
                    LastStation=57028,
                 },
-                  new Line
+                new Line
                 {
                    LineNum=420,
                    Code=1,
@@ -479,7 +458,6 @@ namespace DS
                    FirstStation=21022,
                    LastStation=21161,
                 },
-
                 new Line
                 {
                    LineNum=497,
@@ -496,7 +474,6 @@ namespace DS
                    FirstStation=33553,
                    LastStation=37780,
                 },
-
                 new Line
                 {
                    LineNum=417,
@@ -550,7 +527,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=565
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=7,
                     StationCode=565,
@@ -558,7 +535,7 @@ namespace DS
                     PrevStation=1,
                     NextStation=566
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=7,
                     StationCode=566,
@@ -566,7 +543,7 @@ namespace DS
                     PrevStation=565,
                     NextStation=567
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=7,
                     StationCode=567,
@@ -574,7 +551,7 @@ namespace DS
                     PrevStation=566,
                     NextStation=568
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=7,
                     StationCode=568,
@@ -582,7 +559,7 @@ namespace DS
                     PrevStation=567,
                     NextStation=569
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=7,
                     StationCode=569,
@@ -626,7 +603,6 @@ namespace DS
                 },
 
                 //line 650
-
                 new LineStation
                 {
                     LineNum=650,
@@ -635,7 +611,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=174
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=650,
                     StationCode=174,
@@ -643,7 +619,7 @@ namespace DS
                     PrevStation=172,
                     NextStation=176
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=650,
                     StationCode=176,
@@ -651,7 +627,7 @@ namespace DS
                     PrevStation=174,
                     NextStation=179
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=650,
                     StationCode=179,
@@ -659,7 +635,7 @@ namespace DS
                     PrevStation=176,
                     NextStation=57023
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=650,
                     StationCode=57023,
@@ -667,7 +643,7 @@ namespace DS
                     PrevStation=179,
                     NextStation=57025
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=650,
                     StationCode=57025,
@@ -701,9 +677,7 @@ namespace DS
                     NextStation=0
                 },
 
-
                 //line 420
-
                 new LineStation
                 {
                     LineNum=420,
@@ -712,7 +686,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=21024
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=420,
                     StationCode=21024,
@@ -720,7 +694,7 @@ namespace DS
                     PrevStation=21022,
                     NextStation=20902
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=420,
                     StationCode=20902,
@@ -728,7 +702,7 @@ namespace DS
                     PrevStation=21024,
                     NextStation=21000
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=420,
                     StationCode=21000,
@@ -736,7 +710,7 @@ namespace DS
                     PrevStation=20902,
                     NextStation=21005
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=420,
                     StationCode=21005,
@@ -744,7 +718,7 @@ namespace DS
                     PrevStation=21000,
                     NextStation=21365
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=420,
                     StationCode=21365,
@@ -786,10 +760,7 @@ namespace DS
                     NextStation=0
                 },
 
-
                 ///line 497
-
-
                 new LineStation
                 {
                     LineNum=497,
@@ -798,7 +769,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=21165
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=497,
                     StationCode=21165,
@@ -806,7 +777,7 @@ namespace DS
                     PrevStation=21161,
                     NextStation=21230
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=497,
                     StationCode=21230,
@@ -814,7 +785,7 @@ namespace DS
                     PrevStation=21165,
                     NextStation=21232
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=497,
                     StationCode=21232,
@@ -822,7 +793,7 @@ namespace DS
                     PrevStation=21230,
                     NextStation=21365
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=497,
                     StationCode=21365,
@@ -830,7 +801,7 @@ namespace DS
                     PrevStation=21232,
                     NextStation=562
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=497,
                     StationCode=562,
@@ -872,7 +843,6 @@ namespace DS
                     NextStation=0
                 },
 
-
                 //line 8
                 new LineStation
                 {
@@ -882,7 +852,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=34063
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=8,
                     StationCode=34063,
@@ -890,7 +860,7 @@ namespace DS
                     PrevStation=33553,
                     NextStation=34934
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=8,
                     StationCode=34934,
@@ -898,7 +868,7 @@ namespace DS
                     PrevStation=34063,
                     NextStation=35311
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=8,
                     StationCode=35311,
@@ -906,7 +876,7 @@ namespace DS
                     PrevStation=34934,
                     NextStation=36446
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=8,
                     StationCode=36446,
@@ -914,7 +884,7 @@ namespace DS
                     PrevStation=35311,
                     NextStation=36480
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=8,
                     StationCode=36480,
@@ -948,10 +918,6 @@ namespace DS
                     NextStation=0
                 },
      
-
-
-                
-
                 //line 417
                 new LineStation
                 {
@@ -961,7 +927,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=407
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=417,
                     StationCode=407,
@@ -969,7 +935,7 @@ namespace DS
                     PrevStation=480,
                     NextStation=401
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=417,
                     StationCode=401,
@@ -977,7 +943,7 @@ namespace DS
                     PrevStation=407,
                     NextStation=563
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=417,
                     StationCode=563,
@@ -985,7 +951,7 @@ namespace DS
                     PrevStation=401,
                     NextStation=573
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=417,
                     StationCode=573,
@@ -993,7 +959,7 @@ namespace DS
                     PrevStation=563,
                     NextStation=574
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=417,
                     StationCode=574,
@@ -1043,7 +1009,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=179
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=402,
                     StationCode=179,
@@ -1051,7 +1017,7 @@ namespace DS
                     PrevStation=180,
                     NextStation=176
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=402,
                     StationCode=176,
@@ -1059,7 +1025,7 @@ namespace DS
                     PrevStation=179,
                     NextStation=174
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=402,
                     StationCode=174,
@@ -1067,7 +1033,7 @@ namespace DS
                     PrevStation=176,
                     NextStation=172
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=402,
                     StationCode=172,
@@ -1075,7 +1041,7 @@ namespace DS
                     PrevStation=174,
                     NextStation=21161
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=402,
                     StationCode=21161,
@@ -1107,7 +1073,6 @@ namespace DS
                     PrevStation=21230,
                     NextStation=0
                 },
-            
 
                 //line 89
                 new LineStation
@@ -1118,7 +1083,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=21024
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=89,
                     StationCode=21024,
@@ -1126,7 +1091,7 @@ namespace DS
                     PrevStation=21005,
                     NextStation=21022
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=89,
                     StationCode=21022,
@@ -1134,7 +1099,7 @@ namespace DS
                     PrevStation=21024,
                     NextStation=21000
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=89,
                     StationCode=21000,
@@ -1142,7 +1107,7 @@ namespace DS
                     PrevStation=21022,
                     NextStation=20902
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=89,
                     StationCode=20902,
@@ -1150,7 +1115,7 @@ namespace DS
                     PrevStation=21000,
                     NextStation=46203
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=89,
                     StationCode=46203,
@@ -1200,7 +1165,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=37136
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=921,
                     StationCode=37136,
@@ -1208,7 +1173,7 @@ namespace DS
                     PrevStation=37780,
                     NextStation=36481
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=921,
                     StationCode=36481,
@@ -1216,7 +1181,7 @@ namespace DS
                     PrevStation=37136,
                     NextStation=36480
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=921,
                     StationCode=36480,
@@ -1224,7 +1189,7 @@ namespace DS
                     PrevStation=36481,
                     NextStation=34063
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=921,
                     StationCode=34063,
@@ -1232,7 +1197,7 @@ namespace DS
                     PrevStation=36480,
                     NextStation=36446
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=921,
                     StationCode=36446,
@@ -1282,7 +1247,7 @@ namespace DS
                     PrevStation=0,
                     NextStation=21232
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=153,
                     StationCode=21232,
@@ -1290,7 +1255,7 @@ namespace DS
                     PrevStation=121365,
                     NextStation=21230
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=153,
                     StationCode=21230,
@@ -1298,7 +1263,7 @@ namespace DS
                     PrevStation=21232,
                     NextStation=21165
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=153,
                     StationCode=21165,
@@ -1306,7 +1271,7 @@ namespace DS
                     PrevStation=21230,
                     NextStation=21161
                 },
-                 new LineStation
+                new LineStation
                 {
                     LineNum=153,
                     StationCode=21161,
@@ -1314,7 +1279,7 @@ namespace DS
                     PrevStation=21165,
                     NextStation=57023
                 },
-                    new LineStation
+                new LineStation
                 {
                     LineNum=153,
                     StationCode=57023,
@@ -1356,292 +1321,290 @@ namespace DS
                 }
             };
 
-
-
             ListAdjStations = new List<AdjacentStetions>
             {
                 new AdjacentStetions
                 {
                     Station1=480,
                     Station2=407,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.001165,31.715411,34.989861,31.715411),
+                    Time=new TimeSpan(0,(int)(distance(35.001165,31.715411,34.989861,31.715411)*r.NextDouble()),0),
                 },
-                  new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=407,
                     Station2=401,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.989861,31.715411,35.0002,31.70735),
+                    Time=new TimeSpan(0,(int)(distance(34.989861,31.715411,35.0002,31.70735)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=401,
                     Station2=563,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.0002,31.70735,34.980749,31.744038),
+                    Time=new TimeSpan(0,(int)(distance(35.0002,31.70735,34.980749,31.744038)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=563,
                     Station2=573,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.980749,31.744038,34.992279,31.736319),
+                    Time=new TimeSpan(0,(int)(distance(34.980749,31.744038,34.992279,31.736319)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=573,
                     Station2=574,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.992279,31.736319,34.991927,31.733992),
+                    Time=new TimeSpan(0,(int)(distance(34.992279,31.736319,34.991927,31.733992)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=574,
                     Station2=172,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.991927,31.733992,35.195972,31.791222),
+                    Time=new TimeSpan(0,(int)(distance(34.991927,31.733992,35.195972,31.791222)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=172,
                     Station2=174,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.195972,31.791222,35.194683,31.791653),
+                    Time=new TimeSpan(0,(int)(distance(35.195972,31.791222,35.194683,31.791653)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=174,
                     Station2=179,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.194683,31.791653,35.191168,31.789376),
+                    Time=new TimeSpan(0,(int)(distance(35.194683,31.791653,35.191168,31.789376)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=179,
                     Station2=180,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.191168,31.789376,35.179234,31.786054),
+                    Time=new TimeSpan(0,(int)(distance(35.191168,31.789376,35.179234,31.786054)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=179,
                     Station2=176,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.191168,31.789376,35.192721,31.792105),
+                    Time=new TimeSpan(0,(int)(distance(35.000493,31.744547,34.995005,31.742295)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=176,
                     Station2=174,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.192721,31.792105,35.194683,31.791653),
+                    Time=new TimeSpan(0,(int)(distance(35.192721,31.792105,35.194683,31.791653)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=172,
                     Station2=21161,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.195972,31.791222,34.840305,32.092564),
+                    Time=new TimeSpan(0,(int)(distance(35.195972,31.791222,34.840305,32.092564)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21161,
                     Station2=21165,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.840305,32.092564,34.822193,32.094143),
+                    Time=new TimeSpan(0,(int)(distance(34.840305,32.092564,34.822193,32.094143)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21165,
                     Station2=21230,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.822193,32.094143,34.822562,32.092133),
+                    Time=new TimeSpan(0,(int)(distance(34.822193,32.094143,34.822562,32.092133)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21230,
                     Station2=21365,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.822562,32.092133,34.828052,32.091763),
+                    Time=new TimeSpan(0,(int)(distance(34.822562,32.092133,34.828052,32.091763)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21005,
                     Station2=21024,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.774385,32.087073,34.784808,32.073875),
+                    Time=new TimeSpan(0,(int)(distance(34.774385,32.087073,34.784808,32.073875)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21024,
                     Station2=21022,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.784808,32.073875,34.792974,32.073112),
+                    Time=new TimeSpan(0,(int)(distance(34.784808,32.073875,34.792974,32.073112)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21022,
                     Station2=21000,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.792974,32.073112,34.787792,32.079787),
+                    Time=new TimeSpan(0,(int)(distance(34.792974,32.073112,34.787792,32.079787)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21000,
                     Station2=20902,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.787792,32.079787,34.780691,32.046386),
+                    Time=new TimeSpan(0,(int)(distance(34.787792,32.079787,34.780691,32.046386)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=20902,
                     Station2=46203,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.780691,32.046386,35.020919,32.758695),
+                    Time=new TimeSpan(0,(int)(distance(34.780691,32.046386,35.020919,32.758695)*r.NextDouble()),0),
 
                 },
                 new AdjacentStetions
                 {
                     Station1=46203,
                     Station2=46216,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(35.020919,32.758695,34.957647,32.793065),
+                    Time=new TimeSpan(0,(int)(distance(35.020919,32.758695,34.957647,32.793065)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=46216,
                     Station2=46217,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.957647,32.793065,34.958184,32.805604),
+                    Time=new TimeSpan(0,(int)(distance(34.957647,32.793065,34.958184,32.805604)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=46217,
                     Station2=46233,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.958184,32.805604,34.963318,32.809908),
+                    Time=new TimeSpan(0,(int)(distance(34.958184,32.805604,34.963318,32.809908)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=46233,
                     Station2=47092,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.963318,32.809908,35.013987,32.790078),
+                    Time=new TimeSpan(0,(int)(distance(34.963318,32.809908,35.013987,32.790078)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=37780,
                     Station2=37136,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.844102,32.047317,34.838934,32.065048),
+                    Time=new TimeSpan(0,(int)(distance(34.844102,32.047317,34.838934,32.065048)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=37136,
                     Station2=36481,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.838934,32.065048,34.846952,32.053695),
+                    Time=new TimeSpan(0,(int)(distance(34.838934,32.065048,34.846952,32.053695)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=36481,
                     Station2=36480,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.846952,32.053695,34.848083,32.052359),
+                    Time=new TimeSpan(0,(int)(distance(34.846952,32.053695,34.848083,32.052359)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=36480,
                     Station2=34063,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.848083,32.052359,34.865101,32.091798),
+                    Time=new TimeSpan(0,(int)(distance(34.848083,32.052359,34.865101,32.091798)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=34063,
                     Station2=36446,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.865101,32.091798,34.845992,32.046427),
+                    Time=new TimeSpan(0,(int)(distance(34.865101,32.091798,34.845992,32.046427)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=36446,
                     Station2=35311,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.845992,32.046427,34.86392,32.076699),
+                    Time=new TimeSpan(0,(int)(distance(34.845992,32.046427,34.86392,32.076699)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=35311,
                     Station2=34934,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(34.86392,32.076699,34.852768,32.096057),
+                    Time=new TimeSpan(0,(int)(distance(34.86392,32.076699,34.852768,32.096057)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=34934,
                     Station2=33553,
-                    //Distance=,
-                    //Time=,
+                    Distance=distance(34.852768,32.096057,34.873652,32.084529),
+                    Time=new TimeSpan(0,(int)(distance(34.852768,32.096057,34.873652,32.084529)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=33553,
                     Station2=33537,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(34.873652,32.084529,34.890714,32.07915),
+                    Time=new TimeSpan(0,(int)(distance(34.873652,32.084529,34.890714,32.07915)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21365,
                     Station2=21232,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(34.828052,32.091763,34.82271,32.088772),
+                    Time=new TimeSpan(0,(int)(distance(34.828052,32.091763,34.82271,32.088772)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21232,
                     Station2=21230,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(34.82271,32.088772,34.822562,32.092133),
+                    Time=new TimeSpan(0,(int)(distance(34.82271,32.088772,34.822562,32.092133)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=21161,
                     Station2=57023,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(34.840305,31.744547,35.489648,32.963282),
+                    Time=new TimeSpan(0,(int)(distance(34.840305,31.744547,35.489648,32.963282)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=57023,
                     Station2=57025,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(35.489648,32.963282,35.496737,32.957234),
+                    Time=new TimeSpan(0,(int)(distance(35.489648,32.963282,35.496737,32.957234)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=57025,
                     Station2=57026,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(35.496737,32.957234,35.498349,32.957294),
+                    Time=new TimeSpan(0,(int)(distance(35.496737,32.957234,35.498349,32.957294)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=57026,
                     Station2=57027,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(35.498349,32.957294,35.498143,32.960467),
+                    Time=new TimeSpan(0,(int)(distance(35.498349,32.957294,35.498143,32.960467)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
                     Station1=57027,
                     Station2=57028,
-                    //Distance=,
-                    //Time=,
+                     Distance=distance(35.498143,32.960467,35.498795,32.961903),
+                    Time=new TimeSpan(0,(int)(distance(35.498143,32.960467,35.498795,32.961903)*r.NextDouble()),0),
                 },
-                          ///////////////////////////////////////////////////////////////////////////
+                                                    ///////////////////////////////////////////////////////////////////////////
                           
                 new AdjacentStetions
                 {
@@ -1652,7 +1615,6 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(35.000493,31.744547,34.995005,31.742295)*r.NextDouble()),0),
 
                 },
-
                 new AdjacentStetions
                 {
                     Station1=565,
@@ -1662,7 +1624,6 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.995005,31.742295,34.995859,31.740288)*r.NextDouble()),0),
 
                 },
-
                 new AdjacentStetions
                 {
                     Station1=566,
@@ -1672,8 +1633,7 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.995859,31.740288,34.995833,31.738094)*r.NextDouble()),0),
 
                 },
-
-                 new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=567,
                     Station2=568,
@@ -1682,8 +1642,7 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.995833,31.738094,34.995107,31.73755)*r.NextDouble()),0),
 
                 },
-
-                 new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=568,
                     Station2=569,
@@ -1692,8 +1651,7 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.995107,31.73755,34.993086,31.738594)*r.NextDouble()),0),
 
                 },
-
-                 new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=569,
                     Station2=574,
@@ -1702,8 +1660,7 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.993086,31.738594,34.991927,31.733992)*r.NextDouble()),0),
 
                 },
-
-                 new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=574,
                     Station2=575,
@@ -1712,8 +1669,7 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.991927,31.733992,34.993077,31.731931)*r.NextDouble()),0),
 
                 },
-
-                 new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=575,
                     Station2=480,
@@ -1722,8 +1678,7 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.993077,31.731931,35.001165,31.706773)*r.NextDouble()),0),
 
                 },
-
-                 new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=480,
                     Station2=407,
@@ -1735,7 +1690,6 @@ namespace DS
 
             };
          
-          
         }
         
     }
