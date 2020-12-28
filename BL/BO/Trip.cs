@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DO;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class Trip : User,Station
+    class Trip : User
     {
         public int Id { get; set; }
         //public string UserName { get; set; }  -----------name of user
