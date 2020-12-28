@@ -24,35 +24,36 @@ namespace DS
         }
         static void InitAllLists()
         {
-            //ListBuses = new List<Bus>
-            //{
-            //            new Bus
-            //            {
-            //              LicensePlate= 12345678,
-            //              FromDate = new DateTime(2018/01/01),
-            //              TotalTrip=300,
-            //              FuelRemain=1000,
-            //              Status=StatusOfBus.Ready
-            //            },
+            {//ListBuses = new List<Bus>
+             //{
+             //            new Bus
+             //            {
+             //              LicensePlate= 12345678,
+             //              FromDate = new DateTime(2018/01/01),
+             //              TotalTrip=300,
+             //              FuelRemain=1000,
+             //              Status=StatusOfBus.Ready
+             //            },
 
-            //            new Bus
-            //            {
-            //              LicensePlate= 23456789,
-            //              FromDate = new DateTime(2018/01/01),
-            //              TotalTrip=300,
-            //              FuelRemain=1000,
-            //              Status=StatusOfBus.Ready
-            //            },
+                //            new Bus
+                //            {
+                //              LicensePlate= 23456789,
+                //              FromDate = new DateTime(2018/01/01),
+                //              TotalTrip=300,
+                //              FuelRemain=1000,
+                //              Status=StatusOfBus.Ready
+                //            },
 
-            //            new Bus
-            //            {
-            //              LicensePlate= 87654321,
-            //              FromDate = new DateTime(2018/01/01),
-            //              TotalTrip=300,
-            //              FuelRemain=1000,
-            //              Status=StatusOfBus.Ready
-            //            }
-            //};
+                //            new Bus
+                //            {
+                //              LicensePlate= 87654321,
+                //              FromDate = new DateTime(2018/01/01),
+                //              TotalTrip=300,
+                //              FuelRemain=1000,
+                //              Status=StatusOfBus.Ready
+                //            }
+                //};
+            }
             ListStations = new List<Station>
             {
                 new Station
@@ -214,13 +215,7 @@ namespace DS
                 },
 
 
-                new Station
-                {
-                    Code=180,
-                    Name="כפר שאול/קצנלבוגן, ירושלים",
-                    Longitude=35.179234,
-                    Lattitude= 31.786054,
-                },
+           
 
                 new Station
                 {
@@ -446,6 +441,302 @@ namespace DS
                      Longitude = 34.844102,
                      Lattitude = 32.047317,
                 }
+            };
+            ListLines = new List<Line>
+            {
+                new Line
+                {
+                   LineNum=7,
+                   Code=1,
+                   Area=Areas.Jerusalem,
+                   FirstStation=1,
+                   LastStation=407,
+                },
+                new Line
+                {
+                   LineNum=650,
+                   Code=1,
+                   Area=Areas.General,
+                   FirstStation=172,
+                   LastStation=57028,
+                },
+                  new Line
+                {
+                   LineNum=420,
+                   Code=1,
+                   Area=Areas.Center,
+                   FirstStation=21022,
+                   LastStation=21161,
+                },
+
+                new Line
+                {
+                   LineNum=497,
+                   Code=1,
+                   Area=Areas.General,
+                   FirstStation=21161,
+                   LastStation=480,
+                },
+
+                new Line
+                {
+                   LineNum=8,
+                   Code=1,
+                   Area=Areas.Center,
+                   FirstStation=33553,
+                   LastStation=36481,
+                },
+
+            };
+
+            ListLineStations = new List<LineStation>
+            {
+                new LineStation
+                {
+                    LineNum=7,
+                    StationCode=1,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=565
+                },
+                 new LineStation
+                {
+                    LineNum=7,
+                    StationCode=565,
+                    LineStationIndex=2,
+                    PrevStation=1,
+                    NextStation=566
+                },
+                 new LineStation
+                {
+                    LineNum=7,
+                    StationCode=566,
+                    LineStationIndex=3,
+                    PrevStation=565,
+                    NextStation=567
+                },
+                 new LineStation
+                {
+                    LineNum=7,
+                    StationCode=567,
+                    LineStationIndex=4,
+                    PrevStation=566,
+                    NextStation=568
+                },
+                 new LineStation
+                {
+                    LineNum=7,
+                    StationCode=568,
+                    LineStationIndex=5,
+                    PrevStation=567,
+                    NextStation=569
+                },
+                    new LineStation
+                {
+                    LineNum=7,
+                    StationCode=569,
+                    LineStationIndex=6,
+                    PrevStation=568,
+                    NextStation=574
+                },
+                new LineStation
+                {
+                    LineNum=7,
+                    StationCode=574,
+                    LineStationIndex=7,
+                    PrevStation=569,
+                    NextStation=575
+                },
+                new LineStation
+                {
+                    LineNum=7,
+                    StationCode=575,
+                    LineStationIndex=8,
+                    PrevStation=564,
+                    NextStation=408
+                },
+                new LineStation
+                {
+                    LineNum=7,
+
+                    StationCode=408,
+                    LineStationIndex=9,
+                    PrevStation=575,
+                    NextStation=407
+                },
+                new LineStation
+                {
+                    LineNum=7,
+
+                    StationCode=407,
+                    LineStationIndex=10,
+                    PrevStation=408,
+                    NextStation=0
+                },
+
+                //line 650
+
+                new LineStation
+                {
+                    LineNum=650,
+                    StationCode=172,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=174
+                },
+                 new LineStation
+                {
+                    LineNum=650,
+                    StationCode=174,
+                    LineStationIndex=2,
+                    PrevStation=172,
+                    NextStation=176
+                },
+                 new LineStation
+                {
+                    LineNum=650,
+                    StationCode=176,
+                    LineStationIndex=3,
+                    PrevStation=174,
+                    NextStation=179
+                },
+                 new LineStation
+                {
+                    LineNum=650,
+                    StationCode=179,
+                    LineStationIndex=4,
+                    PrevStation=176,
+                    NextStation=57023
+                },
+                 new LineStation
+                {
+                    LineNum=650,
+                    StationCode=57023,
+                    LineStationIndex=5,
+                    PrevStation=179,
+                    NextStation=57025
+                },
+                    new LineStation
+                {
+                    LineNum=650,
+                    StationCode=57025,
+                    LineStationIndex=6,
+                    PrevStation=57023,
+                    NextStation=57026
+                },
+                new LineStation
+                {
+                    LineNum=650,
+                    StationCode=57026,
+                    LineStationIndex=7,
+                    PrevStation=57025,
+                    NextStation=57027
+                },
+                new LineStation
+                {
+                    LineNum=650,
+                    StationCode=57027,
+                    LineStationIndex=8,
+                    PrevStation=57026,
+                    NextStation=57028
+                },
+                new LineStation
+                {
+                    LineNum=650,
+
+                    StationCode=57028,
+                    LineStationIndex=9,
+                    PrevStation=57027,
+                    NextStation=0
+                },
+
+
+                //line 420
+
+                new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21022,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=21024
+                },
+                 new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21024,
+                    LineStationIndex=2,
+                    PrevStation=21022,
+                    NextStation=20902
+                },
+                 new LineStation
+                {
+                    LineNum=420,
+                    StationCode=20902,
+                    LineStationIndex=3,
+                    PrevStation=21024,
+                    NextStation=21000
+                },
+                 new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21000,
+                    LineStationIndex=4,
+                    PrevStation=20902,
+                    NextStation=21005
+                },
+                 new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21005,
+                    LineStationIndex=5,
+                    PrevStation=21000,
+                    NextStation=21365
+                },
+                    new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21365,
+                    LineStationIndex=6,
+                    PrevStation=21005,
+                    NextStation=21165
+                },
+                new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21165,
+                    LineStationIndex=7,
+                    PrevStation=21365,
+                    NextStation=21230
+                },
+                new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21230,
+                    LineStationIndex=8,
+                    PrevStation=21165,
+                    NextStation=21232
+                },
+                new LineStation
+                {
+                    LineNum=420,
+
+                    StationCode=21232,
+                    LineStationIndex=9,
+                    PrevStation=21230,
+                    NextStation=21161
+                },
+                new LineStation
+                {
+                    LineNum=420,
+                    StationCode=21161,
+                    LineStationIndex=10,
+                    PrevStation=408,
+                    NextStation=0
+                },
+
+
+                ///
             };
 
 
