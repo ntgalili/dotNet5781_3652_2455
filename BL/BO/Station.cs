@@ -9,8 +9,8 @@ namespace BO
     class Station
     {
         //public int CodeLine { get; set; }  ------------code of the bus on the trip
-        public string NameOfLine { get; set; }
-        public int StationNumberOnLine { get; set; }
+        public string Name { get; set; }
+        public int Code { get; set; }
         public override string ToString() => this.ToStringProperty();
 
     }

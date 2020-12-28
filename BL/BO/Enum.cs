@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL.BO
+namespace BO
 {
-    class Enum
-    {
-    }
+    public enum Areas { General, North, South, Center, Jerusalem };
+    
 }
