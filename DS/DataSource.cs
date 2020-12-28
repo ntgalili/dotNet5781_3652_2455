@@ -1198,7 +1198,6 @@ namespace DS
                     Station2=407,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
                   new AdjacentStetions
                 {
@@ -1206,95 +1205,83 @@ namespace DS
                     Station2=401,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
-                      new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=401,
                     Station2=563,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=563,
                     Station2=573,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=573,
                     Station2=574,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=574,
                     Station2=172,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=172,
                     Station2=174,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417,402
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=174,
                     Station2=179,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=179,
                     Station2=180,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=417,402
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=179,
                     Station2=176,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=402
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=176,
                     Station2=174,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=402
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=172,
                     Station2=21161,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=402
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21161,
                     Station2=21165,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=402,153
                 },
                 new AdjacentStetions
                 {
@@ -1302,215 +1289,189 @@ namespace DS
                     Station2=21230,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=402
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21230,
                     Station2=21365,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=402,153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21005,
                     Station2=21024,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21024,
                     Station2=21022,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21022,
                     Station2=21000,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21000,
                     Station2=20902,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=20902,
                     Station2=46203,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
+
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=46203,
                     Station2=46216,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=46216,
                     Station2=46217,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=46217,
                     Station2=46233,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=46233,
                     Station2=47092,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=89
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=37780,
                     Station2=37136,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=37136,
                     Station2=36481,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=36481,
                     Station2=36480,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=36480,
                     Station2=34063,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=34063,
                     Station2=36446,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=36446,
                     Station2=35311,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=35311,
                     Station2=34934,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=34934,
                     Station2=33553,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=33553,
                     Station2=33537,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=921
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21365,
                     Station2=21232,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21232,
                     Station2=21230,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=21161,
                     Station2=57023,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=57023,
                     Station2=57025,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=57025,
                     Station2=57026,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=57026,
                     Station2=57027,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
-                          new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=57027,
                     Station2=57028,
                     //Distance=,
                     //Time=,
-                    //NearbyBusStops=153
                 },
                           ///////////////////////////////////////////////////////////////////////////
                           
