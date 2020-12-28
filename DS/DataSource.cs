@@ -269,8 +269,184 @@ namespace DS
                     Longitude=35.498795,
                     Lattitude= 32.961903,
                 },
-            };
 
+                new Station
+                {
+                    Code = 20902,
+                    Name = "שד' ישראל גורי/דרך קיבוץ גלויות, תל אביב",
+                    Longitude = 34.780691,
+                    Lattitude = 32.046386,
+                 },
+                 new Station
+                 {
+                     Code = 21000,
+                     Name = "ביה''ח איכילוב/שד' דוד המלך, תל אביב",
+                     Longitude = 34.787792,
+                     Lattitude = 32.079787,
+                 },
+                 new Station
+                 {
+                     Code = 21022,
+                     Name = "ת. רכבת השלום, תל אביב",
+                     Longitude = 34.792974,
+                     Lattitude = 32.073112,
+                 },
+                 new Station
+                 {
+                     Code = 21024,
+                     Name = "ליאונרדו דה וינצ'י/קפלן, תל אביב",
+                     Longitude = 34.784808,
+                     Lattitude = 32.073875,
+                 },
+                 new Station
+                 {
+                     Code = 21005,
+                     Name = "ארלוזורוב/דיזנגוף, תל אביב",
+                     Longitude = 34.774385,
+                     Lattitude = 32.087073,
+                 },
+
+                 new Station
+                 {
+                     Code = 21161,
+                     Name = "דרך ז'בוטינסקי/אהרונוביץ, בני ברק",
+                     Longitude = 34.840305,
+                     Lattitude = 32.092564,
+                 },                 
+                new Station
+                {
+                     Code = 21165,
+                     Name = "מגדל ויטה/דרך בן גוריון, בני ברק",
+                     Longitude = 34.822193,
+                     Lattitude = 32.094143,
+                },                 
+                new Station
+                {
+                     Code = 21230,
+                     Name = "דרך בן גוריון/יהושע בן נון, בני ברק",
+                     Longitude = 34.822562,
+                     Lattitude = 32.092133,
+                },                 
+                new Station
+                {
+                     Code = 21232,
+                     Name = "דרך בן גוריון/מגדים, בני ברק",
+                     Longitude = 34.82271,
+                     Lattitude = 32.088772,
+                },                 
+                new Station
+                {
+                     Code = 21365,
+                     Name = "דרך ז'בוטינסקי/דב גרונר, בני ברק",
+                     Longitude = 34.828052,
+                     Lattitude = 32.091763,
+                },
+                new Station
+                {
+                     Code = 46203,
+                     Name = "אבא חושי/פארק הכרמל, חיפה",
+                     Longitude = 35.020919,
+                     Lattitude = 32.758695,
+                },
+                new Station
+                {
+                     Code = 46216,
+                     Name = "ת. רכבת חוף הכרמל, חיפה",
+                     Longitude = 34.957647,
+                     Lattitude = 32.793065,
+                },
+                new Station
+                {
+                     Code = 46217,
+                     Name = "נווה דוד, חיפה",
+                     Longitude = 34.958184,
+                     Lattitude = 32.805604,
+                },
+                new Station
+                {
+                     Code = 46233,
+                     Name = "אסתר המלכה, חיפה",
+                     Longitude = 34.963318,
+                     Lattitude = 32.809908,
+                },
+                new Station
+                {
+                     Code = 47092,
+                     Name = "חניתה/אבא הילל סילבר, חיפה",
+                     Longitude = 35.013987,
+                     Lattitude = 32.790078,
+                },
+                new Station
+                {
+                     Code = 33537,
+                     Name = "יחיאל מיכל פינס/הרב קטרוני, פתח תקווה",
+                     Longitude = 34.890714,
+                     Lattitude = 32.07915,
+                },
+                new Station
+                {
+                     Code = 33553,
+                     Name = "חיים ארלוזורוב/הרצפלד, פתח תקווה",
+                     Longitude = 34.873652,
+                     Lattitude = 32.084529,
+                },
+                new Station
+                {
+                     Code = 34063,
+                     Name = "בלינסון קניון אבנת/מסוף יותם ויואב, פתח תקווה",
+                     Longitude = 34.865101,
+                     Lattitude = 32.091798,
+                },
+                new Station
+                {
+                     Code = 34934,
+                     Name = "החרש/עמל, פתח תקווה",
+                     Longitude = 34.852768,
+                     Lattitude = 32.096057,
+                },
+                new Station
+                {
+                     Code = 35311,
+                     Name = "אלכסנדר זייד/שטרוק, פתח תקווה",
+                     Longitude = 34.86392,
+                     Lattitude = 32.076699,
+                },
+                new Station
+                {
+                     Code = 36446,
+                     Name = "בית החולים תל השומר/מד''א, רמת גן",
+                     Longitude = 34.845992,
+                     Lattitude = 32.046427,
+                },
+                new Station
+                {
+                     Code = 36480,
+                     Name = "עמק האלה/שד' אהרון קציר, רמת גן",
+                     Longitude = 34.848083,
+                     Lattitude = 32.052359,
+                },
+                new Station
+                {
+                     Code = 36481,
+                     Name = "מנדס/שד' אהרון קציר, רמת גן",
+                     Longitude = 34.846952,
+                     Lattitude = 32.053695,
+                },
+                new Station
+                {
+                     Code = 37136,
+                     Name = "כביש 4/מחלף בר אילן, רמת גן",
+                     Longitude = 34.838934,
+                     Lattitude = 32.065048,
+                },
+                new Station
+                {
+                     Code = 37780,
+                     Name = "בית החולים תל השומר/מעבדות, רמת גן",
+                     Longitude = 34.844102,
+                     Lattitude = 32.047317,
+                }
+            };
 
 
         }
