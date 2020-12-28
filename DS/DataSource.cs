@@ -442,6 +442,7 @@ namespace DS
                      Lattitude = 32.047317,
                 }
             };
+
             ListLines = new List<Line>
             {
                 new Line
@@ -477,7 +478,6 @@ namespace DS
                    FirstStation=21161,
                    LastStation=480,
                 },
-
                 new Line
                 {
                    LineNum=8,
@@ -487,10 +487,51 @@ namespace DS
                    LastStation=36481,
                 },
 
+                new Line
+                {
+                   LineNum=417,
+                   Code=1,
+                   Area=Areas.Jerusalem,
+                   FirstStation=480,
+                   LastStation=180,
+                },
+                new Line
+                {
+                   LineNum=402,
+                   Code=1,
+                   Area=Areas.Center,
+                   FirstStation=180,
+                   LastStation=21365,
+                },
+                new Line
+                {
+                   LineNum=153,
+                   Code=1,
+                   Area=Areas.North,
+                   FirstStation=21365,
+                   LastStation=57028,
+                },
+                new Line
+                {
+                   LineNum=921,
+                   Code=1,
+                   Area=Areas.Center,
+                   FirstStation=37780,
+                   LastStation=33537,
+                },
+                new Line
+                {
+                   LineNum=89,
+                   Code=1,
+                   Area=Areas.Center,
+                   FirstStation=21005,
+                   LastStation=47092,
+                }
             };
 
             ListLineStations = new List<LineStation>
             {
+                //line 7
                 new LineStation
                 {
                     LineNum=7,
@@ -737,9 +778,746 @@ namespace DS
 
 
                 ///
+
+
+
+
+
+
+                //line 417
+                new LineStation
+                {
+                    LineNum=417,
+                    StationCode=480,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=407
+                },
+                 new LineStation
+                {
+                    LineNum=417,
+                    StationCode=407,
+                    LineStationIndex=2,
+                    PrevStation=480,
+                    NextStation=401
+                },
+                 new LineStation
+                {
+                    LineNum=417,
+                    StationCode=401,
+                    LineStationIndex=3,
+                    PrevStation=407,
+                    NextStation=563
+                },
+                 new LineStation
+                {
+                    LineNum=417,
+                    StationCode=563,
+                    LineStationIndex=4,
+                    PrevStation=401,
+                    NextStation=573
+                },
+                 new LineStation
+                {
+                    LineNum=417,
+                    StationCode=573,
+                    LineStationIndex=5,
+                    PrevStation=563,
+                    NextStation=574
+                },
+                    new LineStation
+                {
+                    LineNum=417,
+                    StationCode=574,
+                    LineStationIndex=6,
+                    PrevStation=573,
+                    NextStation=172
+                },
+                new LineStation
+                {
+                    LineNum=417,
+                    StationCode=172,
+                    LineStationIndex=7,
+                    PrevStation=574,
+                    NextStation=174
+                },
+                new LineStation
+                {
+                    LineNum=417,
+                    StationCode=174,
+                    LineStationIndex=8,
+                    PrevStation=172,
+                    NextStation=179
+                },
+                new LineStation
+                {
+                    LineNum=417,
+                    StationCode=179,
+                    LineStationIndex=9,
+                    PrevStation=174,
+                    NextStation=180
+                },
+                new LineStation
+                {
+                    LineNum=417,
+                    StationCode=180,
+                    LineStationIndex=10,
+                    PrevStation=179,
+                    NextStation=0
+                },
+
+                //line 402
+                new LineStation
+                {
+                    LineNum=402,
+                    StationCode=180,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=179
+                },
+                 new LineStation
+                {
+                    LineNum=402,
+                    StationCode=179,
+                    LineStationIndex=2,
+                    PrevStation=180,
+                    NextStation=176
+                },
+                 new LineStation
+                {
+                    LineNum=402,
+                    StationCode=176,
+                    LineStationIndex=3,
+                    PrevStation=179,
+                    NextStation=174
+                },
+                 new LineStation
+                {
+                    LineNum=402,
+                    StationCode=174,
+                    LineStationIndex=4,
+                    PrevStation=176,
+                    NextStation=172
+                },
+                 new LineStation
+                {
+                    LineNum=402,
+                    StationCode=172,
+                    LineStationIndex=5,
+                    PrevStation=174,
+                    NextStation=21161
+                },
+                    new LineStation
+                {
+                    LineNum=402,
+                    StationCode=21161,
+                    LineStationIndex=6,
+                    PrevStation=172,
+                    NextStation=21165
+                },
+                new LineStation
+                {
+                    LineNum=402,
+                    StationCode=21165,
+                    LineStationIndex=7,
+                    PrevStation=21161,
+                    NextStation=21230
+                },
+                new LineStation
+                {
+                    LineNum=402,
+                    StationCode=21230,
+                    LineStationIndex=8,
+                    PrevStation=21165,
+                    NextStation=21365
+                },
+                new LineStation
+                {
+                    LineNum=402,
+                    StationCode=21365,
+                    LineStationIndex=9,
+                    PrevStation=21230,
+                    NextStation=0
+                },
+            
+
+                //line 89
+                new LineStation
+                {
+                    LineNum=89,
+                    StationCode=21005,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=21024
+                },
+                 new LineStation
+                {
+                    LineNum=89,
+                    StationCode=21024,
+                    LineStationIndex=2,
+                    PrevStation=21005,
+                    NextStation=21022
+                },
+                 new LineStation
+                {
+                    LineNum=89,
+                    StationCode=21022,
+                    LineStationIndex=3,
+                    PrevStation=21024,
+                    NextStation=21000
+                },
+                 new LineStation
+                {
+                    LineNum=89,
+                    StationCode=21000,
+                    LineStationIndex=4,
+                    PrevStation=21022,
+                    NextStation=20902
+                },
+                 new LineStation
+                {
+                    LineNum=89,
+                    StationCode=20902,
+                    LineStationIndex=5,
+                    PrevStation=21000,
+                    NextStation=46203
+                },
+                    new LineStation
+                {
+                    LineNum=89,
+                    StationCode=46203,
+                    LineStationIndex=6,
+                    PrevStation=20902,
+                    NextStation=46216
+                },
+                new LineStation
+                {
+                    LineNum=89,
+                    StationCode=46216,
+                    LineStationIndex=7,
+                    PrevStation=46203,
+                    NextStation=46217
+                },
+                new LineStation
+                {
+                    LineNum=89,
+                    StationCode=46217,
+                    LineStationIndex=8,
+                    PrevStation=46216,
+                    NextStation=46233
+                },
+                new LineStation
+                {
+                    LineNum=89,
+                    StationCode=46233,
+                    LineStationIndex=9,
+                    PrevStation=46217,
+                    NextStation=47092
+                },
+                new LineStation
+                {
+                    LineNum=89,
+                    StationCode=47092,
+                    LineStationIndex=10,
+                    PrevStation=46233,
+                    NextStation=0
+                },
+
+                //line 921
+                new LineStation
+                {
+                    LineNum=921,
+                    StationCode=37780,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=37136
+                },
+                 new LineStation
+                {
+                    LineNum=921,
+                    StationCode=37136,
+                    LineStationIndex=2,
+                    PrevStation=37780,
+                    NextStation=36481
+                },
+                 new LineStation
+                {
+                    LineNum=921,
+                    StationCode=36481,
+                    LineStationIndex=3,
+                    PrevStation=37136,
+                    NextStation=36480
+                },
+                 new LineStation
+                {
+                    LineNum=921,
+                    StationCode=36480,
+                    LineStationIndex=4,
+                    PrevStation=36481,
+                    NextStation=34063
+                },
+                 new LineStation
+                {
+                    LineNum=921,
+                    StationCode=34063,
+                    LineStationIndex=5,
+                    PrevStation=36480,
+                    NextStation=36446
+                },
+                    new LineStation
+                {
+                    LineNum=921,
+                    StationCode=36446,
+                    LineStationIndex=6,
+                    PrevStation=34063,
+                    NextStation=35311
+                },
+                new LineStation
+                {
+                    LineNum=921,
+                    StationCode=35311,
+                    LineStationIndex=7,
+                    PrevStation=36446,
+                    NextStation=34934
+                },
+                new LineStation
+                {
+                    LineNum=921,
+                    StationCode=34934,
+                    LineStationIndex=8,
+                    PrevStation=35311,
+                    NextStation=33553
+                },
+                new LineStation
+                {
+                    LineNum=921,
+                    StationCode=33553,
+                    LineStationIndex=9,
+                    PrevStation=34934,
+                    NextStation=33537
+                },
+                new LineStation
+                {
+                    LineNum=921,
+                    StationCode=33537,
+                    LineStationIndex=10,
+                    PrevStation=33553,
+                    NextStation=0
+                },
+
+                //line 153
+                new LineStation
+                {
+                    LineNum=153,
+                    StationCode=121365,
+                    LineStationIndex=1,
+                    PrevStation=0,
+                    NextStation=21232
+                },
+                 new LineStation
+                {
+                    LineNum=153,
+                    StationCode=21232,
+                    LineStationIndex=2,
+                    PrevStation=121365,
+                    NextStation=21230
+                },
+                 new LineStation
+                {
+                    LineNum=153,
+                    StationCode=21230,
+                    LineStationIndex=3,
+                    PrevStation=21232,
+                    NextStation=21165
+                },
+                 new LineStation
+                {
+                    LineNum=153,
+                    StationCode=21165,
+                    LineStationIndex=4,
+                    PrevStation=21230,
+                    NextStation=21161
+                },
+                 new LineStation
+                {
+                    LineNum=153,
+                    StationCode=21161,
+                    LineStationIndex=5,
+                    PrevStation=21165,
+                    NextStation=57023
+                },
+                    new LineStation
+                {
+                    LineNum=153,
+                    StationCode=57023,
+                    LineStationIndex=6,
+                    PrevStation=21161,
+                    NextStation=57025
+                },
+                new LineStation
+                {
+                    LineNum=153,
+                    StationCode=57025,
+                    LineStationIndex=7,
+                    PrevStation=57023,
+                    NextStation=57026
+                },
+                new LineStation
+                {
+                    LineNum=153,
+                    StationCode=57026,
+                    LineStationIndex=8,
+                    PrevStation=57025,
+                    NextStation=57027
+                },
+                new LineStation
+                {
+                    LineNum=153,
+                    StationCode=57027,
+                    LineStationIndex=9,
+                    PrevStation=57026,
+                    NextStation=57028
+                },
+                new LineStation
+                {
+                    LineNum=153,
+                    StationCode=57028,
+                    LineStationIndex=10,
+                    PrevStation=57027,
+                    NextStation=0
+                }
             };
 
 
+
+            ListAdjStations = new List<AdjacentStetions>
+            {
+                new AdjacentStetions
+                {
+                    Station1=480,
+                    Station2=407,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                  new AdjacentStetions
+                {
+                    Station1=407,
+                    Station2=401,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                      new AdjacentStetions
+                {
+                    Station1=401,
+                    Station2=563,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                          new AdjacentStetions
+                {
+                    Station1=563,
+                    Station2=573,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                          new AdjacentStetions
+                {
+                    Station1=573,
+                    Station2=574,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                          new AdjacentStetions
+                {
+                    Station1=574,
+                    Station2=172,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                          new AdjacentStetions
+                {
+                    Station1=172,
+                    Station2=174,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417,402
+                },
+                          new AdjacentStetions
+                {
+                    Station1=174,
+                    Station2=179,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417
+                },
+                          new AdjacentStetions
+                {
+                    Station1=179,
+                    Station2=180,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=417,402
+                },
+                          new AdjacentStetions
+                {
+                    Station1=179,
+                    Station2=176,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=402
+                },
+                          new AdjacentStetions
+                {
+                    Station1=176,
+                    Station2=174,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=402
+                },
+                          new AdjacentStetions
+                {
+                    Station1=172,
+                    Station2=21161,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=402
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21161,
+                    Station2=21165,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=402,153
+                },
+                new AdjacentStetions
+                {
+                    Station1=21165,
+                    Station2=21230,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=402
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21230,
+                    Station2=21365,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=402,153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21005,
+                    Station2=21024,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21024,
+                    Station2=21022,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21022,
+                    Station2=21000,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21000,
+                    Station2=20902,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=20902,
+                    Station2=46203,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=46203,
+                    Station2=46216,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=46216,
+                    Station2=46217,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=46217,
+                    Station2=46233,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=46233,
+                    Station2=47092,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=89
+                },
+                          new AdjacentStetions
+                {
+                    Station1=37780,
+                    Station2=37136,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=37136,
+                    Station2=36481,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=36481,
+                    Station2=36480,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=36480,
+                    Station2=34063,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=34063,
+                    Station2=36446,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=36446,
+                    Station2=35311,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=35311,
+                    Station2=34934,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=34934,
+                    Station2=33553,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=33553,
+                    Station2=33537,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=921
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21365,
+                    Station2=21232,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21232,
+                    Station2=21230,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=21161,
+                    Station2=57023,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=57023,
+                    Station2=57025,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=57025,
+                    Station2=57026,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=57026,
+                    Station2=57027,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          new AdjacentStetions
+                {
+                    Station1=57027,
+                    Station2=57028,
+                    //Distance=,
+                    //Time=,
+                    //NearbyBusStops=153
+                },
+                          ///////////////////////////////////////////////////////////////////////////
+                          
+
+
+
+            };
         }
     }
 }
