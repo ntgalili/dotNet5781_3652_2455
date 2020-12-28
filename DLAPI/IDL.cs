@@ -33,5 +33,30 @@ namespace DLAPI
         void DeleteAdjStations(int code1,int code2); // removes only Student, does not remove the appropriate Person...
         #endregion
 
+
+        #region Station
+        //IEnumerable<DO.Station> GetAllUpdateStations();
+        //IEnumerable<DO.Station> GetAllStationsBy(Predicate<DO.Station> predicate);
+        DO.Station GetStation(int num);
+        void AddStation(DO.Station station);
+        void UpdateStation(DO.Station station);
+        void DeleteStation(int num);
+        //void UpdateStation(int num, Action<DO.Station> update); //method that knows to updt specific fields in Line
+
+        #endregion
+
+
+
+        #region LineStation
+        //IEnumerable<DO.LineStation> GetAllLineStations();
+        //IEnumerable<DO.LineStation> GetAllLineStationsBy(Predicate<DO.LineStation> predicate);
+        DO.LineStation GetLineStation(int codeLine , int codeStation);
+        void AddLineStation(DO.LineStation lineStation);
+        void UpdateLineStation(DO.LineStation lineStation);
+        void DeleteLineStation(int codeLine, int codeStation);
+        //void UpdateLine(int num, Action<DO.LineStation> update); //method that knows to updt specific fields in Line
+
+        #endregion
+
     }
 }
