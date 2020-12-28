@@ -50,10 +50,10 @@ namespace DLAPI
         #region LineStation
         //IEnumerable<DO.LineStation> GetAllLineStations();
         //IEnumerable<DO.LineStation> GetAllLineStationsBy(Predicate<DO.LineStation> predicate);
-        DO.LineStation GetLineStation(int codeLine , int num);
+        DO.LineStation GetLineStation(int codeLine , int codeStation);
         void AddLineStation(DO.LineStation lineStation);
         void UpdateLineStation(DO.LineStation lineStation);
-        void DeleteLineStation(int codeLine, int num);
+        void DeleteLineStation(int codeLine, int codeStation);
         //void UpdateLine(int num, Action<DO.LineStation> update); //method that knows to updt specific fields in Line
 
         #endregion
