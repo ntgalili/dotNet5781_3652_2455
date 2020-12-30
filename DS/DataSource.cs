@@ -1242,7 +1242,7 @@ namespace DS
                 new LineStation
                 {
                     LineNum=153,
-                    StationCode=121365,
+                    StationCode=21365,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=21232
@@ -1252,7 +1252,7 @@ namespace DS
                     LineNum=153,
                     StationCode=21232,
                     LineStationIndex=2,
-                    PrevStation=121365,
+                    PrevStation=21365,
                     NextStation=21230
                 },
                 new LineStation
@@ -1389,9 +1389,23 @@ namespace DS
                 new AdjacentStetions
                 {
                     Station1=179,
+                    Station2=57023,
+                    Distance=distance(35.191168,31.789376,35.489648,32.963282),
+                    Time=new TimeSpan(0,(int)(distance(35.191168,31.789376,35.489648,32.963282)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=179,
                     Station2=176,
                     Distance=distance(35.191168,31.789376,35.192721,31.792105),
-                    Time=new TimeSpan(0,(int)(distance(35.000493,31.744547,34.995005,31.742295)*r.NextDouble()),0),
+                    Time=new TimeSpan(0,(int)(distance(35.191168,31.789376,35.192721,31.792105)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=176,
+                    Station2=179,
+                    Distance=distance(35.192721,31.792105,35.191168,31.789376),
+                    Time=new TimeSpan(0,(int)(distance(35.192721,31.792105,35.191168,31.789376)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
@@ -1445,6 +1459,13 @@ namespace DS
                 new AdjacentStetions
                 {
                     Station1=21022,
+                    Station2=21024,
+                    Distance=distance(34.792974,32.073112,34.784808,32.073875),
+                    Time=new TimeSpan(0,(int)(distance(34.792974,32.073112,34.784808,32.073875)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=21022,
                     Station2=21000,
                     Distance=distance(34.792974,32.073112,34.787792,32.079787),
                     Time=new TimeSpan(0,(int)(distance(34.792974,32.073112,34.787792,32.079787)*r.NextDouble()),0),
@@ -1455,6 +1476,13 @@ namespace DS
                     Station2=20902,
                     Distance=distance(34.787792,32.079787,34.780691,32.046386),
                     Time=new TimeSpan(0,(int)(distance(34.787792,32.079787,34.780691,32.046386)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=20902,
+                    Station2=21000 ,
+                    Distance=distance(34.780691,32.046386,34.787792,32.079787),
+                    Time=new TimeSpan(0,(int)(distance(34.780691,32.046386,34.787792,32.079787)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
@@ -1502,6 +1530,13 @@ namespace DS
                 new AdjacentStetions
                 {
                     Station1=37136,
+                    Station2=37780,
+                    Distance=distance(34.838934,32.065048,34.844102,32.047317),
+                    Time=new TimeSpan(0,(int)(distance(34.838934,32.065048,34.844102,32.047317)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=37136,
                     Station2=36481,
                     Distance=distance(34.838934,32.065048,34.846952,32.053695),
                     Time=new TimeSpan(0,(int)(distance(34.838934,32.065048,34.846952,32.053695)*r.NextDouble()),0),
@@ -1512,6 +1547,20 @@ namespace DS
                     Station2=36480,
                     Distance=distance(34.846952,32.053695,34.848083,32.052359),
                     Time=new TimeSpan(0,(int)(distance(34.846952,32.053695,34.848083,32.052359)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=36480,
+                    Station2=36481,
+                    Distance=distance(34.848083,32.052359,34.846952,32.053695),
+                    Time=new TimeSpan(0,(int)(distance(34.846952,32.053695,34.848083,32.052359)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=36481,
+                    Station2=34063,
+                    Distance=distance(34.846952,32.053695,34.865101,32.091798),
+                    Time=new TimeSpan(0,(int)(distance(34.846952,32.053695,34.865101,32.091798)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
@@ -1544,6 +1593,13 @@ namespace DS
                 new AdjacentStetions
                 {
                     Station1=34934,
+                    Station2=35311,
+                     Distance=distance(34.852768,32.096057,34.86392,32.076699),
+                    Time=new TimeSpan(0,(int)(distance(34.852768,32.096057,34.86392,32.076699)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=34934,
                     Station2=33553,
                     Distance=distance(34.852768,32.096057,34.873652,32.084529),
                     Time=new TimeSpan(0,(int)(distance(34.852768,32.096057,34.873652,32.084529)*r.NextDouble()),0),
@@ -1562,12 +1618,28 @@ namespace DS
                      Distance=distance(34.828052,32.091763,34.82271,32.088772),
                     Time=new TimeSpan(0,(int)(distance(34.828052,32.091763,34.82271,32.088772)*r.NextDouble()),0),
                 },
+
                 new AdjacentStetions
                 {
                     Station1=21232,
                     Station2=21230,
                      Distance=distance(34.82271,32.088772,34.822562,32.092133),
                     Time=new TimeSpan(0,(int)(distance(34.82271,32.088772,34.822562,32.092133)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=21230,
+                    Station2=21232,
+                     Distance=distance(34.822562,32.092133,34.82271,32.088772),
+                    Time=new TimeSpan(0,(int)(distance(34.822562,32.092133,34.82271,32.088772)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=21232,
+                    Station2=21161,
+                     Distance=distance(34.82271,32.088772,34.840305,31.744547),
+                    Time=new TimeSpan(0,(int)(distance(34.82271,32.088772,34.840305,31.744547)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
@@ -1687,7 +1759,132 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(35.001165,31.706773,34.989861,31.715411)*r.NextDouble()),0),
 
                 },
+                ///
+                new AdjacentStetions
+                {
+                    Station1=21024,
+                    Station2=20902,
 
+                    Distance=distance(34.784808,32.073875,34.780691,32.046386),
+                    Time=new TimeSpan(0,(int)(distance(34.784808,32.073875,34.780691,32.046386)*r.NextDouble()),0),
+
+                },
+                new AdjacentStetions
+                {
+                    Station1=21000,
+                    Station2=21005,
+                    Distance=distance(34.792974,32.073112,34.774385,32.087073),
+                    Time=new TimeSpan(0,(int)(distance(34.792974,32.073112,34.774385,32.087073)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=21005,
+                    Station2=21365,
+                    Distance=distance(34.774385,32.087073,34.828052,32.091763),
+                    Time=new TimeSpan(0,(int)(distance(34.774385,32.087073,34.828052,32.091763)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=21365,
+                    Station2=21165,
+                     Distance=distance(34.828052,32.091763,34.822193,32.094143),
+                    Time=new TimeSpan(0,(int)(distance(34.828052,32.091763,34.822193,32.094143)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=174,
+                    Station2=176,
+                    Distance=distance(35.194683,31.791653,35.192721,31.792105),
+                    Time=new TimeSpan(0,(int)(distance(35.194683,31.791653,35.192721,31.792105)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=21232,
+                    Station2=21365,
+                     Distance=distance(34.82271,32.088772,34.828052,32.091763),
+                    Time=new TimeSpan(0,(int)(distance(34.82271,32.088772,34.828052,32.091763)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=21365,
+                    Station2=562,
+                     Distance=distance(34.828052,32.091763,34.974625,31.746677),
+                    Time=new TimeSpan(0,(int)(distance(34.828052,32.091763,34.974625,31.746677)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=562,
+                    Station2=563,
+                    Distance=distance(34.980749,31.744038,34.992279,31.736319),
+                    Time=new TimeSpan(0,(int)(distance(34.980749,31.744038,34.992279,31.736319)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Station1=563,
+                    Station2=564,
+                    Distance=distance(34.980749,31.744038,34.992222,31.742662),
+                    Time=new TimeSpan(0,(int)(distance(34.980749,31.744038,34.992222,31.742662)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=564,
+                    Station2=407,
+                    Distance=distance(34.992222,31.742662,34.989861,31.715411),
+                    Time=new TimeSpan(0,(int)(distance(34.992222,31.742662,34.989861,31.715411)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=407,
+                    Station2=480,
+                    Distance=distance(34.989861,31.715411,35.001165,31.715411),
+                    Time=new TimeSpan(0,(int)(distance(34.989861,31.715411,35.001165,31.715411)*r.NextDouble()),0),
+                },
+
+                new AdjacentStetions
+                {
+                    Station1=33553,
+                    Station2=34063,
+                     Distance=distance(34.873652,32.084529,34.865101,32.091798),
+                    Time=new TimeSpan(0,(int)(distance(34.873652,32.084529,34.865101,32.091798)*r.NextDouble()),0),
+                },
+
+                  new AdjacentStetions
+                {
+                    Station1=34063,
+                    Station2=34934,
+                    Distance=distance(34.865101,32.091798,34.852768,32.096057),
+                    Time=new TimeSpan(0,(int)(distance(34.865101,32.091798,34.852768,32.096057)*r.NextDouble()),0),
+                },
+
+
+                  new AdjacentStetions
+                {
+                    Station1=35311,
+                    Station2=36446,
+                    Distance=distance(34.86392,32.076699,34.845992,32.046427),
+                    Time=new TimeSpan(0,(int)(distance(34.86392,32.076699,34.845992,32.046427)*r.NextDouble()),0),
+                },
+
+                   new AdjacentStetions
+                {
+                    Station1=36446,
+                    Station2=36480,
+                    Distance=distance(34.845992,32.046427,34.848083,32.052359),
+                    Time=new TimeSpan(0,(int)(distance(34.845992,32.046427,34.848083,32.052359)*r.NextDouble()),0),
+                },
+
+                   new AdjacentStetions
+                {
+                    Station1=36481,
+                    Station2=37136,
+                    Distance=distance(34.846952,32.053695,34.838934,32.065048),
+                    Time=new TimeSpan(0,(int)(distance(34.846952,32.053695,34.838934,32.065048)*r.NextDouble()),0),
+                },
             };
          
         }
