@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 namespace DO                         //************העתקתי מהמורה לבדוק אם זה טוב ***************
 {
     [Serializable]
-    public class BadPersonIdException : Exception
+    public class BadStationCodeException : Exception
     {
-        public int ID;
-        public BadPersonIdException(int id) : base() => ID = id;
-        public BadPersonIdException(int id, string message) :
-            base(message) => ID = id;
-        public BadPersonIdException(int id, string message, Exception innerException) :
-            base(message, innerException) => ID = id;
-        public override string ToString() => base.ToString() + $", bad person id: {ID}";
+        public int Code;
+        public BadStationCodeException(int c) : base() => Code = c;
+        public BadStationCodeException(int c, string message) :
+            base(message) => Code = c;
+        public BadStationCodeException(int c, string message, Exception innerException) :
+            base(message, innerException) => Code = c;
+        public override string ToString() => base.ToString() + $", Bad Station Code: {Code}";
     }
 }
 

@@ -72,6 +72,8 @@ namespace DS
                     Name="יוסף קארו/בן איש חי, בית שמש",
                     Longitude=35.000493,
                     Lattitude= 31.744547,
+                    Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -79,6 +81,8 @@ namespace DS
                     Name="נהר הירקון/נהר הירדן, בית שמש",
                     Longitude=35.0002,
                     Lattitude= 31.70735,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -86,6 +90,8 @@ namespace DS
                     Name="נחל הקישון/ נחל שורק, בית שמש",
                     Longitude=34.989861,
                     Lattitude= 31.715411,
+                    Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -93,6 +99,8 @@ namespace DS
                     Name="שדרות נהר הירקון/אליהו הנביא, בית שמש",
                     Longitude=35.001165,
                     Lattitude= 31.706773,
+                    Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -100,6 +108,8 @@ namespace DS
                     Name="שדרות בן זאב/38, בית שמש",
                     Longitude=34.974625,
                     Lattitude= 31.746677,
+                    Include=StationInclude.Bench,
+                     Active=true
                 },
                 new Station
                 {
@@ -107,6 +117,8 @@ namespace DS
                     Name="שד.בן גוריון/שד.הדקל, בית שמש",
                     Longitude=34.980749,
                     Lattitude= 31.744038,
+                    Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -114,6 +126,8 @@ namespace DS
                     Name="בן זאב/רש''י, בית שמש",
                     Longitude=34.992222,
                     Lattitude= 31.742662,
+                    Include=StationInclude.Bench,
+                     Active=true
                 },
                 new Station
                 {
@@ -121,6 +135,8 @@ namespace DS
                     Name="בית ישראל/שפת אמת, בית שמש",
                     Longitude=34.995005,
                     Lattitude= 31.742295,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -128,6 +144,8 @@ namespace DS
                     Name="שפת אמת/חיים הלוי, בית שמש",
                     Longitude=34.995859,
                     Lattitude= 31.740288,
+                    Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -135,6 +153,8 @@ namespace DS
                     Name="שפת אמת/בית יעקב, בית שמש",
                     Longitude=34.995833,
                     Lattitude= 31.738094,
+                    Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -142,6 +162,8 @@ namespace DS
                     Name="חזון אי''ש/שפת אמת, בית שמש",
                     Longitude=34.995107,
                     Lattitude= 31.73755,
+                    Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -149,6 +171,8 @@ namespace DS
                     Name="חזון איש/אברהם, בית שמש",
                     Longitude=34.993086,
                     Lattitude= 31.738594,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -156,6 +180,8 @@ namespace DS
                     Name="רש'י/ חזון איש, בית שמש",
                     Longitude=34.991397,
                     Lattitude= 31.741169,
+                    Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -163,6 +189,8 @@ namespace DS
                     Name="מעפילי אגוז/רשי, בית שמש",
                     Longitude=34.991023,
                     Lattitude= 31.74045,
+                    Include=StationInclude.Bench,
+                     Active=true
                 },
                 new Station
                 {
@@ -170,6 +198,8 @@ namespace DS
                     Name="שד.נהר הירדן/שד.הרב הרצוג, בית שמש",
                     Longitude=34.992279,
                     Lattitude= 31.736319,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -177,6 +207,8 @@ namespace DS
                     Name="שדרות נהר הירדן/קדושת אהרן, בית שמש",
                     Longitude=34.991927,
                     Lattitude= 31.733992,
+                    Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -184,6 +216,8 @@ namespace DS
                     Name="שדרות נהר הירדן/האדמו''ר מבעלז, בית שמש",
                     Longitude=34.993077,
                     Lattitude= 31.731931,
+                    Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -191,6 +225,8 @@ namespace DS
                     Name="גבעת שאול/כתב סופר, ירושלים",
                     Longitude=35.195972,
                     Lattitude= 31.791222,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -198,6 +234,8 @@ namespace DS
                     Name="גבעת שאול/קוטלר, ירושלים",
                     Longitude=35.194683,
                     Lattitude= 31.791653,
+                    Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -205,6 +243,8 @@ namespace DS
                     Name="גבעת שאול/נג'ארה, ירושלים",
                     Longitude=35.192721,
                     Lattitude= 31.792105,
+                    Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -212,6 +252,8 @@ namespace DS
                     Name="נג'ארה/בן עוזיאל, ירושלים",
                     Longitude=35.191168,
                     Lattitude= 31.789376,
+                    Include=StationInclude.Bench,
+                     Active=true
                 },
                 new Station
                 {
@@ -219,6 +261,8 @@ namespace DS
                     Name="כפר שאול/קצנלבוגן, ירושלים",
                     Longitude=35.179234,
                     Lattitude= 31.786054,
+                    Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -226,6 +270,8 @@ namespace DS
                     Name="דוד אלעזר/לח''י, צפת",
                     Longitude=35.489648,
                     Lattitude= 32.963282,
+                    Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -233,6 +279,8 @@ namespace DS
                     Name="חיים וייצמן/הרצל, צפת",
                     Longitude=35.496737,
                     Lattitude= 32.957234,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -240,6 +288,8 @@ namespace DS
                     Name="חיים וייצמן/מ''ג יורדי הסירה, צפת",
                     Longitude=35.498349,
                     Lattitude= 32.957294,
+                    Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -247,6 +297,8 @@ namespace DS
                     Name="אליהו פרומצ'נקו/יעקב לוי, צפת",
                     Longitude=35.498143,
                     Lattitude= 32.960467,
+                    Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -254,6 +306,8 @@ namespace DS
                     Name="פרומצנקו/רימוני, צפת",
                     Longitude=35.498795,
                     Lattitude= 32.961903,
+                    Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -261,6 +315,8 @@ namespace DS
                     Name = "שד' ישראל גורי/דרך קיבוץ גלויות, תל אביב",
                     Longitude = 34.780691,
                     Lattitude = 32.046386,
+                    Include=StationInclude.DigitalScreen,
+                    Active=true
                  },
                 new Station
                  {
@@ -268,6 +324,8 @@ namespace DS
                      Name = "ביה''ח איכילוב/שד' דוד המלך, תל אביב",
                      Longitude = 34.787792,
                      Lattitude = 32.079787,
+                     Include=StationInclude.Eccess,
+                     Active=true
                  },
                 new Station
                  {
@@ -275,6 +333,8 @@ namespace DS
                      Name = "ת. רכבת השלום, תל אביב",
                      Longitude = 34.792974,
                      Lattitude = 32.073112,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                  },
                 new Station
                  {
@@ -282,6 +342,8 @@ namespace DS
                      Name = "ליאונרדו דה וינצ'י/קפלן, תל אביב",
                      Longitude = 34.784808,
                      Lattitude = 32.073875,
+                     Include=StationInclude.Bench,
+                     Active=true
                  },
                 new Station
                  {
@@ -289,6 +351,8 @@ namespace DS
                      Name = "ארלוזורוב/דיזנגוף, תל אביב",
                      Longitude = 34.774385,
                      Lattitude = 32.087073,
+                     Include=StationInclude.Roof,
+                     Active=true
                  },
                 new Station
                  {
@@ -296,6 +360,8 @@ namespace DS
                      Name = "דרך ז'בוטינסקי/אהרונוביץ, בני ברק",
                      Longitude = 34.840305,
                      Lattitude = 32.092564,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                  },                 
                 new Station
                 {
@@ -303,6 +369,8 @@ namespace DS
                      Name = "מגדל ויטה/דרך בן גוריון, בני ברק",
                      Longitude = 34.822193,
                      Lattitude = 32.094143,
+                     Include=StationInclude.Eccess,
+                     Active=true
                 },                 
                 new Station
                 {
@@ -310,6 +378,8 @@ namespace DS
                      Name = "דרך בן גוריון/יהושע בן נון, בני ברק",
                      Longitude = 34.822562,
                      Lattitude = 32.092133,
+                     Include=StationInclude.DigitalScreen,
+                     Active=true
                 },                 
                 new Station
                 {
@@ -317,6 +387,8 @@ namespace DS
                      Name = "דרך בן גוריון/מגדים, בני ברק",
                      Longitude = 34.82271,
                      Lattitude = 32.088772,
+                     Include=StationInclude.DigitalScreen,
+                     Active=true
                 },                 
                 new Station
                 {
@@ -324,6 +396,8 @@ namespace DS
                      Name = "דרך ז'בוטינסקי/דב גרונר, בני ברק",
                      Longitude = 34.828052,
                      Lattitude = 32.091763,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -331,6 +405,8 @@ namespace DS
                      Name = "אבא חושי/פארק הכרמל, חיפה",
                      Longitude = 35.020919,
                      Lattitude = 32.758695,
+                     Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -338,6 +414,8 @@ namespace DS
                      Name = "ת. רכבת חוף הכרמל, חיפה",
                      Longitude = 34.957647,
                      Lattitude = 32.793065,
+                     Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -345,6 +423,8 @@ namespace DS
                      Name = "נווה דוד, חיפה",
                      Longitude = 34.958184,
                      Lattitude = 32.805604,
+                     Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -352,6 +432,8 @@ namespace DS
                      Name = "אסתר המלכה, חיפה",
                      Longitude = 34.963318,
                      Lattitude = 32.809908,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -359,6 +441,8 @@ namespace DS
                      Name = "חניתה/אבא הילל סילבר, חיפה",
                      Longitude = 35.013987,
                      Lattitude = 32.790078,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -366,6 +450,8 @@ namespace DS
                      Name = "יחיאל מיכל פינס/הרב קטרוני, פתח תקווה",
                      Longitude = 34.890714,
                      Lattitude = 32.07915,
+                     Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -373,6 +459,8 @@ namespace DS
                      Name = "חיים ארלוזורוב/הרצפלד, פתח תקווה",
                      Longitude = 34.873652,
                      Lattitude = 32.084529,
+                     Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -380,6 +468,8 @@ namespace DS
                      Name = "בלינסון קניון אבנת/מסוף יותם ויואב, פתח תקווה",
                      Longitude = 34.865101,
                      Lattitude = 32.091798,
+                     Include=StationInclude.Bench,
+                     Active=true
                 },
                 new Station
                 {
@@ -387,6 +477,8 @@ namespace DS
                      Name = "החרש/עמל, פתח תקווה",
                      Longitude = 34.852768,
                      Lattitude = 32.096057,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -394,6 +486,8 @@ namespace DS
                      Name = "אלכסנדר זייד/שטרוק, פתח תקווה",
                      Longitude = 34.86392,
                      Lattitude = 32.076699,
+                     Include=StationInclude.DigitalScreen,
+                     Active=true
                 },
                 new Station
                 {
@@ -401,6 +495,8 @@ namespace DS
                      Name = "בית החולים תל השומר/מד''א, רמת גן",
                      Longitude = 34.845992,
                      Lattitude = 32.046427,
+                     Include=StationInclude.Eccess,
+                     Active=true
                 },
                 new Station
                 {
@@ -408,6 +504,8 @@ namespace DS
                      Name = "עמק האלה/שד' אהרון קציר, רמת גן",
                      Longitude = 34.848083,
                      Lattitude = 32.052359,
+                     Include=StationInclude.LinesRoute,
+                     Active=true
                 },
                 new Station
                 {
@@ -415,6 +513,8 @@ namespace DS
                      Name = "מנדס/שד' אהרון קציר, רמת גן",
                      Longitude = 34.846952,
                      Lattitude = 32.053695,
+                     Include=StationInclude.Bench,
+                     Active=true
                 },
                 new Station
                 {
@@ -422,6 +522,8 @@ namespace DS
                      Name = "כביש 4/מחלף בר אילן, רמת גן",
                      Longitude = 34.838934,
                      Lattitude = 32.065048,
+                     Include=StationInclude.Roof,
+                     Active=true
                 },
                 new Station
                 {
@@ -429,6 +531,8 @@ namespace DS
                      Name = "בית החולים תל השומר/מעבדות, רמת גן",
                      Longitude = 34.844102,
                      Lattitude = 32.047317,
+                     Include=StationInclude.DigitalScreen,
+                     Active=true
                 }
             };
 
@@ -1618,7 +1722,6 @@ namespace DS
                      Distance=distance(34.828052,32.091763,34.82271,32.088772),
                     Time=new TimeSpan(0,(int)(distance(34.828052,32.091763,34.82271,32.088772)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=21232,
@@ -1633,7 +1736,6 @@ namespace DS
                      Distance=distance(34.822562,32.092133,34.82271,32.088772),
                     Time=new TimeSpan(0,(int)(distance(34.822562,32.092133,34.82271,32.088772)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=21232,
@@ -1676,8 +1778,6 @@ namespace DS
                      Distance=distance(35.498143,32.960467,35.498795,32.961903),
                     Time=new TimeSpan(0,(int)(distance(35.498143,32.960467,35.498795,32.961903)*r.NextDouble()),0),
                 },
-                                                    ///////////////////////////////////////////////////////////////////////////
-                          
                 new AdjacentStetions
                 {
                     Station1=1,
@@ -1759,7 +1859,6 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(35.001165,31.706773,34.989861,31.715411)*r.NextDouble()),0),
 
                 },
-                ///
                 new AdjacentStetions
                 {
                     Station1=21024,
@@ -1783,7 +1882,6 @@ namespace DS
                     Distance=distance(34.774385,32.087073,34.828052,32.091763),
                     Time=new TimeSpan(0,(int)(distance(34.774385,32.087073,34.828052,32.091763)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=21365,
@@ -1791,7 +1889,6 @@ namespace DS
                      Distance=distance(34.828052,32.091763,34.822193,32.094143),
                     Time=new TimeSpan(0,(int)(distance(34.828052,32.091763,34.822193,32.094143)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=174,
@@ -1799,7 +1896,6 @@ namespace DS
                     Distance=distance(35.194683,31.791653,35.192721,31.792105),
                     Time=new TimeSpan(0,(int)(distance(35.194683,31.791653,35.192721,31.792105)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=21232,
@@ -1828,7 +1924,6 @@ namespace DS
                     Distance=distance(34.980749,31.744038,34.992222,31.742662),
                     Time=new TimeSpan(0,(int)(distance(34.980749,31.744038,34.992222,31.742662)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=564,
@@ -1836,7 +1931,6 @@ namespace DS
                     Distance=distance(34.992222,31.742662,34.989861,31.715411),
                     Time=new TimeSpan(0,(int)(distance(34.992222,31.742662,34.989861,31.715411)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=407,
@@ -1844,7 +1938,6 @@ namespace DS
                     Distance=distance(34.989861,31.715411,35.001165,31.715411),
                     Time=new TimeSpan(0,(int)(distance(34.989861,31.715411,35.001165,31.715411)*r.NextDouble()),0),
                 },
-
                 new AdjacentStetions
                 {
                     Station1=33553,
@@ -1852,33 +1945,28 @@ namespace DS
                      Distance=distance(34.873652,32.084529,34.865101,32.091798),
                     Time=new TimeSpan(0,(int)(distance(34.873652,32.084529,34.865101,32.091798)*r.NextDouble()),0),
                 },
-
-                  new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=34063,
                     Station2=34934,
                     Distance=distance(34.865101,32.091798,34.852768,32.096057),
                     Time=new TimeSpan(0,(int)(distance(34.865101,32.091798,34.852768,32.096057)*r.NextDouble()),0),
                 },
-
-
-                  new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=35311,
                     Station2=36446,
                     Distance=distance(34.86392,32.076699,34.845992,32.046427),
                     Time=new TimeSpan(0,(int)(distance(34.86392,32.076699,34.845992,32.046427)*r.NextDouble()),0),
                 },
-
-                   new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=36446,
                     Station2=36480,
                     Distance=distance(34.845992,32.046427,34.848083,32.052359),
                     Time=new TimeSpan(0,(int)(distance(34.845992,32.046427,34.848083,32.052359)*r.NextDouble()),0),
                 },
-
-                   new AdjacentStetions
+                new AdjacentStetions
                 {
                     Station1=36481,
                     Station2=37136,

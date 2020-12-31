@@ -13,7 +13,7 @@ namespace DLAPI
     public interface IDL
     {
         #region Line
-        //IEnumerable<DO.Line> GetAllLines();
+        IEnumerable<DO.Line> GetAllLines();
         //IEnumerable<DO.Line> GetAllLinesBy(Predicate<DO.Line> predicate);
         DO.Line GetLine(int num);
         void AddLine(DO.Line line);
@@ -37,6 +37,7 @@ namespace DLAPI
         #region Station
         //IEnumerable<DO.Station> GetAllUpdateStations();
         //IEnumerable<DO.Station> GetAllStationsBy(Predicate<DO.Station> predicate);
+        IEnumerable<DO.Station> GetAllStations();
         DO.Station GetStation(int num);
         void AddStation(DO.Station station);
         void UpdateStation(DO.Station station);
@@ -49,7 +50,7 @@ namespace DLAPI
 
         #region LineStation
         //IEnumerable<DO.LineStation> GetAllLineStations();
-        //IEnumerable<DO.LineStation> GetAllLineStationsBy(Predicate<DO.LineStation> predicate);
+        IEnumerable<DO.LineStation> GetAllLineStationsBy(Predicate<DO.Line> predicate);
         DO.LineStation GetLineStation(int codeLine , int codeStation);
         void AddLineStation(DO.LineStation lineStation);
         void UpdateLineStation(DO.LineStation lineStation);

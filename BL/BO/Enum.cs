@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace BO
 {
     public enum Areas { General, North, South, Center, Jerusalem };
-    
+    public enum StationInclude { Bench, Roof, DigitalScreen, Eccess, LinesRoute };
 }

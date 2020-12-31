@@ -8,10 +8,13 @@ namespace BO
 {
     class Station
     {
-        //public int CodeLine { get; set; }  ------------code of the bus on the trip
         public string Name { get; set; }
         public int Code { get; set; }
         public override string ToString() => this.ToStringProperty();
+        public StationInclude Include { get; set; }
+        public double Longitude { get; set; }
+        public double Lattitude { get; set; }
+        public bool Active { get; set; }
 
     }
 }

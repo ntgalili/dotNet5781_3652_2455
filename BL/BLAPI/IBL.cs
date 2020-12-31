@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using BO;
+using BO;
 
 
 namespace BLAPI
 {
     public interface IBL
     {
+        #region Station
+        IEnumerable<DO.Station> GetAllStations();
+        DO.Station GetStation(int num);
+        void AddStation(DO.Station station);
+        void UpdateStation(DO.Station station);
+        void DeleteStation(int num);
+        #endregion
 
-        ////Add Person to Course
-        ////get all courses for student
-        ////etc...
-        //BO.Student GetStudent(int id);
-        //IEnumerable<BO.Student> GetAllStudents();
-        //IEnumerable<BO.ListedPerson> GetStudentIDNameList();
+        //#region StudentInCourse
+        //void AddStudentInCourse(int perID, int courseID, float grade = 0);
+        //void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
+        //void DeleteStudentInCourse(int perID, int courseID);
 
-        //IEnumerable<BO.Student> GetStudentsBy(Predicate<BO.Student> predicate);
+        //#endregion
+
+        //#region Course
+        //IEnumerable<BO.Course> GetAllCourses();
+        //#endregion
     }
 }
