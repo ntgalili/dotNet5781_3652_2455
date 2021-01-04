@@ -5,24 +5,26 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace BO
+namespace BL
 {
-    public static class Tools
+    namespace BO
     {
-        public static string ToStringProperty<T>(this T t, string suffix = "")
+        public static class Tools
         {
-            string str = "";
-            foreach (PropertyInfo prop in t.GetType().GetProperties())
+            public static string ToStringProperty<T>(this T t, string suffix = "")
             {
-                var value = prop.GetValue(t, null);
-                if (value is IEnumerable)
-                    foreach (var item in (IEnumerable)value)
-                        str += item.ToStringProperty("   ");
-                else
-                    str += "\n" + suffix + prop.Name + ": " + value;
+                string str = "";
+                foreach (PropertyInfo prop in t.GetType().GetProperties())
+                {
+                    var value = prop.GetValue(t, null);
+                    if (value is IEnumerable)
+                        foreach (var item in (IEnumerable)value)
+                            str += item.ToStringProperty("   ");
+                    else
+                        str += "\n" + suffix + prop.Name + ": " + value;
+                }
+                return str;
             }
-            return str;
         }
     }
 }

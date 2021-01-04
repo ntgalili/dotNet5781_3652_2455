@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BO;
+
 
 
 namespace BLAPI
@@ -11,10 +11,10 @@ namespace BLAPI
     public interface IBL
     {
         #region Station
-        IEnumerable<DO.Station> GetAllStations();
-        DO.Station GetStation(int num);
-        void AddStation(DO.Station station);
-        void UpdateStation(DO.Station station);
+        IEnumerable<BL.BO.Station> GetAllStations();
+        BL.BO.Station GetStation(int num);
+        void AddStation(BL.BO.Station station);
+        void UpdateStation(BL.BO.Station station);
         void DeleteStation(int num);
         #endregion
 

@@ -21,12 +21,12 @@ namespace DL
         #endregion
 
         #region Station
-        IEnumerable<DO.Station> GetAllStations()
+        public IEnumerable<DO.Station> GetAllStations()
         {
             return from station in DataSource.ListStations
                    select station.Clone();
         }
-        DO.Station GetStation(int num)
+        public DO.Station GetStation(int num)
         {
             DO.Station toGet = DataSource.ListStations.Find(s => s.Code == num);
             try { Thread.Sleep(2000); } catch (ThreadInterruptedException ex) { }
@@ -35,13 +35,13 @@ namespace DL
             else
                 throw new DO.BadStationCodeException(num, "Not found");
         }
-        void AddStation(DO.Station station)
+        public void AddStation(DO.Station station)
         {
             if (DataSource.ListStations.FirstOrDefault(s => s.Code == station.Code) != null)
                 throw new DO.BadStationCodeException(station.Code, "Duplicate station Code");
             DataSource.ListStations.Add(station.Clone());
         }
-        void UpdateStation(DO.Station station)
+        public void UpdateStation(DO.Station station)
         {
             DO.Station toUpDate = DataSource.ListStations.Find(s => s.Code == station.Code);
             if (toUpDate != null)
@@ -52,7 +52,7 @@ namespace DL
             else
                 throw new DO.BadStationCodeException(station.Code, "Not found");
         }
-        void DeleteStation(int num)
+        public void DeleteStation(int num)
         {
             DO.Station toDel;
             toDel = DataSource.ListStations.FirstOrDefault(s => s.Code == num);
@@ -66,3 +66,9 @@ namespace DL
 
     }
 }
+
+
+
+
+
+
