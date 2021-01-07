@@ -5,8 +5,7 @@ using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace BL
-{
+
     namespace BO
     {
         public static class Tools
@@ -27,4 +26,3 @@ namespace BL
             }
         }
     }
-}

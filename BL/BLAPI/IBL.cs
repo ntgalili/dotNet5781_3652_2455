@@ -11,10 +11,10 @@ namespace BLAPI
     public interface IBL
     {
         #region Station
-        IEnumerable<BL.BO.Station> GetAllStations();
-        BL.BO.Station GetStation(int num);
-        void AddStation(BL.BO.Station station);
-        void UpdateStation(BL.BO.Station station);
+        IEnumerable<BO.Station> GetAllStations();
+        BO.Station GetStation(int num);
+        void AddStation(BO.Station station);
+        void UpdateStation(BO.Station station);
         void DeleteStation(int num);
         #endregion
 

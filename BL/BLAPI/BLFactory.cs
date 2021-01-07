@@ -13,7 +13,6 @@ namespace BLAPI
         public static IBL GetBL()
         {
             return new BLImp();
-        
         }
     }
 }

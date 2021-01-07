@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
-{
+
     namespace BO
-    {
+{
         public class Station
         {
             public string Name { get; set; }
@@ -19,5 +18,4 @@ namespace BL
             public bool Active { get; set; }
 
         }
-    }
-}
+   }

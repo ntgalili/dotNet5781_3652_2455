@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
-{
+
     namespace BO
     {
         [Serializable]
@@ -17,13 +16,6 @@ namespace BL
             public override string ToString() => base.ToString() + $", bad station code: {Code}";
         }
 
-        [Serializable]
-        public class BadLecturerIdException : Exception
-        {
-            public int ID;
-            public BadLecturerIdException(string message, Exception innerException) :
-                base(message, innerException) => ID = ((DO.BadPersonIdException)innerException).ID;
-            public override string ToString() => base.ToString() + $", bad student id: {ID}";
-        }
+
     }
-}
+
