@@ -109,7 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
       <Project>{2256497b-4c6a-485f-8b1b-bfc792e8a372}</Project>
