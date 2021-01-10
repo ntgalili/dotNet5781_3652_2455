@@ -15,7 +15,13 @@ using System.Threading.Tasks;
                 base(message, innerException) => Code = ((DO.BadStationCodeException)innerException).Code;
             public override string ToString() => base.ToString() + $", bad station code: {Code}";
         }
-
-
-    }
+        public class BadLineCodeException : Exception                  
+        {
+            public int Code;
+            public BadLineCodeException(string message, Exception innerException) :
+            base(message, innerException) => Code = ((DO.BadLineCodeException)innerException).Code;
+            public override string ToString() => base.ToString() + $", bad Line code: {Code}";
+        }
+    
+}
 

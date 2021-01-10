@@ -169,5 +169,78 @@ namespace BL
         //               //orderby student.ID
         //               select student;
         //    }
+
+
+
+
+
+
+
+
+        public BO.Line LineDoBoAdapter(DO.Line LineDO)
+        {
+            BO.Line LineBO = new BO.Line();
+            LineDO.CopyPropertiesTo(LineBO);
+            return LineBO;
+        }
+
+        #region Line
+        public IEnumerable<BO.Line> GetAllLines()
+        {
+            return from item in dl.GetAllLines()
+                   select LineDoBoAdapter(item);
+        }
+        public BO.Line GetLine(int codeLine)
+        {
+            DO.Line LineDO;
+            try
+            {
+                LineDO = dl.GetLine(codeLine);
+            }
+            catch (DO.BadLineCodeException ex)
+            {
+                throw new BO.BadLineCodeException("Line Code does not exist", ex);
+            }
+            return LineDoBoAdapter(LineDO);
+        }
+        public void AddLine(BO.Line lineBO)
+        {
+            DO.Line lineDO = new DO.Line();
+            lineBO.CopyPropertiesTo(lineDO);
+            try
+            {
+                dl.AddLine(lineDO);
+            }
+            catch (DO.BadLineCodeException ex)
+            {
+                throw new BO.BadLineCodeException("Duplicate Line Code", ex);
+            }
+        }
+        public void UpdateLine(BO.Line lineBO)
+        {
+            DO.Line lineDO = new DO.Line();
+            lineBO.CopyPropertiesTo(lineDO);
+            try
+            {
+                dl.UpdateLine(lineDO);
+            }
+            catch (DO.BadLineCodeException ex)
+            {
+                throw new BO.BadLineCodeException("Line Code does not exist", ex);
+            }
+        }
+        public void DeleteLie(int codeLine)
+        {
+            try
+            {
+                dl.DeleteLine(codeLine);
+            }
+            catch (DO.BadLineCodeException ex)
+            {
+                throw new BO.BadLineCodeException("Line Code does not exist", ex);
+            }
+        }
+        #endregion
+
     }
 }
