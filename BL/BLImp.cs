@@ -185,12 +185,12 @@ namespace BL
         }
 
         #region Line
-        IEnumerable<BO.Line> GetAllLines()
+        public IEnumerable<BO.Line> GetAllLines()
         {
             return from item in dl.GetAllLines()
                    select LineDoBoAdapter(item);
         }
-        BO.Line GetLine(int codeLine)
+        public BO.Line GetLine(int codeLine)
         {
             DO.Line LineDO;
             try
@@ -203,7 +203,7 @@ namespace BL
             }
             return LineDoBoAdapter(LineDO);
         }
-        void AddLine(BO.Line lineBO)
+        public void AddLine(BO.Line lineBO)
         {
             DO.Line lineDO = new DO.Line();
             lineBO.CopyPropertiesTo(lineDO);
@@ -216,7 +216,7 @@ namespace BL
                 throw new BO.BadLineCodeException("Duplicate Line Code", ex);
             }
         }
-        void UpdateLine(BO.Line lineBO)
+        public void UpdateLine(BO.Line lineBO)
         {
             DO.Line lineDO = new DO.Line();
             lineBO.CopyPropertiesTo(lineDO);
@@ -229,7 +229,7 @@ namespace BL
                 throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
         }
-        void DeleteLie(int codeLine)
+        public void DeleteLie(int codeLine)
         {
             try
             {

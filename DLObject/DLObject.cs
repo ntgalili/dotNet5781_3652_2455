@@ -29,7 +29,7 @@ namespace DL
         public DO.Station GetStation(int num)
         {
             DO.Station toGet = DataSource.ListStations.Find(s => s.Code == num);
-            try { Thread.Sleep(2000); } catch (ThreadInterruptedException ex) { }
+            try { Thread.Sleep(2000); } catch (ThreadInterruptedException) { }
             if (toGet != null)
                 return toGet.Clone();
             else
@@ -75,27 +75,27 @@ namespace DL
 
 
         #region Line
-        IEnumerable<DO.Line> GetAllLines()
+        public IEnumerable<DO.Line> GetAllLines()
         {
             return from Line in DataSource.ListLines
                    select Line.Clone();
         }
-        DO.Line GetLine(int num)
+        public DO.Line GetLine(int num)
         {
             DO.Line toGet = DataSource.ListLines.Find(l => l.Code == num);
-            try { Thread.Sleep(2000); } catch (ThreadInterruptedException ex) { }
+            try { Thread.Sleep(2000); } catch (ThreadInterruptedException) { }
             if (toGet != null)
                 return toGet.Clone();
             else
                 throw new DO.BadLineCodeException(num, "Not found");
         }
-        void AddLine(DO.Line line)
+        public void AddLine(DO.Line line)
         {
             if (DataSource.ListLines.FirstOrDefault(l => l.Code == line.Code) != null)
                 throw new DO.BadLineCodeException(line.Code, "Duplicate Line Code");
             DataSource.ListLines.Add(line.Clone());
         }
-        void UpdateLine(DO.Line line)
+        public void UpdateLine(DO.Line line)
         {
             DO.Line toUpDate = DataSource.ListLines.Find(l => l.Code == line.Code);
             if (toUpDate != null)
@@ -106,7 +106,7 @@ namespace DL
             else
                 throw new DO.BadLineCodeException(line.Code, "Not found");
         }
-        void DeleteLine(int num)
+        public void DeleteLine(int num)
         {
             DO.Line toDel;
             toDel = DataSource.ListLines.FirstOrDefault(l => l.Code == num);
