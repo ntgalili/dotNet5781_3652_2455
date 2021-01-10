@@ -28,5 +28,13 @@ namespace BLAPI
         //#region Course
         //IEnumerable<BO.Course> GetAllCourses();
         //#endregion
+
+        #region Line
+        IEnumerable<BO.Line> GetAllLines();
+        BO.Line GetLine(int codeLine);
+        void AddLine(BO.Line line);
+        void UpdateLine(BO.Line line);
+        void DeleteLie(int codeLine);
+        #endregion
     }
 }

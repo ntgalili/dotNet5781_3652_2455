@@ -17,5 +17,15 @@ namespace DO                         //************העתקתי מהמורה ל�
             base(message, innerException) => Code = c;
         public override string ToString() => base.ToString() + $", Bad Station Code: {Code}";
     }
+    public class BadLineCodeException : Exception
+    {
+        public int Code;
+        public BadLineCodeException(int c) : base() => Code = c;
+        public BadLineCodeException(int c, string message) :
+            base(message) => Code = c;
+        public BadLineCodeException(int c, string message, Exception innerException) :
+            base(message, innerException) => Code = c;
+        public override string ToString() => base.ToString() + $", Bad Line Code: {Code}";
+    }
 }
 
