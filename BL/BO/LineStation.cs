@@ -11,8 +11,7 @@ using System.Threading.Tasks;
             public int LineNum { get; set; }
 
             public int LineStationIndex { get; set; }
-            public BO.Station PrevStation { get; set; }
-            public BO.Station NextStation { get; set; }
+
         }
     }
 

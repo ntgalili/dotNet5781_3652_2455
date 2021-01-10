@@ -87,12 +87,12 @@ namespace DL
             if (toGet != null)
                 return toGet.Clone();
             else
-                throw new DO.BadLineCodeException(num, "Not found");
+                throw new /*DO.BadLineCode*/Exception(/*num, "Not found"*/);
         }
         public void AddLine(DO.Line line)
         {
             if (DataSource.ListLines.FirstOrDefault(l => l.Code == line.Code) != null)
-                throw new DO.BadLineCodeException(line.Code, "Duplicate Line Code");
+               // throw new DO.BadLineCodeException(line.Code, "Duplicate Line Code");
             DataSource.ListLines.Add(line.Clone());
         }
         public void UpdateLine(DO.Line line)
@@ -103,17 +103,65 @@ namespace DL
                 DataSource.ListLines.Remove(toUpDate);
                 DataSource.ListLines.Add(line.Clone());
             }
-            else
-                throw new DO.BadLineCodeException(line.Code, "Not found");
+            else;
+                //throw new DO.BadLineCodeException(line.Code, "Not found");
         }
         public void DeleteLine(int num)
         {
             DO.Line toDel;
             toDel = DataSource.ListLines.FirstOrDefault(l => l.Code == num);
-            if (toDel == null)
-                throw new DO.BadLineCodeException(num, "Not found");
+            if (toDel == null) ;
+               // throw new DO.BadLineCodeException(num, "Not found");
         }
 
+        #endregion
+
+
+
+
+
+
+        #region LineStation
+        public void AddLineStation(DO.LineStation ls)
+        {
+
+            DataSource.ListLineStations.Add(ls.Clone());
+        }
+
+        public void UpdateLineStation(DO.LineStation ls)
+        {
+            DO.LineStation toUpDate = DataSource.ListLineStations.Find(s => s.StationCode == ls.StationCode);
+            if (toUpDate != null)
+            {
+                DataSource.ListLineStations.Remove(toUpDate);
+                DataSource.ListLineStations.Add(ls.Clone());
+            }
+            else
+                throw new DO.BadStationCodeException(ls.StationCode, "Not found");
+        }
+        public void DeleteLineStation(int codeLine, int codeStation)
+        {
+            DO.LineStation toDel;
+            toDel = DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == codeStation && s.LineNum == codeLine);
+            if (toDel == null)
+                throw new DO.BadStationCodeException(codeStation, "Not found in " + codeLine);
+            DataSource.ListLineStations.Remove(toDel);
+        }
+
+
+        public DO.LineStation GetLineStation(int codeLine, int codeStation)
+        {
+            DO.LineStation toGet = DataSource.ListLineStations.Find(s =>( s.StationCode == codeStation && s.LineNum== codeLine));
+            try
+            {
+                Thread.Sleep(2000);
+            }
+            catch (ThreadInterruptedException ex) { }
+            if (toGet != null)
+                return toGet.Clone();
+            else
+                throw new DO.BadStationCodeException(codeStation, "Not found in "+ codeLine);
+        }
         #endregion
     }
 }

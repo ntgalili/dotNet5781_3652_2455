@@ -12,8 +12,7 @@ using System.Threading.Tasks;
             public int LineNum { get; set; }
             public int Code { get; set; }
             public Areas Area { get; set; }
-            public LineStation FirstStation { get; set; }
-            public LineStation LastStation { get; set; }
+            public IEnumerable<LineStation> MyStations { get; set; }
 
         }
     }

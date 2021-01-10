@@ -26,7 +26,7 @@ namespace DS
             
             return sCoord.GetDistanceTo(eCoord);
         }
-        private static double help;
+       
 
         static DataSource()
         {
