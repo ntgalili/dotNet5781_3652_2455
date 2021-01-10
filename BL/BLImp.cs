@@ -192,15 +192,14 @@ namespace BL
         }
         public BO.Line GetLine(int codeLine)
         {
-            DO.Line LineDO=null;
+            DO.Line LineDO;
             try
             {
                 LineDO = dl.GetLine(codeLine);
-            
             }
-            catch (/*DO.BadLineCode*/Exception ex)
+            catch (DO.BadLineCodeException ex)
             {
-               /* throw new BO.BadLineCodeException("Line Code does not exist", ex);*/
+                throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
             return LineDoBoAdapter(LineDO);
         }
@@ -212,9 +211,9 @@ namespace BL
             {
                 dl.AddLine(lineDO);
             }
-            catch (/*DO.BadLineCode*/Exception ex)
+            catch (DO.BadLineCodeException ex)
             {
-              //  throw new BO.BadLineCodeException("Duplicate Line Code", ex);
+                throw new BO.BadLineCodeException("Duplicate Line Code", ex);
             }
         }
         public void UpdateLine(BO.Line lineBO)
@@ -225,9 +224,9 @@ namespace BL
             {
                 dl.UpdateLine(lineDO);
             }
-            catch (/*DO.BadLineCode*/ Exception ex)
+            catch (DO.BadLineCodeException ex)
             {
-               /* throw new BO.BadLineCodeException("Line Code does not exist", ex);*/
+                throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
         }
         public void DeleteLie(int codeLine)
@@ -236,9 +235,9 @@ namespace BL
             {
                 dl.DeleteLine(codeLine);
             }
-            catch (/*DO.BadLineCode*/Exception ex)
+            catch (DO.BadLineCodeException ex)
             {
-                //throw new BO.BadLineCodeException("Line Code does not exist", ex);
+                throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
         }
         #endregion
