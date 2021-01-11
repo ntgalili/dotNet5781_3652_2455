@@ -23,6 +23,5 @@ namespace PL
         {
             InitializeComponent();
         }
-
     }
 }
