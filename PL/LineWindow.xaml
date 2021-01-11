@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.LineWindow"
+        mc:Ignorable="d"
+        Title="LineWindow" Height="324" Width="620">
+
+    <Grid>
+
+        <DataGrid x:Name="lineDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="82,42,80.6,64.4" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="lineNumColumn" Width="*" Header="Line Num" Binding="{Binding LineNum}"/>
+                <DataGridTextColumn x:Name="codeColumn" Width="*" Header="Code" Binding="{Binding Code}"/>
+                <DataGridTextColumn x:Name="areaColumn" Width="*" Header="Area" Binding="{Binding Area}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="AddLineButton" Content="Add" HorizontalAlignment="Left" Margin="146,252,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="421,252,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.461,2.047"/>
+
+    </Grid>
+</Window>

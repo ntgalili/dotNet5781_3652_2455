@@ -10,27 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using BLAPI;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LineWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LineWindow : Window
     {
-        IBL bl = BLFactory.GetBL();
-        public MainWindow()
+        public LineWindow()
         {
             InitializeComponent();
         }
 
-        private void AdminButton_Click(object sender, RoutedEventArgs e)
-        {
-            AdminWindow win = new AdminWindow(bl);
-            win.Show();
-        }
     }
 }

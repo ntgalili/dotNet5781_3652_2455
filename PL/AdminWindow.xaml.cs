@@ -26,6 +26,7 @@ namespace PL
         public AdminWindow(IBL _bl)
         {
             InitializeComponent();
+            bl = _bl;
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
@@ -50,3 +51,4 @@ namespace PL
         }
     }
 }
+

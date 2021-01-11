@@ -542,6 +542,7 @@ namespace DS
                 {
                    LineNum=7,
                    Code=1,
+                   Active=true,
                    Area=Areas.Jerusalem,
                    FirstStation=1,
                    LastStation=407,
@@ -550,6 +551,7 @@ namespace DS
                 {
                    LineNum=650,
                    Code=1,
+                   Active=true,
                    Area=Areas.General,
                    FirstStation=172,
                    LastStation=57028,
@@ -558,6 +560,7 @@ namespace DS
                 {
                    LineNum=420,
                    Code=1,
+                   Active=true,
                    Area=Areas.Center,
                    FirstStation=21022,
                    LastStation=21161,
@@ -566,6 +569,7 @@ namespace DS
                 {
                    LineNum=497,
                    Code=1,
+                   Active=true,
                    Area=Areas.General,
                    FirstStation=21161,
                    LastStation=480,
@@ -574,6 +578,7 @@ namespace DS
                 {
                    LineNum=8,
                    Code=1,
+                   Active=true,
                    Area=Areas.Center,
                    FirstStation=33553,
                    LastStation=37780,
@@ -582,6 +587,7 @@ namespace DS
                 {
                    LineNum=417,
                    Code=1,
+                   Active=true,
                    Area=Areas.Jerusalem,
                    FirstStation=480,
                    LastStation=180,
@@ -590,6 +596,7 @@ namespace DS
                 {
                    LineNum=402,
                    Code=1,
+                   Active=true,
                    Area=Areas.Center,
                    FirstStation=180,
                    LastStation=21365,
@@ -597,6 +604,7 @@ namespace DS
                 new Line
                 {
                    LineNum=153,
+                   Active=true,
                    Code=1,
                    Area=Areas.North,
                    FirstStation=21365,
@@ -605,6 +613,7 @@ namespace DS
                 new Line
                 {
                    LineNum=921,
+                   Active=true,
                    Code=1,
                    Area=Areas.Center,
                    FirstStation=37780,
@@ -613,6 +622,7 @@ namespace DS
                 new Line
                 {
                    LineNum=89,
+                   Active=true,
                    Code=1,
                    Area=Areas.Center,
                    FirstStation=21005,

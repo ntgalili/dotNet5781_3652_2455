@@ -11,6 +11,7 @@ namespace DO
         public int LineNum { get; set; }
         public int Code { get; set; }
         public Areas Area { get; set; }
+        public bool Active { get; set; }
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
         

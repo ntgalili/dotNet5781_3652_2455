@@ -190,12 +190,12 @@ namespace BL
             return from item in dl.GetAllLines()
                    select LineDoBoAdapter(item);
         }
-        public BO.Line GetLine(int codeLine)
+        public BO.Line GetLine(int numLine, int codeLine)
         {
             DO.Line LineDO;
             try
             {
-                LineDO = dl.GetLine(codeLine);
+                LineDO = dl.GetLine(numLine, codeLine);
             }
             catch (DO.BadLineCodeException ex)
             {
@@ -229,11 +229,11 @@ namespace BL
                 throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
         }
-        public void DeleteLie(int codeLine)
+        public void DeleteLine(int numLine, int codeLine)
         {
             try
             {
-                dl.DeleteLine(codeLine);
+                dl.DeleteLine(numLine,codeLine);
             }
             catch (DO.BadLineCodeException ex)
             {

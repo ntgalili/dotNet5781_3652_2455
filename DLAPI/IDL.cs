@@ -15,10 +15,10 @@ namespace DLAPI
         #region Line
         IEnumerable<DO.Line> GetAllLines();
         //IEnumerable<DO.Line> GetAllLinesBy(Predicate<DO.Line> predicate);
-        DO.Line GetLine(int num);
+        DO.Line GetLine(int num, int code);
         void AddLine(DO.Line line);
         void UpdateLine(DO.Line line);
-        void DeleteLine(int num);
+        void DeleteLine(int num, int code);
         //void UpdateLine(int num, Action<DO.Line> update); //method that knows to updt specific fields in Line
 
         #endregion

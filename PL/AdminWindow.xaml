@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
     <Grid>
-
         <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="217" Margin="115,105,0,0" VerticalAlignment="Top" Width="591" FontSize="16" FontStyle="Italic" FontWeight="SemiBold">
             <StackPanel Margin="21,20,29,24">
                 <RadioButton x:Name ="rbStations" Content="Station" Height="53" IsChecked="True" Margin="0,0,-0.4,0"/>
@@ -17,7 +16,5 @@
         </GroupBox>
         <Button Name="buttonOpen"  Content="Open" HorizontalAlignment="Left" Margin="539,327,0,0" VerticalAlignment="Top" Width="205" Height="62" Click="buttonOpen_Click"/>
         <Label Name="labelA" Content="Label wellcome" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Height="65" Width="591"/>
-
-
     </Grid>
 </Window>

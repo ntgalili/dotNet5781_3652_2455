@@ -13,7 +13,7 @@ using System.Threading.Tasks;
             public int Code { get; set; }
             public Areas Area { get; set; }
             public IEnumerable<LineStation> MyStations { get; set; }
-
+            public bool Active { get; set; } 
         }
     }
 

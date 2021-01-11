@@ -66,8 +66,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\DataSources\BO.Student.datasource" />
-    <None Include="Properties\DataSources\BO.StudentCourse.datasource" />
+    <None Include="Properties\DataSources\BO.Station.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,10 +31,10 @@ namespace BLAPI
 
         #region Line
         IEnumerable<BO.Line> GetAllLines();
-        BO.Line GetLine(int codeLine);
+        BO.Line GetLine(int numLine, int codeLine);
         void AddLine(BO.Line line);
         void UpdateLine(BO.Line line);
-        void DeleteLie(int codeLine);
+        void DeleteLine(int numLine, int codeLine);
         #endregion
     }
 }

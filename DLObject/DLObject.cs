@@ -24,6 +24,7 @@ namespace DL
         public IEnumerable<DO.Station> GetAllStations()
         {
             return from station in DataSource.ListStations
+                   where station.Active == true
                    select station.Clone();
         }
         public DO.Station GetStation(int num)
@@ -80,19 +81,19 @@ namespace DL
             return from Line in DataSource.ListLines
                    select Line.Clone();
         }
-        public DO.Line GetLine(int num)
+        public DO.Line GetLine(int num, int code)
         {
-            DO.Line toGet = DataSource.ListLines.Find(l => l.Code == num);
+            DO.Line toGet = DataSource.ListLines.Find(l=> (l.LineNum == num && l.Code == code));
             try { Thread.Sleep(2000); } catch (ThreadInterruptedException) { }
             if (toGet != null)
                 return toGet.Clone();
             else
-                throw new /*DO.BadLineCode*/Exception(/*num, "Not found"*/);
+                throw new DO.BadLineCodeException(num, "Not found");
         }
         public void AddLine(DO.Line line)
         {
             if (DataSource.ListLines.FirstOrDefault(l => l.Code == line.Code) != null)
-               // throw new DO.BadLineCodeException(line.Code, "Duplicate Line Code");
+                throw new DO.BadLineCodeException(line.Code, "Duplicate Line Code");
             DataSource.ListLines.Add(line.Clone());
         }
         public void UpdateLine(DO.Line line)
@@ -103,15 +104,15 @@ namespace DL
                 DataSource.ListLines.Remove(toUpDate);
                 DataSource.ListLines.Add(line.Clone());
             }
-            else;
-                //throw new DO.BadLineCodeException(line.Code, "Not found");
+            else
+                throw new DO.BadLineCodeException(line.Code, "Not found");
         }
-        public void DeleteLine(int num)
+        public void DeleteLine(int num, int code)
         {
             DO.Line toDel;
-            toDel = DataSource.ListLines.FirstOrDefault(l => l.Code == num);
-            if (toDel == null) ;
-               // throw new DO.BadLineCodeException(num, "Not found");
+            toDel = DataSource.ListLines.FirstOrDefault(l => (l.LineNum == num && l.Code == code));
+            if (toDel == null) 
+                throw new DO.BadLineCodeException(num, "Not found");
         }
 
         #endregion
