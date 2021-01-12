@@ -7,13 +7,10 @@
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.StationWindow"
         mc:Ignorable="d"
         Title="StationWindow" Height="450" Width="800">
-   
+
     <Grid>
-        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="652,52,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="AddButton_Click"/>
-        <Button x:Name="UpDateButton" Content="UpDate" HorizontalAlignment="Left" Margin="652,95,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="UpDateButton_Click"/>
-        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="652,138,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="DeleteButton_Click"/>
-        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="652,181,0,0" Height="34" Click="RefreshButton_Click"/>
-        <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="416,52,0,0" VerticalAlignment="Top" Height="293" Width="217">
+        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="463,318,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="AddButton_Click"/>
+        <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="417,82,0,0" VerticalAlignment="Top" Height="201" Width="217">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -26,12 +23,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Active:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <CheckBox x:Name="activeCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Active, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+
             <Label Content="Code:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
             <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Include:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <ComboBox x:Name="includeComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Include, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <ComboBox x:Name="includeComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" SelectedItem="{Binding Include}" Grid.Row="2" VerticalAlignment="Center" Width="120"/>
             <Label Content="Lattitude:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
             <TextBox x:Name="lattitudeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding Lattitude, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Label Content="Longitude:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
@@ -39,11 +35,12 @@
             <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
             <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <DataGrid x:Name="stationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="48,34,431.6,75" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="stationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="48,82,431.6,28" RowDetailsVisibilityMode="VisibleWhenSelected" MouseDoubleClick="stationDataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="100"/>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <CheckBox Content="Only Active Sations" HorizontalAlignment="Left" Margin="48,40,0,0" VerticalAlignment="Top" Height="33" Width="238"/>
     </Grid>
 </Window>

@@ -11,7 +11,6 @@ namespace BO
     {
         public string Name { get; set; }
         public int Code { get; set; }
-
         public StationInclude Include { get; set; }
         public double Longitude { get; set; }
         public double Lattitude { get; set; }

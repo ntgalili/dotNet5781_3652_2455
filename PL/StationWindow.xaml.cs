@@ -29,6 +29,8 @@ namespace PL
             bl = _bl;
             stationDataGrid.DataContext = bl.GetAllStations();
             gridStation.DataContext = new BO.Station();
+
+            includeComboBox.ItemsSource = Enum.GetValues(typeof(BO.StationInclude));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -69,29 +71,10 @@ namespace PL
             stationDataGrid.DataContext = bl.GetAllStations();
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void stationDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            gridStation.DataContext = new BO.Station();
-            stationDataGrid.DataContext = bl.GetAllStations();
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                st = gridStation.DataContext as BO.Station;
-                if (st.Code > 0)
-                {
-                    bl.DeleteStation(st.Code);
-                    MessageBox.Show("succeeded", "DeleteStation", MessageBoxButton.OK);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("dont succeeded, no station found", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            gridStation.DataContext = new BO.Station();
-            stationDataGrid.DataContext = bl.GetAllStations();
+            UpDateStationWindow win = new UpDateStationWindow(bl);
+            win.Show();
         }
     }
 }
