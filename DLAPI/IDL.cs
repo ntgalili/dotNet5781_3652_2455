@@ -38,6 +38,7 @@ namespace DLAPI
         //IEnumerable<DO.Station> GetAllUpdateStations();
         //IEnumerable<DO.Station> GetAllStationsBy(Predicate<DO.Station> predicate);
         IEnumerable<DO.Station> GetAllStations();
+        IEnumerable<DO.Station> GetAllActiveStations();
         DO.Station GetStation(int num);
         void AddStation(DO.Station station);
         void UpdateStation(DO.Station station);

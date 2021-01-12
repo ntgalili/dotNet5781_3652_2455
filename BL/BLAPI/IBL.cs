@@ -12,6 +12,7 @@ namespace BLAPI
     {
         #region Station
         IEnumerable<BO.Station> GetAllStations();
+        IEnumerable<BO.Station> GetAllActiveStations();
         BO.Station GetStation(int num);
         void AddStation(BO.Station station);
         void UpdateStation(BO.Station station);

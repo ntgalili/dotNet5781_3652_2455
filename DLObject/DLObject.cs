@@ -24,6 +24,12 @@ namespace DL
         public IEnumerable<DO.Station> GetAllStations()
         {
             return from station in DataSource.ListStations
+                   //where station.Active == true
+                   select station.Clone();
+        }
+        public IEnumerable<DO.Station> GetAllActiveStations()
+        {
+            return from station in DataSource.ListStations
                    where station.Active == true
                    select station.Clone();
         }

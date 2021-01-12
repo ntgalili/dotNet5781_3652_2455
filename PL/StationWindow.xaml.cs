@@ -29,7 +29,6 @@ namespace PL
             bl = _bl;
             stationDataGrid.DataContext = bl.GetAllStations();
             gridStation.DataContext = new BO.Station();
-
             includeComboBox.ItemsSource = Enum.GetValues(typeof(BO.StationInclude));
         }
 
@@ -52,29 +51,29 @@ namespace PL
             stationDataGrid.DataContext = bl.GetAllStations();
         }
 
-        private void UpDateButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                st = gridStation.DataContext as BO.Station;
-                if (st.Code > 0)
-                {
-                    bl.UpdateStation(st);
-                    MessageBox.Show("succeeded", "UpDateStation", MessageBoxButton.OK);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("dont succeeded, no station found", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            gridStation.DataContext = new BO.Station();
             stationDataGrid.DataContext = bl.GetAllStations();
+            gridStation.DataContext = new BO.Station();
+            gridStation.IsEnabled = true;
         }
 
-        private void stationDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void stationDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpDateStationWindow win = new UpDateStationWindow(bl);
-            win.Show();
+            gridStation.DataContext = (sender as DataGrid).SelectedItem as BO.Station;
+            gridStation.IsEnabled = false;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+             if((sender as CheckBox).IsChecked==true)
+                stationDataGrid.DataContext = bl.GetAllActiveStations();
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).IsChecked == false)
+                stationDataGrid.DataContext = bl.GetAllStations();
         }
     }
 }

@@ -29,8 +29,6 @@ namespace BL
                    select stationDoBoAdapter(item);
         }
 
-
-
         public BO.Station GetStation(int num)
         {
             
@@ -45,6 +43,12 @@ namespace BL
               }
               return stationDoBoAdapter(stationDO);
             
+        }
+        public IEnumerable<BO.Station> GetAllActiveStations()
+        {
+            return from item in dl.GetAllStations()
+                   where item.Active == true
+                   select stationDoBoAdapter(item);
         }
         public void AddStation(BO.Station stationBO)
         {
