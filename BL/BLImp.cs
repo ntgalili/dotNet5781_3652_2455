@@ -14,15 +14,18 @@ namespace BL
         IDL dl = DLFactory.GetDL();
 
 
+
+
+        #region Station
         public BO.Station stationDoBoAdapter(DO.Station stationDO)
         {
             BO.Station stationBO = new BO.Station();
             stationDO.CopyPropertiesTo(stationBO);
+            stationBO.MyLines = from item in dl.GetAllLinesStation()
+                                where item.StationCode == stationBO.Code
+                                select item.LineNum;
             return stationBO;
         }
-
-        #region Station
-
         public IEnumerable<BO.Station> GetAllStations()
         {
             return from item in dl.GetAllStations()
@@ -91,104 +94,49 @@ namespace BL
             }
         }
         #endregion
-        //    BO.Student studentDoBoAdapter(DO.Student studentDO)
-        //    {
-        //        BO.Student studentBO = new BO.Student();
-        //        DO.Person personDO;
-        //        int id = studentDO.ID;
-        //        try
-        //        {
-        //            personDO = dl.GetPerson(id);
-        //        }
-        //        catch (DO.BadPersonIdException ex)
-        //        {
-        //            throw new BO.BadStudentIdException("Student ID is illegal", ex);
-        //        }
-        //        personDO.CopyPropertiesTo(studentBO);
-        //        //studentBO.ID = personDO.ID;
-        //        //studentBO.BirthDate = personDO.BirthDate;
-        //        //studentBO.City = personDO.City;
-        //        //studentBO.Name = personDO.Name;
-        //        //studentBO.HouseNumber = personDO.HouseNumber;
-        //        //studentBO.Street = personDO.Street;
-        //        //studentBO.PersonalStatus = (BO.PersonalStatus)(int)personDO.PersonalStatus;
 
-        //        studentDO.CopyPropertiesTo(studentBO);
-        //        //studentBO.StartYear = studentDO.StartYear;
-        //        //studentBO.Status = (BO.StudentStatus)(int)studentDO.Status;
-        //        //studentBO.Graduation = (BO.StudentGraduate)(int)studentDO.Graduation;
+        #region LineStation
+        IEnumerable<BO.Line> GetAllLineStation()
+        {
 
-        //        studentBO.ListOfCourses = from sic in dl.GetStudentInCourseList(sic => sic.PersonId == id)
-        //                                  let course = dl.GetCourse(sic.CourseId)
-        //                                  select course.CopyToStudentCourse(sic);
-        //        //new BO.StudentCourse()
-        //        //{
-        //        //    ID = course.ID,
-        //        //    Number = course.Number,
-        //        //    Name = course.Name,
-        //        //    Year = course.Year,
-        //        //    Semester = (BO.Semester)(int)course.Semester,
-        //        //    Grade = sic.Grade
-        //        //};
+        }
+        IEnumerable<DO.Line> GetAllActiveLinStations()
+        {
 
-        //        return studentBO;
-        //    }
+        }
+        IEnumerable<BO.LineStation> GetAllLinesStationByLine(int LineNum)
+        {
 
-        //    public BO.Student GetStudent(int id)
-        //    {
-        //        DO.Student studentDO;
-        //        try
-        //        {
-        //            studentDO = dl.GetStudent(id);
-        //        }
-        //        catch (DO.BadPersonIdException ex)
-        //        {
-        //            throw new BO.BadStudentIdException("Person id does not exist or he is not a student", ex);
-        //        }
-        //        return studentDoBoAdapter(studentDO);
-        //    }
+        }
+        BO.Line GetLineStation(int numLine, int codeLine)
+        {
 
-        //    public IEnumerable<BO.Student> GetAllStudents()
-        //    {
-        //        //return from item in dl.GetStudentListWithSelectedFields( (stud) => { return GetStudent(stud.ID); } )
-        //        //       let student = item as BO.Student
-        //        //       orderby student.ID
-        //        //       select student;
-        //        return from item in dl.GetAllStudents()
-        //               select studentDoBoAdapter(item);
-        //    }
-        //    public IEnumerable<BO.Student> GetStudentsBy(Predicate<BO.Student> predicate)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
+        }
+        void AddLineStation(BO.Line line)
+        {
 
-        //    public IEnumerable<BO.ListedPerson> GetStudentIDNameList()
-        //    {
-        //        return from item in dl.GetStudentListWithSelectedFields((Func<DO.Student, object>)((stud) =>
-        //                {
-        //                    try { Thread.Sleep(1500); } catch (ThreadInterruptedException e) { }
-        //                    return new BO.ListedPerson() { ID = stud.ID, Name = dl.GetPerson(stud.ID).Name };
-        //                }))
-        //               let student = item as BO.ListedPerson
-        //               //orderby student.ID
-        //               select student;
-        //    }
+        }
+        void UpdateLineStation(BO.Line line)
+        {
 
+        }
+        void DeleteLineStation(int numLine, int codeLine)
+        {
 
+        }
+        #endregion
 
-
-
-
-
+        #region Line
 
         public BO.Line LineDoBoAdapter(DO.Line LineDO)
         {
             BO.Line LineBO = new BO.Line();
             LineDO.CopyPropertiesTo(LineBO);
+            LineBO.MyStations = from item in GetAllLinesStationByLine(LineBO.LineNum)
+                                orderby item.LineStationIndex
+                                select item;
             return LineBO;
         }
-
-        #region Line
         public IEnumerable<BO.Line> GetAllLines()
         {
             return from item in dl.GetAllLines()
@@ -217,7 +165,7 @@ namespace BL
             }
             catch (DO.BadLineCodeException ex)
             {
-                throw new BO.BadLineCodeException("Duplicate Line Code", ex);
+                throw new BO.BadLineCodeException("Error", ex);
             }
         }
         public void UpdateLine(BO.Line lineBO)

@@ -54,6 +54,8 @@ namespace DLAPI
         //IEnumerable<DO.LineStation> GetAllLineStationsBy(Predicate<DO.Line> predicate);
         DO.LineStation GetLineStation(int codeLine, int codeStation);
         void AddLineStation(DO.LineStation ls);
+        IEnumerable<DO.LineStation> GetAllLinesStation();
+        IEnumerable<DO.LineStation> GetAllLinesStationByLine(int LineNum);
         void UpdateLineStation(DO.LineStation ls);
         void DeleteLineStation(int codeLine, int codeStation);
         //void UpdateLine(int num, Action<DO.LineStation> update); //method that knows to updt specific fields in Line

@@ -24,7 +24,6 @@ namespace DL
         public IEnumerable<DO.Station> GetAllStations()
         {
             return from station in DataSource.ListStations
-                   //where station.Active == true
                    select station.Clone();
         }
         public IEnumerable<DO.Station> GetAllActiveStations()
@@ -87,6 +86,12 @@ namespace DL
             return from Line in DataSource.ListLines
                    select Line.Clone();
         }
+        public IEnumerable<DO.Line> GetAllActiveLines()
+        {
+            return from Line in DataSource.ListLines
+                   where Line.Active == true
+                   select Line.Clone();
+        }
         public DO.Line GetLine(int num, int code)
         {
             DO.Line toGet = DataSource.ListLines.Find(l=> (l.LineNum == num && l.Code == code));
@@ -95,11 +100,11 @@ namespace DL
                 return toGet.Clone();
             else
                 throw new DO.BadLineCodeException(num, "Not found");
+
         }
         public void AddLine(DO.Line line)
         {
-            if (DataSource.ListLines.FirstOrDefault(l => l.Code == line.Code) != null)
-                throw new DO.BadLineCodeException(line.Code, "Duplicate Line Code");
+            line.Code = DO.config.LineID++;
             DataSource.ListLines.Add(line.Clone());
         }
         public void UpdateLine(DO.Line line)
@@ -119,6 +124,7 @@ namespace DL
             toDel = DataSource.ListLines.FirstOrDefault(l => (l.LineNum == num && l.Code == code));
             if (toDel == null) 
                 throw new DO.BadLineCodeException(num, "Not found");
+            toDel.Active = false;
         }
 
         #endregion
@@ -131,10 +137,16 @@ namespace DL
         #region LineStation
         public void AddLineStation(DO.LineStation ls)
         {
-
             DataSource.ListLineStations.Add(ls.Clone());
         }
+        public IEnumerable<DO.LineStation> GellAllLinesStation()
+        {
 
+        }
+        public IEnumerable<DO.LineStation>GetAllLinesStationByLine(int numLine)
+        {
+
+        }
         public void UpdateLineStation(DO.LineStation ls)
         {
             DO.LineStation toUpDate = DataSource.ListLineStations.Find(s => s.StationCode == ls.StationCode);

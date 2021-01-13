@@ -32,10 +32,22 @@ namespace BLAPI
 
         #region Line
         IEnumerable<BO.Line> GetAllLines();
+        IEnumerable<DO.Line> GetAllActiveLines();
         BO.Line GetLine(int numLine, int codeLine);
         void AddLine(BO.Line line);
         void UpdateLine(BO.Line line);
         void DeleteLine(int numLine, int codeLine);
+        #endregion
+
+
+        #region LineStation
+        IEnumerable<BO.Line> GetAllLineStation();
+        IEnumerable<DO.Line> GetAllActiveLinStations();
+        IEnumerable<BO.LineStation> GetAllLinesStationByLine(int LineNum);
+        BO.Line GetLineStation(int numLine, int codeLine);
+        void AddLineStation(BO.Line line);
+        void UpdateLineStation(BO.Line line);
+        void DeleteLineStation(int numLine, int codeLine);
         #endregion
     }
 }

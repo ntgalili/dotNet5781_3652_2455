@@ -15,7 +15,7 @@ namespace BO
         public double Longitude { get; set; }
         public double Lattitude { get; set; }
         public bool Active { get; set; }
-        public IEnumerable<Line> MyLines { get; set; }
+        public IEnumerable<int> MyLines { get; set; }
         public override string ToString() => this.ToStringProperty();
 
     }

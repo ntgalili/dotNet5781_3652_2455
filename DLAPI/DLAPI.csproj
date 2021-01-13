@@ -45,6 +45,7 @@
     <Compile Include="DLFactory.cs" />
     <Compile Include="DO\AdjacentStetions.cs" />
     <Compile Include="DO\Bus.cs" />
+    <Compile Include="DO\config.cs" />
     <Compile Include="DO\Enum.cs" />
     <Compile Include="DO\Exception.cs" />
     <Compile Include="DO\Line.cs" />
