@@ -137,15 +137,22 @@ namespace DL
         #region LineStation
         public void AddLineStation(DO.LineStation ls)
         {
+            if (DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == ls.StationCode&&s.LineNum==ls.LineNum) != null)
+                throw new DO.BadLineStationException(ls.StationCode,ls.LineNum, "Duplicate station Code");
+
             DataSource.ListLineStations.Add(ls.Clone());
         }
         public IEnumerable<DO.LineStation> GellAllLinesStation()
         {
-
+            return from ls in DataSource.ListLineStations
+                   select ls.Clone();
         }
         public IEnumerable<DO.LineStation>GetAllLinesStationByLine(int numLine)
         {
-
+            return from ls in DataSource.ListLineStations
+                   where ls.LineNum==numLine
+                   orderby ls.LineStationIndex
+                   select ls.Clone();
         }
         public void UpdateLineStation(DO.LineStation ls)
         {
@@ -156,14 +163,14 @@ namespace DL
                 DataSource.ListLineStations.Add(ls.Clone());
             }
             else
-                throw new DO.BadStationCodeException(ls.StationCode, "Not found");
+                throw new DO.BadLineStationException(ls.StationCode,ls.LineNum, "Not found");
         }
         public void DeleteLineStation(int codeLine, int codeStation)
         {
             DO.LineStation toDel;
             toDel = DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == codeStation && s.LineNum == codeLine);
             if (toDel == null)
-                throw new DO.BadStationCodeException(codeStation, "Not found in " + codeLine);
+                throw new DO.BadLineStationException(codeStation, "Not found in " + codeLine);
             DataSource.ListLineStations.Remove(toDel);
         }
 
@@ -179,7 +186,7 @@ namespace DL
             if (toGet != null)
                 return toGet.Clone();
             else
-                throw new DO.BadStationCodeException(codeStation, "Not found in "+ codeLine);
+                throw new DO.BadLineStationException(codeStation, "Not found in "+ codeLine);
         }
         #endregion
     }
