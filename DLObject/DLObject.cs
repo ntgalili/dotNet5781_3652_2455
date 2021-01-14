@@ -71,11 +71,6 @@ namespace DL
         }
         #endregion
 
-
-
-
-
-
         #region Line
         public IEnumerable<DO.Line> GetAllLines()
         {
@@ -126,13 +121,6 @@ namespace DL
 
         #endregion
 
-
-
-
-
-
-
-
         #region LineStation
         public void AddLineStation(DO.LineStation ls)
         {
@@ -140,7 +128,7 @@ namespace DL
                 throw new DO.BadLineStationException(ls.StationCode,ls.LineCode, "Duplicate station Code");
             DataSource.ListLineStations.Add(ls.Clone());
         }
-        public IEnumerable<DO.LineStation> GellAllLinesStation()
+        public IEnumerable<DO.LineStation> GetAllLinesStation()
         {
             return from ls in DataSource.ListLineStations
                    select ls.Clone();
@@ -187,13 +175,8 @@ namespace DL
         }
         #endregion
 
-
-
-
-
-
         #region AdjacentStations
-        DO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
+        public DO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
         {
             DO.AdjacentStetions toGet = DataSource.ListAdjStations.Find(adj => (adj.Station1 == numS1 && adj.Station2 == numS2));
             try
@@ -206,13 +189,13 @@ namespace DL
             else
                 throw new DO.BadAdjacentStetionsException(numS1,numS2, "Not found");
         }
-        void AddAdjacentStetions(DO.AdjacentStetions adj)
+        public void AddAdjacentStetions(DO.AdjacentStetions adj)
         {
             if (DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == adj.Station1&& a.Station2 == adj.Station2) != null)
                 throw new DO.BadLineStationException(adj.Station1,adj.Station2, "Duplicate AdjacentStetions");
             DataSource.ListAdjStations.Add(adj.Clone());
         }
-        void UpdateAdjacentStetions(DO.AdjacentStetions adj)
+        public void UpdateAdjacentStetions(DO.AdjacentStetions adj)
         {
             DO.AdjacentStetions toUpDate = DataSource.ListAdjStations.Find(a => a.Station1 == adj.Station1 && a.Station2 == adj.Station2);
             if (toUpDate != null)
@@ -223,7 +206,7 @@ namespace DL
             else
                 throw new DO.BadAdjacentStetionsException(adj.Station1,adj.Station2, "Not found");
         }
-        void DeleteAdjacentStetions(int numS2, int numS1)
+        public void DeleteAdjacentStetions(int numS2, int numS1)
         {
             DO.AdjacentStetions toDel;
             toDel = DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == numS1 && a.Station2 == numS2);

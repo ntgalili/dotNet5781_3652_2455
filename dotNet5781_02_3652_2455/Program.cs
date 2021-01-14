@@ -325,18 +325,6 @@ namespace dotNet5781_02_3652_2455
             }
         }
 
-        ///// <summary>
-        ///// Checks if a particular bus stop exists on the route
-        ///// </summary>
-        ///// <param name="LBS">the line bus stop to search</param>
-        ///// <returns></returns>
-        //public bool search(LineBusStop LBS)
-        //{
-        //    if (route.IndexOf(LBS) != -1)//if the line bus stop is in the route 
-        //        return true;
-        //    return false;
-        //}
-
 
         /// <summary>
         /// Checks if a particular bus stop exists on the route

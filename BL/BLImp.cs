@@ -5,7 +5,7 @@ using DLAPI;
 using BLAPI;
 
 using System.Threading;
-
+using System.Device.Location;
 
 namespace BL
 {
@@ -92,7 +92,7 @@ namespace BL
             s.Active = true;
             UpdateStation(s);
         }
-        void ChekIfStationActive(int codeStation)
+        public void ChekIfStationActive(int codeStation)
         {
             BO.Station s= GetStation(codeStation);
             if (s.MyLines.Count() == 0)
@@ -109,17 +109,17 @@ namespace BL
             LineStationDO.CopyPropertiesTo(LineStationBO);
             return LineStationBO;
         }
-        IEnumerable<BO.LineStation> GetAllLineStation()
+        public IEnumerable<BO.LineStation> GetAllLineStation()
         {
             return from item in dl.GetAllLinesStation()
                    select LineStationDoBoAdapter(item);
         }
-        IEnumerable<BO.LineStation> GetAllLinesStationByLine(int codeLine)
+        public IEnumerable<BO.LineStation> GetAllLinesStationByLine(int codeLine)
         {
             return from item in dl.GetAllLinesStationByLine(codeLine)
                    select LineStationDoBoAdapter(item);
         }
-        BO.LineStation GetLineStation(int lineCode, int codeStation)
+        public BO.LineStation GetLineStation(int lineCode, int codeStation)
         {
             DO.LineStation LineStationDO;
             try
@@ -132,7 +132,7 @@ namespace BL
             }
             return LineStationDoBoAdapter(LineStationDO);
         }
-        void AddLineStation(BO.LineStation lsBO)
+        public void AddLineStation(BO.LineStation lsBO)
         {
             DO.LineStation LineStationDO = new DO.LineStation();
             lsBO.CopyPropertiesTo(LineStationDO);
@@ -146,7 +146,7 @@ namespace BL
             }
             MakeStationActive(lsBO.Code);
         }
-        void UpdateLineStation(BO.LineStation ls)
+        public void UpdateLineStation(BO.LineStation ls)
         {
             DO.LineStation LineStationDO = new DO.LineStation();
             ls.CopyPropertiesTo(LineStationDO);
@@ -159,7 +159,7 @@ namespace BL
                 throw new BO.BadLineStationException(ls.Code,ls.LineCode,"Station Code does not exist", ex);
             }
         }
-        void DeleteLineStation(int lineCode, int codeStation)
+        public void DeleteLineStation(int lineCode, int codeStation)
         {
             try
             {
@@ -286,37 +286,80 @@ namespace BL
                 catch (BO.BadStationCodeException ex) { }
             }
         }
+        public IEnumerable<BO.Line> GetAllActiveLines()
+        {
+            return from item in dl.GetAllActiveLines()
+                   select LineDoBoAdapter(item);
+        }
         #endregion
 
 
 
-        //#region AdjacentStations 
-        //private static Random r = new Random();
-        //private static double distance(double X1, double Y1, double X2, double Y2)
-        //{
-        //    var sCoord = new GeoCoordinate(X1, Y1);
-        //    var eCoord = new GeoCoordinate(X1, Y1);
+        #region AdjacentStations 
+        private static Random r = new Random();
+        private static double distance(double X1, double Y1, double X2, double Y2)
+        {
+            var sCoord = new GeoCoordinate(X1, Y1);
+            var eCoord = new GeoCoordinate(X1, Y1);
 
-        //    return sCoord.GetDistanceTo(eCoord);
-        //}
-        //BO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
-        //{
-
-        //}
-        //void AddAdjacentStetions(BO.LineStation s1, BO.LineStation s2)
-        //{
-        //adj.Distance = distance(35.001165, 31.715411, 34.989861, 31.715411);
-        //adj.Time = new TimeSpan(0, (int)(distance(35.001165, 31.715411, 34.989861, 31.715411) * r.NextDouble()), 0);
-        //}
-        //void UpdateAdjacentStetions(BO.AdjacentStetions adj)
-        //{
-
-        //}
-        //void DeleteAdjacentStations(int numS1, int numS2)
-        //{
-
-        //}
-        //#endregion
+            return sCoord.GetDistanceTo(eCoord);
+        }
+        public BO.AdjacentStetions AdjacentStetionsDoBoAdapter(DO.AdjacentStetions AdjacentStetionsDO)
+        {
+            BO.AdjacentStetions AdjacentStetionsBO = new BO.AdjacentStetions();
+            AdjacentStetionsDO.CopyPropertiesTo(AdjacentStetionsBO);
+            return AdjacentStetionsBO;
+        }
+        public BO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
+        {
+            DO.AdjacentStetions adjDO;
+            try
+            {
+               adjDO= dl.GetAdjacentStetions(numS1, numS2);
+            }
+            catch(DO.BadAdjacentStetionsException ex)
+            {
+                throw new BO.BadAdjacentStetionsException(numS1, numS2,"not found");
+            }
+            return AdjacentStetionsDoBoAdapter(adjDO);
+        }
+        public void AddAdjacentStetions(BO.LineStation s1, BO.LineStation s2)
+        {
+            BO.AdjacentStetions adjBO=new BO.AdjacentStetions();
+            adjBO.Distance = distance(s1.Lattitude,s2.Lattitude,s1.Longitude,s2.Longitude);
+            adjBO.Time = new TimeSpan(0, (int)(adjBO.Distance * r.NextDouble()), 0);
+            DO.AdjacentStetions adjDO=new DO.AdjacentStetions();
+            adjBO.CopyPropertiesTo(adjDO);
+            try
+            {
+                dl.AddAdjacentStetions(adjDO);
+            }
+            catch (DO.BadAdjacentStetionsException ex)
+            {
+                throw new BO.BadAdjacentStetionsException(s1.Code, s2.Code, "Duplicate Adjacent Stetions");
+            }
+        }
+        public void UpdateAdjacentStetions(BO.LineStation s1, BO.LineStation s2)
+        {
+            BO.AdjacentStetions adjBO = new BO.AdjacentStetions();
+            adjBO.Distance = distance(s1.Lattitude, s2.Lattitude, s1.Longitude, s2.Longitude);
+            adjBO.Time = new TimeSpan(0, (int)(adjBO.Distance * r.NextDouble()), 0);
+            DO.AdjacentStetions adjDO = new DO.AdjacentStetions();
+            adjBO.CopyPropertiesTo(adjDO);
+            try
+            {
+                dl.UpdateAdjacentStetions(adjDO);
+            }
+            catch (DO.BadAdjacentStetionsException ex)
+            {
+                throw new BO.BadAdjacentStetionsException(s1.Code, s2.Code, "not found");
+            }
+        }
+        public void DeleteAdjacentStations(int numS1, int numS2)
+        {
+            dl.DeleteAdjacentStetions(numS1, numS2);
+        }
+        #endregion
 
     }
 }

@@ -24,7 +24,7 @@ namespace BLAPI
 
         #region Line
         IEnumerable<BO.Line> GetAllLines();
-        IEnumerable<DO.Line> GetAllActiveLines();
+        IEnumerable<BO.Line> GetAllActiveLines();
         BO.Line GetLine(int numLine, int codeLine);
         void AddLine(BO.Line line);
         void UpdateLine(BO.Line line);
@@ -33,7 +33,7 @@ namespace BLAPI
 
 
         #region LineStation
-        IEnumerable<BO.Line> GetAllLineStation();
+        IEnumerable<BO.LineStation> GetAllLineStation();
         IEnumerable<BO.LineStation> GetAllLinesStationByLine(int codeLine);
         BO.LineStation GetLineStation(int lineCode, int codeStation);
         void AddLineStation(BO.LineStation ls);
@@ -44,8 +44,8 @@ namespace BLAPI
 
         #region AdjacentStations 
         BO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2);
-        void AddAdjacentStetions(BO.Station s1, BO.Station s2);
-        void UpdateAdjacentStetions(BO.AdjacentStetions adj);
+        void AddAdjacentStetions(BO.LineStation s1, BO.LineStation s2);
+        void UpdateAdjacentStetions(BO.LineStation s1, BO.LineStation s2);
         void DeleteAdjacentStations(int numS1, int numS2);
         #endregion
     }
