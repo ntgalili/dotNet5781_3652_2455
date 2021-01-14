@@ -10,9 +10,16 @@ namespace BL
 {
     public static class DeepCopyUtilities
     {
+        /// <summary>
+        /// copy propertis of one object to enothr object
+        /// </summary>
+        /// <typeparam name="T">the copy type object</typeparam>
+        /// <typeparam name="S">the source type object</typeparam>
+        /// <param name="from">the source object</param>
+        /// <param name="to">the copy object</param>
         public static void CopyPropertiesTo<T, S>(this S from, T to)
         {
-            foreach (PropertyInfo propTo in to.GetType().GetProperties())
+            foreach (PropertyInfo propTo in to.GetType().GetProperties())//Go over all the properties
             {
                 PropertyInfo propFrom = typeof(S).GetProperty(propTo.Name);
                 if (propFrom == null)
@@ -22,18 +29,21 @@ namespace BL
                     propTo.SetValue(to, value);
             }
         }
+
+
+        /// <summary>
+        ///  copy propertis of one object to a new  object
+        /// </summary>
+        /// <typeparam name="S">the source type object</typeparam>
+        /// <param name="from">the source object</param>
+        /// <param name="type">the type of the new object</param>
+        /// <returns></returns>
         public static object CopyPropertiesToNew<S>(this S from, Type type)
         {
             object to = Activator.CreateInstance(type); // new object of Type
             from.CopyPropertiesTo(to);
             return to;
         }
-        //public static BO.StudentCourse CopyToStudentCourse(this DO.Course course, DO.StudentInCourse sic)
-        //{
-        //    BO.StudentCourse result = (BO.StudentCourse)course.CopyPropertiesToNew(typeof(BO.StudentCourse));
-        //    // propertys' names changed? copy them here...
-        //    result.Grade = sic.Grade;
-        //    return result;
-        //}
+
     }
 }

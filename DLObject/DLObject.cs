@@ -214,6 +214,15 @@ namespace DL
                 throw new DO.BadLineStationException(numS1,numS2, "Not found");
             DataSource.ListAdjStations.Remove(toDel);
         }
+
+
+        public IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code)
+        {
+            return from item in DataSource.ListAdjStations
+                   where (item.Station1 == code || item.Station2 == code)
+                   select item; 
+        }
+
         #endregion
     }
 }

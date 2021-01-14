@@ -7,8 +7,8 @@ namespace BO
 {
         public class AdjacentStetions
         {
-            Station Station1 { get; set; }
-            Station Station2 { get; set; }
+            public Station Station1 { get; set; }
+            public Station Station2 { get; set; }
             public double Distance { get; set; }
             public TimeSpan Time { get; set; }
         }

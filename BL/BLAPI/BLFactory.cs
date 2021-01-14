@@ -8,8 +8,12 @@ using BL;
 
 namespace BLAPI
 {
+    /// <summary>
+    /// factory class to BL
+    /// </summary>
     public static class BLFactory
     {
+        //creates the unit BL layer
         public static IBL GetBL()
         {
             return new BLImp();

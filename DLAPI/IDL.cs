@@ -45,6 +45,7 @@ namespace DLAPI
         void AddAdjacentStetions(DO.AdjacentStetions adj);
         void UpdateAdjacentStetions(DO.AdjacentStetions adj);
         void DeleteAdjacentStetions(int numS1, int numS2);
+        IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code);
         #endregion
 
     }
