@@ -27,28 +27,42 @@ namespace DO                         //************העתקתי מהמורה ל�
             base(message, innerException) => Code = c;
         public override string ToString() => base.ToString() + $", Bad Line Code: {Code}";
     }
-
-
-    
-
-        [Serializable]
     public class BadLineStationException : Exception
     {
         public int Code;
         public int LineNum;
-
-
         public BadLineStationException(int c, string message) :
         base(message) => Code = c;
 
         public BadLineStationException(int c, int l, string message) : base(message)
-        {
-
+        { 
             Code = c;
             LineNum = l;
         }
-        
         public override string ToString() => base.ToString() + $", Bad Line Station: Station code: {Code}, Line Num:{LineNum}";
+    }
+    public class BadAdjacentStetionsException : Exception
+    {
+        public int numS1;
+        public int numS2;
+        public BadAdjacentStetionsException(int num1,int num2) : base()
+            {
+                numS1 = num1;
+                numS2 = num2;
+            }
+        public BadAdjacentStetionsException(int num1,int num2, string message) :
+            base(message)
+        {
+            numS1 = num1;
+            numS2 = num2;
+        }
+        public BadAdjacentStetionsException(int num1,int num2, string message, Exception innerException) :
+            base(message, innerException)
+        {
+            numS1 = num1;
+            numS2 = num2;
+        }
+        public override string ToString() => base.ToString() + $", Bad BadAdjacentStetionsException: {numS1},{numS2}";
     }
 }
 

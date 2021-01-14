@@ -8,7 +8,7 @@ using System.Threading.Tasks;
     {
         public class LineStation : Station
         {
-            public int LineNum { get; set; }
+            public int LineCode { get; set; }
             public int LineStationIndex { get; set; }
         }
     }

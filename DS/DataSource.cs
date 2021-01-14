@@ -550,7 +550,7 @@ namespace DS
                 new Line
                 {
                    LineNum=650,
-                   Code=1,
+                   Code=2,
                    Active=true,
                    Area=Areas.General,
                    FirstStation=172,
@@ -559,7 +559,7 @@ namespace DS
                 new Line
                 {
                    LineNum=420,
-                   Code=1,
+                   Code=3,
                    Active=true,
                    Area=Areas.Center,
                    FirstStation=21022,
@@ -568,7 +568,7 @@ namespace DS
                 new Line
                 {
                    LineNum=497,
-                   Code=1,
+                   Code=4,
                    Active=true,
                    Area=Areas.General,
                    FirstStation=21161,
@@ -577,7 +577,7 @@ namespace DS
                 new Line
                 {
                    LineNum=8,
-                   Code=1,
+                   Code=5,
                    Active=true,
                    Area=Areas.Center,
                    FirstStation=33553,
@@ -586,7 +586,7 @@ namespace DS
                 new Line
                 {
                    LineNum=417,
-                   Code=1,
+                   Code=6,
                    Active=true,
                    Area=Areas.Jerusalem,
                    FirstStation=480,
@@ -595,7 +595,7 @@ namespace DS
                 new Line
                 {
                    LineNum=402,
-                   Code=1,
+                   Code=7,
                    Active=true,
                    Area=Areas.Center,
                    FirstStation=180,
@@ -605,7 +605,7 @@ namespace DS
                 {
                    LineNum=153,
                    Active=true,
-                   Code=1,
+                   Code=8,
                    Area=Areas.North,
                    FirstStation=21365,
                    LastStation=57028,
@@ -614,7 +614,7 @@ namespace DS
                 {
                    LineNum=921,
                    Active=true,
-                   Code=1,
+                   Code=9,
                    Area=Areas.Center,
                    FirstStation=37780,
                    LastStation=33537,
@@ -623,7 +623,7 @@ namespace DS
                 {
                    LineNum=89,
                    Active=true,
-                   Code=1,
+                   Code=10,
                    Area=Areas.Center,
                    FirstStation=21005,
                    LastStation=47092,
@@ -635,7 +635,7 @@ namespace DS
                 //line 7
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=1,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -643,7 +643,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=565,
                     LineStationIndex=2,
                     PrevStation=1,
@@ -651,7 +651,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=566,
                     LineStationIndex=3,
                     PrevStation=565,
@@ -659,7 +659,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=567,
                     LineStationIndex=4,
                     PrevStation=566,
@@ -667,7 +667,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=568,
                     LineStationIndex=5,
                     PrevStation=567,
@@ -675,7 +675,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=569,
                     LineStationIndex=6,
                     PrevStation=568,
@@ -683,7 +683,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=574,
                     LineStationIndex=7,
                     PrevStation=569,
@@ -691,7 +691,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
+                    LineCode=1,
                     StationCode=575,
                     LineStationIndex=8,
                     PrevStation=564,
@@ -699,8 +699,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
-
+                    LineCode=1,
                     StationCode=480,
                     LineStationIndex=9,
                     PrevStation=575,
@@ -708,8 +707,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=7,
-
+                    LineCode=1,
                     StationCode=407,
                     LineStationIndex=10,
                     PrevStation=480,
@@ -719,7 +717,7 @@ namespace DS
                 //line 650
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=172,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -727,7 +725,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=174,
                     LineStationIndex=2,
                     PrevStation=172,
@@ -735,7 +733,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=176,
                     LineStationIndex=3,
                     PrevStation=174,
@@ -743,7 +741,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=179,
                     LineStationIndex=4,
                     PrevStation=176,
@@ -751,7 +749,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=57023,
                     LineStationIndex=5,
                     PrevStation=179,
@@ -759,7 +757,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=57025,
                     LineStationIndex=6,
                     PrevStation=57023,
@@ -767,7 +765,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=57026,
                     LineStationIndex=7,
                     PrevStation=57025,
@@ -775,7 +773,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
+                    LineCode=2,
                     StationCode=57027,
                     LineStationIndex=8,
                     PrevStation=57026,
@@ -783,8 +781,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=650,
-
+                    LineCode=2,
                     StationCode=57028,
                     LineStationIndex=9,
                     PrevStation=57027,
@@ -794,7 +791,7 @@ namespace DS
                 //line 420
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21022,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -802,7 +799,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21024,
                     LineStationIndex=2,
                     PrevStation=21022,
@@ -810,7 +807,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=20902,
                     LineStationIndex=3,
                     PrevStation=21024,
@@ -818,7 +815,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21000,
                     LineStationIndex=4,
                     PrevStation=20902,
@@ -826,7 +823,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21005,
                     LineStationIndex=5,
                     PrevStation=21000,
@@ -834,7 +831,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21365,
                     LineStationIndex=6,
                     PrevStation=21005,
@@ -842,7 +839,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21165,
                     LineStationIndex=7,
                     PrevStation=21365,
@@ -850,7 +847,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21230,
                     LineStationIndex=8,
                     PrevStation=21165,
@@ -858,8 +855,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
-
+                    LineCode=3,
                     StationCode=21232,
                     LineStationIndex=9,
                     PrevStation=21230,
@@ -867,7 +863,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=420,
+                    LineCode=3,
                     StationCode=21161,
                     LineStationIndex=10,
                     PrevStation=480,
@@ -877,7 +873,7 @@ namespace DS
                 ///line 497
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=21161,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -885,7 +881,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=21165,
                     LineStationIndex=2,
                     PrevStation=21161,
@@ -893,7 +889,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=21230,
                     LineStationIndex=3,
                     PrevStation=21165,
@@ -901,7 +897,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=21232,
                     LineStationIndex=4,
                     PrevStation=21230,
@@ -909,7 +905,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=21365,
                     LineStationIndex=5,
                     PrevStation=21232,
@@ -917,7 +913,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=562,
                     LineStationIndex=6,
                     PrevStation=21365,
@@ -925,7 +921,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=563,
                     LineStationIndex=7,
                     PrevStation=562,
@@ -933,7 +929,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=564,
                     LineStationIndex=8,
                     PrevStation=563,
@@ -941,8 +937,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
-
+                    LineCode=4,
                     StationCode=407,
                     LineStationIndex=9,
                     PrevStation=564,
@@ -950,7 +945,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
+                    LineCode=4,
                     StationCode=480,
                     LineStationIndex=10,
                     PrevStation=407,
@@ -960,7 +955,7 @@ namespace DS
                 //line 8
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=33553,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -968,7 +963,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=34063,
                     LineStationIndex=2,
                     PrevStation=33553,
@@ -976,7 +971,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=34934,
                     LineStationIndex=3,
                     PrevStation=34063,
@@ -984,7 +979,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=35311,
                     LineStationIndex=4,
                     PrevStation=34934,
@@ -992,7 +987,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=36446,
                     LineStationIndex=5,
                     PrevStation=35311,
@@ -1000,7 +995,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=36480,
                     LineStationIndex=6,
                     PrevStation=36446,
@@ -1008,7 +1003,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=36481,
                     LineStationIndex=7,
                     PrevStation=36480,
@@ -1016,7 +1011,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=8,
+                    LineCode=5,
                     StationCode=37136,
                     LineStationIndex=8,
                     PrevStation=36481,
@@ -1024,8 +1019,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=497,
-
+                    LineCode=5,
                     StationCode=37780,
                     LineStationIndex=9,
                     PrevStation=37136,
@@ -1035,7 +1029,7 @@ namespace DS
                 //line 417
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=480,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -1043,7 +1037,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=407,
                     LineStationIndex=2,
                     PrevStation=480,
@@ -1051,7 +1045,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=401,
                     LineStationIndex=3,
                     PrevStation=407,
@@ -1059,7 +1053,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=563,
                     LineStationIndex=4,
                     PrevStation=401,
@@ -1067,7 +1061,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=573,
                     LineStationIndex=5,
                     PrevStation=563,
@@ -1075,7 +1069,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=574,
                     LineStationIndex=6,
                     PrevStation=573,
@@ -1083,7 +1077,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=172,
                     LineStationIndex=7,
                     PrevStation=574,
@@ -1091,7 +1085,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=174,
                     LineStationIndex=8,
                     PrevStation=172,
@@ -1099,7 +1093,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=179,
                     LineStationIndex=9,
                     PrevStation=174,
@@ -1107,7 +1101,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=417,
+                    LineCode=6,
                     StationCode=180,
                     LineStationIndex=10,
                     PrevStation=179,
@@ -1117,7 +1111,7 @@ namespace DS
                 //line 402
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=180,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -1125,7 +1119,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=179,
                     LineStationIndex=2,
                     PrevStation=180,
@@ -1133,7 +1127,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=176,
                     LineStationIndex=3,
                     PrevStation=179,
@@ -1141,7 +1135,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=174,
                     LineStationIndex=4,
                     PrevStation=176,
@@ -1149,7 +1143,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=172,
                     LineStationIndex=5,
                     PrevStation=174,
@@ -1157,7 +1151,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=21161,
                     LineStationIndex=6,
                     PrevStation=172,
@@ -1165,7 +1159,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=21165,
                     LineStationIndex=7,
                     PrevStation=21161,
@@ -1173,7 +1167,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=21230,
                     LineStationIndex=8,
                     PrevStation=21165,
@@ -1181,7 +1175,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=402,
+                    LineCode=7,
                     StationCode=21365,
                     LineStationIndex=9,
                     PrevStation=21230,
@@ -1191,7 +1185,7 @@ namespace DS
                 //line 89
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=21005,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -1199,7 +1193,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=21024,
                     LineStationIndex=2,
                     PrevStation=21005,
@@ -1207,7 +1201,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=21022,
                     LineStationIndex=3,
                     PrevStation=21024,
@@ -1215,7 +1209,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=21000,
                     LineStationIndex=4,
                     PrevStation=21022,
@@ -1223,7 +1217,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=20902,
                     LineStationIndex=5,
                     PrevStation=21000,
@@ -1231,7 +1225,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=46203,
                     LineStationIndex=6,
                     PrevStation=20902,
@@ -1239,7 +1233,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=46216,
                     LineStationIndex=7,
                     PrevStation=46203,
@@ -1247,7 +1241,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=46217,
                     LineStationIndex=8,
                     PrevStation=46216,
@@ -1255,7 +1249,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=46233,
                     LineStationIndex=9,
                     PrevStation=46217,
@@ -1263,7 +1257,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=89,
+                    LineCode=10,
                     StationCode=47092,
                     LineStationIndex=10,
                     PrevStation=46233,
@@ -1273,7 +1267,7 @@ namespace DS
                 //line 921
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=37780,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -1281,7 +1275,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=37136,
                     LineStationIndex=2,
                     PrevStation=37780,
@@ -1289,7 +1283,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=36481,
                     LineStationIndex=3,
                     PrevStation=37136,
@@ -1297,7 +1291,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=36480,
                     LineStationIndex=4,
                     PrevStation=36481,
@@ -1305,7 +1299,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=34063,
                     LineStationIndex=5,
                     PrevStation=36480,
@@ -1313,7 +1307,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=36446,
                     LineStationIndex=6,
                     PrevStation=34063,
@@ -1321,7 +1315,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=35311,
                     LineStationIndex=7,
                     PrevStation=36446,
@@ -1329,7 +1323,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=34934,
                     LineStationIndex=8,
                     PrevStation=35311,
@@ -1337,7 +1331,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=33553,
                     LineStationIndex=9,
                     PrevStation=34934,
@@ -1345,7 +1339,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=921,
+                    LineCode=9,
                     StationCode=33537,
                     LineStationIndex=10,
                     PrevStation=33553,
@@ -1355,7 +1349,7 @@ namespace DS
                 //line 153
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=21365,
                     LineStationIndex=1,
                     PrevStation=0,
@@ -1363,7 +1357,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=21232,
                     LineStationIndex=2,
                     PrevStation=21365,
@@ -1371,7 +1365,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=21230,
                     LineStationIndex=3,
                     PrevStation=21232,
@@ -1379,7 +1373,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=21165,
                     LineStationIndex=4,
                     PrevStation=21230,
@@ -1387,7 +1381,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=21161,
                     LineStationIndex=5,
                     PrevStation=21165,
@@ -1395,7 +1389,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=57023,
                     LineStationIndex=6,
                     PrevStation=21161,
@@ -1403,7 +1397,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=57025,
                     LineStationIndex=7,
                     PrevStation=57023,
@@ -1411,7 +1405,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=57026,
                     LineStationIndex=8,
                     PrevStation=57025,
@@ -1419,7 +1413,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=57027,
                     LineStationIndex=9,
                     PrevStation=57026,
@@ -1427,7 +1421,7 @@ namespace DS
                 },
                 new LineStation
                 {
-                    LineNum=153,
+                    LineCode=8,
                     StationCode=57028,
                     LineStationIndex=10,
                     PrevStation=57027,

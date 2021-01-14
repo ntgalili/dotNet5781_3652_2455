@@ -16,19 +16,11 @@ namespace BLAPI
         BO.Station GetStation(int num);
         void AddStation(BO.Station station);
         void UpdateStation(BO.Station station);
+        void MakeStationActive(int codeStation);
         void DeleteStation(int num);
+        void ChekIfStationActive(int codeStation);
         #endregion
 
-        //#region StudentInCourse
-        //void AddStudentInCourse(int perID, int courseID, float grade = 0);
-        //void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
-        //void DeleteStudentInCourse(int perID, int courseID);
-
-        //#endregion
-
-        //#region Course
-        //IEnumerable<BO.Course> GetAllCourses();
-        //#endregion
 
         #region Line
         IEnumerable<BO.Line> GetAllLines();
@@ -42,12 +34,19 @@ namespace BLAPI
 
         #region LineStation
         IEnumerable<BO.Line> GetAllLineStation();
-        IEnumerable<DO.Line> GetAllActiveLinStations();
-        IEnumerable<BO.LineStation> GetAllLinesStationByLine(int LineNum);
-        BO.Line GetLineStation(int numLine, int codeLine);
-        void AddLineStation(BO.Line line);
-        void UpdateLineStation(BO.Line line);
-        void DeleteLineStation(int numLine, int codeLine);
+        IEnumerable<BO.LineStation> GetAllLinesStationByLine(int codeLine);
+        BO.LineStation GetLineStation(int lineCode, int codeStation);
+        void AddLineStation(BO.LineStation ls);
+        void UpdateLineStation(BO.LineStation ls);
+        void DeleteLineStation(int lineCode, int codeStation);
+        #endregion
+
+
+        #region AdjacentStations 
+        BO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2);
+        void AddAdjacentStetions(BO.Station s1, BO.Station s2);
+        void UpdateAdjacentStetions(BO.AdjacentStetions adj);
+        void DeleteAdjacentStations(int numS1, int numS2);
         #endregion
     }
 }

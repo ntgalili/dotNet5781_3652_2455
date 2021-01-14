@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -75,11 +76,6 @@ namespace DL
 
 
 
-
-
-
-
-
         #region Line
         public IEnumerable<DO.Line> GetAllLines()
         {
@@ -102,10 +98,11 @@ namespace DL
                 throw new DO.BadLineCodeException(num, "Not found");
 
         }
-        public void AddLine(DO.Line line)
+        public int AddLine(DO.Line line)
         {
             line.Code = DO.config.LineID++;
             DataSource.ListLines.Add(line.Clone());
+            return line.Code;
         }
         public void UpdateLine(DO.Line line)
         {
@@ -134,12 +131,13 @@ namespace DL
 
 
 
+
+
         #region LineStation
         public void AddLineStation(DO.LineStation ls)
         {
-            if (DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == ls.StationCode&&s.LineNum==ls.LineNum) != null)
-                throw new DO.BadLineStationException(ls.StationCode,ls.LineNum, "Duplicate station Code");
-
+            if (DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == ls.StationCode && s.LineCode==ls.LineCode) != null)
+                throw new DO.BadLineStationException(ls.StationCode,ls.LineCode, "Duplicate station Code");
             DataSource.ListLineStations.Add(ls.Clone());
         }
         public IEnumerable<DO.LineStation> GellAllLinesStation()
@@ -147,10 +145,10 @@ namespace DL
             return from ls in DataSource.ListLineStations
                    select ls.Clone();
         }
-        public IEnumerable<DO.LineStation>GetAllLinesStationByLine(int numLine)
+        public IEnumerable<DO.LineStation>GetAllLinesStationByLine(int lineCode)
         {
             return from ls in DataSource.ListLineStations
-                   where ls.LineNum==numLine
+                   where ls.LineCode== lineCode
                    orderby ls.LineStationIndex
                    select ls.Clone();
         }
@@ -163,21 +161,20 @@ namespace DL
                 DataSource.ListLineStations.Add(ls.Clone());
             }
             else
-                throw new DO.BadLineStationException(ls.StationCode,ls.LineNum, "Not found");
+                throw new DO.BadLineStationException(ls.StationCode,ls.LineCode, "Not found");
         }
-        public void DeleteLineStation(int codeLine, int codeStation)
+        public void DeleteLineStation(int lineCode, int codeStation)
         {
             DO.LineStation toDel;
-            toDel = DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == codeStation && s.LineNum == codeLine);
+            toDel = DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == codeStation && s.LineCode == lineCode);
             if (toDel == null)
-                throw new DO.BadLineStationException(codeStation, "Not found in " + codeLine);
+                throw new DO.BadLineStationException(codeStation, "Not found in " + lineCode);
             DataSource.ListLineStations.Remove(toDel);
         }
 
-
-        public DO.LineStation GetLineStation(int codeLine, int codeStation)
+        public DO.LineStation GetLineStation(int lineCode, int codeStation)
         {
-            DO.LineStation toGet = DataSource.ListLineStations.Find(s =>( s.StationCode == codeStation && s.LineNum== codeLine));
+            DO.LineStation toGet = DataSource.ListLineStations.Find(s =>( s.StationCode == codeStation && s.LineCode== lineCode));
             try
             {
                 Thread.Sleep(2000);
@@ -186,7 +183,53 @@ namespace DL
             if (toGet != null)
                 return toGet.Clone();
             else
-                throw new DO.BadLineStationException(codeStation, "Not found in "+ codeLine);
+                throw new DO.BadLineStationException(codeStation, "Not found in "+ lineCode);
+        }
+        #endregion
+
+
+
+
+
+
+        #region AdjacentStations
+        DO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
+        {
+            DO.AdjacentStetions toGet = DataSource.ListAdjStations.Find(adj => (adj.Station1 == numS1 && adj.Station2 == numS2));
+            try
+            {
+                Thread.Sleep(2000);
+            }
+            catch (ThreadInterruptedException ex) { }
+            if (toGet != null)
+                return toGet.Clone();
+            else
+                throw new DO.BadAdjacentStetionsException(numS1,numS2, "Not found");
+        }
+        void AddAdjacentStetions(DO.AdjacentStetions adj)
+        {
+            if (DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == adj.Station1&& a.Station2 == adj.Station2) != null)
+                throw new DO.BadLineStationException(adj.Station1,adj.Station2, "Duplicate AdjacentStetions");
+            DataSource.ListAdjStations.Add(adj.Clone());
+        }
+        void UpdateAdjacentStetions(DO.AdjacentStetions adj)
+        {
+            DO.AdjacentStetions toUpDate = DataSource.ListAdjStations.Find(a => a.Station1 == adj.Station1 && a.Station2 == adj.Station2);
+            if (toUpDate != null)
+            {
+                DataSource.ListAdjStations.Remove(toUpDate);
+                DataSource.ListAdjStations.Add(adj.Clone());
+            }
+            else
+                throw new DO.BadAdjacentStetionsException(adj.Station1,adj.Station2, "Not found");
+        }
+        void DeleteAdjacentStetions(int numS2, int numS1)
+        {
+            DO.AdjacentStetions toDel;
+            toDel = DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == numS1 && a.Station2 == numS2);
+            if (toDel == null)
+                throw new DO.BadLineStationException(numS1,numS2, "Not found");
+            DataSource.ListAdjStations.Remove(toDel);
         }
         #endregion
     }
