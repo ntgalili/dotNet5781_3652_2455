@@ -4,8 +4,17 @@ using System.Reflection;
 
 namespace DL
 {
+    /// <summary>
+    /// Cloning an object
+    /// </summary>
     static class Cloning
     {
+        /// <summary>
+        /// return a new cloning of object
+        /// </summary>
+        /// <typeparam name="T">type of object</typeparam>
+        /// <param name="original">object to clone</param>
+        /// <returns>a Cloning an object</returns>
         internal static T Clone<T>(this T original) where T : new()
         {
             T copyToObject = new T(); 
