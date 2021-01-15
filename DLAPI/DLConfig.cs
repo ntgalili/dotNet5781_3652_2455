@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace DLAPI
 {
-    /**
+    /****
      <summary>
      Class for processing config.xml file and getting from there
      information which is relevant for initialization of DalApi<br/>
