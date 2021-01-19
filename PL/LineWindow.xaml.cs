@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLAPI;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,23 @@ namespace PL
     /// </summary>
     public partial class LineWindow : Window
     {
-        public LineWindow()
+        IBL bl;
+        public LineWindow(IBL _bl)
         {
             InitializeComponent();
+            bl = _bl;
+            lineDataGrid.DataContext = bl.GetAllActiveLines();
+        }
+        private void lineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BO.Line line = (sender as DataGrid).SelectedItem as BO.Line;
+            if (line.Active == true)
+            {
+                OneLineWindow win = new OneLineWindow(bl,bl.GetLine(line.LineNum,line.Code));
+                win.Show();
+            }
+            else
+                MessageBox.Show("Not Seccssed", "this line is not active", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -10,10 +10,9 @@
 
     <Grid>
 
-        <DataGrid x:Name="lineDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="82,42,80.6,64.4" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="lineDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="82,42,80.6,64.4" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="lineDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="lineNumColumn" Width="*" Header="Line Num" Binding="{Binding LineNum}"/>
-                <DataGridTextColumn x:Name="codeColumn" Width="*" Header="Code" Binding="{Binding Code}"/>
                 <DataGridTextColumn x:Name="areaColumn" Width="*" Header="Area" Binding="{Binding Area}"/>
             </DataGrid.Columns>
         </DataGrid>

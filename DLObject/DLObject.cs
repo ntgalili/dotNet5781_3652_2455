@@ -29,6 +29,7 @@ namespace DL
         public IEnumerable<DO.Station> GetAllStations()
         {
             return from station in DataSource.ListStations
+                   orderby station.Code
                    select station.Clone();
         }
         /// <summary>
@@ -39,6 +40,7 @@ namespace DL
         {
             return from station in DataSource.ListStations
                    where station.Active == true
+                   orderby station.Code
                    select station.Clone();
         }
         /// <summary>

@@ -36,12 +36,12 @@ namespace PL
                 StationWindow win = new StationWindow(bl);
                 win.Show();
             }
-            //else if (rbLecturers.IsChecked == true)
-            //{
-            //    //LecturerWindow win = new LecturerWindow(bl);
-            //    //win.Show();
-            //    MessageBox.Show("This method is under construction!", "TBD", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            //}
+            else if (rbLines.IsChecked == true)
+            {
+               LineWindow win = new LineWindow(bl);
+                win.Show();
+                //MessageBox.Show("This method is under construction!", "TBD", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
             //else
             //{
             //    //CoursesWindow win = new CoursesWindow(bl);

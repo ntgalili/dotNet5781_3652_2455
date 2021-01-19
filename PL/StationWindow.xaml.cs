@@ -30,6 +30,7 @@ namespace PL
             stationDataGrid.DataContext = bl.GetAllStations();
             gridStation.DataContext = new BO.Station();
             includeComboBox.ItemsSource = Enum.GetValues(typeof(BO.StationInclude));
+            UpDateButton.IsEnabled = false;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -37,7 +38,7 @@ namespace PL
             try
             {
                 st = gridStation.DataContext as BO.Station;
-                if (st.Code > 0)
+                if (st != null && st.Code > 0)
                 {
                     bl.AddStation(st);
                     MessageBox.Show("succeeded", "AddStation", MessageBoxButton.OK);
@@ -55,13 +56,21 @@ namespace PL
         {
             stationDataGrid.DataContext = bl.GetAllStations();
             gridStation.DataContext = new BO.Station();
-            gridStation.IsEnabled = true;
+            codeTextBox.IsEnabled = true;
+            lattitudeTextBox.IsEnabled = true;
+            longitudeTextBox.IsEnabled = true;
+            AddButton.IsEnabled = true;
+            UpDateButton.IsEnabled = false;
         }
 
         private void stationDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             gridStation.DataContext = (sender as DataGrid).SelectedItem as BO.Station;
-            gridStation.IsEnabled = false;
+            codeTextBox.IsEnabled = false;
+            lattitudeTextBox.IsEnabled = false;
+            longitudeTextBox.IsEnabled = false;
+            AddButton.IsEnabled = false;
+            UpDateButton.IsEnabled = true;
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -74,6 +83,22 @@ namespace PL
         {
             if ((sender as CheckBox).IsChecked == false)
                 stationDataGrid.DataContext = bl.GetAllStations();
+        }
+
+        private void UpDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                st = gridStation.DataContext as BO.Station;
+                bl.UpdateStation(st);
+                MessageBox.Show("succeeded", "UpDateStation", MessageBoxButton.OK);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("dont succeeded, Not found", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            gridStation.DataContext = new BO.Station();
+            stationDataGrid.DataContext = bl.GetAllStations();
         }
     }
 }

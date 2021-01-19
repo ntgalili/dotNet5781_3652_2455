@@ -40,6 +40,7 @@ namespace BL
         public IEnumerable<BO.Station> GetAllStations()
         {
             return from item in dl.GetAllStations()//get all the station from the DL layer and copy it to BO.Station
+                   orderby item.Code
                    select stationDoBoAdapter(item);
         }
 
@@ -72,6 +73,7 @@ namespace BL
         {
             return from item in dl.GetAllStations()//get all the active station from the DL layer
                    where item.Active == true
+                   orderby item.Code
                    select stationDoBoAdapter(item);
         }
 
@@ -284,6 +286,7 @@ namespace BL
         {
             BO.Line LineBO = new BO.Line();
             LineDO.CopyPropertiesTo(LineBO);
+            //LineDO.CopyPropertiesTo(LineBO.)
             LineBO.MyStations = from item in GetAllLinesStationByLine(LineBO.LineNum)//get  all the line's stations
                                 orderby item.LineStationIndex
                                 select item;
@@ -297,6 +300,7 @@ namespace BL
         public IEnumerable<BO.Line> GetAllLines()
         {
             return from item in dl.GetAllLines()//get all the lines from the DL layer
+                   orderby item.LineNum
                    select LineDoBoAdapter(item);
         }
 
@@ -426,6 +430,7 @@ namespace BL
         public IEnumerable<BO.Line> GetAllActiveLines()
         {
             return from item in dl.GetAllActiveLines()//get all the active lines from the DL layer
+                   orderby item.LineNum
                    select LineDoBoAdapter(item);
         }
         #endregion
