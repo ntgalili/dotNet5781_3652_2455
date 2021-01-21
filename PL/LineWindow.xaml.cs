@@ -22,22 +22,58 @@ namespace PL
     public partial class LineWindow : Window
     {
         IBL bl;
+        BO.Line curLine;
         public LineWindow(IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
-            lineDataGrid.DataContext = bl.GetAllActiveLines();
+            cbLine.DataContext = bl.GetAllActiveLines();
         }
-        private void lineDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            BO.Line line = (sender as DataGrid).SelectedItem as BO.Line;
-            if (line.Active == true)
+            //BO.LineStation ls = (sender as Button).DataContext as BO.LineStation;
+            //try
+            //{
+            //    line.MyStations.ToList().Remove(ls);
+            //    bl.UpdateLine(line);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Not Seccssed", ex.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+        }
+
+        private void DeleteStationButton_Click(object sender, RoutedEventArgs e)
+        {
+            BO.LineStation ls = (sender as Button).DataContext as BO.LineStation;
+            try
             {
-                OneLineWindow win = new OneLineWindow(bl,bl.GetLine(line.LineNum,line.Code));
-                win.Show();
+                MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק תחנה זו?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                if (res == MessageBoxResult.Yes)
+                {
+                    curLine.MyStations.ToList().Remove(ls);
+                    bl.UpdateLine(curLine);
+                }
             }
-            else
-                MessageBox.Show("Not Seccssed", "this line is not active", MessageBoxButton.OK, MessageBoxImage.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Not Seccssed", ex.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            RefreshAllLineStationsGrid();
+        }
+        void RefreshAllLineStationsGrid()
+        {
+            lineStationDataGrid.DataContext = bl.GetAllLinesStationByLine(curLine.Code);
+        }
+        private void cbLine_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            curLine = (cbLine.SelectedItem as BO.Line);
+            gridLine.DataContext = curLine;
+
+            if (curLine != null)
+            {
+                RefreshAllLineStationsGrid(); 
+            }
         }
     }
 }

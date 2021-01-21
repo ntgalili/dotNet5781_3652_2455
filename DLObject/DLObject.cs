@@ -183,8 +183,8 @@ namespace DL
         /// <param name="ls">line station to add</param>
         public void AddLineStation(DO.LineStation ls)
         {
-            if (DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == ls.StationCode && s.LineCode==ls.LineCode) != null) //Check if we already have such a line station in the collection of line stations 
-                throw new DO.BadLineStationException(ls.StationCode,ls.LineCode, "Duplicate station Code");
+            if (DataSource.ListLineStations.FirstOrDefault(s => s.Code == ls.Code && s.LineCode==ls.LineCode) != null) //Check if we already have such a line station in the collection of line stations 
+                throw new DO.BadLineStationException(ls.Code,ls.LineCode, "Duplicate station Code");
             DataSource.ListLineStations.Add(ls.Clone());
         }
         /// <summary>
@@ -214,14 +214,14 @@ namespace DL
         /// <param name="ls">line station to up date </param>
         public void UpdateLineStation(DO.LineStation ls)
         {
-            DO.LineStation toUpDate = DataSource.ListLineStations.Find(s => s.StationCode == ls.StationCode);//find line station with this station code
+            DO.LineStation toUpDate = DataSource.ListLineStations.Find(s => s.Code == ls.Code);//find line station with this station code
             if (toUpDate != null)//if line station is found
             {
                 DataSource.ListLineStations.Remove(toUpDate);//remove this line station
                 DataSource.ListLineStations.Add(ls.Clone());//add a new line station (up date) to the collection of all lines station
             }
             else//if the line station is not found
-                throw new DO.BadLineStationException(ls.StationCode,ls.LineCode, "Not found");
+                throw new DO.BadLineStationException(ls.Code,ls.LineCode, "Not found");
         }
         /// <summary>
         /// delete line station
@@ -231,7 +231,7 @@ namespace DL
         public void DeleteLineStation(int lineCode, int codeStation)
         {
             DO.LineStation toDel;
-            toDel = DataSource.ListLineStations.FirstOrDefault(s => s.StationCode == codeStation && s.LineCode == lineCode);//find line station with this code station and num line
+            toDel = DataSource.ListLineStations.FirstOrDefault(s => s.Code == codeStation && s.LineCode == lineCode);//find line station with this code station and num line
             if (toDel == null)//if this line station is not found
                 throw new DO.BadLineStationException(codeStation, "Not found in " + lineCode);
             DataSource.ListLineStations.Remove(toDel);//remove this line station
@@ -244,7 +244,7 @@ namespace DL
         /// <returns>line station</returns>
         public DO.LineStation GetLineStation(int lineCode, int codeStation)
         {
-            DO.LineStation toGet = DataSource.ListLineStations.Find(s =>( s.StationCode == codeStation && s.LineCode== lineCode));//find this line station with this code station and code line
+            DO.LineStation toGet = DataSource.ListLineStations.Find(s =>( s.Code == codeStation && s.LineCode== lineCode));//find this line station with this code station and code line
             try
             {
                 Thread.Sleep(2000);

@@ -28,7 +28,7 @@ namespace BL
             BO.Station stationBO = new BO.Station();
             stationDO.CopyPropertiesTo(stationBO);                     //copy the property from DO.Station to BO.Station
             stationBO.MyLines = from item in dl.GetAllLinesStation()      //finding the lines that travel through the station
-                                where item.StationCode == stationBO.Code
+                                where item.Code == stationBO.Code
                                 select item.LineCode;
             return stationBO;
         }
@@ -170,7 +170,21 @@ namespace BL
         public BO.LineStation LineStationDoBoAdapter(DO.LineStation LineStationDO)
         {
             BO.LineStation LineStationBO = new BO.LineStation();
+            DO.Station stationDO;
+            int id = LineStationDO.Code;
+            try 
+            {
+                stationDO = dl.GetStation(id);
+            }
+            catch(DO.BadStationCodeException ex)
+            {
+                throw new BO.BadStationCodeException("afsdaff", ex);
+            }
+
+            stationDO.CopyPropertiesTo(LineStationBO);
+
             LineStationDO.CopyPropertiesTo(LineStationBO);
+
             return LineStationBO;
         }
 

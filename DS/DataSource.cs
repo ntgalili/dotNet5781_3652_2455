@@ -73,7 +73,7 @@ namespace DS
                     Longitude=35.000493,
                     Lattitude= 31.744547,
                     Include=StationInclude.DigitalScreen,
-                     Active=true
+                    Active=true
                 },
                 new Station
                 {
@@ -636,7 +636,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=1,
+                    Code=1,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=565
@@ -644,7 +644,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=565,
+                    Code=565,
                     LineStationIndex=2,
                     PrevStation=1,
                     NextStation=566
@@ -652,7 +652,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=566,
+                    Code=566,
                     LineStationIndex=3,
                     PrevStation=565,
                     NextStation=567
@@ -660,7 +660,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=567,
+                    Code=567,
                     LineStationIndex=4,
                     PrevStation=566,
                     NextStation=568
@@ -668,7 +668,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=568,
+                    Code=568,
                     LineStationIndex=5,
                     PrevStation=567,
                     NextStation=569
@@ -676,7 +676,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=569,
+                    Code=569,
                     LineStationIndex=6,
                     PrevStation=568,
                     NextStation=574
@@ -684,7 +684,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=574,
+                    Code=574,
                     LineStationIndex=7,
                     PrevStation=569,
                     NextStation=575
@@ -692,7 +692,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=575,
+                    Code=575,
                     LineStationIndex=8,
                     PrevStation=564,
                     NextStation=480
@@ -700,7 +700,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=480,
+                    Code=480,
                     LineStationIndex=9,
                     PrevStation=575,
                     NextStation=407
@@ -708,7 +708,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=1,
-                    StationCode=407,
+                    Code=407,
                     LineStationIndex=10,
                     PrevStation=480,
                     NextStation=0
@@ -718,7 +718,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=172,
+                    Code=172,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=174
@@ -726,7 +726,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=174,
+                    Code=174,
                     LineStationIndex=2,
                     PrevStation=172,
                     NextStation=176
@@ -734,7 +734,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=176,
+                    Code=176,
                     LineStationIndex=3,
                     PrevStation=174,
                     NextStation=179
@@ -742,7 +742,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=179,
+                    Code=179,
                     LineStationIndex=4,
                     PrevStation=176,
                     NextStation=57023
@@ -750,7 +750,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=57023,
+                    Code=57023,
                     LineStationIndex=5,
                     PrevStation=179,
                     NextStation=57025
@@ -758,7 +758,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=57025,
+                    Code=57025,
                     LineStationIndex=6,
                     PrevStation=57023,
                     NextStation=57026
@@ -766,7 +766,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=57026,
+                    Code=57026,
                     LineStationIndex=7,
                     PrevStation=57025,
                     NextStation=57027
@@ -774,7 +774,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=57027,
+                    Code=57027,
                     LineStationIndex=8,
                     PrevStation=57026,
                     NextStation=57028
@@ -782,7 +782,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=2,
-                    StationCode=57028,
+                    Code=57028,
                     LineStationIndex=9,
                     PrevStation=57027,
                     NextStation=0
@@ -792,7 +792,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21022,
+                    Code=21022,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=21024
@@ -800,7 +800,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21024,
+                    Code=21024,
                     LineStationIndex=2,
                     PrevStation=21022,
                     NextStation=20902
@@ -808,7 +808,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=20902,
+                    Code=20902,
                     LineStationIndex=3,
                     PrevStation=21024,
                     NextStation=21000
@@ -816,7 +816,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21000,
+                    Code=21000,
                     LineStationIndex=4,
                     PrevStation=20902,
                     NextStation=21005
@@ -824,7 +824,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21005,
+                    Code=21005,
                     LineStationIndex=5,
                     PrevStation=21000,
                     NextStation=21365
@@ -832,7 +832,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21365,
+                    Code=21365,
                     LineStationIndex=6,
                     PrevStation=21005,
                     NextStation=21165
@@ -840,7 +840,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21165,
+                    Code=21165,
                     LineStationIndex=7,
                     PrevStation=21365,
                     NextStation=21230
@@ -848,7 +848,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21230,
+                    Code=21230,
                     LineStationIndex=8,
                     PrevStation=21165,
                     NextStation=21232
@@ -856,7 +856,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21232,
+                    Code=21232,
                     LineStationIndex=9,
                     PrevStation=21230,
                     NextStation=21161
@@ -864,7 +864,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=3,
-                    StationCode=21161,
+                    Code=21161,
                     LineStationIndex=10,
                     PrevStation=480,
                     NextStation=0
@@ -874,7 +874,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=21161,
+                    Code=21161,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=21165
@@ -882,7 +882,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=21165,
+                    Code=21165,
                     LineStationIndex=2,
                     PrevStation=21161,
                     NextStation=21230
@@ -890,7 +890,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=21230,
+                    Code=21230,
                     LineStationIndex=3,
                     PrevStation=21165,
                     NextStation=21232
@@ -898,7 +898,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=21232,
+                    Code=21232,
                     LineStationIndex=4,
                     PrevStation=21230,
                     NextStation=21365
@@ -906,7 +906,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=21365,
+                    Code=21365,
                     LineStationIndex=5,
                     PrevStation=21232,
                     NextStation=562
@@ -914,7 +914,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=562,
+                    Code=562,
                     LineStationIndex=6,
                     PrevStation=21365,
                     NextStation=563
@@ -922,7 +922,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=563,
+                    Code=563,
                     LineStationIndex=7,
                     PrevStation=562,
                     NextStation=564
@@ -930,7 +930,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=564,
+                    Code=564,
                     LineStationIndex=8,
                     PrevStation=563,
                     NextStation=407
@@ -938,7 +938,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=407,
+                    Code=407,
                     LineStationIndex=9,
                     PrevStation=564,
                     NextStation=480
@@ -946,7 +946,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=4,
-                    StationCode=480,
+                    Code=480,
                     LineStationIndex=10,
                     PrevStation=407,
                     NextStation=0
@@ -956,7 +956,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=33553,
+                    Code=33553,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=34063
@@ -964,7 +964,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=34063,
+                    Code=34063,
                     LineStationIndex=2,
                     PrevStation=33553,
                     NextStation=34934
@@ -972,7 +972,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=34934,
+                    Code=34934,
                     LineStationIndex=3,
                     PrevStation=34063,
                     NextStation=35311
@@ -980,7 +980,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=35311,
+                    Code=35311,
                     LineStationIndex=4,
                     PrevStation=34934,
                     NextStation=36446
@@ -988,7 +988,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=36446,
+                    Code=36446,
                     LineStationIndex=5,
                     PrevStation=35311,
                     NextStation=36480
@@ -996,7 +996,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=36480,
+                    Code=36480,
                     LineStationIndex=6,
                     PrevStation=36446,
                     NextStation=36481
@@ -1004,7 +1004,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=36481,
+                    Code=36481,
                     LineStationIndex=7,
                     PrevStation=36480,
                     NextStation=37136
@@ -1012,7 +1012,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=37136,
+                    Code=37136,
                     LineStationIndex=8,
                     PrevStation=36481,
                     NextStation=37780
@@ -1020,7 +1020,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=5,
-                    StationCode=37780,
+                    Code=37780,
                     LineStationIndex=9,
                     PrevStation=37136,
                     NextStation=0
@@ -1030,7 +1030,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=480,
+                    Code=480,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=407
@@ -1038,7 +1038,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=407,
+                    Code=407,
                     LineStationIndex=2,
                     PrevStation=480,
                     NextStation=401
@@ -1046,7 +1046,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=401,
+                    Code=401,
                     LineStationIndex=3,
                     PrevStation=407,
                     NextStation=563
@@ -1054,7 +1054,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=563,
+                    Code=563,
                     LineStationIndex=4,
                     PrevStation=401,
                     NextStation=573
@@ -1062,7 +1062,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=573,
+                    Code=573,
                     LineStationIndex=5,
                     PrevStation=563,
                     NextStation=574
@@ -1070,7 +1070,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=574,
+                    Code=574,
                     LineStationIndex=6,
                     PrevStation=573,
                     NextStation=172
@@ -1078,7 +1078,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=172,
+                    Code=172,
                     LineStationIndex=7,
                     PrevStation=574,
                     NextStation=174
@@ -1086,7 +1086,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=174,
+                    Code=174,
                     LineStationIndex=8,
                     PrevStation=172,
                     NextStation=179
@@ -1094,7 +1094,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=179,
+                    Code=179,
                     LineStationIndex=9,
                     PrevStation=174,
                     NextStation=180
@@ -1102,7 +1102,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=6,
-                    StationCode=180,
+                    Code=180,
                     LineStationIndex=10,
                     PrevStation=179,
                     NextStation=0
@@ -1112,7 +1112,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=180,
+                    Code=180,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=179
@@ -1120,7 +1120,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=179,
+                    Code=179,
                     LineStationIndex=2,
                     PrevStation=180,
                     NextStation=176
@@ -1128,7 +1128,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=176,
+                    Code=176,
                     LineStationIndex=3,
                     PrevStation=179,
                     NextStation=174
@@ -1136,7 +1136,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=174,
+                    Code=174,
                     LineStationIndex=4,
                     PrevStation=176,
                     NextStation=172
@@ -1144,7 +1144,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=172,
+                    Code=172,
                     LineStationIndex=5,
                     PrevStation=174,
                     NextStation=21161
@@ -1152,7 +1152,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=21161,
+                    Code=21161,
                     LineStationIndex=6,
                     PrevStation=172,
                     NextStation=21165
@@ -1160,7 +1160,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=21165,
+                    Code=21165,
                     LineStationIndex=7,
                     PrevStation=21161,
                     NextStation=21230
@@ -1168,7 +1168,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=21230,
+                    Code=21230,
                     LineStationIndex=8,
                     PrevStation=21165,
                     NextStation=21365
@@ -1176,7 +1176,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=7,
-                    StationCode=21365,
+                    Code=21365,
                     LineStationIndex=9,
                     PrevStation=21230,
                     NextStation=0
@@ -1186,7 +1186,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=21005,
+                    Code=21005,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=21024
@@ -1194,7 +1194,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=21024,
+                    Code=21024,
                     LineStationIndex=2,
                     PrevStation=21005,
                     NextStation=21022
@@ -1202,7 +1202,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=21022,
+                    Code=21022,
                     LineStationIndex=3,
                     PrevStation=21024,
                     NextStation=21000
@@ -1210,7 +1210,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=21000,
+                    Code=21000,
                     LineStationIndex=4,
                     PrevStation=21022,
                     NextStation=20902
@@ -1218,7 +1218,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=20902,
+                    Code=20902,
                     LineStationIndex=5,
                     PrevStation=21000,
                     NextStation=46203
@@ -1226,7 +1226,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=46203,
+                    Code=46203,
                     LineStationIndex=6,
                     PrevStation=20902,
                     NextStation=46216
@@ -1234,7 +1234,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=46216,
+                    Code=46216,
                     LineStationIndex=7,
                     PrevStation=46203,
                     NextStation=46217
@@ -1242,7 +1242,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=46217,
+                    Code=46217,
                     LineStationIndex=8,
                     PrevStation=46216,
                     NextStation=46233
@@ -1250,7 +1250,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=46233,
+                    Code=46233,
                     LineStationIndex=9,
                     PrevStation=46217,
                     NextStation=47092
@@ -1258,7 +1258,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=10,
-                    StationCode=47092,
+                    Code=47092,
                     LineStationIndex=10,
                     PrevStation=46233,
                     NextStation=0
@@ -1268,7 +1268,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=37780,
+                    Code=37780,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=37136
@@ -1276,7 +1276,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=37136,
+                    Code=37136,
                     LineStationIndex=2,
                     PrevStation=37780,
                     NextStation=36481
@@ -1284,7 +1284,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=36481,
+                    Code=36481,
                     LineStationIndex=3,
                     PrevStation=37136,
                     NextStation=36480
@@ -1292,7 +1292,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=36480,
+                    Code=36480,
                     LineStationIndex=4,
                     PrevStation=36481,
                     NextStation=34063
@@ -1300,7 +1300,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=34063,
+                    Code=34063,
                     LineStationIndex=5,
                     PrevStation=36480,
                     NextStation=36446
@@ -1308,7 +1308,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=36446,
+                    Code=36446,
                     LineStationIndex=6,
                     PrevStation=34063,
                     NextStation=35311
@@ -1316,7 +1316,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=35311,
+                    Code=35311,
                     LineStationIndex=7,
                     PrevStation=36446,
                     NextStation=34934
@@ -1324,7 +1324,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=34934,
+                    Code=34934,
                     LineStationIndex=8,
                     PrevStation=35311,
                     NextStation=33553
@@ -1332,7 +1332,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=33553,
+                    Code=33553,
                     LineStationIndex=9,
                     PrevStation=34934,
                     NextStation=33537
@@ -1340,7 +1340,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=9,
-                    StationCode=33537,
+                    Code=33537,
                     LineStationIndex=10,
                     PrevStation=33553,
                     NextStation=0
@@ -1350,7 +1350,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=21365,
+                    Code=21365,
                     LineStationIndex=1,
                     PrevStation=0,
                     NextStation=21232
@@ -1358,7 +1358,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=21232,
+                    Code=21232,
                     LineStationIndex=2,
                     PrevStation=21365,
                     NextStation=21230
@@ -1366,7 +1366,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=21230,
+                    Code=21230,
                     LineStationIndex=3,
                     PrevStation=21232,
                     NextStation=21165
@@ -1374,7 +1374,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=21165,
+                    Code=21165,
                     LineStationIndex=4,
                     PrevStation=21230,
                     NextStation=21161
@@ -1382,7 +1382,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=21161,
+                    Code=21161,
                     LineStationIndex=5,
                     PrevStation=21165,
                     NextStation=57023
@@ -1390,7 +1390,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=57023,
+                    Code=57023,
                     LineStationIndex=6,
                     PrevStation=21161,
                     NextStation=57025
@@ -1398,7 +1398,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=57025,
+                    Code=57025,
                     LineStationIndex=7,
                     PrevStation=57023,
                     NextStation=57026
@@ -1406,7 +1406,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=57026,
+                    Code=57026,
                     LineStationIndex=8,
                     PrevStation=57025,
                     NextStation=57027
@@ -1414,7 +1414,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=57027,
+                    Code=57027,
                     LineStationIndex=9,
                     PrevStation=57026,
                     NextStation=57028
@@ -1422,7 +1422,7 @@ namespace DS
                 new LineStation
                 {
                     LineCode=8,
-                    StationCode=57028,
+                    Code=57028,
                     LineStationIndex=10,
                     PrevStation=57027,
                     NextStation=0

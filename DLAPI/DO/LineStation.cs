@@ -9,7 +9,7 @@ namespace DO
     public class LineStation
     {
         public int LineCode { get; set; }
-        public int StationCode { get; set; }
+        public int Code { get; set; }
         public int LineStationIndex { get; set; }
         public int PrevStation { get; set; }
         public int NextStation { get; set; }

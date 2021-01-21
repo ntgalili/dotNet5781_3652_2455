@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.LineWindow"
         mc:Ignorable="d"
-        Title="LineWindow" Height="324" Width="620">
+        Title="LineWindow" Height="435.6" Width="772.4">
 
-    <Grid>
+    <!--<Grid>
 
         <DataGrid x:Name="lineDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="82,42,80.6,64.4" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="lineDataGrid_SelectionChanged">
             <DataGrid.Columns>
@@ -19,5 +19,61 @@
         <Button Name="AddLineButton" Content="Add" HorizontalAlignment="Left" Margin="146,252,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="421,252,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.461,2.047"/>
 
+    </Grid>-->
+    <Grid Margin="0,0,0.2,-0.8" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="208*"/>
+            <RowDefinition Height="31*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="293*"/>
+            <ColumnDefinition Width="463*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Select Student:" Grid.Row="0" HorizontalAlignment="Left" Margin="39,15,0,0" VerticalAlignment="Top" Height="25" Width="90"/>
+        <ComboBox x:Name="cbLine" HorizontalAlignment="Left" Text="" VerticalAlignment="Top"
+                  Grid.Row="0" Height="25" Margin="141,15,0,0" Width="123"
+                  ItemsSource="{Binding}" 
+                  HorizontalContentAlignment="Left" VerticalContentAlignment="Top" SelectionChanged="cbLine_SelectionChanged"/>
+        <Label Content="List of Courses for selected Student:" HorizontalAlignment="Left" Margin="21,49,0,0" VerticalAlignment="Top" Height="23" Width="209" Grid.Column="1"/>
+        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="56,82,0,0" VerticalAlignment="Top" Height="258" Width="222">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="74.4"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="127.2"/>
+                <RowDefinition Height="Auto" MinHeight="130.4"/>
+
+            </Grid.RowDefinitions>
+
+            <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,49,0,52.2" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="37"/>
+            <TextBox x:Name="areaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3.8,51,0,53.2" Grid.Row="0" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Line Num:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,52.8,0,51.6" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="64"/>
+            <TextBox x:Name="lineNumTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3.8,53.8,0,52.6" Grid.Row="1" Text="{Binding LineNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="21.2,97,163.4,37.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="includeColumn" Binding="{Binding Include}" Header="Include" Width="SizeToHeader"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteStationButton" Content="Delete" Click="DeleteStationButton_Click" ToolTip="Update grade for selected course, for selected student"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="324.2,191,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="324.2,132,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="347.2,237,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="421,252,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.461,2.047"/>
+        <Button Content="AddLine" Grid.Column="1" HorizontalAlignment="Left" Margin="55.2,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button Content="DeleteLine" Grid.Column="1" HorizontalAlignment="Left" Margin="206.2,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.304,1.271" Click="DeleteButton_Click"/>
+
     </Grid>
+
 </Window>
