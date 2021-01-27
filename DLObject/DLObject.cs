@@ -51,7 +51,7 @@ namespace DL
         public DO.Station GetStation(int num)
         {
             DO.Station toGet = DataSource.ListStations.Find(s => s.Code == num); //fine station thet havve this code
-            try { Thread.Sleep(2000); } catch (ThreadInterruptedException) { }
+            try { Thread.Sleep(1000); } catch (ThreadInterruptedException) { }
             if (toGet != null) //if the station found - cloning the station 
                 return toGet.Clone();
             else
@@ -204,9 +204,9 @@ namespace DL
         public IEnumerable<DO.LineStation>GetAllLinesStationByLine(int lineCode)
         {
             return from ls in DataSource.ListLineStations
-                   where ls.LineCode== lineCode //if this line station associated with theis line
-                   orderby ls.LineStationIndex //merge the line station by index
-                   select ls.Clone();
+                        where ls.LineCode == lineCode //if this line station associated with theis line
+                        select ls.Clone();
+            
         }
         /// <summary>
         /// up date line station 
@@ -214,7 +214,7 @@ namespace DL
         /// <param name="ls">line station to up date </param>
         public void UpdateLineStation(DO.LineStation ls)
         {
-            DO.LineStation toUpDate = DataSource.ListLineStations.Find(s => s.Code == ls.Code);//find line station with this station code
+            DO.LineStation toUpDate = DataSource.ListLineStations.Find(s => s.Code == ls.Code && s.LineCode==ls.LineCode );//find line station with this station code
             if (toUpDate != null)//if line station is found
             {
                 DataSource.ListLineStations.Remove(toUpDate);//remove this line station

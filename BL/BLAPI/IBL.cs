@@ -188,6 +188,9 @@ namespace BLAPI
         /// <param name="code">the code of the one of the stations</param>
         /// <returns>collection of AdjacentStetions</returns>
         IEnumerable<BO.AdjacentStetions> GetALLAdjStetionsbycode(int code);
+
+
+        void deleteStationFromLine(int ls, BO.Line line);
         #endregion
     }
 }

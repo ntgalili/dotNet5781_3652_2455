@@ -26,16 +26,16 @@
             <RowDefinition Height="31*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="293*"/>
-            <ColumnDefinition Width="463*"/>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="256*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Select Student:" Grid.Row="0" HorizontalAlignment="Left" Margin="39,15,0,0" VerticalAlignment="Top" Height="25" Width="90"/>
+        <Label Content="Select Student:" Grid.Row="0" HorizontalAlignment="Left" Margin="23,15,0,0" VerticalAlignment="Top" Height="25" Width="90"/>
         <ComboBox x:Name="cbLine" HorizontalAlignment="Left" Text="" VerticalAlignment="Top"
-                  Grid.Row="0" Height="25" Margin="141,15,0,0" Width="123"
+                  Grid.Row="0" Height="25" Margin="121,15,0,0" Width="123"
                   ItemsSource="{Binding}" 
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Top" SelectionChanged="cbLine_SelectionChanged"/>
-        <Label Content="List of Courses for selected Student:" HorizontalAlignment="Left" Margin="21,49,0,0" VerticalAlignment="Top" Height="23" Width="209" Grid.Column="1"/>
-        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="56,82,0,0" VerticalAlignment="Top" Height="258" Width="222">
+        <Label Content="List of Courses for selected Student:" HorizontalAlignment="Left" Margin="20.6,49,0,0" VerticalAlignment="Top" Height="23" Width="209" Grid.Column="1"/>
+        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="28,82,0,0" VerticalAlignment="Top" Height="258" Width="199">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="74.4"/>
                 <ColumnDefinition/>
@@ -51,12 +51,12 @@
             <Label Content="Line Num:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,52.8,0,51.6" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="64"/>
             <TextBox x:Name="lineNumTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3.8,53.8,0,52.6" Grid.Row="1" Text="{Binding LineNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="21.2,97,163.4,37.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="20.6,82,144.4,13.6" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
 
-                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="includeColumn" Binding="{Binding Include}" Header="Include" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="60"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="110"/>
+                <DataGridTextColumn x:Name="includeColumn" Binding="{Binding Include}" Header="Include" Width="100"/>
 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -67,12 +67,12 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="324.2,191,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="324.2,132,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="347.2,237,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="421,252,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.461,2.047"/>
-        <Button Content="AddLine" Grid.Column="1" HorizontalAlignment="Left" Margin="55.2,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <Button Content="DeleteLine" Grid.Column="1" HorizontalAlignment="Left" Margin="206.2,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.304,1.271" Click="DeleteButton_Click"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="375.6,177,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="375.6,138,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="398.6,209,0,0" VerticalAlignment="Top" Width="75" Height="19"/>
+
+        <Button Content="AddLine" Grid.Column="1" HorizontalAlignment="Left" Margin="54.6,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="19"/>
+        <Button Content="DeleteLine" Grid.Column="1" HorizontalAlignment="Left" Margin="205.6,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.304,1.271" Click="DeleteButton_Click" Height="19"/>
 
     </Grid>
 

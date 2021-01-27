@@ -51,19 +51,19 @@ namespace PL
                 MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק תחנה זו?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
-                    curLine.MyStations.ToList().Remove(ls);
-                    bl.UpdateLine(curLine);
+                    bl.deleteStationFromLine(ls.Code, curLine);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Not Seccssed", ex.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Not Seccssed"," Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            curLine = bl.GetLine(curLine.LineNum, curLine.Code);
             RefreshAllLineStationsGrid();
         }
         void RefreshAllLineStationsGrid()
         {
-            lineStationDataGrid.DataContext = bl.GetAllLinesStationByLine(curLine.Code);
+            lineStationDataGrid.DataContext = curLine.MyStations.ToList();
         }
         private void cbLine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -72,6 +72,7 @@ namespace PL
 
             if (curLine != null)
             {
+               
                 RefreshAllLineStationsGrid(); 
             }
         }

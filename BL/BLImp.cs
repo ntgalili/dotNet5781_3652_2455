@@ -207,6 +207,7 @@ namespace BL
         public IEnumerable<BO.LineStation> GetAllLinesStationByLine(int codeLine)
         {
             return from item in dl.GetAllLinesStationByLine(codeLine)//get the line's station from the DL layer
+                   orderby item.LineStationIndex //merge the line station by index
                    select LineStationDoBoAdapter(item);
         }
 
@@ -229,6 +230,28 @@ namespace BL
             }
             return LineStationDoBoAdapter(LineStationDO);
         }
+
+
+        public void deleteStationFromLine(int ls,BO.Line line)
+        {
+            int i= 1;
+            foreach(BO.LineStation s in line.MyStations)
+            {
+                if(s.Code!=ls)
+                {
+                    s.LineStationIndex = i;
+                    i++;
+                    UpdateLineStation(s);
+                }
+                else
+                {
+                    DeleteLineStation(line.Code, ls);
+                }
+            }
+            line.MyStations = GetAllLinesStationByLine(line.Code);
+            UpdateLine(line);
+        }
+
 
         /// <summary>
         /// add a line station
@@ -301,7 +324,7 @@ namespace BL
             BO.Line LineBO = new BO.Line();
             LineDO.CopyPropertiesTo(LineBO);
             //LineDO.CopyPropertiesTo(LineBO.)
-            LineBO.MyStations = from item in GetAllLinesStationByLine(LineBO.LineNum)//get  all the line's stations
+            LineBO.MyStations = from item in GetAllLinesStationByLine(LineBO.Code)//get  all the line's stations
                                 orderby item.LineStationIndex
                                 select item;
             return LineBO;
@@ -379,8 +402,12 @@ namespace BL
         /// <param name="lineBO">the updated line</param>
         public void UpdateLine(BO.Line lineBO)
         {
+            
             DO.Line lineDO = new DO.Line();
+
             lineBO.CopyPropertiesTo(lineDO);
+            lineDO.FirstStation = lineBO.MyStations.ToList().FirstOrDefault().Code;
+            lineDO.LastStation = lineBO.MyStations.ToList().Last().Code;
             try
             {
                 dl.UpdateLine(lineDO);//up date the line by the DL layer
@@ -389,26 +416,27 @@ namespace BL
             {
                 throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
-            foreach (BO.LineStation ls in GetAllLinesStationByLine(lineBO.Code))//delete  the old line's stations
-            {
-                DeleteLineStation(ls.LineCode, ls.Code);
-            }
-            int index = 0;
-            foreach (BO.LineStation ls in lineBO.MyStations)//add the new line's stations
-            {
-                index++;
-                ls.LineCode = lineBO.Code;
-                ls.LineStationIndex = index;
-                AddLineStation(ls);
-            }
-            for (int i = 1; i < index - 1; i++)//add the new stations to the Adjacent Stetions
-            {
-                try
-                {
-                    AddAdjacentStetions((lineBO.MyStations.ToList())[i], (lineBO.MyStations.ToList())[i + 1]);
-                }
-                catch (BO.BadAdjacentStetionsException ex) { }//when there are these Adjacent Stetions already
-            }
+
+        //    foreach (BO.LineStation ls in GetAllLinesStationByLine(lineBO.Code))//delete  the old line's stations
+        //    {
+        //        DeleteLineStation(ls.LineCode, ls.Code);
+        //    }
+        //    int index = 0;
+        //    foreach (BO.LineStation ls in lineBO.MyStations)//add the new line's stations
+        //    {
+        //        index++;
+        //        ls.LineCode = lineBO.Code;
+        //        ls.LineStationIndex = index;
+        //        AddLineStation(ls);
+        //    }
+        //    for (int i = 1; i < index - 1; i++)//add the new stations to the Adjacent Stetions
+        //    {
+        //        try
+        //        {
+        //            AddAdjacentStetions((lineBO.MyStations.ToList())[i], (lineBO.MyStations.ToList())[i + 1]);
+        //        }
+        //        catch (BO.BadAdjacentStetionsException ex) { }//when there are these Adjacent Stetions already
+        //    }
         }
 
         /// <summary>
@@ -520,7 +548,7 @@ namespace BL
             adjBO.Time = new TimeSpan(0, (int)(adjBO.Distance * r.NextDouble()), 0);//Calculating the traveling time
             DO.AdjacentStetions adjDO=new DO.AdjacentStetions();
             adjBO.CopyPropertiesTo(adjDO);
-            adjDO.Station1 = adjBO.Station1.Code;
+             adjDO.Station1 = adjBO.Station1.Code;
             adjDO.Station2 = adjBO.Station2.Code;
             try
             {
