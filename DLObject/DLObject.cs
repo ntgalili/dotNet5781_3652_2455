@@ -188,7 +188,7 @@ namespace DL
             DataSource.ListLineStations.Add(ls.Clone());
         }
         /// <summary>
-        /// return all lines station
+        /// return all lines station.
         /// </summary>
         /// <returns>a collection of all lines staton</returns>
         public IEnumerable<DO.LineStation> GetAllLinesStation()
