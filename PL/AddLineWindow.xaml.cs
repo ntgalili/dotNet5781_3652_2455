@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLAPI;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,17 +21,43 @@ namespace PL
     /// </summary>
     public partial class AddLineWindow : Window
     {
-        public AddLineWindow()
+        IBL bl;
+        BO.Line lineToAdd;
+        public AddLineWindow(IBL _bl)
         {
             InitializeComponent();
+            bl = _bl;
+            AddLineGrid.DataContext = new BO.Line();
+            areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            RefreshButton.IsEnabled = false;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource lineViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("lineViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // lineViewSource.Source = [generic data source]
+            AddLineGrid.DataContext = new BO.Line();
+            areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            RefreshButton.IsEnabled = false;
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                lineToAdd = AddLineGrid.DataContext as BO.Line;
+                if (lineToAdd != null && lineToAdd.Code > 0)
+                {
+                    bl.AddLine(lineToAdd);
+                    MessageBox.Show("succeeded", "AddLine", MessageBoxButton.OK);
+                    AddLineGrid.DataContext = new BO.Line();
+                    areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+                    RefreshButton.IsEnabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("dont succeeded", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
     }
 }

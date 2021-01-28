@@ -6,12 +6,9 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddLineWindow"
         mc:Ignorable="d"
-        Title="AddLineWindow" Height="332.4" Width="617.6" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="lineViewSource" d:DesignSource="{d:DesignInstance {x:Type BO:Line}, CreateList=True}"/>
-    </Window.Resources>
-    <Grid Margin="10,0,0.2,-2.8">
-        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="96,82,0,0" HorizontalAlignment="Left" DataContext="{StaticResource lineViewSource}" Height="152" Width="410" Grid.ColumnSpan="2">
+        Title="AddLineWindow" Height="332.4" Width="617.6">
+    <Grid Margin="0,0,0.2,-2.8">
+        <Grid x:Name="AddLineGrid" VerticalAlignment="Top" Margin="96,82,0,0" HorizontalAlignment="Left" Height="152" Width="410" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" MinHeight="70.4"/>
                 <RowDefinition Height="Auto" MinHeight="70.4"/>
@@ -22,11 +19,13 @@
                 <ColumnDefinition Width="Auto" MinWidth="126.4"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,16,0,28.4" HorizontalAlignment="Left" Grid.Column="0" Content="Area:" Height="26" Width="37"/>
-            <ComboBox x:Name="areaTextBox" Width="206" VerticalAlignment="Top"  ItemsSource="{Binding}" Grid.Row="0" Margin="6.8,18,-85.6,10.2" Height="43" HorizontalAlignment="Left" Grid.Column="1"/>
+            <ComboBox x:Name="areaComboBox" Width="206" VerticalAlignment="Top"  ItemsSource="{Binding}" Grid.Row="0" Margin="6.8,18,-85.6,10.2" Height="43" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,20.6,0,23.8" HorizontalAlignment="Left" Grid.Column="0" Content="Code:" Height="26" Width="40"/>
             <TextBox x:Name="codeTextBox" Width="206" VerticalAlignment="Center" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="6.8,22,-84,10.2" Height="39" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
         <Label Content="Add Line To The List Of All Lines" HorizontalAlignment="Left" Margin="62,26,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="51" Width="499"/>
+        <Button x:Name="AddLineButton" Content="AddLine" HorizontalAlignment="Left" Margin="120,239,0,0" VerticalAlignment="Top" Width="151" Height="34" Click="AddButton_Click"/>
+        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="310,239,0,0" VerticalAlignment="Top" Width="151" Height="34" Click="RefreshButton_Click"/>
 
     </Grid>
 </Window>

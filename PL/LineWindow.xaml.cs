@@ -76,5 +76,11 @@ namespace PL
                 RefreshAllLineStationsGrid(); 
             }
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddLineWindow win = new AddLineWindow(bl);
+            win.Show();
+        }
     }
 }
