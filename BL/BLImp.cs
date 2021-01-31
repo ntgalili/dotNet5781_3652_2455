@@ -257,26 +257,31 @@ namespace BL
             BO.LineStation ToADD = new BO.LineStation();
             GetStation(ls).CopyPropertiesTo(ToADD);
             ToADD.LineCode = line.Code;
-            int i = 1;
-            
-            foreach (BO.LineStation s in line.MyStations)
-            {
-                if (index < s.LineStationIndex)
-                {
-                    s.LineStationIndex = i;
-                    UpdateLineStation(s);
-                }
-                if(i==index)
-                {
-                    ToADD.LineStationIndex = i;
-                }
-                if(i>index)
-                {
-                    s.LineStationIndex = i;
-                }
-                i++;
+           ToADD.LineStationIndex = index;
+            try
+            { 
+                AddLineStation(ToADD);
             }
-            AddLineStation(ToADD);
+            catch(Exception ex)
+            {
+                throw new BO.BadLineStationException(ToADD.Code, line.Code, "the station already exist on the line", ex);
+            }
+
+            int i = 1;
+                foreach (BO.LineStation s in line.MyStations)
+                {
+                    if (index < s.LineStationIndex)
+                    {
+                        s.LineStationIndex = i;
+                        UpdateLineStation(s);
+                    }
+                    if (i > index)
+                    {
+                        s.LineStationIndex = i;
+                    }
+                    i++;
+                }
+            
             line.MyStations = GetAllLinesStationByLine(line.Code);
             UpdateLine(line);
         }

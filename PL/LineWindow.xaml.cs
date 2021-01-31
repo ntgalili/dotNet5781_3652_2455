@@ -87,7 +87,7 @@ namespace PL
 
         private void AddStationButton_Click(object sender, RoutedEventArgs e)
         {
-            BO.Station station = (StationsCB.SelectedItem as BO.LineStation);
+            BO.Station station = (StationsCB.SelectedItem as BO.Station);
             if (station==null)
             {
                 MessageBox.Show("you need to select a station", "add station", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -99,7 +99,15 @@ namespace PL
             {
                 index = curLine.MyStations.Count();
             }
-           /// bl.AddStationToLine(station.Code, curLine, index);
+            try
+            {
+                bl.AddStationToLine(station.Code, curLine, index);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("התחנה כבר קיימת בקו", "add station", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+            }
             RefreshAllLineStationsGrid();
 
         }
