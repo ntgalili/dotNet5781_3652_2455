@@ -252,6 +252,35 @@ namespace BL
             UpdateLine(line);
         }
 
+        public void  AddStationToLine(int ls, BO.Line line, int index)
+        {
+            BO.LineStation ToADD = new BO.LineStation();
+            GetStation(ls).CopyPropertiesTo(ToADD);
+            ToADD.LineCode = line.Code;
+            int i = 1;
+            
+            foreach (BO.LineStation s in line.MyStations)
+            {
+                if (index < s.LineStationIndex)
+                {
+                    s.LineStationIndex = i;
+                    UpdateLineStation(s);
+                }
+                if(i==index)
+                {
+                    ToADD.LineStationIndex = i;
+                }
+                if(i>index)
+                {
+                    s.LineStationIndex = i;
+                }
+                i++;
+            }
+            AddLineStation(ToADD);
+            line.MyStations = GetAllLinesStationByLine(line.Code);
+            UpdateLine(line);
+        }
+
 
         /// <summary>
         /// add a line station
