@@ -23,12 +23,16 @@ namespace PL
     {
         IBL bl;
         BO.Line lineToAdd;
+        BO.LineStation startStation;
+        BO.LineStation endStation;
         public AddLineWindow(IBL _bl)
         {
             InitializeComponent();
             bl = _bl;
             AddLineGrid.DataContext = new BO.Line();
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            comboBoxStarting.ItemsSource = bl.GetAllStations();
+            comboBoxDestination.ItemsSource = bl.GetAllStations();
             RefreshButton.IsEnabled = false;
         }
 
@@ -36,6 +40,8 @@ namespace PL
         {
             AddLineGrid.DataContext = new BO.Line();
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            comboBoxStarting.ItemsSource = bl.GetAllStations();
+            comboBoxDestination.ItemsSource = bl.GetAllStations();
             RefreshButton.IsEnabled = false;
         }
 
@@ -43,20 +49,24 @@ namespace PL
         {
             try
             {
+                startStation = (BO.LineStation)(comboBoxStarting.DataContext as BO.Station);
+                endStation = (BO.LineStation)(comboBoxDestination.DataContext as BO.Station);
                 lineToAdd = AddLineGrid.DataContext as BO.Line;
                 if (lineToAdd != null && lineToAdd.Code > 0)
                 {
+                    bl.AddLineStation(startStation);
+                    bl.AddLineStation(endStation);
                     bl.AddLine(lineToAdd);
                     MessageBox.Show("succeeded", "AddLine", MessageBoxButton.OK);
                     AddLineGrid.DataContext = new BO.Line();
                     areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
-                    RefreshButton.IsEnabled = true;
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("dont succeeded", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            RefreshButton.IsEnabled = true;
         }
 
     }
