@@ -147,6 +147,11 @@ namespace BLAPI
         /// <param name="lineCode">the line's code</param>
         /// <param name="codeStation">the station's code</param>
         void DeleteLineStation(int lineCode, int codeStation);
+
+        void AddStationToLine(int ls, BO.Line line, int index);
+        void deleteStationFromLine(int ls, BO.Line line);
+
+
         #endregion
 
 
@@ -190,7 +195,7 @@ namespace BLAPI
         IEnumerable<BO.AdjacentStetions> GetALLAdjStetionsbycode(int code);
 
 
-        void deleteStationFromLine(int ls, BO.Line line);
+
         #endregion
     }
 }

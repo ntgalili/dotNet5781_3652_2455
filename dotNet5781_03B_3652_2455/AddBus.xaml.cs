@@ -45,5 +45,7 @@ namespace dotNet5781_03B_3652_2455
             }
             this.Close(); //Close the add window
         }
+
+ 
     }
 }

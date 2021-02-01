@@ -28,6 +28,7 @@ namespace PL
             InitializeComponent();
             bl = _bl;
             cbLine.DataContext = bl.GetAllActiveLines();
+            StationsCB.DataContext = bl.GetAllStations();
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +82,48 @@ namespace PL
         {
             AddLineWindow win = new AddLineWindow(bl);
             win.Show();
+        }
+
+
+        private void AddStationButton_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Station station = (StationsCB.SelectedItem as BO.Station);
+            if (station==null)
+            {
+                MessageBox.Show("you need to select a station", "add station", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            int index;
+            bool flag= int.TryParse(indexTextBox.Text, out index);
+            if(!flag)
+            {
+                index = curLine.MyStations.Count();
+            }
+            try
+            {
+                bl.AddStationToLine(station.Code, curLine, index);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("התחנה כבר קיימת בקו", "add station", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+            }
+            RefreshAllLineStationsGrid();
+
+        }
+
+        private void indexTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox tx = sender as TextBox;
+            if (tx == null) return; //If not, tap any character on the keyboard
+            if (e == null) return; //If not, tap any character on the keyboard
+
+            char c = (char)KeyInterop.VirtualKeyFromKey(e.Key);
+            if (char.IsControl(c)) return;
+            if (char.IsDigit(c)) return;
+            e.Handled = true;
+            MessageBox.Show("only numbers are allowed", "Account", MessageBoxButton.OK, MessageBoxImage.Error);
+        
         }
     }
 }
