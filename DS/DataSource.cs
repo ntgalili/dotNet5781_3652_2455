@@ -43,7 +43,7 @@ namespace DS
             }
             catch (Exception ex)
             {
-                throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+               /// throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
         }
 
