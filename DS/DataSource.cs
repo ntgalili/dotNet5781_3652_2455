@@ -4,6 +4,8 @@ using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 using DO;
 namespace DS
@@ -26,11 +28,34 @@ namespace DS
             
             return sCoord.GetDistanceTo(eCoord);
         }
-       
+
+
+
+
+
+
+
+        public static void SaveListToXMLElement(XElement rootElem, string filePath)
+        {
+            try
+            {
+                rootElem.Save(@"xml\" + filePath);
+            }
+            catch (Exception ex)
+            {
+                throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+            }
+        }
 
         static DataSource()
         {
             InitAllLists();
+
+            SaveListToXMLElement(ListLines, @"ListLinesXml.xml");
+            SaveListToXMLElement(ListLineStations, @"ListLineStationsXml.xml");
+            SaveListToXMLElement(ListStations, @"ListStationsXml.xml");
+            SaveListToXMLElement(ListAdjStations, @"ListAdjStationsXml.xml");
+
         }
         static void InitAllLists()
         {

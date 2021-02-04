@@ -51,7 +51,7 @@ namespace DL
         public DO.Station GetStation(int num)
         {
             DO.Station toGet = DataSource.ListStations.Find(s => s.Code == num); //fine station thet havve this code
-            try { Thread.Sleep(1000); } catch (ThreadInterruptedException) { }
+            //try { Thread.Sleep(1000); } catch (ThreadInterruptedException) { }
             if (toGet != null) //if the station found - cloning the station 
                 return toGet.Clone();
             else
@@ -127,7 +127,7 @@ namespace DL
         public DO.Line GetLine(int num, int code)
         {
             DO.Line toGet = DataSource.ListLines.Find(l=> (l.LineNum == num && l.Code == code)); //find this line
-            try { Thread.Sleep(2000); } catch (ThreadInterruptedException) { }
+            //try { Thread.Sleep(2000); } catch (ThreadInterruptedException) { }
             if (toGet != null) //if the line is found
                 return toGet.Clone();
             else //if the line is not found 
@@ -245,11 +245,11 @@ namespace DL
         public DO.LineStation GetLineStation(int lineCode, int codeStation)
         {
             DO.LineStation toGet = DataSource.ListLineStations.Find(s =>( s.Code == codeStation && s.LineCode== lineCode));//find this line station with this code station and code line
-            try
-            {
-                Thread.Sleep(2000);
-            }
-            catch (ThreadInterruptedException ex) { }
+            //try
+            //{
+            //    Thread.Sleep(2000);
+            //}
+            //catch (ThreadInterruptedException ex) { }
             if (toGet != null)//if the line station is found
                 return toGet.Clone();
             else //if the line station is not found
@@ -267,11 +267,11 @@ namespace DL
         public DO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
         {
             DO.AdjacentStetions toGet = DataSource.ListAdjStations.Find(adj => (adj.Station1 == numS1 && adj.Station2 == numS2)); //find Adjacent Stations with this stations in the collection of Adjacent Stations
-            try
-            {
-                Thread.Sleep(2000);
-            }
-            catch (ThreadInterruptedException ex) { }
+            //try
+            //{
+            //    Thread.Sleep(2000);
+            //}
+            //catch (ThreadInterruptedException ex) { }
             if (toGet != null) //if the Adjacent Stations is found
                 return toGet.Clone();
             else //if the Adjacent Stations not found
