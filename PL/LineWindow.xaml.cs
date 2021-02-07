@@ -50,6 +50,11 @@ namespace PL
             try
             {
                 MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק תחנה זו?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                if(curLine.MyStations.Count()<=2)
+                {
+                    MessageBox.Show("אין אפשרות למחוק - נשארו רק 2 תחנות", " Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 if (res == MessageBoxResult.Yes)
                 {
                     bl.deleteStationFromLine(ls.Code, curLine);

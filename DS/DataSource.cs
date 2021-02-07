@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Device.Location;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,14 +40,14 @@ namespace DS
         {
             try
             {
-                FileStream file = new FileStream(dir + filePath, FileMode.Create);
+                FileStream file = new FileStream(@"xml\" + filePath, FileMode.Create);
                 XmlSerializer x = new XmlSerializer(list.GetType());
                 x.Serialize(file, list);
                 file.Close();
             }
             catch (Exception ex)
             {
-                throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+              //  throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
         }
 
@@ -54,10 +55,10 @@ namespace DS
         {
             InitAllLists();
 
-            SaveListToXMLElement(ListLines, @"ListLinesXml.xml");
-            SaveListToXMLElement(ListLineStations, @"ListLineStationsXml.xml");
-            SaveListToXMLElement(ListStations, @"ListStationsXml.xml");
-            SaveListToXMLElement(ListAdjStations, @"ListAdjStationsXml.xml");
+            SaveListToXMLSerializer(ListLines, @"ListLinesXml.xml");
+            SaveListToXMLSerializer(ListLineStations, @"ListLineStationsXml.xml");
+            SaveListToXMLSerializer(ListStations, @"ListStationsXml.xml");
+            SaveListToXMLSerializer(ListAdjStations, @"ListAdjStationsXml.xml");
 
         }
         static void InitAllLists()
