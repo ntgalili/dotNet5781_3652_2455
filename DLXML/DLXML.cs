@@ -376,12 +376,6 @@ namespace DL
                            where int.Parse(s.Element("Code").Value) == station.Code
                            select s).FirstOrDefault();
 
-            XElement personElem = new XElement("Station", new XElement("Code", station.Code),
-                          new XElement("Name", station.Name),
-                          new XElement("Longitude", station.Longitude.ToString()),
-                          new XElement("Lattitude", station.Lattitude.ToString()),
-                          new XElement("Include", station.Include.ToString()),
-                          new XElement("Active", station.Active.ToString()));
 
             if (st != null) //if the station found
             {
