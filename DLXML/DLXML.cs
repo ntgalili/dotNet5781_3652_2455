@@ -282,144 +282,143 @@ namespace DL
 
         #endregion
 
+        #region Station
+        /// <summary>
+        /// return all stations
+        /// </summary>
+        /// <returns>a collection of all stations</returns>
+        public IEnumerable<DO.Station> GetAllStations()
+        {
+            XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
+            return (from station in stationRoot.Elements()
+                   select fromXmlToStation(station)
+                   ); 
+  
+        }
+        /// <summary>
+        /// return all active stations
+        /// </summary>
+        /// <returns>a collecion of all active stations</returns>
+        public IEnumerable<DO.Station> GetAllActiveStations()
+        {
+            XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
+            return (from station in stationRoot.Elements()
+                    let s =fromXmlToStation(station)
+                    where s.Active == true
+                    select s
+               ) ;
+        }
+        /// <summary>
+        /// return DO station
+        /// </summary>
+        /// <param name="num">code of station to return </param>
+        /// <returns>station that have this code</returns>
+        public DO.Station GetStation(int num)
+        {
+            XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
+
+                XElement station = (from s in stationRoot.Elements()
+                                   where int.Parse(s.Element("Code").Value) == num
+                                   select s).FirstOrDefault();
+
+            if (station != null) //if the station found - cloning the station 
+                return fromXmlToStation(station);
+            else
+                throw new DO.BadStationCodeException(num, "Not found"); //if the station not found
+        }
 
 
-        //#region Person
-        //public DO.Person GetPerson(int id)
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+        DO.Station fromXmlToStation(XElement element)
+        {
+            return new Station()
+            {
+                Code = Int32.Parse(element.Element("Code").Value),
+                Name = element.Element("Name").Value,
+                Longitude = double.Parse(element.Element("Longitude").Value),
+                Lattitude = double.Parse(element.Element("Lattitude").Value),
+                Include = (StationInclude)Enum.Parse(typeof(StationInclude), element.Element("Include").Value),
+                Active = bool.Parse(element.Element("Active").Value)
+            };
+        }
+        /// <summary>
+        /// add station to collection stations
+        /// </summary>
+        /// <param name="station">station to add</param>
+        public void AddStation(DO.Station station)
+        {
+            XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
 
-        //    Person p = (from per in personsRootElem.Elements()
-        //                where int.Parse(per.Element("ID").Value) == id
-        //                select new Person()
-        //                {
-        //                    ID = Int32.Parse(per.Element("ID").Value),
-        //                    Name = per.Element("Name").Value,
-        //                    Street = per.Element("Street").Value,
-        //                    HouseNumber = Int32.Parse(per.Element("HouseNumber").Value),
-        //                    City = per.Element("City").Value,
-        //                    BirthDate = DateTime.Parse(per.Element("BirthDate").Value),
-        //                    PersonalStatus = (PersonalStatus)Enum.Parse(typeof(PersonalStatus), per.Element("PersonalStatus").Value),
-        //                    Duration = TimeSpan.ParseExact(per.Element("Duration").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture)
-        //                }
-        //                ).FirstOrDefault();
+            XElement st = (from s in stationRoot.Elements()
+                                where int.Parse(s.Element("Code").Value) == station.Code
+                                select s).FirstOrDefault();
 
-        //    if (p == null)
-        //        throw new DO.BadPersonIdException(id, $"bad person id: {id}");
+            if (st != null) //check if we have station with this code in collection of station
+                throw new DO.BadStationCodeException(station.Code, "Duplicate station Code");
+            XElement toAdd = new XElement("Station", new XElement("Code", station.Code),
+                                      new XElement("Name", station.Name),
+                                      new XElement("Longitude", station.Longitude.ToString()),
+                                      new XElement("Lattitude", station.Lattitude.ToString()),
+                                      new XElement("Include", station.Include.ToString()),
+                                      new XElement("Active", station.Active.ToString()));
+            stationRoot.Add(toAdd);
+            XMLTools.SaveListToXMLElement(stationRoot, ListStationsPath);
+        }
+        /// <summary>
+        /// up date station
+        /// </summary>
+        /// <param name="station">station to up date</param>
+        public void UpdateStation(DO.Station station)
+        {
+            XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
 
-        //    return p;
-        //}
-        //public IEnumerable<DO.Person> GetAllPersons()
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
 
-        //    return (from p in personsRootElem.Elements()
-        //            select new Person()
-        //            {
-        //                ID = Int32.Parse(p.Element("ID").Value),
-        //                Name = p.Element("Name").Value,
-        //                Street = p.Element("Street").Value,
-        //                HouseNumber = Int32.Parse(p.Element("HouseNumber").Value),
-        //                City = p.Element("City").Value,
-        //                BirthDate = DateTime.Parse(p.Element("BirthDate").Value),
-        //                PersonalStatus = (PersonalStatus)Enum.Parse(typeof(PersonalStatus), p.Element("PersonalStatus").Value),
-        //                Duration = TimeSpan.ParseExact(p.Element("Duration").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture)
-        //            }
-        //           );
-        //}
-        //public IEnumerable<DO.Person> GetAllPersonsBy(Predicate<DO.Person> predicate)
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+            XElement st = (from s in stationRoot.Elements()
+                           where int.Parse(s.Element("Code").Value) == station.Code
+                           select s).FirstOrDefault();
 
-        //    return from p in personsRootElem.Elements()
-        //           let p1 = new Person()
-        //           {
-        //               ID = Int32.Parse(p.Element("ID").Value),
-        //               Name = p.Element("Name").Value,
-        //               Street = p.Element("Street").Value,
-        //               HouseNumber = Int32.Parse(p.Element("HouseNumber").Value),
-        //               City = p.Element("City").Value,
-        //               BirthDate = DateTime.Parse(p.Element("BirthDate").Value),
-        //               PersonalStatus = (PersonalStatus)Enum.Parse(typeof(PersonalStatus), p.Element("PersonalStatus").Value),
-        //               Duration = TimeSpan.ParseExact(p.Element("Duration").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture)
-        //           }
-        //           where predicate(p1)
-        //           select p1;
-        //}
-        //public void AddPerson(DO.Person person)
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
+            XElement personElem = new XElement("Station", new XElement("Code", station.Code),
+                          new XElement("Name", station.Name),
+                          new XElement("Longitude", station.Longitude.ToString()),
+                          new XElement("Lattitude", station.Lattitude.ToString()),
+                          new XElement("Include", station.Include.ToString()),
+                          new XElement("Active", station.Active.ToString()));
 
-        //    XElement per1 = (from p in personsRootElem.Elements()
-        //                     where int.Parse(p.Element("ID").Value) == person.ID
-        //                     select p).FirstOrDefault();
+            if (st != null) //if the station found
+            {
+                st.Element("Code").Value = station.Code.ToString();
+                st.Element("Name").Value = station.Name;
+                st.Element("Longitude").Value = station.Longitude.ToString();
 
-        //    if (per1 != null)
-        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
+                st.Element("Lattitude").Value = station.Lattitude.ToString();
+                st.Element("Include").Value = station.Include.ToString();
+                st.Element("Active").Value = station.Active.ToString();
+                XMLTools.SaveListToXMLElement(stationRoot, ListStationsPath);
+            }
+            else //if the station are not found
+                throw new DO.BadStationCodeException(station.Code, "Not found");
+        }
+        /// <summary>
+        /// delete station
+        /// </summary>
+        /// <param name="num">code of station to delete</param>
+        public void DeleteStation(int num)
+        {
+            XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
 
-        //    XElement personElem = new XElement("Person", new XElement("ID", person.ID),
-        //                          new XElement("Name", person.Name),
-        //                          new XElement("Street", person.Street),
-        //                          new XElement("HouseNumber", person.HouseNumber.ToString()),
-        //                          new XElement("City", person.City),
-        //                          new XElement("BirthDate", person.BirthDate),
-        //                          new XElement("PersonalStatus", person.PersonalStatus.ToString()),
-        //                          new XElement("Duration", person.Duration.ToString()));
 
-        //    personsRootElem.Add(personElem);
+            XElement st = (from s in stationRoot.Elements()
+                           where int.Parse(s.Element("Code").Value) == num
+                           select s).FirstOrDefault();
 
-        //    XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-        //}
+            if (st == null) //if station not found
+                throw new DO.BadStationCodeException(num, "Not found");
+            if (bool.Parse(st.Element("Active").Value) == false)//if this station is not active
+                throw new DO.BadStationCodeException(num, "the station is already canceled");
+            st.Element("Active").Value = false.ToString();
+            XMLTools.SaveListToXMLElement(stationRoot, ListStationsPath);
+        }
+        #endregion
 
-        //public void DeletePerson(int id)
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
-
-        //    XElement per = (from p in personsRootElem.Elements()
-        //                    where int.Parse(p.Element("ID").Value) == id
-        //                    select p).FirstOrDefault();
-
-        //    if (per != null)
-        //    {
-        //        per.Remove(); //<==>   Remove per from personsRootElem
-
-        //        XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-        //    }
-        //    else
-        //        throw new DO.BadPersonIdException(id, $"bad person id: {id}");
-        //}
-
-        //public void UpdatePerson(DO.Person person)
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
-
-        //    XElement per = (from p in personsRootElem.Elements()
-        //                    where int.Parse(p.Element("ID").Value) == person.ID
-        //                    select p).FirstOrDefault();
-
-        //    if (per != null)
-        //    {
-        //        per.Element("ID").Value = person.ID.ToString();
-        //        per.Element("Name").Value = person.Name;
-        //        per.Element("Street").Value = person.Street;
-        //        per.Element("HouseNumber").Value = person.HouseNumber.ToString();
-        //        per.Element("City").Value = person.City;
-        //        per.Element("BirthDate").Value = person.BirthDate.ToString();
-        //        per.Element("PersonalStatus").Value = person.PersonalStatus.ToString();
-        //        per.Element("Duration").Value = person.Duration.ToString();
-
-        //        XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-        //    }
-        //    else
-        //        throw new DO.BadPersonIdException(person.ID, $"bad person id: {person.ID}");
-        //}
-
-        //public void UpdatePerson(int id, Action<DO.Person> update)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //#endregion Person
 
     }
 }

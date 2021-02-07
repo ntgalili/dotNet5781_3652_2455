@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DO                         //************העתקתי מהמורה לבדוק אם זה טוב ***************
+namespace DO
 {
     [Serializable]
     public class BadStationCodeException : Exception
@@ -64,5 +64,17 @@ namespace DO                         //************העתקתי מהמורה ל�
         }
         public override string ToString() => base.ToString() + $", Bad BadAdjacentStetionsException: {numS1},{numS2}";
     }
+
+
+
+    public class XMLFileLoadCreateException : Exception
+    {
+       
+        public XMLFileLoadCreateException(int c, string message) : base(message) { }
+        public XMLFileLoadCreateException(string filePath, string message, Exception innerException) :
+            base(message, innerException) { }
+        public override string ToString() => base.ToString();
+    }
+
 }
 
