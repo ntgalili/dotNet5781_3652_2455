@@ -171,5 +171,33 @@ namespace DLAPI
         IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code);
         #endregion
 
+
+
+        //#region User
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //IEnumerable<DO.User> GetALLUser();
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="name"></param>
+        ///// <param name="password"></param>
+        //void DeleteUser(string name, int password);
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="user"></param>
+        //void UpdateUser(DO.User user);
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="user"></param>
+        //void AddUser(DO.User user);
+        //#endregion
+
+
+
     }
 }

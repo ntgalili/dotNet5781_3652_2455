@@ -328,6 +328,49 @@ namespace DL
         }
 
         #endregion
+
+
+
+
+
+
+
+
+        //#region User
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //public IEnumerable<DO.User> GetALLUser()
+        //{
+
+        //}
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="name"></param>
+        ///// <param name="password"></param>
+        //public void DeleteUser(string name, int password)
+        //{
+
+        //}
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="user"></param>
+        //public void UpdateUser(DO.User user)
+        //{
+
+        //}
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="user"></param>
+        //public void AddUser(DO.User user)
+        //{
+
+        //}
+        //#endregion
     }
 }
 
