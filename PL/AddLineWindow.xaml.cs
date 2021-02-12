@@ -21,14 +21,16 @@ namespace PL
     /// </summary>
     public partial class AddLineWindow : Window
     {
+        Action action;
         IBL bl;
         BO.Line lineToAdd;
-        BO.LineStation startStation;
-        BO.LineStation endStation;
-        public AddLineWindow(IBL _bl)
+        int  startStation;
+        int endStation;
+        public AddLineWindow(IBL _bl,Action _action)
         {
             InitializeComponent();
             bl = _bl;
+            action = _action;
             AddLineGrid.DataContext = new BO.Line();
             areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
             comboBoxStarting.ItemsSource = bl.GetAllStations();
@@ -49,14 +51,18 @@ namespace PL
         {
             try
             {
-                startStation = (BO.LineStation)(comboBoxStarting.DataContext as BO.Station);
-                endStation = (BO.LineStation)(comboBoxDestination.DataContext as BO.Station);
+                startStation =(comboBoxStarting.SelectedItem as BO.Station).Code;
+                endStation = (comboBoxDestination.SelectedItem as BO.Station).Code;
+                
                 lineToAdd = AddLineGrid.DataContext as BO.Line;
-                if (lineToAdd != null && lineToAdd.Code > 0)
+                if (lineToAdd == null || lineToAdd.LineNum <= 0|| startStation== endStation)
                 {
-                    bl.AddLineStation(startStation);
-                    bl.AddLineStation(endStation);
-                    bl.AddLine(lineToAdd);
+                    MessageBox.Show("Missing information,please try again!", "AddLine", MessageBoxButton.OK);
+                }
+                else
+                {
+                    lineToAdd.Active = true;
+                    bl.AddLine(lineToAdd, startStation, endStation);
                     MessageBox.Show("succeeded", "AddLine", MessageBoxButton.OK);
                     AddLineGrid.DataContext = new BO.Line();
                     areaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
@@ -66,8 +72,12 @@ namespace PL
             {
                 MessageBox.Show("dont succeeded", "please try again", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            RefreshButton.IsEnabled = true;
+        RefreshButton.IsEnabled = true;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            action.Invoke();
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 using DLAPI;
@@ -30,6 +31,7 @@ namespace DL
         string ListLinesPath = @"ListLinesXml.xml"; //XMLSerializer
         string ListLineStationsPath = @"ListLineStationsXml.xml"; //XMLSerializer
         string ListAdjStationsPath = @"ListAdjStationsXml.xml"; //XMLSerializer
+        string ListLineTripsPath = @"ListLineTripsXml.xml";//Xelement
 
         #endregion
 
@@ -44,7 +46,7 @@ namespace DL
         public DO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
         {
             List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
-            AdjacentStetions toGet = ListAdjStations.Find(adj => (adj.Station1 == numS1 && adj.Station2 == numS2)); //find Adjacent Stations with this stations in the collection of Adjacent Stations
+            AdjacentStetions toGet = ListAdjStations.Find(adj => (adj.Station1 == numS1 && adj.Station2 == numS2&&adj.Active==true)); //find Adjacent Stations with this stations in the collection of Adjacent Stations
             if (toGet != null) //if the Adjacent Stations is found
                 return toGet;
             else //if the Adjacent Stations not found
@@ -88,10 +90,10 @@ namespace DL
         {
             List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
             AdjacentStetions toDel;
-            toDel = ListAdjStations.FirstOrDefault(a => a.Station1 == numS1 && a.Station2 == numS2);//find this Adjacent Stations with this stations
+            toDel = ListAdjStations.FirstOrDefault(a => a.Station1 == numS1 && a.Station2 == numS2 &&a.Active==true);//find this Adjacent Stations with this stations
             if (toDel == null)//if the Adjacent Stations is not found
                 throw new BadLineStationException(numS1, numS2, "Not found");
-            ListAdjStations.Remove(toDel);//remove this Adjacent Stations
+            toDel.Active = false;//remove this Adjacent Stations
             XMLTools.SaveListToXMLSerializer(ListAdjStations, ListAdjStationsPath);
         }
         /// <summary>
@@ -414,5 +416,102 @@ namespace DL
         #endregion
 
 
+
+
+
+
+        #region LineTrip
+        public int AddLineTrip(DO.LineTrip lt)
+        {
+
+
+
+            XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
+            lt.CodeLineTrip = DO.config.LineTripID++;
+            XElement find = (from l in TripRoot.Elements()
+                              where int.Parse(l.Element("CodeLineTrip").Value) == lt.CodeLineTrip
+                              select l).FirstOrDefault();
+
+            if (find != null) //check if we have station with this code in collection of station
+                throw new DO.BadLineTripException(lt.CodeLineTrip, "Duplicate station Code");
+
+            XElement toAdd = new XElement("LineTrip", new XElement("CodeLineTrip", lt.CodeLineTrip),
+                                      new XElement("StartAtTime", lt.StartAtTime.ToString()),
+                                      new XElement("CodeLine", lt.CodeLine.ToString()),
+                                      new XElement("Active", lt.Active.ToString()));
+            TripRoot.Add(toAdd);
+            XMLTools.SaveListToXMLElement(TripRoot, ListLineTripsPath);
+
+            return lt.CodeLineTrip;
+
+        }
+
+        public DO.LineTrip GetLineTrip(int code)
+        {
+            XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
+
+            XElement lt = (from l in TripRoot.Elements()
+                                where int.Parse(l.Element("CodeLineTrip").Value) == code
+                                select l).FirstOrDefault();
+
+            if (lt != null) //if the station found - cloning the station 
+                return fromXmlToLineTrip(lt);
+            else
+                throw new DO.BadLineTripException(code, "Not found"); //if the station not found
+
+        }
+
+        public void UpDateLineTrip(DO.LineTrip lt)
+        {
+            XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
+
+
+            XElement toUpdate = (from l in TripRoot.Elements()
+                           where int.Parse(l.Element("CodeLineTrip").Value) == lt.CodeLineTrip
+                           select l).FirstOrDefault();
+
+
+            if (toUpdate != null) //if the station found
+            {
+                toUpdate.Element("CodeLineTrip").Value = lt.CodeLineTrip.ToString();
+                toUpdate.Element("CodeLine").Value = lt.CodeLine.ToString();
+                toUpdate.Element("StartAtTime").Value = lt.StartAtTime.ToString();
+                toUpdate.Element("Active").Value = lt.Active.ToString();
+                XMLTools.SaveListToXMLElement(TripRoot, ListLineTripsPath);
+            }
+            else //if the station are not found
+                throw new DO.BadLineTripException(lt.CodeLineTrip, "Not found");
+      
+
+        
+        }
+        public void DeleteLineTrip(int code)
+        {
+            XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
+
+
+            XElement lt = (from l in TripRoot.Elements()
+                           where int.Parse(l.Element("CodeLineTrip").Value) == code
+                           select l).FirstOrDefault();
+
+            if (lt == null) //if station not found
+                throw new DO.BadLineTripException(code, "Not found");
+            if (bool.Parse(lt.Element("Active").Value) == false)//if this station is not active
+                throw new DO.BadLineTripException(code, "the station is already canceled");
+            lt.Element("Active").Value = false.ToString();
+            XMLTools.SaveListToXMLElement(TripRoot, ListLineTripsPath);
+
+        }
+        DO.LineTrip fromXmlToLineTrip(XElement element)
+        {
+            return new LineTrip
+            {
+                CodeLineTrip = Int32.Parse(element.Element("CodeLineTrip").Value),
+                CodeLine = Int32.Parse(element.Element("CodeLine").Value),
+                Active = bool.Parse(element.Element("Active").Value),
+                StartAtTime = XmlConvert.ToTimeSpan(element.Element("ToTimeSpan").Value),
+            };
+        }
+        #endregion
     }
 }

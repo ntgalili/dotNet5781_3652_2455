@@ -45,7 +45,7 @@
             <Label Content="Line Num:" Grid.Column="2" HorizontalAlignment="Left" Margin="8.4,1,0,6" VerticalAlignment="Center" Height="26" Width="64"/>
             <TextBox x:Name="lineNumTextBox" Grid.Column="3" Height="22" Margin="5.4,0,10.8,3" Text="{Binding LineNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="26,96,190,23.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="26,96,190,23.6" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
             <DataGrid.Columns>
 
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="70"/>

@@ -171,7 +171,12 @@ namespace DLAPI
         IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code);
         #endregion
 
-
+        #region LineTrip
+        int AddLineTrip(DO.LineTrip lt);
+        DO.LineTrip GetLineTrip(int code);
+        void UpDateLineTrip(DO.LineTrip lt);
+        void DeleteLineTrip(int code);
+        #endregion
 
         //#region User
         ///// <summary>

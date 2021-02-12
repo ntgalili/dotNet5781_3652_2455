@@ -10,5 +10,6 @@ namespace DO
     {
         //for running numbers
         public static int LineID = 11;
+        public static int LineTripID = 10;
     }
 }

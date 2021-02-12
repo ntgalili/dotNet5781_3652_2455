@@ -16,9 +16,9 @@ namespace DS
         // public static List<Bus> ListBuses;
         public static List<Line> ListLines;
         public static List<LineStation> ListLineStations;
-        // public static List<LineTrip> ListLineTrips;
+        public static List<LineTrip> ListLineTrips;
         public static List<Station> ListStations;
-        // public static List<Trip> ListTrips;
+
         // public static List<User> ListUsers;
         public static List<AdjacentStetions> ListAdjStations;
         private static Random r = new Random();
@@ -1466,9 +1466,11 @@ namespace DS
                     Station2=407,
                     Distance=distance(35.001165,31.715411,34.989861,31.715411),
                     Time=new TimeSpan(0,(int)(distance(35.001165,31.715411,34.989861,31.715411)*r.NextDouble()),0),
+                    Active=true,
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=407,
                     Station2=401,
                     Distance=distance(34.989861,31.715411,35.0002,31.70735),
@@ -1476,6 +1478,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=401,
                     Station2=563,
                     Distance=distance(35.0002,31.70735,34.980749,31.744038),
@@ -1483,6 +1486,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=563,
                     Station2=573,
                     Distance=distance(34.980749,31.744038,34.992279,31.736319),
@@ -1490,6 +1494,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=573,
                     Station2=574,
                     Distance=distance(34.992279,31.736319,34.991927,31.733992),
@@ -1497,6 +1502,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=574,
                     Station2=172,
                     Distance=distance(34.991927,31.733992,35.195972,31.791222),
@@ -1504,6 +1510,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=172,
                     Station2=174,
                     Distance=distance(35.195972,31.791222,35.194683,31.791653),
@@ -1511,6 +1518,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=174,
                     Station2=179,
                     Distance=distance(35.194683,31.791653,35.191168,31.789376),
@@ -1518,6 +1526,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=179,
                     Station2=180,
                     Distance=distance(35.191168,31.789376,35.179234,31.786054),
@@ -1525,6 +1534,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=179,
                     Station2=57023,
                     Distance=distance(35.191168,31.789376,35.489648,32.963282),
@@ -1532,6 +1542,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=179,
                     Station2=176,
                     Distance=distance(35.191168,31.789376,35.192721,31.792105),
@@ -1539,6 +1550,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=176,
                     Station2=179,
                     Distance=distance(35.192721,31.792105,35.191168,31.789376),
@@ -1546,6 +1558,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=176,
                     Station2=174,
                     Distance=distance(35.192721,31.792105,35.194683,31.791653),
@@ -1553,6 +1566,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=172,
                     Station2=21161,
                     Distance=distance(35.195972,31.791222,34.840305,32.092564),
@@ -1560,6 +1574,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21161,
                     Station2=21165,
                     Distance=distance(34.840305,32.092564,34.822193,32.094143),
@@ -1567,6 +1582,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21165,
                     Station2=21230,
                     Distance=distance(34.822193,32.094143,34.822562,32.092133),
@@ -1574,6 +1590,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21230,
                     Station2=21365,
                     Distance=distance(34.822562,32.092133,34.828052,32.091763),
@@ -1581,6 +1598,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21005,
                     Station2=21024,
                     Distance=distance(34.774385,32.087073,34.784808,32.073875),
@@ -1588,6 +1606,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21024,
                     Station2=21022,
                     Distance=distance(34.784808,32.073875,34.792974,32.073112),
@@ -1595,6 +1614,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21022,
                     Station2=21024,
                     Distance=distance(34.792974,32.073112,34.784808,32.073875),
@@ -1602,6 +1622,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21022,
                     Station2=21000,
                     Distance=distance(34.792974,32.073112,34.787792,32.079787),
@@ -1609,6 +1630,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21000,
                     Station2=20902,
                     Distance=distance(34.787792,32.079787,34.780691,32.046386),
@@ -1616,6 +1638,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=20902,
                     Station2=21000 ,
                     Distance=distance(34.780691,32.046386,34.787792,32.079787),
@@ -1623,6 +1646,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=20902,
                     Station2=46203,
                     Distance=distance(34.780691,32.046386,35.020919,32.758695),
@@ -1631,6 +1655,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=46203,
                     Station2=46216,
                     Distance=distance(35.020919,32.758695,34.957647,32.793065),
@@ -1638,6 +1663,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=46216,
                     Station2=46217,
                     Distance=distance(34.957647,32.793065,34.958184,32.805604),
@@ -1645,6 +1671,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=46217,
                     Station2=46233,
                     Distance=distance(34.958184,32.805604,34.963318,32.809908),
@@ -1652,6 +1679,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=46233,
                     Station2=47092,
                     Distance=distance(34.963318,32.809908,35.013987,32.790078),
@@ -1659,6 +1687,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=37780,
                     Station2=37136,
                     Distance=distance(34.844102,32.047317,34.838934,32.065048),
@@ -1666,6 +1695,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=37136,
                     Station2=37780,
                     Distance=distance(34.838934,32.065048,34.844102,32.047317),
@@ -1673,6 +1703,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=37136,
                     Station2=36481,
                     Distance=distance(34.838934,32.065048,34.846952,32.053695),
@@ -1680,6 +1711,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36481,
                     Station2=36480,
                     Distance=distance(34.846952,32.053695,34.848083,32.052359),
@@ -1687,6 +1719,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36480,
                     Station2=36481,
                     Distance=distance(34.848083,32.052359,34.846952,32.053695),
@@ -1694,6 +1727,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36481,
                     Station2=34063,
                     Distance=distance(34.846952,32.053695,34.865101,32.091798),
@@ -1701,6 +1735,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36480,
                     Station2=34063,
                     Distance=distance(34.848083,32.052359,34.865101,32.091798),
@@ -1708,6 +1743,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=34063,
                     Station2=36446,
                     Distance=distance(34.865101,32.091798,34.845992,32.046427),
@@ -1715,6 +1751,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36446,
                     Station2=35311,
                     Distance=distance(34.845992,32.046427,34.86392,32.076699),
@@ -1722,6 +1759,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=35311,
                     Station2=34934,
                      Distance=distance(34.86392,32.076699,34.852768,32.096057),
@@ -1729,6 +1767,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=34934,
                     Station2=35311,
                      Distance=distance(34.852768,32.096057,34.86392,32.076699),
@@ -1736,6 +1775,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=34934,
                     Station2=33553,
                     Distance=distance(34.852768,32.096057,34.873652,32.084529),
@@ -1743,6 +1783,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=33553,
                     Station2=33537,
                      Distance=distance(34.873652,32.084529,34.890714,32.07915),
@@ -1750,6 +1791,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21365,
                     Station2=21232,
                      Distance=distance(34.828052,32.091763,34.82271,32.088772),
@@ -1757,6 +1799,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21232,
                     Station2=21230,
                      Distance=distance(34.82271,32.088772,34.822562,32.092133),
@@ -1764,6 +1807,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21230,
                     Station2=21232,
                      Distance=distance(34.822562,32.092133,34.82271,32.088772),
@@ -1771,6 +1815,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21232,
                     Station2=21161,
                      Distance=distance(34.82271,32.088772,34.840305,31.744547),
@@ -1778,6 +1823,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21161,
                     Station2=57023,
                      Distance=distance(34.840305,31.744547,35.489648,32.963282),
@@ -1785,6 +1831,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=57023,
                     Station2=57025,
                      Distance=distance(35.489648,32.963282,35.496737,32.957234),
@@ -1792,6 +1839,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=57025,
                     Station2=57026,
                      Distance=distance(35.496737,32.957234,35.498349,32.957294),
@@ -1799,6 +1847,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=57026,
                     Station2=57027,
                      Distance=distance(35.498349,32.957294,35.498143,32.960467),
@@ -1806,6 +1855,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=57027,
                     Station2=57028,
                      Distance=distance(35.498143,32.960467,35.498795,32.961903),
@@ -1813,6 +1863,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=1,
                     Station2=565,
 
@@ -1822,6 +1873,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=565,
                     Station2=566,
 
@@ -1833,7 +1885,7 @@ namespace DS
                 {
                     Station1=566,
                     Station2=567,
-
+                    Active=true,
                     Distance=distance(34.995859,31.740288,34.995833,31.738094),
                     Time=new TimeSpan(0,(int)(distance(34.995859,31.740288,34.995833,31.738094)*r.NextDouble()),0),
 
@@ -1842,7 +1894,7 @@ namespace DS
                 {
                     Station1=567,
                     Station2=568,
-
+                    Active=true,
                     Distance=distance(34.995833,31.738094,34.995107,31.73755),
                     Time=new TimeSpan(0,(int)(distance(34.995833,31.738094,34.995107,31.73755)*r.NextDouble()),0),
 
@@ -1851,7 +1903,7 @@ namespace DS
                 {
                     Station1=568,
                     Station2=569,
-
+                    Active=true,
                     Distance=distance(34.995107,31.73755,34.993086,31.738594),
                     Time=new TimeSpan(0,(int)(distance(34.995107,31.73755,34.993086,31.738594)*r.NextDouble()),0),
 
@@ -1860,7 +1912,7 @@ namespace DS
                 {
                     Station1=569,
                     Station2=574,
-
+                    Active=true,
                     Distance=distance(34.993086,31.738594,34.991927,31.733992),
                     Time=new TimeSpan(0,(int)(distance(34.993086,31.738594,34.991927,31.733992)*r.NextDouble()),0),
 
@@ -1869,7 +1921,7 @@ namespace DS
                 {
                     Station1=574,
                     Station2=575,
-
+                    Active=true,
                     Distance=distance(34.991927,31.733992,34.993077,31.731931),
                     Time=new TimeSpan(0,(int)(distance(34.991927,31.733992,34.993077,31.731931)*r.NextDouble()),0),
 
@@ -1878,7 +1930,7 @@ namespace DS
                 {
                     Station1=575,
                     Station2=480,
-
+                    Active=true,
                     Distance=distance(34.993077,31.731931,35.001165,31.706773),
                     Time=new TimeSpan(0,(int)(distance(34.993077,31.731931,35.001165,31.706773)*r.NextDouble()),0),
 
@@ -1887,7 +1939,7 @@ namespace DS
                 {
                     Station1=480,
                     Station2=407,
-
+                    Active=true,
                     Distance=distance(35.001165,31.706773,34.989861,31.715411),
                     Time=new TimeSpan(0,(int)(distance(35.001165,31.706773,34.989861,31.715411)*r.NextDouble()),0),
 
@@ -1896,13 +1948,14 @@ namespace DS
                 {
                     Station1=21024,
                     Station2=20902,
-
+                    Active=true,
                     Distance=distance(34.784808,32.073875,34.780691,32.046386),
                     Time=new TimeSpan(0,(int)(distance(34.784808,32.073875,34.780691,32.046386)*r.NextDouble()),0),
 
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21000,
                     Station2=21005,
                     Distance=distance(34.792974,32.073112,34.774385,32.087073),
@@ -1910,6 +1963,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21005,
                     Station2=21365,
                     Distance=distance(34.774385,32.087073,34.828052,32.091763),
@@ -1917,6 +1971,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21365,
                     Station2=21165,
                      Distance=distance(34.828052,32.091763,34.822193,32.094143),
@@ -1924,6 +1979,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=174,
                     Station2=176,
                     Distance=distance(35.194683,31.791653,35.192721,31.792105),
@@ -1931,6 +1987,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21232,
                     Station2=21365,
                      Distance=distance(34.82271,32.088772,34.828052,32.091763),
@@ -1938,6 +1995,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=21365,
                     Station2=562,
                      Distance=distance(34.828052,32.091763,34.974625,31.746677),
@@ -1945,6 +2003,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=562,
                     Station2=563,
                     Distance=distance(34.980749,31.744038,34.992279,31.736319),
@@ -1952,6 +2011,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=563,
                     Station2=564,
                     Distance=distance(34.980749,31.744038,34.992222,31.742662),
@@ -1959,6 +2019,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=564,
                     Station2=407,
                     Distance=distance(34.992222,31.742662,34.989861,31.715411),
@@ -1966,6 +2027,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=407,
                     Station2=480,
                     Distance=distance(34.989861,31.715411,35.001165,31.715411),
@@ -1973,6 +2035,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=33553,
                     Station2=34063,
                      Distance=distance(34.873652,32.084529,34.865101,32.091798),
@@ -1980,6 +2043,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=34063,
                     Station2=34934,
                     Distance=distance(34.865101,32.091798,34.852768,32.096057),
@@ -1987,6 +2051,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=35311,
                     Station2=36446,
                     Distance=distance(34.86392,32.076699,34.845992,32.046427),
@@ -1994,6 +2059,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36446,
                     Station2=36480,
                     Distance=distance(34.845992,32.046427,34.848083,32.052359),
@@ -2001,6 +2067,7 @@ namespace DS
                 },
                 new AdjacentStetions
                 {
+                    Active=true,
                     Station1=36481,
                     Station2=37136,
                     Distance=distance(34.846952,32.053695,34.838934,32.065048),

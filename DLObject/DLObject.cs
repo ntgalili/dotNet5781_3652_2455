@@ -283,7 +283,7 @@ namespace DL
         /// <param name="adj">Adjacent Stations to add</param>
         public void AddAdjacentStetions(DO.AdjacentStetions adj)
         {
-            if (DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == adj.Station1&& a.Station2 == adj.Station2) != null)//If we already have such Adjacent Stations in the list of Adjacent Stations
+            if (DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == adj.Station1&& a.Station2 == adj.Station2&&adj.Active==true) != null)//If we already have such Adjacent Stations in the list of Adjacent Stations
                 throw new DO.BadLineStationException(adj.Station1,adj.Station2, "Duplicate AdjacentStetions");
             DataSource.ListAdjStations.Add(adj.Clone());//add Adjacent Stations to the collection of all Adjacent Stations
         }
@@ -313,7 +313,8 @@ namespace DL
             toDel = DataSource.ListAdjStations.FirstOrDefault(a => a.Station1 == numS1 && a.Station2 == numS2);//find this Adjacent Stations with this stations
             if (toDel == null)//if the Adjacent Stations is not found
                 throw new DO.BadLineStationException(numS1,numS2, "Not found");
-            DataSource.ListAdjStations.Remove(toDel);//remove this Adjacent Stations
+            toDel.Active = false;
+           // DataSource.ListAdjStations.Remove(toDel);//remove this Adjacent Stations
         }
         /// <summary>
         /// return all Adjacent Stations by this code station
@@ -323,14 +324,52 @@ namespace DL
         public IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code)
         {
             return from item in DataSource.ListAdjStations
-                   where (item.Station1 == code || item.Station2 == code)//if one of the station have this code 
-                   select item; 
+                   where ((item.Station1 == code || item.Station2 == code)&&item.Active==true)//if one of the station have this code 
+                   select item.Clone(); 
         }
 
         #endregion
 
 
+        #region LineTrip
+        public int AddLineTrip(DO.LineTrip lt)
+        {
+            lt.CodeLineTrip = DO.config.LineTripID++;
+            DataSource.ListLineTrips.Add(lt.Clone()); //add line to collection of all lines
+            return lt.CodeLineTrip;
+           
+        }
+        public DO.LineTrip GetLineTrip(int code)
+        {
+           
+            DO.LineTrip ToGet= (from item in DataSource.ListLineTrips
+                   where item.CodeLineTrip == code 
+                   select item).FirstOrDefault();
+            if (ToGet == null)
+                throw new DO.BadLineTripException(code, "did not found");
+            return ToGet.Clone();
 
+        }
+        public void UpDateLineTrip(DO.LineTrip lt)
+        {
+            DO.LineTrip toUpDate = DataSource.ListLineTrips.Find(l => l.CodeLineTrip == lt.CodeLineTrip); //find station with this code in collection of stations
+            if (toUpDate != null) //if the station found
+            {
+                DataSource.ListLineTrips.Remove(toUpDate); //remove this station
+                DataSource.ListLineTrips.Add(lt.Clone()); //add new station (up date) to collection of station
+            }
+            else //if the station are not found
+                throw new DO.BadLineTripException(lt.CodeLineTrip, "Not found");
+        }
+        public void DeleteLineTrip(int code)
+        {
+            DO.LineTrip toDel;
+            toDel = DataSource.ListLineTrips.FirstOrDefault(l => (l.CodeLineTrip == code && l.Active == true)); //find line that have this num line and runing code
+            if (toDel == null) //if the line is not found
+                throw new DO.BadLineCodeException(code, "Not found");
+            toDel.Active = false;
+        }
+        #endregion
 
 
 

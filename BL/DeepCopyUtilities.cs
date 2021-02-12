@@ -25,8 +25,15 @@ namespace BL
                 if (propFrom == null)
                     continue;
                 var value = propFrom.GetValue(from, null);
-                if (value is ValueType || value is string)
-                    propTo.SetValue(to, value);
+
+                try
+                {
+                    if (value is ValueType || value is string)
+                        propTo.SetValue(to, value);
+                }
+                catch(Exception ex)
+                { }
+
             }
         }
 

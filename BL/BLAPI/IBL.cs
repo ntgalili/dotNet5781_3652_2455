@@ -90,7 +90,7 @@ namespace BLAPI
         /// add a line
         /// </summary>
         /// <param name="line">the line to add</param>
-        void AddLine(BO.Line line);
+        void AddLine(BO.Line lineBO, int firstCode, int lastCode);
 
         /// <summary>
         /// up date a line

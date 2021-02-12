@@ -38,8 +38,15 @@ namespace PL
             try
             {
                 st = gridStation.DataContext as BO.Station;
+                if (st.Lattitude > 33.3 || st.Lattitude < 31 || st.Longitude > 35.5 || st.Longitude < 34.3)
+                {
+                    MessageBox.Show("Invalid latitude and longitude", "AddStation", MessageBoxButton.OK);
+                    return;
+                }
+
                 if (st != null && st.Code > 0)
                 {
+                    
                     bl.AddStation(st);
                     MessageBox.Show("succeeded", "AddStation", MessageBoxButton.OK);
                 }

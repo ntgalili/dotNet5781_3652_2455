@@ -131,7 +131,11 @@ namespace BL
             }
             foreach (BO.AdjacentStetions adj in GetALLAdjStetionsbycode(num))//delete the station from all the Adjacent Stetions
             {
-                DeleteAdjacentStations(adj.Station1.Code, adj.Station2.Code);
+                try
+                {
+                    DeleteAdjacentStations(adj.Station1.Code, adj.Station2.Code);
+                }
+                catch(Exception ex) { }
             }
         }
 
@@ -399,35 +403,40 @@ namespace BL
         /// add a line
         /// </summary>
         /// <param name="lineBO">the line to add<</param>
-        public void AddLine(BO.Line lineBO)
+        public void AddLine(BO.Line lineBO,int firstCode,int lastCode)
         {
             DO.Line lineDO = new DO.Line();
             lineBO.CopyPropertiesTo(lineDO);
+            BO.LineStation firstStation =new BO.LineStation();
+            BO.LineStation LastStation = new BO.LineStation();
             int lineCode;
-            int index = 0;
+
             try
             {
+                GetStation(firstCode).CopyPropertiesTo(firstStation);
+                GetStation(lastCode).CopyPropertiesTo(LastStation);
+                lineDO.FirstStation = firstCode;
+                lineDO.LastStation = lastCode;
                 lineCode = dl.AddLine(lineDO);// add to the DL layer and get it's code
             }
             catch (DO.BadLineCodeException ex)
             {
                 throw new BO.BadLineCodeException("ERROR", ex);
             }
-            foreach (BO.LineStation ls in lineBO.MyStations)//add the line's stations
-            {
-                index++;
-                ls.LineCode = lineCode;
-                ls.LineStationIndex = index;
-                AddLineStation(ls);
-            }
-            for (int i = 1; i < index - 1; i++)//add the stations to the Adjacent Stetions 
-            {
+
+            firstStation.LineCode = lineCode;
+            firstStation.LineStationIndex = 1;
+            AddLineStation(firstStation);
+            LastStation.LineCode = lineCode;
+            LastStation.LineStationIndex = 2;
+            AddLineStation(LastStation);
+
                 try
                 {
-                    AddAdjacentStetions((lineBO.MyStations.ToList())[i], (lineBO.MyStations.ToList())[i + 1]);
+                    AddAdjacentStetions(firstStation, LastStation);
                 }
                 catch (BO.BadAdjacentStetionsException ex) { }
-            }
+            
         }
 
         /// <summary>
@@ -578,19 +587,22 @@ namespace BL
         public void AddAdjacentStetions(BO.LineStation s1, BO.LineStation s2)
         {
             BO.AdjacentStetions adjBO=new BO.AdjacentStetions();
+            adjBO.Station1=(s1.CopyPropertiesToNew(typeof(BO.Station))as BO.Station);
+            adjBO.Station2 =(s2.CopyPropertiesToNew(typeof(BO.Station)) as BO.Station);
             adjBO.Distance = distance(s1.Lattitude,s2.Lattitude,s1.Longitude,s2.Longitude);//Calculating the distance
             adjBO.Time = new TimeSpan(0, (int)(adjBO.Distance * r.NextDouble()), 0);//Calculating the traveling time
             DO.AdjacentStetions adjDO=new DO.AdjacentStetions();
             adjBO.CopyPropertiesTo(adjDO);
              adjDO.Station1 = adjBO.Station1.Code;
             adjDO.Station2 = adjBO.Station2.Code;
+            adjDO.Active = true;
             try
             {
                 dl.AddAdjacentStetions(adjDO);//add the Adjacent Stetions by DL layer  
             }
             catch (DO.BadAdjacentStetionsException ex)//if there are same Adjacent Stetions
             {
-                //throw new BO.BadAdjacentStetionsException(s1.Code, s2.Code, "Duplicate Adjacent Stetions");
+                //throw new BO.BadAdjacentStetionsException(s1.Code, s2.Code, "Duplicate Adjacent Stations");
             }
         }
 

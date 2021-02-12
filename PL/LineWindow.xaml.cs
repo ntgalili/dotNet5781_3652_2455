@@ -32,6 +32,24 @@ namespace PL
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (curLine!=null&&curLine.Code != 0)
+                {
+                    MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק  קו זה?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    if (res == MessageBoxResult.Yes)
+                    {
+                        bl.DeleteLine(curLine.LineNum, curLine.Code);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Not Seccssed", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            RefreshLine();
+            curLine = new BO.Line();
             //BO.LineStation ls = (sender as Button).DataContext as BO.LineStation;
             //try
             //{
@@ -50,14 +68,17 @@ namespace PL
             try
             {
                 MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק תחנה זו?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                if(curLine.MyStations.Count()<=2)
+                if (curLine.MyStations.Count() <= 2)
                 {
                     MessageBox.Show("אין אפשרות למחוק - נשארו רק 2 תחנות", " Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                if (res == MessageBoxResult.Yes)
+                else
                 {
-                    bl.deleteStationFromLine(ls.Code, curLine);
+                    if (res == MessageBoxResult.Yes)
+                    {
+                        bl.deleteStationFromLine(ls.Code, curLine);
+                    }
                 }
             }
             catch (Exception ex)
@@ -85,7 +106,7 @@ namespace PL
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddLineWindow win = new AddLineWindow(bl);
+            AddLineWindow win = new AddLineWindow(bl, RefreshLine);
             win.Show();
         }
 
@@ -129,6 +150,13 @@ namespace PL
             e.Handled = true;
             MessageBox.Show("only numbers are allowed", "Account", MessageBoxButton.OK, MessageBoxImage.Error);
         
+        }
+
+        void RefreshLine()
+        {
+            cbLine.DataContext = bl.GetAllActiveLines();
+            curLine = new BO.Line();
+            lineStationDataGrid.DataContext = null;
         }
     }
 }
