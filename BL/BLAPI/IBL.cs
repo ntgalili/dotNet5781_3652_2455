@@ -197,5 +197,21 @@ namespace BLAPI
 
 
         #endregion
+
+
+
+        #region LineTrip
+
+       // IEnumerable<BO.LineTrip> GetAllLineTrips();
+
+        BO.LineTrip GetLineTrip(int codelp);
+
+        void AddLineTrip(BO.LineTrip lt);
+
+        void UpdateLineTrip(BO.LineTrip lt);
+
+        void DeleteLineTrip(int codelt);
+        #endregion
+
     }
 }

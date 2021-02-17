@@ -350,7 +350,7 @@ namespace DL
             return ToGet.Clone();
 
         }
-        public void UpDateLineTrip(DO.LineTrip lt)
+        public void UpdateLineTrip(DO.LineTrip lt)
         {
             DO.LineTrip toUpDate = DataSource.ListLineTrips.Find(l => l.CodeLineTrip == lt.CodeLineTrip); //find station with this code in collection of stations
             if (toUpDate != null) //if the station found

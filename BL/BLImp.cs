@@ -651,5 +651,78 @@ namespace BL
         }
         #endregion
 
+
+
+
+
+        #region LineTrip
+
+        /// public IEnumerable<BO.LineTrip> GetAllLineTrips();
+        public BO.LineTrip LineTripDoBoAdapter(DO.LineTrip LtDO)
+        {
+            BO.LineTrip LtBO = new BO.LineTrip();
+            LtDO.CopyPropertiesTo(LtBO);
+            //LineDO.CopyPropertiesTo(LineBO.)
+            return LtBO;
+        }
+
+        public BO.LineTrip GetLineTrip(int codelp)
+        {
+            DO.LineTrip LtDO;
+            try
+            {
+                LtDO = dl.GetLineTrip(codelp);//get the line from the DL layer
+            }
+            catch (DO.BadLineTripException ex)//if the line does not found
+            {
+                throw new BO.BadLineTripException(codelp, "Not Found");
+            }
+            return LineTripDoBoAdapter(LtDO);
+        }
+
+        public void AddLineTrip(BO.LineTrip ltBO)
+        {
+            DO.LineTrip ltDO = new DO.LineTrip();
+            ltBO.CopyPropertiesTo(ltDO);
+           
+            try
+            {
+
+                dl.AddLineTrip(ltDO);// add to the DL layer and get it's code
+            }
+            catch (DO.BadLineTripException ex)
+            {
+                throw new BO.BadLineTripException("Existing lineTrip",ex);
+            }
+
+        }
+
+        public void UpdateLineTrip(BO.LineTrip ltBO)
+        {
+            DO.LineTrip ltDO = new DO.LineTrip();
+            ltBO.CopyPropertiesTo(ltDO);
+            try
+            {
+                dl.UpdateLineTrip(ltDO);//up date the station by the DL layer
+            }
+            catch (DO.BadLineTripException ex)// if the station does not found
+            {
+                throw new BO.BadLineStationException(ltBO.CodeLineTrip, "Line Trip does not exist");
+            }
+        }
+
+        public void DeleteLineTrip(int codelt)
+        {
+            try
+            {
+                dl.DeleteStation(codelt);//delete from the DL layer
+            }
+            catch (DO.BadLineTripException ex)//if the station does not found
+            {
+                throw new BO.BadLineTripException("Line Trip does not exist", ex);
+
+            }
+        }
+        #endregion
     }
 }

@@ -461,7 +461,7 @@ namespace DL
 
         }
 
-        public void UpDateLineTrip(DO.LineTrip lt)
+        public void UpdateLineTrip(DO.LineTrip lt)
         {
             XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
 
