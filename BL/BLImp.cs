@@ -665,7 +665,19 @@ namespace BL
             //LineDO.CopyPropertiesTo(LineBO.)
             return LtBO;
         }
-
+        public IEnumerable<BO.LineTrip> GetAllLineTripByCode(int code)
+        {
+            try
+            {
+                return from item in dl.GetAllLineTripByCode(code)
+                            orderby item.StartAtTime
+                            select LineTripDoBoAdapter(item);
+            }
+            catch(DO.BadLineCodeException ex)
+            {
+                throw new BO.BadLineCodeException(ex.Message,ex);
+            }
+        }
         public BO.LineTrip GetLineTrip(int codelp)
         {
             DO.LineTrip LtDO;
@@ -715,7 +727,7 @@ namespace BL
         {
             try
             {
-                dl.DeleteStation(codelt);//delete from the DL layer
+                dl.DeleteLineTrip(codelt);//delete from the DL layer
             }
             catch (DO.BadLineTripException ex)//if the station does not found
             {

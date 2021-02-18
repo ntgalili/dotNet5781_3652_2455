@@ -33,9 +33,6 @@ namespace DS
 
 
 
-
-
-
         public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
         {
             try
@@ -2074,7 +2071,82 @@ namespace DS
                     Time=new TimeSpan(0,(int)(distance(34.846952,32.053695,34.838934,32.065048)*r.NextDouble()),0),
                 },
             };
-         
+
+            ListLineTrips = new List<LineTrip>
+            {
+                 new LineTrip
+                 {
+                   CodeLineTrip=1,
+                   CodeLine=1,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=2,
+                   CodeLine=2,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=3,
+                   CodeLine=3,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=4,
+                   CodeLine=4,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=5,
+                   CodeLine=5,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=6,
+                   CodeLine=6,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=7,
+                   CodeLine=7,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=8,
+                   CodeLine=8,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=9,
+                   CodeLine=9,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 },
+                 new LineTrip
+                 {
+                   CodeLineTrip=10,
+                   CodeLine=10,
+                   StartAtTime= new TimeSpan(9,0,0),
+                   Active=true,
+                 }
+            };
+
+
         }
         
     }

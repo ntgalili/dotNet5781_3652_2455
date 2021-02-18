@@ -205,7 +205,7 @@ namespace BLAPI
        // IEnumerable<BO.LineTrip> GetAllLineTrips();
 
         BO.LineTrip GetLineTrip(int codelp);
-
+        IEnumerable<BO.LineTrip> GetAllLineTripByCode(int code);
         void AddLineTrip(BO.LineTrip lt);
 
         void UpdateLineTrip(BO.LineTrip lt);

@@ -1,0 +1,35 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.ScheduleWindow"
+        mc:Ignorable="d"
+        Title="ScheduleWindow" Height="466.8" Width="782">
+    <Grid Margin="0,0,-6.8,-4">
+        <Label Content="Select a Line:" HorizontalAlignment="Left" Margin="37,60,0,0" VerticalAlignment="Top" Height="30" Width="110"/>
+        <ComboBox x:Name="ComboBoxLine" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="158,60,0,0" VerticalAlignment="Top" Width="193" Height="30" SelectionChanged="ComboBox_SelectionChanged"/>
+        <DataGrid x:Name="lineTripDataGrid" ItemsSource="{Binding}" IsReadOnly="true" AutoGenerateColumns="False" EnableRowVirtualization="True"  Margin="401,113,186.8,63.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="startAtTimeColumn" Binding="{Binding StartAtTime}" Header="Start At Time" Width="SizeToHeader"/>
+                <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button x:Name="DeleteTimeButton" Content="Delete" Click="DeleteTimeButton_Click" ToolTip="Delete a Time of this Line Trip"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Area" HorizontalAlignment="Left" Margin="40,154,0,0" VerticalAlignment="Top"/>
+        <Label Content="First Station" HorizontalAlignment="Left" Margin="32,234,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Station" HorizontalAlignment="Left" Margin="34,298,0,0" VerticalAlignment="Top"/>
+        <Label Name="AreaLable" HorizontalAlignment="Left" Margin="121,156,0,0" VerticalAlignment="Top" Height="24" Width="150"/>
+        <Label Name="FirstStationLable" HorizontalAlignment="Left" Margin="117,234,0,0" VerticalAlignment="Top" Height="30" Width="251"/>
+        <Label Name="LastStationLable" HorizontalAlignment="Left" Margin="117,300,0,0" VerticalAlignment="Top" Height="36" Width="251"/>
+        <Button Content="Add Time" HorizontalAlignment="Left" Margin="645,245,0,0" VerticalAlignment="Top" Width="75" Click="AddTimeButton_Click"/>
+        <Label Content="Enter Time: 00:00:00" HorizontalAlignment="Left" Margin="630,146,0,0" VerticalAlignment="Top" Height="34" Width="120"/>
+        <TextBox Name="TimeTextBox" HorizontalAlignment="Left" Height="23" Margin="622,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

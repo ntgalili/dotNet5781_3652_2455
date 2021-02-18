@@ -11,13 +11,8 @@ namespace DO
         public int CodeLineTrip { get; set; }
         public int CodeLine { get; set; }
         public TimeSpan StartAtTime { get; set; }
-   //     public TimeSpan FinishAtTime { get; set; }
-   //     public TimeSpan Frequency { get; set; }
         public bool Active { get; set; }
-        public override string ToString()
-        {
-            return this.ToStringProperty();
-        }
+        public override string ToString()  {   return this.ToStringProperty(); }
 
     }
 }

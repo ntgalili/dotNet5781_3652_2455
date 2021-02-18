@@ -35,7 +35,6 @@ namespace DL
 
         #endregion
 
-
         #region AdjacentStations
         /// <summary>
         /// return Adjacent Stations
@@ -110,8 +109,6 @@ namespace DL
         }
 
         #endregion
-
-
 
         #region LineStation
         /// <summary>
@@ -196,8 +193,6 @@ namespace DL
                 throw new DO.BadLineStationException(codeStation, "Not found in " + lineCode);
         }
         #endregion
-
-
 
         #region Line
         /// <summary>
@@ -293,9 +288,7 @@ namespace DL
         {
             XElement stationRoot = XMLTools.LoadListFromXMLElement(ListStationsPath);
             return (from station in stationRoot.Elements()
-                   select fromXmlToStation(station)
-                   ); 
-  
+                   select fromXmlToStation(station)); 
         }
         /// <summary>
         /// return all active stations
@@ -415,17 +408,19 @@ namespace DL
         }
         #endregion
 
-
-
-
-
-
         #region LineTrip
+        public IEnumerable<DO.LineTrip> GetAllLineTripByCode(int code)
+        {
+            XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
+            IEnumerable<DO.LineTrip> toGet = (from lineTrip in TripRoot.Elements()
+                    where int.Parse(lineTrip.Element("CodeLine").Value) == code
+                    select fromXmlToLineTrip(lineTrip));
+            if (toGet.Count() == 0)
+                throw new DO.BadLineCodeException(code);
+            return toGet;
+        }
         public int AddLineTrip(DO.LineTrip lt)
         {
-
-
-
             XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
             lt.CodeLineTrip = DO.config.LineTripID++;
             XElement find = (from l in TripRoot.Elements()

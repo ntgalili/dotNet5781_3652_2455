@@ -174,6 +174,7 @@ namespace DLAPI
         #region LineTrip
         int AddLineTrip(DO.LineTrip lt);
         DO.LineTrip GetLineTrip(int code);
+        IEnumerable<DO.LineTrip> GetAllLineTripByCode(int code);
         void UpdateLineTrip(DO.LineTrip lt);
         void DeleteLineTrip(int code);
         #endregion

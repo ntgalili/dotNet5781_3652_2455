@@ -350,6 +350,15 @@ namespace DL
             return ToGet.Clone();
 
         }
+        public IEnumerable<DO.LineTrip> GetAllLineTripByCode(int code)
+        {
+            IEnumerable<DO.LineTrip> toGet = from item in DataSource.ListLineTrips
+                                 where item.CodeLine== code && item.Active == true
+                                 select item;
+            if (toGet.Count() == 0)
+                throw new DO.BadLineCodeException(code,"not found line trip for this line");
+            return toGet;
+        }
         public void UpdateLineTrip(DO.LineTrip lt)
         {
             DO.LineTrip toUpDate = DataSource.ListLineTrips.Find(l => l.CodeLineTrip == lt.CodeLineTrip); //find station with this code in collection of stations

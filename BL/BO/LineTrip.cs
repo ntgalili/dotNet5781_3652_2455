@@ -12,6 +12,6 @@ namespace BO
         public int CodeLine { get; set; }
         public TimeSpan StartAtTime { get; set; }
         public override string ToString() => this.ToStringProperty();
-
+        public bool Active { get; set; } 
     }
 }
