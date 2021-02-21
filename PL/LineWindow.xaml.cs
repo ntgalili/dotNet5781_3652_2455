@@ -85,7 +85,7 @@ namespace PL
             {
                 MessageBox.Show("Not Seccssed"," Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            curLine = bl.GetLine(curLine.LineNum, curLine.Code);
+            curLine = bl.GetLine(curLine.Code);
             RefreshAllLineStationsGrid();
         }
         void RefreshAllLineStationsGrid()

@@ -368,6 +368,21 @@ namespace BL
             return LineBO;
         }
 
+
+        public TimeSpan TimeCalculation(BO.Station st, BO.Line line)
+        {
+            TimeSpan travelTime = new TimeSpan(0,0,0);
+            for (int i=0; i < line.MyStations.Count(); i++)
+            {
+                if (line.MyStations.ToList()[i].Code == st.Code)
+                {
+                    return travelTime;
+                }
+                travelTime += GetAdjacentStetions(line.MyStations.ToList()[i].Code, line.MyStations.ToList()[i + 1].Code).Time;
+            }
+            throw new BO.BadStationCodeException(st.Code,"The station is not in this line");
+        }
+
         /// <summary>
         /// return all the lines
         /// </summary>
@@ -385,12 +400,12 @@ namespace BL
         /// <param name="numLine">the line number</param>
         /// <param name="codeLine">the line code</param>
         /// <returns>the line</returns>
-        public BO.Line GetLine(int numLine, int codeLine)
+        public BO.Line GetLine(int codeLine)
         {
             DO.Line LineDO;
             try
             {
-                LineDO = dl.GetLine(numLine, codeLine);//get the line from the DL layer
+                LineDO = dl.GetLine(codeLine);//get the line from the DL layer
             }
             catch (DO.BadLineCodeException ex)//if the line does not found
             {
@@ -652,7 +667,33 @@ namespace BL
         #endregion
 
 
-
+        #region LineTiming
+        public IEnumerable<BO.LineTiming> GetAllTime(TimeSpan now, BO.Station s)
+        {
+            List<BO.LineTiming> lineTimings = new List<BO.LineTiming>();
+            TimeSpan time;
+            BO.Line line;
+            foreach (int l in s.MyLines)
+            {
+                line = GetLine(l);
+                time = TimeCalculation(s,line);
+                foreach (BO.LineTrip lineTrip in GetAllLineTripByCode(l))
+                {
+                    if (lineTrip.StartAtTime < now && lineTrip.StartAtTime + time >= now)
+                    {
+                        BO.LineTiming lineTiming = new BO.LineTiming();
+                        lineTiming.TripStart = lineTrip.StartAtTime;
+                        lineTiming.LineCode = line.Code;
+                        lineTiming.LineNum = line.LineNum;
+                        lineTiming.LastStation = line.MyStations.ToList()[line.MyStations.Count() - 1].Name;
+                        lineTiming.ExpectedTimeTillArrive = lineTrip.StartAtTime + time - now;
+                        lineTimings.Add(lineTiming);
+                    }
+                }
+            }
+            return lineTimings;
+        }
+        #endregion
 
 
         #region LineTrip

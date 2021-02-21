@@ -9,7 +9,7 @@
         Title="StationWindow" Height="450" Width="800">
 
     <Grid>
-        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="458,296,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="AddButton_Click"/>
+        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="457,358,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="AddButton_Click"/>
         <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="417,82,0,0" VerticalAlignment="Top" Height="201" Width="367">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -42,7 +42,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <CheckBox Content="Only Active Sations" HorizontalAlignment="Left" Margin="48,40,0,0" VerticalAlignment="Top" Height="33" Width="238" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
-        <Button Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="543,358,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="RefreshButton_Click"/>
-        <Button Name="UpDateButton" Content="UpDate" HorizontalAlignment="Left" Margin="627,295,0,0" VerticalAlignment="Top" Width="119" Height="35" Click="UpDateButton_Click"/>
+        <Button Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="617,288,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="RefreshButton_Click"/>
+        <Button Name="UpDateButton" Content="UpDate" HorizontalAlignment="Left" Margin="617,357,0,0" VerticalAlignment="Top" Width="119" Height="35" Click="UpDateButton_Click"/>
+        <Button Name="ElectronicButton" Content="Electronic Board" HorizontalAlignment="Left" Margin="457,288,0,0" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.2,1.25" Height="34" Click="ElectronicButton_Click"/>
     </Grid>
 </Window>

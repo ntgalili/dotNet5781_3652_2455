@@ -13,6 +13,8 @@ namespace BO
         public int Code;
         public BadStationCodeException(string message, Exception innerException) :
             base(message, innerException) => Code = ((DO.BadStationCodeException)innerException).Code;
+        public BadStationCodeException(int code, string message):
+             base(message) => Code = code;
         public override string ToString() => base.ToString() + $", bad station code: {Code}";
     }
     public class BadLineCodeException : Exception

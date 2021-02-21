@@ -84,7 +84,7 @@ namespace BLAPI
         /// <param name="numLine">the line number</param>
         /// <param name="codeLine">the line code</param>
         /// <returns>the line</returns>
-        BO.Line GetLine(int numLine, int codeLine);
+        BO.Line GetLine(int codeLine);
 
         /// <summary>
         /// add a line
@@ -104,6 +104,9 @@ namespace BLAPI
         /// <param name="numLine">the line number</param>
         /// <param name="codeLine">the line code</param>
         void DeleteLine(int numLine, int codeLine);
+
+        TimeSpan TimeCalculation(BO.Station st, BO.Line line);
+
         #endregion
 
 
@@ -211,6 +214,11 @@ namespace BLAPI
         void UpdateLineTrip(BO.LineTrip lt);
 
         void DeleteLineTrip(int codelt);
+        #endregion
+
+
+        #region LineTiming
+        IEnumerable<BO.LineTiming> GetAllTime(TimeSpan now, BO.Station s);
         #endregion
 
     }

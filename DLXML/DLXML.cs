@@ -222,14 +222,14 @@ namespace DL
         /// <param name="num">num of line</param>
         /// <param name="code">runing code of line</param>
         /// <returns>a line that have this code and num line</returns>
-        public DO.Line GetLine(int num, int code)
+        public DO.Line GetLine(int code)
         {
             List<Line> ListLines = XMLTools.LoadListFromXMLSerializer<Line>(ListLinesPath);
-            DO.Line toGet = ListLines.Find(l => (l.LineNum == num && l.Code == code)); //find this line
+            DO.Line toGet = ListLines.Find(l => (l.Code == code)); //find this line
             if (toGet != null) //if the line is found
                 return toGet;
             else //if the line is not found 
-                throw new DO.BadLineCodeException(num, "Not found");
+                throw new DO.BadLineCodeException(code, "Not found");
         }
         /// <summary>
         /// add line

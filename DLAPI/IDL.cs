@@ -29,7 +29,7 @@ namespace DLAPI
         /// <param name="num">the number of lines</param>
         /// <param name="code">the runing code line</param>
         /// <returns>a line with thus code and num line</returns>
-        DO.Line GetLine(int num, int code);
+        DO.Line GetLine(int code);
 
         /// <summary>
         /// add line 

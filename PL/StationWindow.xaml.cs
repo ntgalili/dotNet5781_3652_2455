@@ -107,5 +107,12 @@ namespace PL
             gridStation.DataContext = new BO.Station();
             stationDataGrid.DataContext = bl.GetAllStations();
         }
+
+
+        private void ElectronicButton_Click(object sender, RoutedEventArgs e)
+        {
+            ElectronicBoardWindow win = new ElectronicBoardWindow(bl, sender as BO.Station);
+            win.ShowDialog();
+        }
     }
 }
