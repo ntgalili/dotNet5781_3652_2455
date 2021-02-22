@@ -22,6 +22,7 @@ namespace PL
     public partial class MainWindow : Window
     {
         IBL bl = BLFactory.GetBL();
+        BO.User myUser;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,14 +30,36 @@ namespace PL
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            AdminWindow win = new AdminWindow(bl);
-            win.Show();
+            try
+            {
+                myUser = gridUser.DataContext as BO.User;
+                if (myUser != null)
+                {
+                    BO.User user = bl.GetUser(myUser.UserName, myUser.Password);
+                    if (user.Admin == true)
+                    {
+                        AdminWindow win = new AdminWindow(bl, true);
+                        win.Show();
+                    }
+                    else
+                    {
+                        AdminWindow win = new AdminWindow(bl, false);
+                        win.Show();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("User not found, click NEW to create a new account!", "Not Seccssed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PasswordUserWindow win = new PasswordUserWindow();
-            win.ShowDialog();
+
+            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // userViewSource.Source = [generic data source]
         }
     }
 }

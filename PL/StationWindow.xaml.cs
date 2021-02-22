@@ -23,14 +23,21 @@ namespace PL
     {
         IBL bl;
         BO.Station st;
-        public StationWindow(IBL _bl)
+        bool isAdmin;
+        public StationWindow(IBL _bl,bool _isAdmin)
         {
             InitializeComponent();
             bl = _bl;
+            isAdmin = _isAdmin;
             stationDataGrid.DataContext = bl.GetAllStations();
             gridStation.DataContext = new BO.Station();
             includeComboBox.ItemsSource = Enum.GetValues(typeof(BO.StationInclude));
             UpDateButton.IsEnabled = false;
+            if(isAdmin==false)
+            {
+                AddButton.IsEnabled = false;
+                UpDateButton.IsEnabled = false;
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +75,11 @@ namespace PL
             longitudeTextBox.IsEnabled = true;
             AddButton.IsEnabled = true;
             UpDateButton.IsEnabled = false;
+            if (isAdmin == false)
+            {
+                AddButton.IsEnabled = false;
+                UpDateButton.IsEnabled = false;
+            }
         }
 
         private void stationDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,6 +91,11 @@ namespace PL
             longitudeTextBox.IsEnabled = false;
             AddButton.IsEnabled = false;
             UpDateButton.IsEnabled = true;
+            if (isAdmin == false)
+            {
+                AddButton.IsEnabled = false;
+                UpDateButton.IsEnabled = false;
+            }
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

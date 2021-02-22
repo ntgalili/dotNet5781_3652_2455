@@ -32,6 +32,7 @@ namespace DL
         string ListLineStationsPath = @"ListLineStationsXml.xml"; //XMLSerializer
         string ListAdjStationsPath = @"ListAdjStationsXml.xml"; //XMLSerializer
         string ListLineTripsPath = @"ListLineTripsXml.xml";//Xelement
+        string ListUsersPath = @"ListUsersXml.xml";
 
         #endregion
 
@@ -276,7 +277,18 @@ namespace DL
             toDel.Active = false;
             XMLTools.SaveListToXMLSerializer(ListLines, ListLinesPath);
         }
-
+        public IEnumerable<DO.Line> GetAllLineByArea(DO.Areas area)
+        {
+            List<Line> ListLines = XMLTools.LoadListFromXMLSerializer<Line>(ListLinesPath);
+            if (area != DO.Areas.General)
+            {
+                return from Line in ListLines
+                       where Line.Active == true && Line.Area == area //if this line is active
+                       select Line;
+            }
+            else
+                return GetAllActiveLines();
+        }
         #endregion
 
         #region Station
@@ -506,6 +518,71 @@ namespace DL
                 Active = bool.Parse(element.Element("Active").Value),
                 StartAtTime = XmlConvert.ToTimeSpan(element.Element("ToTimeSpan").Value),
             };
+        }
+        #endregion
+
+
+
+
+        #region User
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        public DO.User GetUser(string name, string code)
+        {
+            List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
+            DO.User toGet = ListUsers.Find(s => s.UserName == name && s.Password == code && s.Active == true); //fine station thet havve this code
+            if (toGet != null) //if the station found - cloning the station 
+                return toGet;
+            else
+                throw new DO.BadUserException(name, "Not found"); //if the station not found
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        public void DeleteUser(string name, string password)
+        {
+            List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
+            DO.User toDel;
+            toDel = ListUsers.FirstOrDefault(s => s.UserName == name && s.Password == password); //find station with thus code
+            if (toDel == null) //if station not found
+                throw new DO.BadUserException(name, "Not found");
+            if (toDel.Active == false)//if this station is not active
+                throw new DO.BadUserException(name, "the user is already canceled");
+            toDel.Active = false;
+            XMLTools.SaveListToXMLSerializer(ListUsers, ListUsersPath);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        public void UpdateUser(DO.User user)
+        {
+            List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
+            DO.User toUpDate = ListUsers.Find(s => s.UserName == user.UserName && s.Password == user.Password); //find station with this code in collection of stations
+            if (toUpDate != null) //if the station found
+            {
+                ListUsers.Remove(toUpDate); //remove this station
+                ListUsers.Add(user); //add new station (up date) to collection of station
+            }
+            else //if the station are not found
+                throw new DO.BadUserException(user.UserName, "Not found");
+            XMLTools.SaveListToXMLSerializer(ListUsers, ListUsersPath);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        public void AddUser(DO.User user)
+        {
+            List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
+            if (ListUsers.FirstOrDefault(s => s.UserName == user.UserName) != null) //check if we have station with this code in collection of station
+                throw new DO.BadUserException(user.UserName, "Duplicate User Name");
+            ListUsers.Add(user); //add this station of collection of stations
+            XMLTools.SaveListToXMLSerializer(ListUsers, ListUsersPath);
         }
         #endregion
     }

@@ -476,7 +476,13 @@ namespace BL
             }
 
         }
-
+        public IEnumerable<BO.Line> GetAllLineByArea(BO.Areas area)
+        {
+            DO.Areas a =(DO.Areas) area;
+            return from item in dl.GetAllLineByArea(a)
+                   orderby item.Area
+                   select LineDoBoAdapter(item);
+        }
         /// <summary>
         /// delete a line  by line number and code
         /// </summary>
@@ -774,6 +780,90 @@ namespace BL
             }
         }
 
+        #endregion
+
+
+
+        #region User
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userDO"></param>
+        /// <returns></returns>
+        public BO.User UserDoBoAdapter(DO.User userDO)
+        {
+            BO.User userBO = new BO.User();
+            userDO.CopyPropertiesTo(userBO);
+            return userBO;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        public BO.User GetUser(string name,string code)
+        {
+            DO.User userDO;
+            try
+            {
+                userDO = dl.GetUser(name,code);//get the station from the DL layer
+            }
+            catch (DO.BadUserException ex)//if the station does not found
+            {
+                throw new BO.BadUserException(name, "User Name does not exist");
+            }
+            return UserDoBoAdapter(userDO);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        public void DeleteUser(string name, string password)
+        {
+            try
+            {
+                dl.DeleteUser(name,password);//delete from the DL layer
+            }
+            catch (DO.BadUserException ex)//if the station does not found
+            {
+                throw new BO.BadUserException(name, "User Name does not exist");
+
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        public void UpdateUser(BO.User userBO)
+        {
+            DO.User userDO = new DO.User();
+            userBO.CopyPropertiesTo(userDO);
+            try
+            {
+                dl.UpdateUser(userDO);//up date the station by sending to the DL layer 
+            }
+            catch (DO.BadUserException ex)
+            {
+                throw new BO.BadUserException(userBO.UserName, "User Name does not exist");
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        public void AddUser(BO.User userBO)
+        {
+            DO.User userDO = new DO.User();
+            userBO.CopyPropertiesTo(userDO);
+            try
+            {
+                dl.AddUser(userDO);//add the station by sending to the DL station
+            }
+            catch (DO.BadUserException ex)//when there is aready a station with the same code
+            {
+                throw new BO.BadUserException(userBO.UserName, "Duplicate User Name");
+            }
+        }
         #endregion
     }
 }

@@ -84,5 +84,13 @@ namespace DO
         public BadLineTripException(int c, string message) : base(message) { code = c; }
         public override string ToString() => base.ToString();
     }
+    public class BadUserException : Exception
+    {
+        public string name;
+        public BadUserException(string n) : base() => name = n;
+        public BadUserException(string n, string message) :
+            base(message) => name = n;
+        public override string ToString() => base.ToString()+ name;
+    }
 }
 

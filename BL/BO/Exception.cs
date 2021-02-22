@@ -63,7 +63,6 @@ namespace BO
 
     }
 
-
     public class BadLineTripException : Exception
     {
         int code;
@@ -71,6 +70,15 @@ namespace BO
         public BadLineTripException(string message, Exception innerException) :
           base(message, innerException){ }
         public override string ToString() => base.ToString();
+    }
+
+    public class BadUserException : Exception
+    {
+        public string name;
+        public BadUserException(string n) : base() => name = n;
+        public BadUserException(string n, string message) :
+            base(message) => name = n;
+        public override string ToString() => base.ToString() + name;
     }
 }
 

@@ -23,12 +23,36 @@ namespace PL
     {
         IBL bl;
         BO.Line curLine;
-        public LineWindow(IBL _bl)
+        public LineWindow(IBL _bl,bool isAdmin)
         {
             InitializeComponent();
             bl = _bl;
             cbLine.DataContext = bl.GetAllActiveLines();
             StationsCB.DataContext = bl.GetAllStations();
+            AreaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
+            areaTextBox.IsEnabled = false;
+            lineNumTextBox.IsEnabled = false;
+            if (isAdmin == true)
+            {
+                labelOfStation.IsEnabled = true;
+                StationsCB.IsEnabled = true;
+                indexLable.IsEnabled = true;
+                indexTextBox.IsEnabled = true;
+                AddStationButton.IsEnabled = true;
+                AddLineButton.IsEnabled = true;
+                DeleteLineButton.IsEnabled = true;
+            }
+            else
+            {
+                labelOfStation.IsEnabled = false;
+                StationsCB.IsEnabled = false;
+                indexLable.IsEnabled = false;
+                indexTextBox.IsEnabled = false;
+                AddStationButton.IsEnabled = false;
+                AddLineButton.IsEnabled = false;
+                DeleteLineButton.IsEnabled = false;
+            }
+
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -50,16 +74,6 @@ namespace PL
             }
             RefreshLine();
             curLine = new BO.Line();
-            //BO.LineStation ls = (sender as Button).DataContext as BO.LineStation;
-            //try
-            //{
-            //    line.MyStations.ToList().Remove(ls);
-            //    bl.UpdateLine(line);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Not Seccssed", ex.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
         }
 
         private void DeleteStationButton_Click(object sender, RoutedEventArgs e)
@@ -99,11 +113,14 @@ namespace PL
 
             if (curLine != null)
             {
-               
                 RefreshAllLineStationsGrid(); 
             }
         }
-
+        private void AreaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lineStationDataGrid.DataContext = null;
+            cbLine.DataContext = bl.GetAllLineByArea((BO.Areas)AreaComboBox.SelectedItem);
+        }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddLineWindow win = new AddLineWindow(bl, RefreshLine);

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.LineWindow"
         mc:Ignorable="d"
-        Title="LineWindow" Height="435.6" Width="772.4">
+        Title="LineWindow" Height="562" Width="933.8">
 
     <!--<Grid>
 
@@ -26,13 +26,13 @@
             <RowDefinition Height="31*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Select Student:" Grid.Row="0" HorizontalAlignment="Left" Margin="23,15,0,0" VerticalAlignment="Top" Height="25" Width="90"/>
+        <Label Content="Select Line" Grid.Row="0" HorizontalAlignment="Left" Margin="254,15,0,0" VerticalAlignment="Top" Height="25" Width="90"/>
         <ComboBox x:Name="cbLine" HorizontalAlignment="Left" Text="" VerticalAlignment="Top"
-                  Grid.Row="0" Height="25" Margin="121,15,0,0" Width="123"
+                  Grid.Row="0" Height="25" Margin="333,15,0,0" Width="123"
                   ItemsSource="{Binding}" 
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Top" SelectionChanged="cbLine_SelectionChanged"/>
-        <Label Content="List of Courses for selected Student:" HorizontalAlignment="Left" Margin="162,62,0,0" VerticalAlignment="Top" Height="28" Width="217"/>
-        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="288,15,0,0" VerticalAlignment="Top" Height="30" Width="410">
+        <Label Content="List of Stations for selected Line:" HorizontalAlignment="Left" Margin="171,95,0,0" VerticalAlignment="Top" Height="28" Width="217"/>
+        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="487,17,0,0" VerticalAlignment="Top" Height="30" Width="410">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="50"/>
                 <ColumnDefinition Width="Auto" MinWidth="140"/>
@@ -45,7 +45,7 @@
             <Label Content="Line Num:" Grid.Column="2" HorizontalAlignment="Left" Margin="8.4,1,0,6" VerticalAlignment="Center" Height="26" Width="64"/>
             <TextBox x:Name="lineNumTextBox" Grid.Column="3" Height="22" Margin="5.4,0,10.8,3" Text="{Binding LineNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="26,96,190,23.6" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="26,140,194.8,7" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
             <DataGrid.Columns>
 
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="70"/>
@@ -61,14 +61,16 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <ComboBox  Name="StationsCB" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="609,140,0,0" VerticalAlignment="Top" Width="120" Height="22" />
-        <Label Content="List Of Stations" HorizontalAlignment="Left" Margin="616,111,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Button x:Name="AddStationButton" Content="Add station" HorizontalAlignment="Left" Margin="632,272,0,0" VerticalAlignment="Top" Width="75" Height="19" Click="AddStationButton_Click" />
+        <ComboBox  Name="StationsCB" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="767,140,0,0" VerticalAlignment="Top" Width="120" Height="22" />
+        <Label Name="labelOfStation" Content="List Of Stations" HorizontalAlignment="Left" Margin="779,111,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Button x:Name="AddStationButton" Content="Add station" HorizontalAlignment="Left" Margin="784,272,0,0" VerticalAlignment="Top" Width="75" Height="19" Click="AddStationButton_Click" />
 
-        <Button Content="AddLine" HorizontalAlignment="Left" Margin="162,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="19" Click="AddButton_Click"/>
-        <Button Content="DeleteLine" HorizontalAlignment="Left" Margin="375,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.304,1.271" Click="DeleteButton_Click" Height="19"/>
-        <TextBox Name="indexTextBox" HorizontalAlignment="Left" Height="23" Margin="620,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" KeyDown="indexTextBox_KeyDown"/>
-        <Label Content="enter the index" HorizontalAlignment="Left" Margin="619,187,0,0" VerticalAlignment="Top" Height="27" Width="98"/>
+        <Button x:Name="AddLineButton" Content="AddLine" HorizontalAlignment="Left" Margin="162,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="19" Click="AddButton_Click"/>
+        <Button x:Name="DeleteLineButton" Content="DeleteLine" HorizontalAlignment="Left" Margin="375,15.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.304,1.271" Click="DeleteButton_Click" Height="19"/>
+        <TextBox Name="indexTextBox" HorizontalAlignment="Left" Height="22" Margin="767,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" KeyDown="indexTextBox_KeyDown"/>
+        <Label Name="indexLable" Content="enter the index" HorizontalAlignment="Left" Margin="775,187,0,0" VerticalAlignment="Top" Height="27" Width="98"/>
+        <Label Content="Select by Area" HorizontalAlignment="Left" Margin="23,17,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
+        <ComboBox x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="120,19,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Area}" SelectionChanged="AreaComboBox_SelectionChanged"/>
 
     </Grid>
 

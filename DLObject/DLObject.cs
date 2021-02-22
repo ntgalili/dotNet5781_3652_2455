@@ -174,6 +174,19 @@ namespace DL
             toDel.Active = false;
         }
 
+        public IEnumerable<DO.Line> GetAllLineByArea(DO.Areas area)
+        {
+            if (area != DO.Areas.General)
+            {
+                return from Line in DataSource.ListLines
+                       where Line.Active == true && Line.Area == area //if this line is active
+                       select Line.Clone();
+            }
+            else
+                return GetAllActiveLines();
+        }
+
+
         #endregion
 
         #region LineStation
@@ -381,44 +394,60 @@ namespace DL
         #endregion
 
 
-
-
-
-        //#region User
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <returns></returns>
-        //public IEnumerable<DO.User> GetALLUser()
-        //{
-
-        //}
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="name"></param>
-        ///// <param name="password"></param>
-        //public void DeleteUser(string name, int password)
-        //{
-
-        //}
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="user"></param>
-        //public void UpdateUser(DO.User user)
-        //{
-
-        //}
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="user"></param>
-        //public void AddUser(DO.User user)
-        //{
-
-        //}
-        //#endregion
+        #region User
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        public DO.User GetUser(string name, string code)
+        {
+            DO.User toGet = DataSource.ListUsers.Find(s => s.UserName == name && s.Password == code && s.Active == true); //fine station thet havve this code
+            if (toGet != null) //if the station found - cloning the station 
+                return toGet.Clone();
+            else
+                throw new DO.BadUserException(name, "Not found"); //if the station not found
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        public void DeleteUser(string name, string password)
+        {
+            DO.User toDel;
+            toDel = DataSource.ListUsers.FirstOrDefault(s => s.UserName == name && s.Password == password); //find station with thus code
+            if (toDel == null) //if station not found
+                throw new DO.BadUserException(name, "Not found");
+            if (toDel.Active == false)//if this station is not active
+                throw new DO.BadUserException(name, "the user is already canceled");
+            toDel.Active = false;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        public void UpdateUser(DO.User user)
+        {
+            DO.User toUpDate = DataSource.ListUsers.Find(s => s.UserName == user.UserName && s.Password == user.Password); //find station with this code in collection of stations
+            if (toUpDate != null) //if the station found
+            {
+                DataSource.ListUsers.Remove(toUpDate); //remove this station
+                DataSource.ListUsers.Add(user.Clone()); //add new station (up date) to collection of station
+            }
+            else //if the station are not found
+                throw new DO.BadUserException(user.UserName, "Not found");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        public void AddUser(DO.User user)
+        {
+            if (DataSource.ListUsers.FirstOrDefault(s => s.UserName == user.UserName) != null) //check if we have station with this code in collection of station
+                throw new DO.BadUserException(user.UserName, "Duplicate User Name");
+            DataSource.ListUsers.Add(user.Clone()); //add this station of collection of stations
+        }
+        #endregion
     }
 }
 

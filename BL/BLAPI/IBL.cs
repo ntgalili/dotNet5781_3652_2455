@@ -106,6 +106,8 @@ namespace BLAPI
         void DeleteLine(int numLine, int codeLine);
 
         TimeSpan TimeCalculation(BO.Station st, BO.Line line);
+        IEnumerable<BO.Line> GetAllLineByArea(BO.Areas area);
+
 
         #endregion
 
@@ -219,6 +221,30 @@ namespace BLAPI
 
         #region LineTiming
         IEnumerable<BO.LineTiming> GetAllTime(TimeSpan now, BO.Station s);
+        #endregion
+
+        #region User
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        BO.User GetUser(string name,string code);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        void DeleteUser(string name, string password);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        void UpdateUser(BO.User user);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        void AddUser(BO.User user);
         #endregion
 
     }

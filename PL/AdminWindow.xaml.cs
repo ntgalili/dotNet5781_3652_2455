@@ -23,27 +23,29 @@ namespace PL
     {
         IBL bl;
         BO.Station st;
-        public AdminWindow(IBL _bl)
+        bool isAdmin;
+        public AdminWindow(IBL _bl,bool _isAdmin)
         {
             InitializeComponent();
             bl = _bl;
+            isAdmin = _isAdmin;
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
         {
             if (rbStations.IsChecked == true)
             {
-                StationWindow win = new StationWindow(bl);
+                StationWindow win = new StationWindow(bl, isAdmin);
                 win.Show();
             }
             else if (rbLines.IsChecked == true)
             {
-               LineWindow win = new LineWindow(bl);
+               LineWindow win = new LineWindow(bl, isAdmin);
                 win.Show();
             }
             else
             {
-                ScheduleWindow win = new ScheduleWindow(bl);
+                ScheduleWindow win = new ScheduleWindow(bl, isAdmin);
                 win.Show();
             }
         }

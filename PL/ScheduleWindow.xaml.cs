@@ -23,11 +23,26 @@ namespace PL
     {
         IBL bl;
         BO.Line curLine;
-        public ScheduleWindow(IBL _bl)
+        public ScheduleWindow(IBL _bl,bool isAdmin)
         {
             InitializeComponent();
             bl = _bl;
             ComboBoxLine.DataContext = bl.GetAllActiveLines();
+            AreaLable.IsEnabled = false;
+            FirstStationLable.IsEnabled = false;
+            LastStationLable.IsEnabled = false;
+            if (isAdmin==true)
+            {
+                timerLabel.IsEnabled = true;
+                TimeTextBox.IsEnabled = true;
+                AddTimeButton.IsEnabled = true;
+            }
+            else
+            {
+                timerLabel.IsEnabled = false;
+                TimeTextBox.IsEnabled = false;
+                AddTimeButton.IsEnabled = false;
+            }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
