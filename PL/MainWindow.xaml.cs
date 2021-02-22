@@ -52,7 +52,7 @@ namespace PL
             {
                 MessageBox.Show("User not found, click NEW to create a new account!", "Not Seccssed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            gridUser.DataContext = new BO.User();//
+            gridUser.DataContext = new BO.User();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
