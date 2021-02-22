@@ -42,7 +42,8 @@ namespace PL
             timerworker.DoWork += Worker_DoWork;
             timerworker.ProgressChanged += Worker_ProgressChanged;
             timerworker.WorkerReportsProgress = true;
-            startTime = DateTime.Now.TimeOfDay;
+            startTime =DateTime.Now.TimeOfDay;
+
             stopwatch.Restart();
             isTimerRun = true;
             timerworker.RunWorkerAsync();

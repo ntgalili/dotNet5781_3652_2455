@@ -72,7 +72,8 @@ namespace PL
 
         private void stationDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            gridStation.DataContext = (sender as DataGrid).SelectedItem as BO.Station;
+            st = (sender as DataGrid).SelectedItem as BO.Station;
+            gridStation.DataContext = st;
             codeTextBox.IsEnabled = false;
             lattitudeTextBox.IsEnabled = false;
             longitudeTextBox.IsEnabled = false;
@@ -111,7 +112,7 @@ namespace PL
 
         private void ElectronicButton_Click(object sender, RoutedEventArgs e)
         {
-            ElectronicBoardWindow win = new ElectronicBoardWindow(bl, sender as BO.Station);
+            ElectronicBoardWindow win = new ElectronicBoardWindow(bl, st);
             win.ShowDialog();
         }
     }

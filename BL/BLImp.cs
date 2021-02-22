@@ -378,7 +378,7 @@ namespace BL
                 {
                     return travelTime;
                 }
-                travelTime += GetAdjacentStetions(line.MyStations.ToList()[i].Code, line.MyStations.ToList()[i + 1].Code).Time;
+                travelTime += timebetween(line.MyStations.ToList()[i].Code, line.MyStations.ToList()[i + 1].Code);
             }
             throw new BO.BadStationCodeException(st.Code,"The station is not in this line");
         }
@@ -475,26 +475,6 @@ namespace BL
                 throw new BO.BadLineCodeException("Line Code does not exist", ex);
             }
 
-        //    foreach (BO.LineStation ls in GetAllLinesStationByLine(lineBO.Code))//delete  the old line's stations
-        //    {
-        //        DeleteLineStation(ls.LineCode, ls.Code);
-        //    }
-        //    int index = 0;
-        //    foreach (BO.LineStation ls in lineBO.MyStations)//add the new line's stations
-        //    {
-        //        index++;
-        //        ls.LineCode = lineBO.Code;
-        //        ls.LineStationIndex = index;
-        //        AddLineStation(ls);
-        //    }
-        //    for (int i = 1; i < index - 1; i++)//add the new stations to the Adjacent Stetions
-        //    {
-        //        try
-        //        {
-        //            AddAdjacentStetions((lineBO.MyStations.ToList())[i], (lineBO.MyStations.ToList())[i + 1]);
-        //        }
-        //        catch (BO.BadAdjacentStetionsException ex) { }//when there are these Adjacent Stetions already
-        //    }
         }
 
         /// <summary>
@@ -594,6 +574,21 @@ namespace BL
             
         }
 
+
+        public TimeSpan timebetween(int station1, int station2)
+        {
+            DO.AdjacentStetions adjDO;
+            try
+            {
+                adjDO = dl.GetAdjacentStetions(station1, station2);//get the Adjacent Stetions from the DL layer
+            }
+            catch (DO.BadAdjacentStetionsException ex)//if the station are not found 
+            {
+                throw new BO.BadAdjacentStetionsException(station1, station2, "not found");
+            }
+            return adjDO.Time;
+        }
+
         /// <summary>
         /// add Adjacent Stetions
         /// </summary>
@@ -686,7 +681,9 @@ namespace BL
                         lineTiming.LineCode = line.Code;
                         lineTiming.LineNum = line.LineNum;
                         lineTiming.LastStation = line.MyStations.ToList()[line.MyStations.Count() - 1].Name;
-                        lineTiming.ExpectedTimeTillArrive = lineTrip.StartAtTime + time - now;
+
+                        lineTiming.ExpectedTimeTillArrive =new TimeSpan((int)(lineTrip.StartAtTime + time - now).Hours,
+                            (int)(lineTrip.StartAtTime + time - now).Minutes, (int)(lineTrip.StartAtTime + time - now).Seconds);
                         lineTimings.Add(lineTiming);
                     }
                 }
@@ -776,6 +773,7 @@ namespace BL
 
             }
         }
+
         #endregion
     }
 }

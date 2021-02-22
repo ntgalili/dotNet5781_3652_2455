@@ -25,9 +25,10 @@ namespace DS
         private static double  distance(double X1, double Y1, double X2, double Y2)
         {
             var sCoord = new GeoCoordinate(X1, Y1);
-            var eCoord = new GeoCoordinate(X1, Y1);
-            
+            var eCoord = new GeoCoordinate(X2, Y2);
             return sCoord.GetDistanceTo(eCoord);
+            
+              
         }
 
 
@@ -60,36 +61,7 @@ namespace DS
         }
         static void InitAllLists()
         {
-            {//ListBuses = new List<Bus>
-             //{
-             //            new Bus
-             //            {
-             //              LicensePlate= 12345678,
-             //              FromDate = new DateTime(2018/01/01),
-             //              TotalTrip=300,
-             //              FuelRemain=1000,
-             //              Status=StatusOfBus.Ready
-             //            },
-
-                //            new Bus
-                //            {
-                //              LicensePlate= 23456789,
-                //              FromDate = new DateTime(2018/01/01),
-                //              TotalTrip=300,
-                //              FuelRemain=1000,
-                //              Status=StatusOfBus.Ready
-                //            },
-
-                //            new Bus
-                //            {
-                //              LicensePlate= 87654321,
-                //              FromDate = new DateTime(2018/01/01),
-                //              TotalTrip=300,
-                //              FuelRemain=1000,
-                //              Status=StatusOfBus.Ready
-                //            }
-                //};
-            }
+           
             ListStations = new List<Station>
             {
                 new Station
@@ -1532,6 +1504,14 @@ namespace DS
                 new AdjacentStetions
                 {
                     Active=true,
+                    Station2=179,
+                    Station1=180,
+                    Distance=distance(35.179234,31.786054,35.191168,31.789376),
+                    Time=new TimeSpan(0,(int)(distance(35.179234,31.786054,35.191168,31.789376)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Active=true,
                     Station1=179,
                     Station2=57023,
                     Distance=distance(35.191168,31.789376,35.489648,32.963282),
@@ -1584,6 +1564,14 @@ namespace DS
                     Station2=21230,
                     Distance=distance(34.822193,32.094143,34.822562,32.092133),
                     Time=new TimeSpan(0,(int)(distance(34.822193,32.094143,34.822562,32.092133)*r.NextDouble()),0),
+                },
+                new AdjacentStetions
+                {
+                    Active=true,
+                    Station2=21165,
+                    Station1=21230,
+                    Distance=distance(34.822562,32.092133,34.822193,32.094143),
+                    Time=new TimeSpan(0,(int)(distance(34.822562,32.092133,34.822193,32.094143)*r.NextDouble()),0),
                 },
                 new AdjacentStetions
                 {
