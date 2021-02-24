@@ -401,7 +401,7 @@ namespace DL
         /// <param name="name"></param>
         public DO.User GetUser(string name, string code)
         {
-            DO.User toGet = DataSource.ListUsers.Find(s => s.UserName == name && s.Password == code && s.Active == true); //fine station thet havve this code
+            DO.User toGet = DataSource.ListUsers.FirstOrDefault(s => s.UserName == name && s.Password == code && s.Active == true); //fine station thet havve this code
             if (toGet != null) //if the station found - cloning the station 
                 return toGet.Clone();
             else

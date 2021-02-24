@@ -2150,12 +2150,14 @@ namespace DS
                     UserName="Admin",
                     Password="1234",
                     Admin = true,
+                    Active=true,
                 },
                 new User
                 {
                     UserName="User",
                     Password="2345",
                     Admin = false,
+                     Active=true,
                 }
             };
         }

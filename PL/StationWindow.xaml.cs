@@ -35,8 +35,8 @@ namespace PL
             UpDateButton.IsEnabled = false;
             if(isAdmin==false)
             {
-                AddButton.IsEnabled = false;
-                UpDateButton.IsEnabled = false;
+                AddButton.Visibility = Visibility.Collapsed;
+                UpDateButton.Visibility = Visibility.Collapsed;
             }
         }
 

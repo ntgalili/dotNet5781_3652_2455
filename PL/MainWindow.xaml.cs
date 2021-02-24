@@ -22,10 +22,11 @@ namespace PL
     public partial class MainWindow : Window
     {
         IBL bl = BLFactory.GetBL();
-        BO.User myUser;
+        BO.User myUser= new BO.User();
         public MainWindow()
         {
             InitializeComponent();
+            gridUser.DataContext = myUser;
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
