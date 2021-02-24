@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="638.4" Width="640.4">
+        Title="MainWindow" Height="630.42" Width="744.14">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="313*"/>
             <RowDefinition Height="104*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="AdminButton" Content="GO" HorizontalAlignment="Left" Margin="445,20.2,0,0" VerticalAlignment="Top" Width="90" Click="AdminButton_Click" Height="51" Grid.Row="1"/>
-        <MediaElement x:Name="media" HorizontalAlignment="Left" Height="286" Margin="60,122,0,0" VerticalAlignment="Top" Width="509" Source="מעודכן.mp4" LoadedBehavior="Play"/>
-        <Button x:Name="newButton" Content="NEW" HorizontalAlignment="Left" Margin="445,80.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Height="49"/>
+        <Button x:Name="AdminButton" Content="GO" HorizontalAlignment="Left" Margin="445,32.8,0,0" VerticalAlignment="Top" Width="90" Click="AdminButton_Click" Height="25" Grid.Row="1"/>
+        <MediaElement x:Name="media" HorizontalAlignment="Left" Height="431" Margin="0,10,-0.4,0" VerticalAlignment="Top" Width="738" Source="מעודכן.mp4" LoadedBehavior="Play"/>
+        <Button x:Name="newButton" Content="NEW" HorizontalAlignment="Left" Margin="445,79.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Height="24"/>
         <Grid x:Name="gridUser" HorizontalAlignment="Left" Margin="72,33.2,0,0" Grid.Row="1" VerticalAlignment="Top" Height="71" Width="321">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="145.6"/>
