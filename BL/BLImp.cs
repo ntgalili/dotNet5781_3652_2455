@@ -794,6 +794,7 @@ namespace BL
         {
             BO.User userBO = new BO.User();
             userDO.CopyPropertiesTo(userBO);
+            userBO.Password= "" + (int.Parse(userBO.Password) /2 - 5);
             return userBO;
         }
         /// <summary>
@@ -805,7 +806,7 @@ namespace BL
             DO.User userDO;
             try
             {
-                userDO = dl.GetUser(name,code);//get the station from the DL layer
+                userDO = dl.GetUser(name, "" + (int.Parse(code) * 2 + 5));//get the station from the DL layer
             }
             catch (DO.BadUserException ex)//if the station does not found
             {
@@ -822,7 +823,7 @@ namespace BL
         {
             try
             {
-                dl.DeleteUser(name,password);//delete from the DL layer
+                dl.DeleteUser(name, "" + (int.Parse(password) * 2 + 5));//delete from the DL layer
             }
             catch (DO.BadUserException ex)//if the station does not found
             {
@@ -838,6 +839,7 @@ namespace BL
         {
             DO.User userDO = new DO.User();
             userBO.CopyPropertiesTo(userDO);
+            userDO.Password = "" + (int.Parse(userDO.Password) * 2 + 5); 
             try
             {
                 dl.UpdateUser(userDO);//up date the station by sending to the DL layer 
@@ -854,7 +856,11 @@ namespace BL
         public void AddUser(BO.User userBO)
         {
             DO.User userDO = new DO.User();
+
+            userBO.Admin = false;
+            userBO.Active = true;
             userBO.CopyPropertiesTo(userDO);
+            userDO.Password= "" + (int.Parse(userDO.Password) * 2 + 5);
             try
             {
                 dl.AddUser(userDO);//add the station by sending to the DL station

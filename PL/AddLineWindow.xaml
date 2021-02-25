@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddLineWindow"
         mc:Ignorable="d"
-        Title="AddLineWindow" Height="500.7" Width="677.6" Closed="Window_Closed">
+        Title="AddLineWindow" Height="500.7" Width="677.6" Closed="Window_Closed" Style="{DynamicResource windowStyle}">
 
     <Grid Margin="0,0,0.2,-2.8">
         <Grid x:Name="AddLineGrid" VerticalAlignment="Top" Margin="96,82,0,0" HorizontalAlignment="Left" Height="296" Width="465">

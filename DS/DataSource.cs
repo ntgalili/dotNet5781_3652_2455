@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -34,31 +35,32 @@ namespace DS
 
 
 
-        public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
-        {
-            try
-            {
-                FileStream file = new FileStream(@"xml\" + filePath, FileMode.Create);
-                XmlSerializer x = new XmlSerializer(list.GetType());
-                x.Serialize(file, list);
-                file.Close();
-            }
-            catch (Exception ex)
-            {
-              //  throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
-            }
-        }
+        //public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
+        //{
+        //    try
+        //    {
+        //        FileStream file = new FileStream(@"xml\" + filePath, FileMode.Create);
+        //        XmlSerializer x = new XmlSerializer(list.GetType());
+        //        x.Serialize(file, list);
+        //        file.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //      //  throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+        //    }
+        //}
 
         static DataSource()
         {
             InitAllLists();
 
-            SaveListToXMLSerializer(ListLines, @"ListLinesXml.xml");
-            SaveListToXMLSerializer(ListLineStations, @"ListLineStationsXml.xml");
-            SaveListToXMLSerializer(ListStations, @"ListStationsXml.xml");
-            SaveListToXMLSerializer(ListAdjStations, @"ListAdjStationsXml.xml");
-            SaveListToXMLSerializer(ListUsers, @"ListUsersXml.xml");
-
+            //SaveListToXMLSerializer(ListLines, @"ListLinesXml.xml");
+            //SaveListToXMLSerializer(ListLineStations, @"ListLineStationsXml.xml");
+            //SaveListToXMLSerializer(ListStations, @"ListStationsXml.xml");
+            //SaveListToXMLSerializer(ListAdjStations, @"ListAdjStationsXml.xml");
+            //SaveListToXMLSerializer(ListUsers, @"ListUsersXml.xml");
+            //SaveListToXMLSerializer(ListLineTrips, @"ListLineTripsXml.xml");
+            //XElement n = new XElement(XmlConvert.ToString(ListLineTrips.ToList()[0].StartAtTime));
         }
         static void InitAllLists()
         {

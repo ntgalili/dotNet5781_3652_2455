@@ -443,7 +443,7 @@ namespace DL
                 throw new DO.BadLineTripException(lt.CodeLineTrip, "Duplicate station Code");
 
             XElement toAdd = new XElement("LineTrip", new XElement("CodeLineTrip", lt.CodeLineTrip),
-                                      new XElement("StartAtTime", lt.StartAtTime.ToString()),
+                                      new XElement("StartAtTime", XmlConvert.ToString(lt.StartAtTime)),
                                       new XElement("CodeLine", lt.CodeLine.ToString()),
                                       new XElement("Active", lt.Active.ToString()));
             TripRoot.Add(toAdd);
@@ -482,7 +482,7 @@ namespace DL
             {
                 toUpdate.Element("CodeLineTrip").Value = lt.CodeLineTrip.ToString();
                 toUpdate.Element("CodeLine").Value = lt.CodeLine.ToString();
-                toUpdate.Element("StartAtTime").Value = lt.StartAtTime.ToString();
+                toUpdate.Element("StartAtTime").Value = XmlConvert.ToString( lt.StartAtTime);
                 toUpdate.Element("Active").Value = lt.Active.ToString();
                 XMLTools.SaveListToXMLElement(TripRoot, ListLineTripsPath);
             }
@@ -511,13 +511,17 @@ namespace DL
         }
         DO.LineTrip fromXmlToLineTrip(XElement element)
         {
-            return new LineTrip
+            LineTrip toget= new LineTrip
             {
                 CodeLineTrip = Int32.Parse(element.Element("CodeLineTrip").Value),
                 CodeLine = Int32.Parse(element.Element("CodeLine").Value),
                 Active = bool.Parse(element.Element("Active").Value),
-                StartAtTime = XmlConvert.ToTimeSpan(element.Element("ToTimeSpan").Value),
+                StartAtTime = XmlConvert.ToTimeSpan(element.Element("StartAtTime").Value),
             };
+
+
+
+            return toget;
         }
         #endregion
 
@@ -531,6 +535,7 @@ namespace DL
         /// <param name="name"></param>
         public DO.User GetUser(string name, string code)
         {
+            
             List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
             DO.User toGet = ListUsers.Find(s => s.UserName == name && s.Password == code && s.Active == true); //fine station thet havve this code
             if (toGet != null) //if the station found - cloning the station 

@@ -27,6 +27,10 @@ namespace PL
         {
             InitializeComponent();
             gridUser.DataContext = myUser;
+            ////for(int i=1;i<=10;i++)
+            ////{
+            ////    bl.UpdateLineTrip(bl.GetLineTrip(i));
+            ////}
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -45,7 +49,7 @@ namespace PL
                     else
                     {
                         AdminWindow win = new AdminWindow(bl, false);
-                        win.Show();
+                        win.ShowDialog();
                     }
                 }
             }
@@ -56,12 +60,29 @@ namespace PL
             gridUser.DataContext = new BO.User();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void newButton_Click(object sender, RoutedEventArgs e)
         {
+            myUser = gridUser.DataContext as BO.User;
+            try
+            {
+                if (myUser != null && myUser.UserName != null && myUser.Password != null)
+                {
+                    bl.AddUser(myUser);
+                    AdminWindow win = new AdminWindow(bl, false);
+                    win.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("you need to enter a name and password", "Not Seccssed", MessageBoxButton.OK, MessageBoxImage.Error);
 
-            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // userViewSource.Source = [generic data source]
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("The name is already exist", "Not Seccssed", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
     }
 }

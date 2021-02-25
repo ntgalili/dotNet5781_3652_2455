@@ -44,13 +44,13 @@ namespace PL
             }
             else
             {
-                labelOfStation.IsEnabled = false;
-                StationsCB.IsEnabled = false;
-                indexLable.IsEnabled = false;
-                indexTextBox.IsEnabled = false;
-                AddStationButton.IsEnabled = false;
-                AddLineButton.IsEnabled = false;
-                DeleteLineButton.IsEnabled = false;
+                labelOfStation.Visibility = Visibility.Collapsed;
+                StationsCB.Visibility = Visibility.Collapsed;
+                indexLable.Visibility = Visibility.Collapsed;
+                indexTextBox.Visibility = Visibility.Collapsed;
+                AddStationButton.Visibility = Visibility.Collapsed;
+                AddLineButton.Visibility = Visibility.Collapsed;
+                DeleteLineButton.Visibility = Visibility.Collapsed;
             }
 
         }

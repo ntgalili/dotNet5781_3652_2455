@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800" Style="{DynamicResource windowStyle}">
 
     <Grid>
-        <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="217" Margin="115,105,0,0" VerticalAlignment="Top" Width="591" FontSize="18" FontStyle="Italic" FontWeight="SemiBold">
+        <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="228" Margin="82,56,0,0" VerticalAlignment="Top" Width="662" FontSize="18"  FontWeight="SemiBold" Foreground="White">
             <StackPanel Margin="21,20,29,24">
-                <RadioButton x:Name ="rbStations" Content="Stations" Height="53" IsChecked="True" Margin="0,0,-0.4,0" FontSize="36"/>
-                <RadioButton x:Name ="rbLineTrip" Content="LineTrips" Height="51" Margin="0,0,-11.4,0" FontSize="36"/>
-                <RadioButton x:Name ="rbLines" Content="Lines" Height="35" FontSize="36"/>
+                <RadioButton x:Name ="rbStations" Content="Stations" Height="53" IsChecked="True" Margin="0,0,-0.4,0" FontSize="36" Foreground="White" BorderBrush="White"/>
+                <RadioButton x:Name ="rbLineTrip" Content="LineTrips" Height="51" Margin="0,0,-11.4,0" FontSize="36" Foreground="White"/>
+                <RadioButton x:Name ="rbLines" Content="Lines" Height="35" FontSize="36" Foreground="White"/>
             </StackPanel>
         </GroupBox>
         <Button Name="buttonOpen"  Content="Open" HorizontalAlignment="Left" Margin="539,327,0,0" VerticalAlignment="Top" Width="205" Height="62" Click="buttonOpen_Click"/>
-        <Label Name="labelA" Content="Label wellcome" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Height="65" Width="591"/>
+
     </Grid>
 </Window>

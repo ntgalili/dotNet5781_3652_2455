@@ -39,9 +39,9 @@ namespace PL
             }
             else
             {
-                timerLabel.IsEnabled = false;
-                TimeTextBox.IsEnabled = false;
-                AddTimeButton.IsEnabled = false;
+                timerLabel.Visibility = Visibility.Collapsed;
+                TimeTextBox.Visibility = Visibility.Collapsed;
+                AddTimeButton.Visibility = Visibility.Collapsed;
             }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -56,6 +56,8 @@ namespace PL
 
         private void AddTimeButton_Click(object sender, RoutedEventArgs e)
         {
+            if (TimeTextBox.Text == null)
+                return;
             try
             {
                 TimeSpan startAtTime = TimeSpan.Parse(TimeTextBox.Text);
