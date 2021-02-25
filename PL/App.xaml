@@ -4,6 +4,53 @@
              xmlns:local="clr-namespace:PL"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style  TargetType="Control">
+                <Setter Property="FontSize"
+              Value="20" />
+                <Setter Property="MaxHeight"
+              Value="70" />
+                <Setter Property="FontFamily"
+              Value="Consolas" />
+                <Setter Property="FontWeight"
+              Value="Bold" />
+            </Style>
+            <Style TargetType="Button"
+           BasedOn="{StaticResource commonStyle}">
+                <Setter Property="Background"
+              Value="Pink" />
+                <Setter Property="Foreground"
+              Value="White" />
+                <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+            </Style>
+            <Style TargetType="Label"
+           BasedOn="{StaticResource commonStyle}">
+                <Setter Property="Background"
+              Value="White" />
+                <Setter Property="Foreground"
+              Value="Black" />
+                <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+            </Style>
+            <Style TargetType="CheckBox"
+           BasedOn="{StaticResource commonStyle}">
+                <Setter Property="Foreground"
+              Value="Black" />
+                <Setter Property="HorizontalAlignment"
+              Value="Right" />
+                <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+            </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+
     </Application.Resources>
 </Application>

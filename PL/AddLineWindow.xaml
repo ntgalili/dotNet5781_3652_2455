@@ -7,48 +7,7 @@
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.AddLineWindow"
         mc:Ignorable="d"
         Title="AddLineWindow" Height="500.7" Width="677.6" Closed="Window_Closed">
-    <Window.Resources>
-        <Style x:Key="commonStyle"
-           TargetType="Control">
-            <Setter Property="FontSize"
-              Value="20" />
-            <Setter Property="MaxWidth"
-              Value="150" />
-            <Setter Property="MaxHeight"
-              Value="70" />
-            <Setter Property="FontFamily"
-              Value="Consolas" />
-            <Setter Property="FontWeight"
-              Value="Bold" />
-        </Style>
-        <Style TargetType="Button"
-           BasedOn="{StaticResource commonStyle}">
-            <Setter Property="Background"
-              Value="Pink" />
-            <Setter Property="Foreground"
-              Value="White" />
-            <Setter Property="FontFamily"
-                    Value="Cooper Black" />
-        </Style>
-        <Style TargetType="Label"
-           BasedOn="{StaticResource commonStyle}">
-            <Setter Property="Background"
-              Value="White" />
-            <Setter Property="Foreground"
-              Value="Black" />
-            <Setter Property="FontFamily"
-                    Value="Cooper Black" />
-        </Style>
-        <Style TargetType="CheckBox"
-           BasedOn="{StaticResource commonStyle}">
-            <Setter Property="Foreground"
-              Value="Black" />
-            <Setter Property="HorizontalAlignment"
-              Value="Right" />
-            <Setter Property="FontFamily"
-                    Value="Cooper Black" />
-        </Style>
-    </Window.Resources>
+
     <Grid Margin="0,0,0.2,-2.8">
         <Grid x:Name="AddLineGrid" VerticalAlignment="Top" Margin="96,82,0,0" HorizontalAlignment="Left" Height="296" Width="465">
             <Grid.RowDefinitions>

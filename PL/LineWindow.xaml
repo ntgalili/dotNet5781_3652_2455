@@ -7,15 +7,11 @@
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.LineWindow"
         mc:Ignorable="d"
         Title="LineWindow" Height="607.6" Width="1211.9">
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style x:Key="commonStyle"
            TargetType="Control">
             <Setter Property="FontSize"
               Value="20" />
-            <Setter Property="MaxWidth"
-              Value="150" />
-            <Setter Property="MaxHeight"
-              Value="70" />
             <Setter Property="FontFamily"
               Value="Consolas" />
             <Setter Property="FontWeight"
@@ -48,7 +44,7 @@
             <Setter Property="FontFamily"
                     Value="Cooper Black" />
         </Style>
-    </Window.Resources>
+    </Window.Resources>-->
     <!--<Grid>
 
         <DataGrid x:Name="lineDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="82,42,80.6,64.4" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="lineDataGrid_SelectionChanged">
