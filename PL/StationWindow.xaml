@@ -6,8 +6,49 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.StationWindow"
         mc:Ignorable="d"
-        Title="StationWindow" Height="450" Width="800">
-
+        Title="StationWindow" Height="471.6" Width="920">
+    <Window.Resources>
+        <Style x:Key="commonStyle"
+           TargetType="Control">
+            <Setter Property="FontSize"
+              Value="20" />
+            <Setter Property="MaxWidth"
+              Value="150" />
+            <Setter Property="MaxHeight"
+              Value="70" />
+            <Setter Property="FontFamily"
+              Value="Consolas" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+        <Style TargetType="Button"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="Pink" />
+            <Setter Property="Foreground"
+              Value="White" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="Label"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="CheckBox"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="HorizontalAlignment"
+              Value="Right" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="398*"/>
@@ -22,8 +63,8 @@
             <RowDefinition Height="46*"/>
             <RowDefinition Height="17*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="AddButton" Content="Add"  HorizontalAlignment="Left" Margin="51.4,1.4,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="AddButton_Click" Grid.Column="1" Grid.Row="3"/>
-        <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="20.4,14.8,0,0" VerticalAlignment="Top" Height="201" Width="367" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
+        <Button x:Name="AddButton" Content="Add"  HorizontalAlignment="Left" Margin="51.4,1.2,0,0" VerticalAlignment="Top" Width="157" Height="35" Click="AddButton_Click" Grid.Column="1" Grid.Row="3"/>
+        <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="20.4,14.6,0,0" VerticalAlignment="Top" Height="201" Width="426" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -54,9 +95,9 @@
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <CheckBox Content="Only Active Sations" HorizontalAlignment="Left" Margin="48,40,0,0" VerticalAlignment="Top" Height="33" Width="238" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Grid.Column="0" Grid.RowSpan="2"/>
-        <Button Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="37.2,13.2,0,0" VerticalAlignment="Top" Width="121" Height="34" Click="RefreshButton_Click" Grid.Column="2" Grid.Row="2"/>
-        <Button Name="UpDateButton" Content="UpDate" HorizontalAlignment="Left" Margin="39.2,1.4,0,0" VerticalAlignment="Top" Width="119" Height="35" Click="UpDateButton_Click" Grid.Column="2" Grid.Row="3"/>
-        <Button Name="ElectronicButton" Content="Electronic Board" HorizontalAlignment="Left" Margin="51.4,13.2,0,0" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.2,1.25" Height="34" Click="ElectronicButton_Click" Grid.Column="1" Grid.Row="2"/>
+        <CheckBox Content="Only Active Stations" HorizontalAlignment="Left" Margin="48,40,0,0" VerticalAlignment="Top" Height="22" Width="316" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Grid.Column="0" RenderTransformOrigin="0.588,0.336"/>
+        <Button Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="36.8,13.2,0,0" VerticalAlignment="Top" Width="141" Height="33" Click="RefreshButton_Click" Grid.Column="2" Grid.Row="2"/>
+        <Button Name="UpDateButton" Content="UpDate" HorizontalAlignment="Left" Margin="38.8,1.2,0,0" VerticalAlignment="Top" Width="139" Height="33" Click="UpDateButton_Click" Grid.Column="2" Grid.Row="3"/>
+        <Button Name="ElectronicButton" Content="Electronic" HorizontalAlignment="Left" Margin="51.4,13.2,0,0" VerticalAlignment="Top" Width="157" RenderTransformOrigin="0.2,1.25" Height="34" Click="ElectronicButton_Click" Grid.Column="1" Grid.Row="2"/>
     </Grid>
 </Window>

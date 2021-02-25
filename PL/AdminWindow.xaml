@@ -6,12 +6,74 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="commonStyle"
+           TargetType="Control">
+            <Setter Property="FontSize"
+              Value="20" />
+            <Setter Property="MaxWidth"
+              Value="150" />
+            <Setter Property="MaxHeight"
+              Value="70" />
+            <Setter Property="FontFamily"
+              Value="Consolas" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+        <Style TargetType="Button"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="Pink" />
+            <Setter Property="Foreground"
+              Value="White" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+        <Style TargetType="Label"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="CheckBox"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="HorizontalAlignment"
+              Value="Right" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="217" Margin="115,105,0,0" VerticalAlignment="Top" Width="591" FontSize="16" FontStyle="Italic" FontWeight="SemiBold">
+        <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="217" Margin="115,105,0,0" VerticalAlignment="Top" Width="591" FontSize="18" FontStyle="Italic" FontWeight="SemiBold">
             <StackPanel Margin="21,20,29,24">
-                <RadioButton x:Name ="rbStations" Content="Stations" Height="53" IsChecked="True" Margin="0,0,-0.4,0"/>
-                <RadioButton x:Name ="rbLineTrip" Content="LineTrips" Height="51" Margin="0,0,-11.4,0"/>
-                <RadioButton x:Name ="rbLines" Content="Lines" Height="35"/>
+                <RadioButton x:Name ="rbStations" Content="Stations" Height="53" IsChecked="True" Margin="0,0,-0.4,0" FontSize="36"/>
+                <RadioButton x:Name ="rbLineTrip" Content="LineTrips" Height="51" Margin="0,0,-11.4,0" FontSize="36"/>
+                <RadioButton x:Name ="rbLines" Content="Lines" Height="35" FontSize="36"/>
             </StackPanel>
         </GroupBox>
         <Button Name="buttonOpen"  Content="Open" HorizontalAlignment="Left" Margin="539,327,0,0" VerticalAlignment="Top" Width="205" Height="62" Click="buttonOpen_Click"/>

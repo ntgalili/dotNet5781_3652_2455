@@ -6,33 +6,74 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.ElectronicBoardWindow"
         mc:Ignorable="d"
-        Title="ElectronicBoardWindow" Height="450" Width="800" Closing="Window_Closing">
+        Title="ElectronicBoardWindow" Height="477.6" Width="904.4" Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="commonStyle"
+           TargetType="Control">
+            <Setter Property="FontSize"
+              Value="20" />
+            <Setter Property="MaxWidth"
+              Value="150" />
+            <Setter Property="MaxHeight"
+              Value="70" />
+            <Setter Property="FontFamily"
+              Value="Consolas" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+        <Style TargetType="Button"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="Pink" />
+            <Setter Property="Foreground"
+              Value="White" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="Label"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="CheckBox"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="HorizontalAlignment"
+              Value="Right" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="70" Margin="286,23,0,0" VerticalAlignment="Top" Width="230">
-            <TextBlock x:Name="timerTextBlock"  Text="00:00:00"                     
-                   Grid.ColumnSpan="2" FontSize="50" TextAlignment="Center" 
-                   Foreground="#FF37F10E"/>
+        <Grid HorizontalAlignment="Left" Height="70" Margin="328,23,0,0" VerticalAlignment="Top" Width="230">
+            <TextBlock x:Name="timerTextBlock"  Text="00:00:00" FontSize="50" TextAlignment="Center" 
+                   Foreground="Black" FontFamily="Cooper Black" Margin="-2,0,2,0"/>
         </Grid>
 
-        <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="66,141,0,0" VerticalAlignment="Top" Height="168" Width="213">
+        <Grid x:Name="gridStation" HorizontalAlignment="Left" Margin="66,141,0,0" VerticalAlignment="Top" Height="227" Width="269">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" MinWidth="113.6"/>
+                <ColumnDefinition Width="Auto" MinWidth="130.4"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto" MinHeight="64.8"/>
-                <RowDefinition Height="Auto" MinHeight="58.4"/>
+                <RowDefinition Height="Auto" MinHeight="90.4"/>
+                <RowDefinition Height="Auto" MinHeight="80"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Code:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25.4,0,14.4" Grid.Row="1" VerticalAlignment="Center" Height="25" Width="40"/>
-            <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,26.4,0,15.4" Grid.Row="1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Include:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,15.6,0,17.8" Grid.Row="2" VerticalAlignment="Center" Height="25" Width="51"/>
-            <TextBox x:Name="includeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,16.6,0,18.8" Grid.Row="2" Text="{Binding Include, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,16.6" Grid.Row="0" VerticalAlignment="Center" Height="25" Width="45"/>
-            <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,5,0,17.6" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Code:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,26.2,0,27" Grid.Row="1" VerticalAlignment="Center" Height="38" Width="77"/>
+            <TextBox x:Name="codeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="8.6,33.2,0,35" Grid.Row="1" Text="{Binding Code, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Include:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,25,0,11" Grid.Row="2" VerticalAlignment="Center" Height="44" Width="101"/>
+            <TextBox x:Name="includeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="8.6,26,0,31" Grid.Row="2" Text="{Binding Include, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,9.8" Grid.Row="0" VerticalAlignment="Center" Height="43" Width="77"/>
+            <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="8.6,5,0,28.8" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <DataGrid x:Name="lineTimingDataGrid" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="307,142,94.6,78" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="lineTimingDataGrid" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="407,142,46.6,80" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="lineNumColumn" Binding="{Binding LineNum}" Header="Line Num" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="expectedTimeTillArriveColumn" Binding="{Binding ExpectedTimeTillArrive}" Header="Expected Time Till Arrive" Width="SizeToHeader"/>

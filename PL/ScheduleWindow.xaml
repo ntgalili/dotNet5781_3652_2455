@@ -6,30 +6,64 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.ScheduleWindow"
         mc:Ignorable="d"
-        Title="ScheduleWindow" Height="466.8" Width="782">
+        Title="ScheduleWindow" Height="491.4" Width="844.4">
+    <Window.Resources>
+        <Style x:Key="commonStyle"
+           TargetType="Control">
+            <Setter Property="FontSize"
+              Value="20" />
+            <Setter Property="MaxWidth"
+              Value="150" />
+            <Setter Property="MaxHeight"
+              Value="70" />
+            <Setter Property="FontFamily"
+              Value="Consolas" />
+            <Setter Property="FontWeight"
+              Value="Bold" />
+        </Style>
+        <Style TargetType="Button"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="Pink" />
+            <Setter Property="Foreground"
+              Value="White" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        <Style TargetType="Label"
+           BasedOn="{StaticResource commonStyle}">
+            <Setter Property="Background"
+              Value="White" />
+            <Setter Property="Foreground"
+              Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="Cooper Black" />
+        </Style>
+        
+    </Window.Resources>
     <Grid Margin="0,0,-6.8,-4">
-        <Label Content="Select a Line:" HorizontalAlignment="Left" Margin="37,60,0,0" VerticalAlignment="Top" Height="30" Width="110"/>
-        <ComboBox x:Name="ComboBoxLine" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="158,60,0,0" VerticalAlignment="Top" Width="193" Height="30" SelectionChanged="ComboBox_SelectionChanged"/>
-        <DataGrid x:Name="lineTripDataGrid" ItemsSource="{Binding}" IsReadOnly="true" AutoGenerateColumns="False" EnableRowVirtualization="True"  Margin="401,113,186.8,63.6" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <Label Content="Select a Line:" HorizontalAlignment="Left" Margin="37,60,0,0" VerticalAlignment="Top" Height="30" Width="153"/>
+        <ComboBox x:Name="ComboBoxLine" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="224,60,0,0" VerticalAlignment="Top" Width="193" Height="30" SelectionChanged="ComboBox_SelectionChanged"/>
+        <DataGrid x:Name="lineTripDataGrid" ItemsSource="{Binding}" IsReadOnly="true" AutoGenerateColumns="False" EnableRowVirtualization="True"  Margin="431,113,187.2,67.6" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="startAtTimeColumn" Binding="{Binding StartAtTime}" Header="Start At Time" Width="SizeToHeader"/>
                 <DataGridTemplateColumn>
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button x:Name="DeleteTimeButton" Content="Delete" Click="DeleteTimeButton_Click" ToolTip="Delete a Time of this Line Trip"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteTimeButton" Content="Delete" Click="DeleteTimeButton_Click" ToolTip="Delete a Time of this Line Trip"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Area" HorizontalAlignment="Left" Margin="40,154,0,0" VerticalAlignment="Top"/>
         <Label Content="First Station" HorizontalAlignment="Left" Margin="32,234,0,0" VerticalAlignment="Top"/>
         <Label Content="Last Station" HorizontalAlignment="Left" Margin="34,298,0,0" VerticalAlignment="Top"/>
         <Label Name="AreaLable" HorizontalAlignment="Left" Margin="121,156,0,0" VerticalAlignment="Top" Height="24" Width="150"/>
-        <Label Name="FirstStationLable" HorizontalAlignment="Left" Margin="117,234,0,0" VerticalAlignment="Top" Height="30" Width="251"/>
-        <Label Name="LastStationLable" HorizontalAlignment="Left" Margin="117,300,0,0" VerticalAlignment="Top" Height="36" Width="251"/>
-        <Button Name="AddTimeButton" Content="Add Time" HorizontalAlignment="Left" Margin="645,245,0,0" VerticalAlignment="Top" Width="75" Click="AddTimeButton_Click"/>
-        <Label Name="timerLabel" Content="Enter Time: 00:00:00" HorizontalAlignment="Left" Margin="630,146,0,0" VerticalAlignment="Top" Height="34" Width="120"/>
-        <TextBox Name="TimeTextBox" HorizontalAlignment="Left" Height="23" Margin="622,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Name="FirstStationLable" HorizontalAlignment="Left" Margin="178,234,0,0" VerticalAlignment="Top" Height="34" Width="244"/>
+        <Label Name="LastStationLable" HorizontalAlignment="Left" Margin="178,300,0,0" VerticalAlignment="Top" Height="32" Width="230"/>
+        <Button Name="AddTimeButton" Content="Add Time" HorizontalAlignment="Left" Margin="684,245,0,0" VerticalAlignment="Top" Width="112" Click="AddTimeButton_Click" Height="42"/>
+        <Label Name="timerLabel" Content="Enter Time:" HorizontalAlignment="Left" Margin="674,146,0,0" VerticalAlignment="Top" Height="34" Width="141"/>
+        <TextBox Name="TimeTextBox" HorizontalAlignment="Left" Height="23" Margin="678,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
