@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.ElectronicBoardWindow"
         mc:Ignorable="d"
-        Title="ElectronicBoardWindow" Height="477.6" Width="904.4" Closing="Window_Closing" Style="{DynamicResource windowStyle}">
+        Title="ElectronicBoardWindow" Height="477.6" Width="904.4" Closing="Window_Closing" Style="{DynamicResource windowStyle}" Icon="bus.png">
 
     <Grid>
         <Grid HorizontalAlignment="Left" Height="70" Margin="328,23,0,0" VerticalAlignment="Top" Width="230">
