@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.StationWindow"
         mc:Ignorable="d"
-        Title="StationWindow" Height="471.6" Width="920" Style="{DynamicResource windowStyle}">
+        Title="StationWindow" Height="471.6" Width="920" Style="{DynamicResource windowStyle}" Icon="bus.png">
 
 
     <Grid>

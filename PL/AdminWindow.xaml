@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800" Style="{DynamicResource windowStyle}">
+        Title="AdminWindow" Height="450" Width="800" Style="{DynamicResource windowStyle}" Icon="bus.png">
 
     <Grid>
         <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="228" Margin="82,56,0,0" VerticalAlignment="Top" Width="662" FontSize="18"  FontWeight="SemiBold" Foreground="White">

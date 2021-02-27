@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.MainWindow"
         mc:Ignorable="d"
-        Title="BIMBABUS" Height="630.42" Width="744.14" Style="{DynamicResource windowStyle}" >
+        Title="BIMBABUS" Height="630.42" Width="744.14" Style="{DynamicResource windowStyle}" Icon="bus.png">
 
 
     <Grid>

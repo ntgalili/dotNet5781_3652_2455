@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL"
         xmlns:BO="clr-namespace:BO;assembly=BL" x:Class="PL.LineWindow"
         mc:Ignorable="d"
-        Title="LineWindow" Height="607.6" Width="1210" Style="{DynamicResource windowStyle}">
+        Title="LineWindow" Height="607.6" Width="1210" Style="{DynamicResource windowStyle}" Icon="bus.png">
     <!--<Window.Resources>
         <Style x:Key="commonStyle"
            TargetType="Control">
