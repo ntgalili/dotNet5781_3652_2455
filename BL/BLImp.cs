@@ -361,7 +361,6 @@ namespace BL
         {
             BO.Line LineBO = new BO.Line();
             LineDO.CopyPropertiesTo(LineBO);
-            //LineDO.CopyPropertiesTo(LineBO.)
             LineBO.MyStations = from item in GetAllLinesStationByLine(LineBO.Code)//get  all the line's stations
                                 orderby item.LineStationIndex
                                 select item;
@@ -481,6 +480,7 @@ namespace BL
             DO.Areas a =(DO.Areas) area;
             return from item in dl.GetAllLineByArea(a)
                    orderby item.Area
+                   orderby item.LineNum
                    select LineDoBoAdapter(item);
         }
         /// <summary>
@@ -806,7 +806,7 @@ namespace BL
             DO.User userDO;
             try
             {
-                userDO = dl.GetUser(name, "" + (int.Parse(code) * 2 + 5));//get the station from the DL layer
+                userDO = dl.GetUser(name, code);//get the station from the DL layer
             }
             catch (DO.BadUserException ex)//if the station does not found
             {
@@ -823,7 +823,7 @@ namespace BL
         {
             try
             {
-                dl.DeleteUser(name, "" + (int.Parse(password) * 2 + 5));//delete from the DL layer
+                dl.DeleteUser(name,password);//delete from the DL layer
             }
             catch (DO.BadUserException ex)//if the station does not found
             {
@@ -839,7 +839,7 @@ namespace BL
         {
             DO.User userDO = new DO.User();
             userBO.CopyPropertiesTo(userDO);
-            userDO.Password = "" + (int.Parse(userDO.Password) * 2 + 5); 
+
             try
             {
                 dl.UpdateUser(userDO);//up date the station by sending to the DL layer 
@@ -860,7 +860,7 @@ namespace BL
             userBO.Admin = false;
             userBO.Active = true;
             userBO.CopyPropertiesTo(userDO);
-            userDO.Password= "" + (int.Parse(userDO.Password) * 2 + 5);
+
             try
             {
                 dl.AddUser(userDO);//add the station by sending to the DL station

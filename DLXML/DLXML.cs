@@ -33,7 +33,7 @@ namespace DL
         string ListAdjStationsPath = @"ListAdjStationsXml.xml"; //XMLSerializer
         string ListLineTripsPath = @"ListLineTripsXml.xml";//Xelement
         string ListUsersPath = @"ListUsersXml.xml";
-
+        string ListconfigPath = @"configXml.xml";
         #endregion
 
         #region AdjacentStations
@@ -239,10 +239,14 @@ namespace DL
         /// <returns>runing code of this line</returns>
         public int AddLine(DO.Line line)
         {
+
             List<Line> ListLines = XMLTools.LoadListFromXMLSerializer<Line>(ListLinesPath);
-            line.Code = DO.config.LineID++;
+            List<int> configInt = XMLTools.LoadListFromXMLSerializer<int>(ListconfigPath);
+            line.Code = configInt[0]++;
             ListLines.Add(line); //add line to collection of all lines
             XMLTools.SaveListToXMLSerializer(ListLines, ListLinesPath);
+
+            XMLTools.SaveListToXMLSerializer(configInt, ListconfigPath); 
             return line.Code;
         }
         /// <summary>
@@ -434,7 +438,8 @@ namespace DL
         public int AddLineTrip(DO.LineTrip lt)
         {
             XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
-            lt.CodeLineTrip = DO.config.LineTripID++;
+            List<int> configInt = XMLTools.LoadListFromXMLSerializer<int>(ListconfigPath);
+            lt.CodeLineTrip = configInt[1]++;
             XElement find = (from l in TripRoot.Elements()
                               where int.Parse(l.Element("CodeLineTrip").Value) == lt.CodeLineTrip
                               select l).FirstOrDefault();
@@ -448,7 +453,7 @@ namespace DL
                                       new XElement("Active", lt.Active.ToString()));
             TripRoot.Add(toAdd);
             XMLTools.SaveListToXMLElement(TripRoot, ListLineTripsPath);
-
+            XMLTools.SaveListToXMLSerializer<int>(configInt, ListconfigPath);
             return lt.CodeLineTrip;
 
         }
@@ -535,7 +540,7 @@ namespace DL
         /// <param name="name"></param>
         public DO.User GetUser(string name, string code)
         {
-            
+            code = "" + (int.Parse(code) * 2 + 5);
             List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
             DO.User toGet = ListUsers.Find(s => s.UserName == name && s.Password == code && s.Active == true); //fine station thet havve this code
             if (toGet != null) //if the station found - cloning the station 
@@ -550,6 +555,7 @@ namespace DL
         /// <param name="password"></param>
         public void DeleteUser(string name, string password)
         {
+            password= "" + (int.Parse(password) * 2 + 5);
             List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
             DO.User toDel;
             toDel = ListUsers.FirstOrDefault(s => s.UserName == name && s.Password == password); //find station with thus code
@@ -566,6 +572,7 @@ namespace DL
         /// <param name="user"></param>
         public void UpdateUser(DO.User user)
         {
+            user.Password = "" + (int.Parse(user.Password) * 2 + 5);
             List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
             DO.User toUpDate = ListUsers.Find(s => s.UserName == user.UserName && s.Password == user.Password); //find station with this code in collection of stations
             if (toUpDate != null) //if the station found
@@ -583,6 +590,7 @@ namespace DL
         /// <param name="user"></param>
         public void AddUser(DO.User user)
         {
+            user.Password = "" + (int.Parse(user.Password) * 2 + 5);
             List<User> ListUsers = XMLTools.LoadListFromXMLSerializer<User>(ListUsersPath);
             if (ListUsers.FirstOrDefault(s => s.UserName == user.UserName) != null) //check if we have station with this code in collection of station
                 throw new DO.BadUserException(user.UserName, "Duplicate User Name");

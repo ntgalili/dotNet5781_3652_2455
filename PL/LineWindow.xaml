@@ -69,8 +69,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
-            <RowDefinition Height="52*"/>
-            <RowDefinition Height="83*"/>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="62*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="54*"/>
             <RowDefinition Height="46*"/>
@@ -86,21 +86,21 @@
                   Grid.Row="1" Height="26" Margin="115.4,15,0,0" Width="84"
                   ItemsSource="{Binding}" 
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Top" SelectionChanged="cbLine_SelectionChanged" Grid.Column="3"/>
-        <Label Content="List of Stations for selected Line:" HorizontalAlignment="Left" Margin="11,41,0,0" VerticalAlignment="Top" Height="41" Width="395" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2"/>
-        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="12.6,10,0,0" VerticalAlignment="Top" Height="33" Width="615" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="1">
+        <Label Content="List of Stations for selected Line:" HorizontalAlignment="Left" Margin="11,13,0,0" VerticalAlignment="Top" Height="41" Width="395" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2"/>
+        <Grid x:Name="gridLine" HorizontalAlignment="Left" Margin="12.6,10,0,0" VerticalAlignment="Top" Height="52" Width="472" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="80.8"/>
                 <ColumnDefinition Width="Auto" MinWidth="128.8"/>
-                <ColumnDefinition Width="Auto" MinWidth="129.6"/>
+                <ColumnDefinition Width="Auto" MinWidth="87.2"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="5,10,0,4" Grid.Row="0" VerticalAlignment="Center" Height="34" Width="66"/>
-            <TextBox x:Name="areaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="6.2,10,0,14" Grid.Row="0" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="113"/>
-            <Label Content="Line Num:" Grid.Column="2" HorizontalAlignment="Left" Margin="5.4,8,0,4" VerticalAlignment="Center" Height="36" Width="122"/>
-            <TextBox x:Name="lineNumTextBox" Grid.Column="3" Height="22" Margin="23.8,12,36.4,14" Text="{Binding LineNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="5,12,0,6" Grid.Row="0" VerticalAlignment="Center" Height="34" Width="66"/>
+            <TextBox x:Name="areaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="6.2,10,0,10" Grid.Row="0" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="113"/>
+            <Label Content="Line Num:" Grid.Column="2" HorizontalAlignment="Left" Margin="5.4,10,0,6" VerticalAlignment="Center" Height="36" Width="122" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="lineNumTextBox" Grid.Column="3" Height="32" Margin="17.2,10,10,10" Text="{Binding LineNum, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
         </Grid>
-        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="18.8,12.8,3.8,10" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Grid.Row="3">
+        <DataGrid x:Name="lineStationDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="18.8,12.6,3.8,10" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Grid.Row="3">
             <DataGrid.Columns>
 
                 <DataGridTextColumn x:Name="codeColumn" Binding="{Binding Code}" Header="Code" Width="70"  />
@@ -116,14 +116,14 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <ComboBox  Name="StationsCB" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="8.2,9.8,0,9.8" Width="242" Grid.Column="5" Grid.Row="4" />
-        <Label Name="labelOfStation" Content="select a Station" HorizontalAlignment="Left" Margin="55.2,6.8,0,0" VerticalAlignment="Top" Height="27" Width="165" Grid.Column="5" Grid.Row="3"/>
-        <Button x:Name="AddStationButton" Content="Add station" HorizontalAlignment="Left" Margin="8.2,10.2,0,0" VerticalAlignment="Top" Width="242" Height="53" Click="AddStationButton_Click" Grid.Column="5" Grid.Row="7" />
+        <ComboBox  Name="StationsCB" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="8.2,9.6,0,10" Width="242" Grid.Column="5" Grid.Row="4" />
+        <Label Name="labelOfStation" Content="select a Station" HorizontalAlignment="Left" Margin="55.2,6.6,0,0" VerticalAlignment="Top" Height="27" Width="165" Grid.Column="5" Grid.Row="3"/>
+        <Button x:Name="AddStationButton" Content="Add station" HorizontalAlignment="Left" Margin="8.2,9.8,0,0" VerticalAlignment="Top" Width="242" Height="53" Click="AddStationButton_Click" Grid.Column="5" Grid.Row="7" />
 
         <Button x:Name="AddLineButton" Content="AddLine" HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="9" VerticalAlignment="Stretch" Width="190" Click="AddButton_Click" Grid.Column="2"/>
         <Button x:Name="DeleteLineButton" Content="DeleteLine" HorizontalAlignment="Left" Margin="12.6,10,0,0" Grid.Row="9" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.304,1.271" Click="DeleteButton_Click" Height="36" Grid.Column="4"/>
-        <TextBox Name="indexTextBox" HorizontalAlignment="Left" Height="26" Margin="6.2,0,0,9.8" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="242" KeyDown="indexTextBox_KeyDown" Grid.Column="5" Grid.Row="6"/>
-        <Label Name="indexLable" Content="enter the index" HorizontalAlignment="Left" Margin="8.2,10.2,0,0" VerticalAlignment="Top" Height="26" Width="242" Grid.Column="5" Grid.Row="5"/>
+        <TextBox Name="indexTextBox" HorizontalAlignment="Left" Height="26" Margin="6.2,0,0,10.2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="242" KeyDown="indexTextBox_KeyDown" Grid.Column="5" Grid.Row="6"/>
+        <Label Name="indexLable" Content="enter the index" HorizontalAlignment="Left" Margin="8.2,10,0,0" VerticalAlignment="Top" Height="26" Width="242" Grid.Column="5" Grid.Row="5"/>
         <Label Content="Select by Area" HorizontalAlignment="Left" Margin="10.8,10,0,0" VerticalAlignment="Top" Height="32" Width="111" Grid.Column="1" Grid.Row="1"/>
         <ComboBox  x:Name="AreaComboBox" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Width="183" SelectedItem="{Binding Area}" SelectionChanged="AreaComboBox_SelectionChanged" Height="32" Grid.Column="2" Grid.Row="1"/>
 

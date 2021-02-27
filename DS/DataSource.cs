@@ -35,25 +35,27 @@ namespace DS
 
 
 
-        //public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
-        //{
-        //    try
-        //    {
-        //        FileStream file = new FileStream(@"xml\" + filePath, FileMode.Create);
-        //        XmlSerializer x = new XmlSerializer(list.GetType());
-        //        x.Serialize(file, list);
-        //        file.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //      //  throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
-        //    }
-        //}
+        public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
+        {
+            try
+            {
+                FileStream file = new FileStream(@"xml\" + filePath, FileMode.Create);
+                XmlSerializer x = new XmlSerializer(list.GetType());
+                x.Serialize(file, list);
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                //  throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+            }
+        }
 
         static DataSource()
         {
             InitAllLists();
 
+            List<int> l =new List<int>() { 14, 14 };
+            SaveListToXMLSerializer(l, @"ConigIntXml.xml");
             //SaveListToXMLSerializer(ListLines, @"ListLinesXml.xml");
             //SaveListToXMLSerializer(ListLineStations, @"ListLineStationsXml.xml");
             //SaveListToXMLSerializer(ListStations, @"ListStationsXml.xml");

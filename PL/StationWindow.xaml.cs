@@ -37,6 +37,7 @@ namespace PL
             {
                 AddButton.Visibility = Visibility.Collapsed;
                 UpDateButton.Visibility = Visibility.Collapsed;
+                gridStation.IsEnabled = false;
             }
         }
 
@@ -129,8 +130,11 @@ namespace PL
 
         private void ElectronicButton_Click(object sender, RoutedEventArgs e)
         {
-            ElectronicBoardWindow win = new ElectronicBoardWindow(bl, st);
-            win.ShowDialog();
+            if (st != null)
+            {
+                ElectronicBoardWindow win = new ElectronicBoardWindow(bl, st);
+                win.ShowDialog();
+            }
         }
     }
 }
