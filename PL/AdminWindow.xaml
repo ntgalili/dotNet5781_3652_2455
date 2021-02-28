@@ -8,14 +8,18 @@
         Title="AdminWindow" Height="450" Width="800" Style="{DynamicResource windowStyle}" Icon="bus.png">
 
     <Grid>
-        <GroupBox Header="Choose Option:" HorizontalAlignment="Left" Height="228" Margin="82,56,0,0" VerticalAlignment="Top" Width="662" FontSize="18"  FontWeight="SemiBold" Foreground="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="324" />
+            <RowDefinition Height="Auto" MinHeight="81.6"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Choose Option:" HorizontalAlignment="Stretch" Margin="52,63,49.6,42.8" VerticalAlignment="Stretch" FontSize="18"  FontWeight="SemiBold" Foreground="White">
             <StackPanel Margin="21,20,29,24">
                 <RadioButton x:Name ="rbStations" Content="Stations" Height="53" IsChecked="True" Margin="0,0,-0.4,0" FontSize="36" Foreground="White" BorderBrush="White"/>
                 <RadioButton x:Name ="rbLineTrip" Content="LineTrips" Height="51" Margin="0,0,-11.4,0" FontSize="36" Foreground="White"/>
-                <RadioButton x:Name ="rbLines" Content="Lines" Height="35" FontSize="36" Foreground="White"/>
+                <RadioButton x:Name ="rbLines" Content="Lines" Height="35" FontSize="36" Foreground="White" HorizontalAlignment="Left" Width="630"/>
             </StackPanel>
         </GroupBox>
-        <Button Name="buttonOpen"  Content="Open" HorizontalAlignment="Left" Margin="539,327,0,0" VerticalAlignment="Top" Width="205" Height="62" Click="buttonOpen_Click"/>
+        <Button Name="buttonOpen"  Content="Open" HorizontalAlignment="Left" Margin="539,16.2,0,0" VerticalAlignment="Top" Width="205" Height="62" Click="buttonOpen_Click" Grid.Row="1"/>
 
     </Grid>
 </Window>
