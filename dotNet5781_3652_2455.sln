@@ -26,6 +26,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{267F826C-8B00-4B59-AC8C-82F4E96BE20A}"
 	ProjectSection(SolutionItems) = preProject
 		bin\config.xml = bin\config.xml
+		bin\xml\configXml.xml = bin\xml\configXml.xml
+		bin\xml\ConigIntXml.xml = bin\xml\ConigIntXml.xml
+		bin\xml\ListAdjStationsXml.xml = bin\xml\ListAdjStationsXml.xml
+		bin\xml\ListLineStationsXml.xml = bin\xml\ListLineStationsXml.xml
+		bin\xml\ListLinesXml.xml = bin\xml\ListLinesXml.xml
+		bin\xml\ListLineTripsXml.xml = bin\xml\ListLineTripsXml.xml
+		bin\xml\ListStationsXml.xml = bin\xml\ListStationsXml.xml
+		bin\xml\ListUsersXml.xml = bin\xml\ListUsersXml.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLXML", "DLXML\DLXML.csproj", "{16BFE08F-2F08-4DA6-ACF9-96653C709726}"
