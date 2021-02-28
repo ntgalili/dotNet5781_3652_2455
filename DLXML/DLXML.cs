@@ -37,6 +37,22 @@ namespace DL
         #endregion
 
         #region AdjacentStations
+
+
+        DO.AdjacentStetions fromXmlToAdj(XElement element)
+        {
+
+            return new AdjacentStetions
+            {
+                Station1 = Int32.Parse(element.Element("Station1").Value),
+                Station2 = Int32.Parse(element.Element("Station2").Value),
+                Distance = double.Parse(element.Element("Distance").Value),
+                Time = XmlConvert.ToTimeSpan(element.Element("Time").Value),
+                Active = bool.Parse(element.Element("Active").Value)
+            };
+        }
+
+
         /// <summary>
         /// return Adjacent Stations
         /// </summary>
@@ -45,12 +61,17 @@ namespace DL
         /// <returns></returns>
         public DO.AdjacentStetions GetAdjacentStetions(int numS1, int numS2)
         {
-            List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
-            AdjacentStetions toGet = ListAdjStations.Find(adj => (adj.Station1 == numS1 && adj.Station2 == numS2&&adj.Active==true)); //find Adjacent Stations with this stations in the collection of Adjacent Stations
-            if (toGet != null) //if the Adjacent Stations is found
-                return toGet;
+            XElement adjstationRoot = XMLTools.LoadListFromXMLElement(ListAdjStationsPath);
+            XElement adj = (from s in adjstationRoot.Elements()    //find Adjacent Stations with this stations in the collection of Adjacent Stations
+                            where int.Parse(s.Element("Station1").Value) == numS1 && int.Parse(s.Element("Station2").Value) == numS2 && bool.Parse(s.Element("Active").Value) == true
+                            select s).FirstOrDefault();
+
+            if (adj != null) //if the Adjacent Stations is found
+                return fromXmlToAdj(adj);
             else //if the Adjacent Stations not found
                 throw new BadAdjacentStetionsException(numS1, numS2, "Not found");
+
+            
         }
         /// <summary>
         /// add Adjacent Stations
@@ -58,28 +79,47 @@ namespace DL
         /// <param name="adj">Adjacent Stations to add</param>
         public void AddAdjacentStetions(DO.AdjacentStetions adj)
         {
-            List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
-            if (ListAdjStations.FirstOrDefault(a => a.Station1 == adj.Station1 && a.Station2 == adj.Station2) != null)//If we already have such Adjacent Stations in the list of Adjacent Stations
-                throw new BadLineStationException(adj.Station1, adj.Station2, "Duplicate AdjacentStetions");
-            ListAdjStations.Add(adj);//add Adjacent Stations to the collection of all Adjacent Stations
-            XMLTools.SaveListToXMLSerializer(ListAdjStations, ListAdjStationsPath);
+            XElement adjRoot = XMLTools.LoadListFromXMLElement(ListAdjStationsPath);
+            XElement find = (from s in adjRoot.Elements()    //find Adjacent Stations with this stations in the collection of Adjacent Stations
+                             where int.Parse(s.Element("Station1").Value) == adj.Station1 && int.Parse(s.Element("Station2").Value) == adj.Station2 && bool.Parse(s.Element("Active").Value) == true
+                             select s).FirstOrDefault();
+            if (find != null) //If we already have such Adjacent Stations in the list of Adjacent Stations
+                  throw new BadLineStationException(adj.Station1, adj.Station2, "Duplicate AdjacentStetions");
+            XElement toAdd = new XElement("AdjacentStetions",
+                                  new XElement("Station1", adj.Station1),
+                                  new XElement("Station2", adj.Station2),
+                                  new XElement("Distance", adj.Distance.ToString()),
+                                  new XElement("Time", XmlConvert.ToString(adj.Time)),
+                                  new XElement("Active", adj.Active.ToString()));
+
+            adjRoot.Add(adj);//add Adjacent Stations to the collection of all Adjacent Stations
+            XMLTools.SaveListToXMLElement(adjRoot, ListAdjStationsPath);
         }
+
         /// <summary>
         /// up date Adjacent Stations
         /// </summary>
         /// <param name="adj">Adjacent Stations to up date</param>
         public void UpdateAdjacentStetions(DO.AdjacentStetions adj)
         {
-            List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
-            AdjacentStetions toUpDate = ListAdjStations.Find(a => a.Station1 == adj.Station1 && a.Station2 == adj.Station2);//find if the Adjacent Stations is in the collection of Adjacent Stations
-            if (toUpDate != null)//if the Adjacent Stations is found
+
+            XElement adjRoot = XMLTools.LoadListFromXMLElement(ListAdjStationsPath);
+            XElement toUpdate = (from s in adjRoot.Elements()    //find Adjacent Stations with this stations in the collection of Adjacent Stations
+                             where int.Parse(s.Element("Station1").Value) == adj.Station1 && int.Parse(s.Element("Station2").Value) == adj.Station2 && bool.Parse(s.Element("Active").Value) == true
+                             select s).FirstOrDefault();
+
+            if (toUpdate != null) //If we already have such Adjacent Stations in the list of Adjacent Stations
             {
-                ListAdjStations.Remove(toUpDate);//remove this Adjacent Stations
-                ListAdjStations.Add(adj);//add a new Adjacent Stations (up date) to the collection of all Adjacent Stations
+                toUpdate.Element("Station1").Value = adj.Station1.ToString();
+                toUpdate.Element("Station1").Value = adj.Station1.ToString();
+                toUpdate.Element("Distance").Value = adj.Distance.ToString();
+                toUpdate.Element("Time").Value = XmlConvert.ToString(adj.Time);
+                toUpdate.Element("Active").Value = adj.Active.ToString();
+                XMLTools.SaveListToXMLElement(adjRoot, ListLineTripsPath);
             }
             else//if the Adjacent Stations is not found
                 throw new BadAdjacentStetionsException(adj.Station1, adj.Station2, "Not found");
-            XMLTools.SaveListToXMLSerializer(ListAdjStations, ListAdjStationsPath);
+
         }
         /// <summary>
         /// delete Adjacent Stations
@@ -88,13 +128,21 @@ namespace DL
         /// <param name="numS1">code of station 2</param>
         public void DeleteAdjacentStetions(int numS2, int numS1)
         {
-            List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
-            AdjacentStetions toDel;
-            toDel = ListAdjStations.FirstOrDefault(a => a.Station1 == numS1 && a.Station2 == numS2 &&a.Active==true);//find this Adjacent Stations with this stations
-            if (toDel == null)//if the Adjacent Stations is not found
-                throw new BadLineStationException(numS1, numS2, "Not found");
-            toDel.Active = false;//remove this Adjacent Stations
-            XMLTools.SaveListToXMLSerializer(ListAdjStations, ListAdjStationsPath);
+
+            XElement adjRoot = XMLTools.LoadListFromXMLElement(ListAdjStationsPath);
+            XElement find = (from s in adjRoot.Elements()    //find Adjacent Stations with this stations in the collection of Adjacent Stations
+                                 where int.Parse(s.Element("Station1").Value) == numS1 && int.Parse(s.Element("Station2").Value) == numS2 
+                                 select s).FirstOrDefault();
+
+            if (find == null) //If we already have such Adjacent Stations in the list of Adjacent Stations
+                throw new BadAdjacentStetionsException(numS1, numS2, "Not found");
+            if((bool.Parse(find.Element("Active").Value) == false))//if this station is not active
+                    throw new DO.BadAdjacentStetionsException(numS1, numS2, "the station is already canceled");
+            find.Element("Active").Value = false.ToString();
+            XMLTools.SaveListToXMLElement(adjRoot, ListAdjStationsPath);
+
+
+
         }
         /// <summary>
         /// return all Adjacent Stations by this code station
@@ -103,10 +151,12 @@ namespace DL
         /// <returns>a collection of all Adjacent Stations with this code station</returns>
         public IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code)
         {
-            List<AdjacentStetions> ListAdjStations = XMLTools.LoadListFromXMLSerializer<AdjacentStetions>(ListAdjStationsPath);
-            return from item in ListAdjStations
-                   where (item.Station1 == code || item.Station2 == code)//if one of the station have this code 
-                   select item;
+
+            XElement adjRoot = XMLTools.LoadListFromXMLElement(ListAdjStationsPath);
+            
+            return from item in adjRoot.Elements()
+                   where (int.Parse(item.Element("Station1").Value) == code || int.Parse(item.Element("Station2").Value) == code)//if one of the station have this code 
+                   select fromXmlToAdj(item);
         }
 
         #endregion
@@ -351,6 +401,8 @@ namespace DL
                 Active = bool.Parse(element.Element("Active").Value)
             };
         }
+
+
         /// <summary>
         /// add station to collection stations
         /// </summary>
@@ -509,7 +561,7 @@ namespace DL
             if (lt == null) //if station not found
                 throw new DO.BadLineTripException(code, "Not found");
             if (bool.Parse(lt.Element("Active").Value) == false)//if this station is not active
-                throw new DO.BadLineTripException(code, "the station is already canceled");
+                throw new DO.BadLineTripException(code, "the lineTrip is already canceled");
             lt.Element("Active").Value = false.ToString();
             XMLTools.SaveListToXMLElement(TripRoot, ListLineTripsPath);
 
@@ -598,5 +650,5 @@ namespace DL
             XMLTools.SaveListToXMLSerializer(ListUsers, ListUsersPath);
         }
         #endregion
-    }
-}
+ }   }
+
