@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Station>
+    <Code>1</Code>
+    <Name>יוסף קארו/בן איש חי, בית שמש</Name>
+    <Longitude>35.000493</Longitude>
+    <Lattitude>31.744547</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>401</Code>
+    <Name>נהר הירקון/נהר הירדן, בית שמש</Name>
+    <Longitude>35.0002</Longitude>
+    <Lattitude>31.70735</Lattitude>
+    <Include>Eccess</Include>
+    <Active>True</Active>
+  </Station>
+  <Station>
+    <Code>407</Code>
+    <Name>נחל הקישון/ נחל שורק, בית שמש</Name>
+    <Longitude>34.989861</Longitude>
+    <Lattitude>31.715411</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>True</Active>
+  </Station>
+  <Station>
+    <Code>480</Code>
+    <Name>שדרות נהר הירקון/אליהו הנביא, בית שמש</Name>
+    <Longitude>35.001165</Longitude>
+    <Lattitude>31.706773</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>562</Code>
+    <Name>שדרות בן זאב/38, בית שמש</Name>
+    <Longitude>34.974625</Longitude>
+    <Lattitude>31.746677</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>563</Code>
+    <Name>שד.בן גוריון/שד.הדקל, בית שמש</Name>
+    <Longitude>34.980749</Longitude>
+    <Lattitude>31.744038</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>564</Code>
+    <Name>בן זאב/רש''י, בית שמש</Name>
+    <Longitude>34.992222</Longitude>
+    <Lattitude>31.742662</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>565</Code>
+    <Name>בית ישראל/שפת אמת, בית שמש</Name>
+    <Longitude>34.995005</Longitude>
+    <Lattitude>31.742295</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>566</Code>
+    <Name>שפת אמת/חיים הלוי, בית שמש</Name>
+    <Longitude>34.995859</Longitude>
+    <Lattitude>31.740288</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>567</Code>
+    <Name>שפת אמת/בית יעקב, בית שמש</Name>
+    <Longitude>34.995833</Longitude>
+    <Lattitude>31.738094</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>568</Code>
+    <Name>חזון אי''ש/שפת אמת, בית שמש</Name>
+    <Longitude>34.995107</Longitude>
+    <Lattitude>31.73755</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>569</Code>
+    <Name>חזון איש/אברהם, בית שמש</Name>
+    <Longitude>34.993086</Longitude>
+    <Lattitude>31.738594</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>571</Code>
+    <Name>רש'י/ חזון איש, בית שמש</Name>
+    <Longitude>34.991397</Longitude>
+    <Lattitude>31.741169</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>572</Code>
+    <Name>מעפילי אגוז/רשי, בית שמש</Name>
+    <Longitude>34.991023</Longitude>
+    <Lattitude>31.74045</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>573</Code>
+    <Name>שד.נהר הירדן/שד.הרב הרצוג, בית שמש</Name>
+    <Longitude>34.992279</Longitude>
+    <Lattitude>31.736319</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>574</Code>
+    <Name>שדרות נהר הירדן/קדושת אהרן, בית שמש</Name>
+    <Longitude>34.991927</Longitude>
+    <Lattitude>31.733992</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>575</Code>
+    <Name>שדרות נהר הירדן/האדמו''ר מבעלז, בית שמש</Name>
+    <Longitude>34.993077</Longitude>
+    <Lattitude>31.731931</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>172</Code>
+    <Name>גבעת שאול/כתב סופר, ירושלים</Name>
+    <Longitude>35.195972</Longitude>
+    <Lattitude>31.791222</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>174</Code>
+    <Name>גבעת שאול/קוטלר, ירושלים</Name>
+    <Longitude>35.194683</Longitude>
+    <Lattitude>31.791653</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>True</Active>
+  </Station>
+  <Station>
+    <Code>176</Code>
+    <Name>גבעת שאול/נג'ארה, ירושלים</Name>
+    <Longitude>35.192721</Longitude>
+    <Lattitude>31.792105</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>179</Code>
+    <Name>נג'ארה/בן עוזיאל, ירושלים</Name>
+    <Longitude>35.191168</Longitude>
+    <Lattitude>31.789376</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>180</Code>
+    <Name>כפר שאול/קצנלבוגן, ירושלים</Name>
+    <Longitude>35.179234</Longitude>
+    <Lattitude>31.786054</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>57023</Code>
+    <Name>דוד אלעזר/לח''י, צפת</Name>
+    <Longitude>35.489648</Longitude>
+    <Lattitude>32.963282</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>57025</Code>
+    <Name>חיים וייצמן/הרצל, צפת</Name>
+    <Longitude>35.496737</Longitude>
+    <Lattitude>32.957234</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>57026</Code>
+    <Name>חיים וייצמן/מ''ג יורדי הסירה, צפת</Name>
+    <Longitude>35.498349</Longitude>
+    <Lattitude>32.957294</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>57027</Code>
+    <Name>אליהו פרומצ'נקו/יעקב לוי, צפת</Name>
+    <Longitude>35.498143</Longitude>
+    <Lattitude>32.960467</Lattitude>
+    <Include>Roof</Include>
+    <Active>True</Active>
+  </Station>
+  <Station>
+    <Code>57028</Code>
+    <Name>פרומצנקו/רימוני, צפת</Name>
+    <Longitude>35.498795</Longitude>
+    <Lattitude>32.961903</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>20902</Code>
+    <Name>שד' ישראל גורי/דרך קיבוץ גלויות, תל אביב</Name>
+    <Longitude>34.780691</Longitude>
+    <Lattitude>32.046386</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21000</Code>
+    <Name>ביה''ח איכילוב/שד' דוד המלך, תל אביב</Name>
+    <Longitude>34.787792</Longitude>
+    <Lattitude>32.079787</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21022</Code>
+    <Name>ת. רכבת השלום, תל אביב</Name>
+    <Longitude>34.792974</Longitude>
+    <Lattitude>32.073112</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21024</Code>
+    <Name>ליאונרדו דה וינצ'י/קפלן, תל אביב</Name>
+    <Longitude>34.784808</Longitude>
+    <Lattitude>32.073875</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21005</Code>
+    <Name>ארלוזורוב/דיזנגוף, תל אביב</Name>
+    <Longitude>34.774385</Longitude>
+    <Lattitude>32.087073</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21161</Code>
+    <Name>דרך ז'בוטינסקי/אהרונוביץ, בני ברק</Name>
+    <Longitude>34.840305</Longitude>
+    <Lattitude>32.092564</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21165</Code>
+    <Name>מגדל ויטה/דרך בן גוריון, בני ברק</Name>
+    <Longitude>34.822193</Longitude>
+    <Lattitude>32.094143</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21230</Code>
+    <Name>דרך בן גוריון/יהושע בן נון, בני ברק</Name>
+    <Longitude>34.822562</Longitude>
+    <Lattitude>32.092133</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21232</Code>
+    <Name>דרך בן גוריון/מגדים, בני ברק</Name>
+    <Longitude>34.82271</Longitude>
+    <Lattitude>32.088772</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>21365</Code>
+    <Name>דרך ז'בוטינסקי/דב גרונר, בני ברק</Name>
+    <Longitude>34.828052</Longitude>
+    <Lattitude>32.091763</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>46203</Code>
+    <Name>אבא חושי/פארק הכרמל, חיפה</Name>
+    <Longitude>35.020919</Longitude>
+    <Lattitude>32.758695</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>46216</Code>
+    <Name>ת. רכבת חוף הכרמל, חיפה</Name>
+    <Longitude>34.957647</Longitude>
+    <Lattitude>32.793065</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>46217</Code>
+    <Name>נווה דוד, חיפה</Name>
+    <Longitude>34.958184</Longitude>
+    <Lattitude>32.805604</Lattitude>
+    <Include>Eccess</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>46233</Code>
+    <Name>אסתר המלכה, חיפה</Name>
+    <Longitude>34.963318</Longitude>
+    <Lattitude>32.809908</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>47092</Code>
+    <Name>חניתה/אבא הילל סילבר, חיפה</Name>
+    <Longitude>35.013987</Longitude>
+    <Lattitude>32.790078</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>33537</Code>
+    <Name>יחיאל מיכל פינס/הרב קטרוני, פתח תקווה</Name>
+    <Longitude>34.890714</Longitude>
+    <Lattitude>32.07915</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>33553</Code>
+    <Name>חיים ארלוזורוב/הרצפלד, פתח תקווה</Name>
+    <Longitude>34.873652</Longitude>
+    <Lattitude>32.084529</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>34063</Code>
+    <Name>בלינסון קניון אבנת/מסוף יותם ויואב, פתח תקווה</Name>
+    <Longitude>34.865101</Longitude>
+    <Lattitude>32.091798</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>34934</Code>
+    <Name>החרש/עמל, פתח תקווה</Name>
+    <Longitude>34.852768</Longitude>
+    <Lattitude>32.096057</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>35311</Code>
+    <Name>אלכסנדר זייד/שטרוק, פתח תקווה</Name>
+    <Longitude>34.86392</Longitude>
+    <Lattitude>32.076699</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>36446</Code>
+    <Name>בית החולים תל השומר/מד''א, רמת גן</Name>
+    <Longitude>34.845992</Longitude>
+    <Lattitude>32.046427</Lattitude>
+    <Include>Eccess</Include>
+    <Active>True</Active>
+  </Station>
+  <Station>
+    <Code>36480</Code>
+    <Name>עמק האלה/שד' אהרון קציר, רמת גן</Name>
+    <Longitude>34.848083</Longitude>
+    <Lattitude>32.052359</Lattitude>
+    <Include>LinesRoute</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>36481</Code>
+    <Name>מנדס/שד' אהרון קציר, רמת גן</Name>
+    <Longitude>34.846952</Longitude>
+    <Lattitude>32.053695</Lattitude>
+    <Include>Bench</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>37136</Code>
+    <Name>כביש 4/מחלף בר אילן, רמת גן</Name>
+    <Longitude>34.838934</Longitude>
+    <Lattitude>32.065048</Lattitude>
+    <Include>Roof</Include>
+    <Active>true</Active>
+  </Station>
+  <Station>
+    <Code>37780</Code>
+    <Name>בית החולים תל השומר/מעבדות, רמת גן</Name>
+    <Longitude>34.844102</Longitude>
+    <Lattitude>32.047317</Lattitude>
+    <Include>DigitalScreen</Include>
+    <Active>true</Active>
+  </Station>
+</ArrayOfStation>

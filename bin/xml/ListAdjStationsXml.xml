@@ -1,0 +1,570 @@
+<?xml version="1.0"?>
+<ArrayOfAdjacentStetions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AdjacentStetions>
+    <Station1>480</Station1>
+    <Station2>407</Station2>
+    <Distance>1258.0325568929645</Distance>
+    <Time >PT10M14S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>407</Station1>
+    <Station2>401</Station2>
+    <Distance>1365.3099268717701</Distance>
+   <Time >PT11M50S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>401</Station1>
+    <Station2>563</Station2>
+    <Distance>3984.3664160841572</Distance>
+    <Time >PT25M1S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>563</Station1>
+    <Station2>573</Station2>
+    <Distance>1463.5278287127717</Distance>
+    <Time >PT8M2S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>573</Station1>
+    <Station2>574</Station2>
+    <Distance>215.74591398010776</Distance>
+    <Time >PT2M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>574</Station1>
+    <Station2>172</Station2>
+    <Distance>23298.654412636359</Distance>
+    <Time >PT1H30M14S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>172</Station1>
+    <Station2>174</Station2>
+    <Distance>148.712850388389</Distance>
+    <Time >PT1M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>174</Station1>
+    <Station2>172</Station2>
+    <Distance>148.712850388389</Distance>
+    <Time >PT1M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>174</Station1>
+    <Station2>179</Station2>
+    <Distance>442.621845169224</Distance>
+    <Time >PT4M30S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>179</Station1>
+    <Station2>180</Station2>
+    <Distance>1362.0837959197584</Distance>
+    <Time >PT11M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>180</Station1>
+    <Station2>179</Station2>
+    <Distance>1362.0837959197584</Distance>
+    <Time >PT12M3S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>179</Station1>
+    <Station2>57023</Station2>
+    <Distance>111627.25040618672</Distance>
+    <Time >PT2H30M14S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>179</Station1>
+    <Station2>176</Station2>
+    <Distance>302.45022297221885</Distance>
+    <Time >PT3M5S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>176</Station1>
+    <Station2>179</Station2>
+    <Distance>302.45022297221885</Distance>
+    <Time >PT4M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>176</Station1>
+    <Station2>174</Station2>
+    <Distance>222.18875242194727</Distance>
+    <Time >PT2M49S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>172</Station1>
+    <Station2>21161</Station2>
+    <Distance>48178.028174311621</Distance>
+    <Time >PT1H6M22S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21161</Station1>
+    <Station2>21165</Station2>
+    <Distance>2020.8556483239877</Distance>
+    <Time >PT1H12M17S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+    <AdjacentStetions>
+    <Station1>21165</Station1>
+    <Station2>21161</Station2>
+    <Distance>2020.8556483239877</Distance>
+    <Time >PT1H12M17S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21165</Station1>
+    <Station2>21230</Station2>
+    <Distance>188.1726672424976</Distance>
+    <Time >PT5M19S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21230</Station1>
+    <Station2>21165</Station2>
+    <Distance>188.1726672424976</Distance>
+    <Time >PT5M19S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21230</Station1>
+    <Station2>21365</Station2>
+    <Distance>611.92149233959265</Distance>
+    <Time >PT2M59S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21005</Station1>
+    <Station2>21024</Station2>
+    <Distance>1673.6210201879931</Distance>
+    <Time >PT11M19S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21024</Station1>
+    <Station2>21022</Station2>
+    <Distance>911.47338156513774</Distance>
+    <Time >PT8M47S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21022</Station1>
+    <Station2>21024</Station2>
+    <Distance>911.47338156513774</Distance>
+    <Time >PT8M47S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21022</Station1>
+    <Station2>21000</Station2>
+    <Distance>839.51549954016377</Distance>
+    <Time >PT4M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21000</Station1>
+    <Station2>20902</Station2>
+    <Distance>3153.6070962137087</Distance>
+    <Time >PT13M47S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>20902</Station1>
+    <Station2>21000</Station2>
+    <Distance>3153.6070962137087</Distance>
+     <Time >PT13M47S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>20902</Station1>
+    <Station2>46203</Station2>
+    <Distance>70297.779483268969</Distance>
+     <Time >PT55M59S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>46203</Station1>
+    <Station2>46216</Station2>
+    <Distance>7707.4209002097532</Distance>
+     <Time >PT30M01S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>46216</Station1>
+    <Station2>46217</Station2>
+    <Distance>1145.2556970883018</Distance>
+    <Time >PT13M47S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>46217</Station1>
+    <Station2>46233</Station2>
+    <Distance>693.22672699676843</Distance>
+     <Time >PT6M47S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>46233</Station1>
+    <Station2>47092</Station2>
+    <Distance>5921.7659415643921</Distance>
+     <Time >PT25M42S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>37780</Station1>
+    <Station2>37136</Station2>
+    <Distance>1718.6515076519165</Distance>
+     <Time >PT9M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>37136</Station1>
+    <Station2>37780</Station2>
+    <Distance>1718.6515076519165</Distance>
+    <Time >PT9M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>37136</Station1>
+    <Station2>36481</Station2>
+    <Distance>1368.0496697719341</Distance>
+    <Time >PT7M24S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36481</Station1>
+    <Station2>36480</Station2>
+    <Distance>175.30717077824647</Distance>
+    <Time >PT57S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36480</Station1>
+    <Station2>36481</Station2>
+    <Distance>175.30717077824647</Distance>
+    <Time >PT1M1S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36481</Station1>
+    <Station2>34063</Station2>
+    <Distance>4023.4546361527937</Distance>
+    <Time >PT10M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36480</Station1>
+    <Station2>34063</Station2>
+    <Distance>4069.3227416072891</Distance>
+    <Time >PT12M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>34063</Station1>
+    <Station2>36446</Station2>
+    <Distance>4657.3874461402866</Distance>
+    <Time >PT15M52S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36446</Station1>
+    <Station2>35311</Station2>
+    <Distance>3409.3927132722843</Distance>
+    <Time >PT13M40S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>35311</Station1>
+    <Station2>34934</Station2>
+    <Distance>2159.978632136103</Distance>
+    <Time >PT10M1S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>34934</Station1>
+    <Station2>35311</Station2>
+    <Distance>2159.978632136103</Distance>
+    <Time >PT9M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>34934</Station1>
+    <Station2>33553</Station2>
+    <Distance>2551.4837798672129</Distance>
+    <Time >PT8M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>33553</Station1>
+    <Station2>33537</Station2>
+    <Distance>1961.3188589746014</Distance>
+    <Time >PT5M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21365</Station1>
+    <Station2>21232</Station2>
+    <Distance>654.30605904320316</Distance>
+    <Time >PT1M40S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21232</Station1>
+    <Station2>21230</Station2>
+    <Distance>307.50693701625028</Distance>
+    <Time >PT57S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21230</Station1>
+    <Station2>21232</Station2>
+    <Distance>307.50693701625028</Distance>
+    <Time >PT49S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21232</Station1>
+    <Station2>21161</Station2>
+    <Distance>31506.367703389213</Distance>
+    <Time >PT2H10M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21161</Station1>
+    <Station2>57023</Station2>
+    <Distance>132349.45917643013</Distance>
+    <Time >PT2H53M21S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>57023</Station1>
+    <Station2>57025</Station2>
+    <Distance>960.59954867664146</Distance>
+    <Time >PT4M7S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>57025</Station1>
+    <Station2>57026</Station2>
+    <Distance>179.48331312786951</Distance>
+    <Time >PT1M2S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>57026</Station1>
+    <Station2>57027</Station2>
+    <Distance>288.40436751403695</Distance>
+    <Time >PT1M51S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>57027</Station1>
+    <Station2>57028</Station2>
+    <Distance>148.97529443953692</Distance>
+    <Time >PT1M27S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>1</Station1>
+    <Station2>565</Station2>
+    <Distance>644.3481060051032</Distance>
+    <Time >PT6M44S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>565</Station1>
+    <Station2>566</Station2>
+    <Distance>206.18814413942749</Distance>
+    <Time >PT2M1S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>566</Station1>
+    <Station2>567</Station2>
+    <Distance>200.04530210549285</Distance>
+    <Time >PT1M50S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>567</Station1>
+    <Station2>568</Station2>
+    <Distance>94.804842253567841</Distance>
+    <Time >PT22S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>568</Station1>
+    <Station2>569</Station2>
+    <Distance>244.22980762278326</Distance>
+    <Time >PT1M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>569</Station1>
+    <Station2>574</Station2>
+    <Distance>438.95494956763736</Distance>
+    <Time >PT3M49S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>574</Station1>
+    <Station2>575</Station2>
+    <Distance>227.35201133782206</Distance>
+    <Time >PT1M28S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>575</Station1>
+    <Station2>480</Station2>
+    <Distance>2463.8931208157014</Distance>
+    <Time >PT11M42S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>480</Station1>
+    <Station2>407</Station2>
+    <Distance>1484.194300209113</Distance>
+    <Time >PT9M28S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21024</Station1>
+    <Station2>20902</Station2>
+    <Distance>2554.0813753605321</Distance>
+    <Time >PT14M3S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21000</Station1>
+    <Station2>21005</Station2>
+    <Distance>2430.7009899954392</Distance>
+    <Time >PT11M5S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21005</Station1>
+    <Station2>21365</Station2>
+    <Distance>5988.0080259574252</Distance>
+    <Time >PT17M43S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21365</Station1>
+    <Station2>21165</Station2>
+    <Distance>687.35076226649721</Distance>
+    <Time >PT5M11S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>174</Station1>
+    <Station2>176</Station2>
+    <Distance>222.18875242194727</Distance>
+    <Time >PT1M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21232</Station1>
+    <Station2>21365</Station2>
+    <Distance>654.30605904320316</Distance>
+    <Time >PT3M</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>21365</Station1>
+    <Station2>562</Station2>
+    <Distance>35470.709574130815</Distance>
+    <Time >PT42M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>562</Station1>
+    <Station2>563</Station2>
+    <Distance>1463.5278287127717</Distance>
+    <Time >PT11M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>563</Station1>
+    <Station2>564</Station2>
+    <Distance>1282.989907270691</Distance>
+    <Time >PT7M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>564</Station1>
+    <Station2>407</Station2>
+    <Distance>2498.4425019251771</Distance>
+    <Time >PT14M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>407</Station1>
+    <Station2>480</Station2>
+    <Distance>1258.0325568929645</Distance>
+    <Time >PT7M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>33553</Station1>
+    <Station2>34063</Station2>
+    <Distance>1160.2460056294988</Distance>
+    <Time >PT13M10S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>34063</Station1>
+    <Station2>34934</Station2>
+    <Distance>1426.5929910794086</Distance>
+    <Time >PT6M32S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>35311</Station1>
+    <Station2>36446</Station2>
+    <Distance>3409.3927132722843</Distance>
+    <Time >PT14M2S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36446</Station1>
+    <Station2>36480</Station2>
+    <Distance>589.65699239711057</Distance>
+    <Time >PT1M1S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>36481</Station1>
+    <Station2>37136</Station2>
+    <Distance>1368.0496697719341</Distance>
+    <Time >PT6M59S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>401</Station1>
+    <Station2>174</Station2>
+    <Distance>484044.66307856812</Distance>
+    <Time >PT1H37M3S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+  <AdjacentStetions>
+    <Station1>407</Station1>
+    <Station2>57027</Station2>
+    <Distance>434066.43638612056</Distance>
+    <Time >PT1H2M3S</Time>
+    <Active>true</Active>
+  </AdjacentStetions>
+</ArrayOfAdjacentStetions>
