@@ -42,7 +42,7 @@
             <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10.6" Grid.Row="0" VerticalAlignment="Center" Height="43" Width="77"/>
             <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Margin="9.6,5,-59.2,29.6" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Stretch" Width="184"/>
         </Grid>
-        <DataGrid x:Name="lineTimingDataGrid" IsReadOnly="True"  AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="24.6,10.4,10,6.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1" Grid.Column="2" >
+        <DataGrid x:Name="lineTimingDataGrid" IsReadOnly="True"  AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="26.6,12.4,8,4.6" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="1" Grid.Column="2" >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="lineNumColumn" Binding="{Binding LineNum}" Header="Line Num" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="expectedTimeTillArriveColumn" Binding="{Binding ExpectedTimeTillArrive}" Header="Expected Time Till Arrive" Width="SizeToHeader"/>

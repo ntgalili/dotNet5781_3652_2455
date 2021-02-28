@@ -23,10 +23,12 @@ namespace PL
     {
         IBL bl;
         BO.Line curLine;
-        public LineWindow(IBL _bl,bool isAdmin)
+        bool isAdmin;
+        public LineWindow(IBL _bl,bool _isAdmin)
         {
             InitializeComponent();
             bl = _bl;
+            isAdmin = _isAdmin;
             cbLine.DataContext = bl.GetAllActiveLines();
             StationsCB.DataContext = bl.GetAllStations();
             AreaComboBox.ItemsSource = Enum.GetValues(typeof(BO.Areas));
@@ -51,6 +53,7 @@ namespace PL
                 AddStationButton.Visibility = Visibility.Collapsed;
                 AddLineButton.Visibility = Visibility.Collapsed;
                 DeleteLineButton.Visibility = Visibility.Collapsed;
+                lineStationDataGrid.Columns[3].Visibility = Visibility.Collapsed;
             }
 
         }
@@ -60,7 +63,7 @@ namespace PL
             {
                 if (curLine!=null&&curLine.Code != 0)
                 {
-                    MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק  קו זה?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    MessageBoxResult res = MessageBox.Show(" Are you sure you want to delete this line?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                     if (res == MessageBoxResult.Yes)
                     {
                         bl.DeleteLine(curLine.LineNum, curLine.Code);
@@ -78,27 +81,24 @@ namespace PL
 
         private void DeleteStationButton_Click(object sender, RoutedEventArgs e)
         {
-            BO.LineStation ls = (sender as Button).DataContext as BO.LineStation;
-            try
-            {
-                MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק תחנה זו?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-                if (curLine.MyStations.Count() <= 2)
+                BO.LineStation ls = (sender as Button).DataContext as BO.LineStation;
+                try
                 {
-                    MessageBox.Show("אין אפשרות למחוק - נשארו רק 2 תחנות", " Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                else
-                {
-                    if (res == MessageBoxResult.Yes)
+                    MessageBoxResult res = MessageBox.Show("Are you sure you want to delete this station?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    if (curLine.MyStations.Count() <= 2)
                     {
-                        bl.deleteStationFromLine(ls.Code, curLine);
+                        MessageBox.Show("Unable to delete this station - there are only 2 stations left for this line", " Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
+                    else
+                        if (res == MessageBoxResult.Yes)
+                        bl.deleteStationFromLine(ls.Code, curLine);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Not Seccssed"," Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Not Seccssed", " Delete station", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             curLine = bl.GetLine(curLine.Code);
             RefreshAllLineStationsGrid();
         }
@@ -148,7 +148,7 @@ namespace PL
             }
             catch(Exception ex)
             {
-                MessageBox.Show("התחנה כבר קיימת בקו", "add station", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("This station already exists on the line", "add station", MessageBoxButton.OK, MessageBoxImage.Error);
                 
             }
             RefreshAllLineStationsGrid();

@@ -27,10 +27,6 @@ namespace PL
         {
             InitializeComponent();
             gridUser.DataContext = myUser;
-            ////for(int i=1;i<=10;i++)
-            ////{
-            ////    bl.UpdateLineTrip(bl.GetLineTrip(i));
-            ////}
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)

@@ -140,9 +140,6 @@ namespace DL
                     throw new DO.BadAdjacentStetionsException(numS1, numS2, "the station is already canceled");
             find.Element("Active").Value = false.ToString();
             XMLTools.SaveListToXMLElement(adjRoot, ListAdjStationsPath);
-
-
-
         }
         /// <summary>
         /// return all Adjacent Stations by this code station
@@ -151,7 +148,6 @@ namespace DL
         /// <returns>a collection of all Adjacent Stations with this code station</returns>
         public IEnumerable<DO.AdjacentStetions> GetALLAdjStetionsbycode(int code)
         {
-
             XElement adjRoot = XMLTools.LoadListFromXMLElement(ListAdjStationsPath);
             
             return from item in adjRoot.Elements()
@@ -366,8 +362,7 @@ namespace DL
             return (from station in stationRoot.Elements()
                     let s =fromXmlToStation(station)
                     where s.Active == true
-                    select s
-               ) ;
+                    select s) ;
         }
         /// <summary>
         /// return DO station
@@ -445,7 +440,6 @@ namespace DL
                 st.Element("Code").Value = station.Code.ToString();
                 st.Element("Name").Value = station.Name;
                 st.Element("Longitude").Value = station.Longitude.ToString();
-
                 st.Element("Lattitude").Value = station.Lattitude.ToString();
                 st.Element("Include").Value = station.Include.ToString();
                 st.Element("Active").Value = station.Active.ToString();
@@ -513,16 +507,13 @@ namespace DL
         public DO.LineTrip GetLineTrip(int code)
         {
             XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
-
             XElement lt = (from l in TripRoot.Elements()
                                 where int.Parse(l.Element("CodeLineTrip").Value) == code
                                 select l).FirstOrDefault();
-
             if (lt != null) //if the station found - cloning the station 
                 return fromXmlToLineTrip(lt);
             else
                 throw new DO.BadLineTripException(code, "Not found"); //if the station not found
-
         }
 
         public void UpdateLineTrip(DO.LineTrip lt)
@@ -545,19 +536,13 @@ namespace DL
             }
             else //if the station are not found
                 throw new DO.BadLineTripException(lt.CodeLineTrip, "Not found");
-      
-
-        
         }
         public void DeleteLineTrip(int code)
         {
             XElement TripRoot = XMLTools.LoadListFromXMLElement(ListLineTripsPath);
-
-
             XElement lt = (from l in TripRoot.Elements()
                            where int.Parse(l.Element("CodeLineTrip").Value) == code
                            select l).FirstOrDefault();
-
             if (lt == null) //if station not found
                 throw new DO.BadLineTripException(code, "Not found");
             if (bool.Parse(lt.Element("Active").Value) == false)//if this station is not active

@@ -42,6 +42,7 @@ namespace PL
                 timerLabel.Visibility = Visibility.Collapsed;
                 TimeTextBox.Visibility = Visibility.Collapsed;
                 AddTimeButton.Visibility = Visibility.Collapsed;
+                lineTripDataGrid.Columns[1].Visibility = Visibility.Collapsed;
             }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,7 +80,7 @@ namespace PL
             BO.LineTrip lineTrip = (sender as Button).DataContext as BO.LineTrip;
             try
             {
-                MessageBoxResult res = MessageBox.Show("האם אתה בטוח שאתה רוצה למחוק תחנה זו?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                MessageBoxResult res = MessageBox.Show("Are you sure you want to delete this station?", "Verification", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
                     bl.DeleteLineTrip(lineTrip.CodeLineTrip);
