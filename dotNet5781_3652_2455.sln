@@ -25,6 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{85D7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{267F826C-8B00-4B59-AC8C-82F4E96BE20A}"
 	ProjectSection(SolutionItems) = preProject
+		bin\bus.png = bin\bus.png
 		bin\config.xml = bin\config.xml
 		bin\xml\configXml.xml = bin\xml\configXml.xml
 		bin\xml\ConigIntXml.xml = bin\xml\ConigIntXml.xml
@@ -34,6 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		bin\xml\ListLineTripsXml.xml = bin\xml\ListLineTripsXml.xml
 		bin\xml\ListStationsXml.xml = bin\xml\ListStationsXml.xml
 		bin\xml\ListUsersXml.xml = bin\xml\ListUsersXml.xml
+		bin\מעודכן.mp4 = bin\מעודכן.mp4
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLXML", "DLXML\DLXML.csproj", "{16BFE08F-2F08-4DA6-ACF9-96653C709726}"
